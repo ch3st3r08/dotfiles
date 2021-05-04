@@ -145,7 +145,7 @@ if [ "$TERM" != "linux" ]; then
 fi
 #Nice information
 #neofetch --colors 4 7 6 6 7 7 
-neofetch --colors 4 7 6 6 7 7 --ascii_colors 7 6 7 7 7 7
+neofetch --colors 12 7 12 12 7 7 --ascii_colors 4 7 7 7 7 7
 
 export EDITOR='nvim'
 export VISUAL='nvim'

@@ -29,6 +29,10 @@ elif [[ "$1" == "--shades" ]]; then
 	style="shades"
 	launch_bar
 
+elif [[ "$1" == "--default" ]]; then
+	style="default"
+	launch_bar
+
 elif [[ "$1" == "--hack" ]]; then
 	style="hack"
 	launch_bar
