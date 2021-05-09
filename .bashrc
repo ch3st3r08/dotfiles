@@ -140,13 +140,15 @@ fi
 #PS1="$PS1"'\[$(tput sgr0)\]'
 #PS1="$PS1"'\n> \[$(tput sgr0)\]'
 
+#Dont load pureline and neofetch
 if [ "$TERM" != "linux" ]; then
    source ~/Program_sources/pureline/pureline ~/.config/pureline/config
+   #Nice information
+   neofetch --colors 12 7 12 12 7 7 --ascii_colors 4 7 7 7 7 7
 fi
-#Nice information
 #neofetch --colors 4 7 6 6 7 7 
-neofetch --colors 12 7 12 12 7 7 --ascii_colors 4 7 7 7 7 7
 
 export EDITOR='nvim'
 export VISUAL='nvim'
+export RANGER_LOAD_DEFAULT_RC=false
 #source ~/.bash_completion/alacritty

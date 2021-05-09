@@ -7,3 +7,4 @@ alias ls='ls -lAh --color=auto'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
+alias nv='nvim'
