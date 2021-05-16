@@ -80,9 +80,9 @@ let g:material_theme_style = 'default'
 colorscheme nord
 
 "To keep terminal trnasparency
-"hi Normal guibg=NONE ctermbg=NONE
-"hi LineNr guibg=NONE ctermbg=NONE
-"hi SignColumn guibg=NONE ctermbg=NONE
+hi Normal guibg=NONE ctermbg=NONE
+hi LineNr guibg=NONE ctermbg=NONE
+hi SignColumn guibg=NONE ctermbg=NONE
 "hi EndOfBuffer guibg=NONE ctermbg=NONE
 
 "Vim airline config options
