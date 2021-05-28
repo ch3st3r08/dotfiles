@@ -142,7 +142,7 @@ fi
 
 #Dont load pureline and neofetch
 if [ "$TERM" != "linux" ]; then
-   source ~/Program_sources/pureline/pureline ~/.config/pureline/config
+   source ~/Documents/Sources/pureline/pureline ~/.config/pureline/config
    #Nice information
    neofetch --colors 12 7 12 12 7 7 --ascii_colors 4 7 7 7 7 7
 fi
@@ -152,3 +152,4 @@ export EDITOR='nvim'
 export VISUAL='nvim'
 export RANGER_LOAD_DEFAULT_RC=false
 #source ~/.bash_completion/alacritty
+. "$HOME/.cargo/env"

@@ -49,7 +49,7 @@ let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
      silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
        autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
- endif
+endif
 
 call plug#begin(stdpath('data') . '/plugged')
 Plug 'kaicataldo/material.vim', { 'branch': 'main' }
@@ -69,6 +69,8 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'ap/vim-css-color'
+Plug 'mhinz/vim-startify'
 "Funcionará hasta la version 0.5 de neovim
 "Plug 'kyazdani42/nvim-web-devicons'
 "Plug 'kyazdani42/nvim-tree.lua'
@@ -104,11 +106,11 @@ let NERDTreeMinimalUI=1
 let NERDTreeDirArrows=1
 let NERDTreeShowHidden=1
 nnoremap <C-n> :NERDTreeToggle<CR>
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists('s:std_in') && v:this_session == '' | NERDTree | endif
+"autocmd StdinReadPre * let s:std_in=1
+"autocmd VimEnter * if argc() == 0 && !exists('s:std_in') && v:this_session == '' | NERDTree | endif
 " Exit Vim if NERDTree is the only window left.
-autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
-    \ quit | endif
+"autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
+"    \ quit | endif
 
 "Vim-closetag options
 let g:closetag_filenames = '*.vue,*.html,*.xhtml,*.phtml'
@@ -125,6 +127,21 @@ source $HOME/.config/nvim/plug-config/coc.vim
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 "Funcionará hasta tener la version 0.5 de neovim
 "source $HOME/.config/nvim/plug-config/nvim-tree.vim
+
+"Startify options
+let g:startify_lists = [
+         \ { 'header': ['  Files'], 'type': 'files' },
+         \ { 'header': ['  Current Directory '. getcwd()] },
+         \ { 'header': ['  Bookmars'], 'type': 'bookmarks' },
+         \]
+
+let g:startify_bookmarks = [
+         \ { 'b': '~/.bashrc' },
+         \ { 'v': '~/.config/nvim/init.vim' },
+         \]
+
+let g:startify_fortune_use_unicode = 1
+
 
 "Mis remapeos 
 "Salir del modo terminal de neoVim

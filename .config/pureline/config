@@ -47,8 +47,8 @@ PL_COLORS[On_MyYellow]='\[\e[48;5;227m\]'
 PL_COLORS[MyLightGrey]='\[\e[38;2;59;66;82m\]'
 PL_COLORS[On_MyLightGrey]='\[\e[48;2;59;66;82m\]'
 
-PL_COLORS[MyBlue]='\[\e[38;2;126;192;208m\]'
-PL_COLORS[On_MyBlue]='\[\e[48;2;126;192;208m\]'
+PL_COLORS[MyBlue]='\[\e[38;2;136;192;208m\]'
+PL_COLORS[On_MyBlue]='\[\e[48;2;136;192;208m\]'
 
 PL_COLORS[MyDarkGrey]='\[\e[38;2;76;86;106m\]'
 PL_COLORS[On_MyDarkGrey]='\[\e[48;2;76;86;106m\]'
