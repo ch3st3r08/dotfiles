@@ -10,6 +10,8 @@ Nitrogen
 Dunst
 youtube-dl
 
+#Listado de paquetes instalados
+
 #Temas
 Nord Theme (crear directorio .themes)
 NordArc Icon theme (crear directorio .icons)
