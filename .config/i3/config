@@ -23,6 +23,9 @@ for_window [class="Lxappearance"] floating enable
 for_window [class="vlc"] floating enable
 for_window [window_role="floating_term"] floating enable resize set 600 300
 for_window [class="XCalc"] floating enable
+for_window [class="AlacrittyFloat"] floating enable resize set 600 300
+
+for_window [floating] move absolute position center
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 font pango:TerminessTTF Nerd Font 8
@@ -51,7 +54,8 @@ bindsym $mod+Return exec i3-sensible-terminal
 #bindsym $mod+Shift+Return exec i3-sensible-terminal --role=floating_term
 #For some reaseon using i3-sensible-terminal doesn’t set WN_class to x-terminal-emulator anymore
 #and passing --role gets ignore by x-terminal-emulator program, had to use direct path
-bindsym $mod+Shift+Return exec xfce4-terminal --role=floating_term
+#bindsym $mod+Shift+Return exec xfce4-terminal --role=floating_term
+bindsym $mod+Shift+Return exec "alacritty --class Alacritty,AlacrittyFloat"
 
 # kill focused window
 bindsym $mod+Shift+q kill
