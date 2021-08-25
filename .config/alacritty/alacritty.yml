@@ -14,8 +14,8 @@ import:
 # Any items in the `env` entry below will be added as
 # environment variables. Some entries may override variables
 # set by alacritty itself.
-env:
-  TERM: alacritty
+#env:
+  #TERM: alacritty
 
 window:
   dimensions:
@@ -25,8 +25,14 @@ window:
      #x: 0
      #y: 0
   padding:
-    x: 0
-    y: 0
+    x: 2
+    y: 1
+
+  # Window title
+  #title: Prueba
+
+  # Allow terminal applications to change Alacrittys window title
+  dynamic_title: true
 
   # GTK theme variant (Linux/BSD only)
   #
@@ -59,7 +65,7 @@ font:
     #style: Bold Italic
 
   # Point size
-  size: 10.0
+  size: 9.0
 
   # Offset is the extra space around each character. `offset.y` can be thought
   # of as modifying the line spacing, and `offset.x` as modifying the letter
@@ -261,7 +267,7 @@ draw_bold_text_with_bright_colors: false
 #
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
-background_opacity: 0.6
+background_opacity: 0.95
 
 #selection:
   # This string contains all characters that are used as separators for

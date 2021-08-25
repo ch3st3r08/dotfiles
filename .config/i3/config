@@ -4,7 +4,7 @@
 #exec --no-startup-id xfce4-panel --disable-wm-check
 exec_always --no-startup-id /usr/local/bin/picom --experimental-backends -b
 exec --no-startup-id /usr/bin/nitrogen --restore
-#exec_always --no-startup-id $HOME/.config/polybar/launch.sh --hack
+#exec_always --no-startup-id $HOME/.config/polybar/launch.sh --default
 exec --no-startup-id setxkbmap -layout es
 
 for_window [class=".*"] border pixel 1
@@ -14,7 +14,7 @@ gaps outer 2
 set $mod Mod4
 
 smart_borders on
-smart_gaps on
+#smart_gaps on
 
 #Defining floating applications
 for_window [class="Pavucontrol"] floating enable
@@ -22,10 +22,12 @@ for_window [class="Thunar"] floating enable
 for_window [class="Lxappearance"] floating enable
 for_window [class="vlc"] floating enable
 for_window [window_role="floating_term"] floating enable resize set 600 300
-for_window [class="XCalc"] floating enable
 for_window [class="AlacrittyFloat"] floating enable resize set 600 300
+for_window [class="XCalc"] floating enable
+for_window [class="xpad"] floating enable resize set 300 250
 
 for_window [floating] move absolute position center
+
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 font pango:TerminessTTF Nerd Font 8
@@ -49,13 +51,13 @@ bindsym $mod+m move scratchpad
 bindsym $mod+Shift+m scratchpad show
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec --no-startup-id alacritty
 # Starts a terminal in with a role 
 #bindsym $mod+Shift+Return exec i3-sensible-terminal --role=floating_term
 #For some reaseon using i3-sensible-terminal doesn’t set WN_class to x-terminal-emulator anymore
 #and passing --role gets ignore by x-terminal-emulator program, had to use direct path
 #bindsym $mod+Shift+Return exec xfce4-terminal --role=floating_term
-bindsym $mod+Shift+Return exec "alacritty --class Alacritty,AlacrittyFloat"
+bindsym $mod+Shift+Return exec --no-startup-id "alacritty --class Alacritty,AlacrittyFloat"
 
 # kill focused window
 bindsym $mod+Shift+q kill

@@ -37,7 +37,7 @@ fi
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
-    xterm-color|*-256color) color_prompt=yes;;
+    xterm-color|*-256color|alacritty*) color_prompt=yes;;
 esac
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
@@ -66,7 +66,7 @@ unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
-xterm*|rxvt*)
+xterm*|rxvt*|alacritty*)
     PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
     ;;
 *)
@@ -140,16 +140,20 @@ fi
 #PS1="$PS1"'\[$(tput sgr0)\]'
 #PS1="$PS1"'\n> \[$(tput sgr0)\]'
 
-#Dont load pureline and neofetch
-if [ "$TERM" != "linux" ]; then
-   source ~/Documents/Sources/pureline/pureline ~/.config/pureline/config
-   #Nice information
-   neofetch --colors 12 7 12 12 7 7 --ascii_colors 4 7 7 7 7 7
-fi
-#neofetch --colors 4 7 6 6 7 7 
-
 export EDITOR='nvim'
 export VISUAL='nvim'
 export RANGER_LOAD_DEFAULT_RC=false
-#source ~/.bash_completion/alacritty
+export STARSHIP_CONFIG=~/.config/starship/config.toml
+
+#Dont load pureline and neofetch
+if [ "$TERM" != "linux" ]; then
+   function set_win_title(){
+       echo -ne "\033]0; $USER@$HOSTNAME  \007"
+   }
+   starship_precmd_user_func="set_win_title"  
+   #source ~/Documents/Sources/pureline/pureline ~/.config/pureline/config
+   #Nice information
+   neofetch --colors 12 7 12 12 7 7 --ascii_colors 4 7 7 7 7 7
+   eval "$(starship init bash)"
+fi
 . "$HOME/.cargo/env"

@@ -8,7 +8,7 @@ set nowrap          "Display long lines as just one line
 set encoding=utf-8      "The encoding displayed
 set pumheight=10        "Makes opoup menu smaller
 set list        "Shows non-printable charaacters
-set listchars=tab:\|\ ,trail:⋅,nbsp:⎵,eol:¬
+set listchars=tab:\|\ ,trail:⋅,nbsp:⎵
 set fileencoding=utf-8      "The encoding written to file
 set ruler           "Show the cursor position all the time
 set cmdheight=2         "More space for displaying messages
