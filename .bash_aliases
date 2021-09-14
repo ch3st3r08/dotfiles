@@ -1,7 +1,7 @@
 #Custom Aliases for bash
 
 #Better LS
-alias ls='ls -lAh --color=auto'
+alias lsa='ls -lAh --color=auto'
 
 #cd up directory
 alias ..='cd ..'
