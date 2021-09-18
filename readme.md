@@ -22,6 +22,12 @@
    chmod u+x bin/installSystem.sh
    sudo ./bin/installSystem.sh [user]
 
+##Luego de la instalacion...
+Antes de reiniciar es necesario modificar:
+-Comentar linea 'v-sync' en la configuración de Picom solo SI se usa maquina virtual
+-Cambiar nombre de interfaz de red en la configuración de Polybar
+-Eliminar la configuración de red en /etc/network/interfaces
+
 #Listado de paquetes instalados
 -Build-essential
 -Include backports
