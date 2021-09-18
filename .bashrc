@@ -156,4 +156,7 @@ if [ "$TERM" != "linux" ]; then
    neofetch --colors 12 7 12 12 7 7 --ascii_colors 4 7 7 7 7 7
    eval "$(starship init bash)"
 fi
+
+#Include user define bin directory
+PATH="$HOME/bin:$PATH"
 . "$HOME/.cargo/env"
