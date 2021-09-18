@@ -44,12 +44,12 @@ cd $HOME_USUARIO
 echo "Se procederá a instalar los archivos necesarios del sistema: "
 echo "---------------------------------------------------------------"
 info "Instalando #-Build-essential"
-apt install -s build-essential -y
+apt install build-essential -y
 
 if [[ $_DEBUG -eq 1 ]]; then ask; fi
 
 info "Instalando #-Include backports"
-   echo "deb http://deb.debian.org/debian/ bulleyes-backports main contrib non-free" | tee -a /etc/apt/sources.list >/dev/null
+   echo "deb http://deb.debian.org/debian/ bullseye-backports main contrib non-free" | tee -a /etc/apt/sources.list >/dev/null
    apt update
 
 if [[ $_DEBUG -eq 1 ]]; then ask; fi
