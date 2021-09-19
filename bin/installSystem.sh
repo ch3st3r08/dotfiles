@@ -90,6 +90,11 @@ info "Instalando #-I3wm (HEAD)"
 
 if [[ $_DEBUG -eq 1 ]]; then ask; fi
 
+info "Instalando Polybar"
+   apt install polybar -y
+
+if [[ $_DEBUG -eq 1 ]]; then ask; fi
+
 info "Instalando #-Picom"
    apt install picom -y
 
@@ -110,6 +115,11 @@ info "Instalando #-Polkit Agent"
 
 if [[ $_DEBUG -eq 1 ]]; then ask; fi
 
+info "Instalando #-Xfce4-power-manager"
+   apt install xfce4-power-manager -y
+
+if [[ $_DEBUG -eq 1 ]]; then ask; fi
+
 info "Instalando #-LightDM"
    apt install lightdm light-locker -y
 
@@ -117,9 +127,11 @@ if [[ $_DEBUG -eq 1 ]]; then ask; fi
 
 info "Instalando #-Rofi (1.7.0)"
    git clone -b 1.7.0 --depth 1 https://github.com/davatorium/rofi Sources/rofi
-   apt install bison flex check libgdk-pixbuf-2.0 libxcb-ewmh-dev -y
+   apt install bison flex check libgdk-pixbuf-2.0-0 libgdk-pixbuf-2.0-dev libxcb-ewmh-dev -y
    cd Sources/rofi
-   mkdir build && cd build
+   git submodule update --init --recursive
+   autoreconf -i
+   mkdir -p build && cd build
    ../configure
    make
    make install
@@ -137,8 +149,8 @@ info "Instalando #-Dex (XDG-AUTOSTART implementation)"
 
 if [[ $_DEBUG -eq 1 ]]; then ask; fi
 
-info "Instalando #-XDG utils"
-   apt install xdg-utils -y
+info "Instalando #-XDG utils y desktop-file-utils"
+   apt install xdg-utils desktop-file-utils -y
 
 if [[ $_DEBUG -eq 1 ]]; then ask; fi
 
@@ -156,7 +168,7 @@ if [[ $_DEBUG -eq 1 ]]; then ask; fi
 info "Instalando #-Neovim"
    curl -L -o Downloads/nvim https://github.com/neovim/neovim/releases/download/v0.5.0/nvim.appimage
    chmod +x Downloads/nvim
-   sudo mv Downloads/nvim /usr/local/bin
+   mv Downloads/nvim /usr/local/bin
 
 if [[ $_DEBUG -eq 1 ]]; then ask; fi
 
@@ -166,7 +178,11 @@ info "Instalando #-Xscreensaver"
 if [[ $_DEBUG -eq 1 ]]; then ask; fi
 
 info "Instalando #-Rustup"
-   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+   export CARGO_HOME=$HOME_USUARIO/.cargo
+   export RUSTUP_HOME=$HOME_USUARIO/.rustup
+   export PATH=$PATH:$CARGO_HOME/bin
+   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --no-modify-path
+   chown -R $1:$1 $CARGO_HOME $RUSTUP_HOME
 
 if [[ $_DEBUG -eq 1 ]]; then ask; fi
 
@@ -177,7 +193,7 @@ if [[ $_DEBUG -eq 1 ]]; then ask; fi
 
 info "Instalando #Alacritty (0.9.0)"
    apt-get install cmake pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev python3 gzip -y
-   git clone -b 0.9.0 --depth 1 http://github.com/alacritty/alacritty Sources/alacritty
+   git clone -b v0.9.0 --depth 1 http://github.com/alacritty/alacritty Sources/alacritty
    cd Sources/alacritty
    cargo build --release
    cp target/release/alacritty /usr/local/bin
@@ -218,13 +234,21 @@ info "Instalando #-Nitrogen (background setter)"
 if [[ $_DEBUG -eq 1 ]]; then ask; fi
 
 info "Instalando #-Ranger (Console file manager)"
-   apt install ranger gpm atool caca-utils mupdf-tools dict dict-wn /
-   python3-pygments mediainfo exiftool poppler-utils libsixel-bin rar -y
+   apt install ranger gpm atool caca-utils mupdf-tools dict dict-wn \
+   python3-pygments mediainfo exiftool poppler-utils libsixel-bin unrar -y
 
 if [[ $_DEBUG -eq 1 ]]; then ask; fi
 
 info "Instalando #-Feh"
    apt install feh -y
+
+if [[ $_DEBUG -eq 1 ]]; then ask; fi
+
+info "Instalando Pulseaudio Control"
+   apt install pavucontrol -y
+
+info "Instalando aplicaciones de utilidad"
+   apt install mupdf youtube-dl ffmpeg xpad sct vlc font-manager seahorse galculator -y
 
 echo
 info "La instalacion del sistema ha terminado, se recomienda REINICIAR el sistema, para que los cambios surjan efecto."
