@@ -17,10 +17,6 @@
       config checkout
       config config --local status.showUntrackedFiles no
 
-## Dar permisos de ejecucion y ejecutar el script ~/bin/installSystem.sh 
-      chmod u+x bin/installSystem.sh
-      sudo ./bin/installSystem.sh [user]
-
 ## Luego de la instalacion...
 Antes de reiniciar es necesario modificar:
 - Comentar linea 'v-sync' en la configuración de Picom solo SI se usa maquina virtual
@@ -34,17 +30,21 @@ Antes de reiniciar es necesario modificar:
 - Git
 - Curl
 - DOTFILES
-- XORG
-- I3wm (HEAD)
-- Polybar
-- Picom
-- Network Manager
-- PulseAudio (Audio server, frontend for ALSA)
-- Polkit Agent
-- Xfce4-power-manager
-- LightDM
-- Rofi (1.7.0)
+- XORG (Desktop Compositor)
+- I3wm (HEAD) (Window Manager)
+- Polybar (StatusBar)
+- Picom (Compositor)
+- Network Manager (Network Control)
+- PulseAudio (Audio server, frontend for ALSA) (Audio Control)
+- Polkit Agent (Polkit Auth Agent)
+- Xfce4-power-manager (Power Manager)
+- LightDM (Display Manager)
+- Light-locker (Screen Locker)
+- Rofi (1.7.0) (Application Launcher)
 - Dunst (Notification service)
+- Nitrogen (Background setter)
+
+# Default Applications
 - Dex (XDG-AUTOSTART implementation)
 - XDG utils
 - Nodejs
@@ -58,10 +58,13 @@ Antes de reiniciar es necesario modificar:
 - Nerdfonts
 - Lxappearance (GTK theme customizer)
 - Pcmanfm (GUI File Manager)
-- Nitrogen (background setter)
 - Ranger (Console file manager)
-- Feh
-- Pavucontrol
+- Feh (Simple Image Viewer)
+- Pavucontrol (PulseAudio Control)
+- Grub Customizer
+- MuPDF (Lightweight PDF Reader)
+- Mugshot (Account Services)
+- Grub Customizer
 
 ### At this point, reboot the system
 
@@ -73,13 +76,11 @@ Antes de reiniciar es necesario modificar:
 - Seahorse (gpnu keys and passwords)
 - OpenShoot (Video editor)
 - OBS (Screen Recorder)
-- MuPDF (Lightweight PDF Reader) 
 - youtube-dl
 - Pureline
 - ffmpeg
 - xpad
 - sct (Temperature monitor)
-      sudo apt install mupdf youtube-dl ffmpeg xpad xdg-utils libfile-mimeinfo-perl sct vlc font-manager seahorse galculator
 
 ### Firmware 
 - firmware-realtek
@@ -97,12 +98,6 @@ Antes de reiniciar es necesario modificar:
 - Hack Regular Nerd Font
 - Anonymice Nerd Font
 - DejaVu Sans Mono Nerd Font
-
-### Window Manager, Compositor, bar/panel
-- i3-gaps (Cambiar directorio de backgrounds)
-- picom
-- polybar
-
 
 ### Neovim Coc-plugins
 - coc-tsserver

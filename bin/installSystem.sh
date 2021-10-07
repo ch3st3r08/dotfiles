@@ -121,7 +121,7 @@ info "Instalando #-Xfce4-power-manager"
 if [[ $_DEBUG -eq 1 ]]; then ask; fi
 
 info "Instalando #-LightDM"
-   apt install lightdm light-locker -y
+   apt install lightdm light-locker lightdm-gtk-greeter-settings -y
 
 if [[ $_DEBUG -eq 1 ]]; then ask; fi
 
@@ -166,7 +166,7 @@ info "Instalando #-Neofetch"
 if [[ $_DEBUG -eq 1 ]]; then ask; fi
 
 info "Instalando #-Neovim"
-   curl -L -o Downloads/nvim https://github.com/neovim/neovim/releases/download/v0.5.0/nvim.appimage
+   curl -L -o Downloads/nvim https://github.com/neovim/neovim/releases/download/v0.5.1/nvim.appimage
    chmod +x Downloads/nvim
    mv Downloads/nvim /usr/local/bin
 
@@ -210,10 +210,9 @@ info "Instalando #-Lxterminal"
 
 if [[ $_DEBUG -eq 1 ]]; then ask; fi
 
-
 info "Instalando #-Nerdfonts"
-   mkdir -p .local/share/fonts
-   mv Sources/fonts/* .local/share/fonts
+   mkdir -p $HOME_USUARIO/.local/share/fonts
+   cp Sources/fonts/* $HOME_USUARIO/.local/share/fonts
    fc-cache -fv
 
 if [[ $_DEBUG -eq 1 ]]; then ask; fi
@@ -247,9 +246,50 @@ if [[ $_DEBUG -eq 1 ]]; then ask; fi
 info "Instalando Pulseaudio Control"
    apt install pavucontrol -y
 
+if [[ $_DEBUG -eq 1 ]]; then ask; fi
+
+info "Instalando Mugshot"
+   apt install mugshot -y
+
+if [[ $_DEBUG -eq 1 ]]; then ask; fi
+
+info "Instalando Grub Customizer"
+   apt install grub-customizer -y
+
+if [[ $_DEBUG -eq 1 ]]; then ask; fi
+
 info "Instalando aplicaciones de utilidad"
    apt install mupdf youtube-dl ffmpeg xpad sct vlc font-manager seahorse galculator -y
 
-echo
+if [[ $_DEBUG -eq 1 ]]; then ask; fi
+
+info "Creando directorio de themes e íconos"
+   mkdir -p $HOME_USUARIO/.local/share/themes
+   mkdir -p $HOME_USUARIO/.local/share/icons
+
+if [[ $_DEBUG -eq 1 ]]; then ask; fi
+
+info "Instalando tema Nord, Nord Icon y Nord Cursor de forma Global"
+   git clone https://github.com/EliverLara/Nordic Sources/Nordic_theme
+   git clone https://github.com/robertovernina/NordArc Sources/NordArc_icon_theme
+   git clone https://github.com/alvatip/Nordzy-cursors Sources/Nordzy-cursors
+   cp -R Sources/Nordic_theme /usr/share/themes/Nordic
+   cp -R Sources/NordArc_icon_theme/NordArc-icons /usr/share/icons
+   cp -R Sources/Nordzy-cursors/Nordzy-cursors /usr/share/icons
+   cp -R Sources/Nordzy-cursors/Nordzy-cursors-white /usr/share/icons
+
+info "Configurando propiedades default del lightdm-gtk-greeter-settings"
+cat <<'EOF' >> /etc/lightdm/lightdm-gtk-greeter.conf
+[greeter]
+background = /opt/display-manager-bg/background.png
+theme-name = Nordic
+icon-theme-name = NordArc-icons
+EOF
+
+
+info "Creando carpeta display-manager-bg en /opt"
+mkdir -p /opt/display-manager-bg
+cp Sources/background/default_wallpaper.png /opt/display-manager-bg/background
+
 info "La instalacion del sistema ha terminado, se recomienda REINICIAR el sistema, para que los cambios surjan efecto."
 
