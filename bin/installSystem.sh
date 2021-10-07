@@ -281,15 +281,15 @@ info "Instalando tema Nord, Nord Icon y Nord Cursor de forma Global"
 info "Configurando propiedades default del lightdm-gtk-greeter-settings"
 cat <<'EOF' >> /etc/lightdm/lightdm-gtk-greeter.conf
 [greeter]
-background = /opt/display-manager-bg/background.png
+background = /usr/share/backgrounds/display-manager-bg/background
 theme-name = Nordic
 icon-theme-name = NordArc-icons
 EOF
 
 
 info "Creando carpeta display-manager-bg en /opt"
-mkdir -p /opt/display-manager-bg
-cp Sources/background/default_wallpaper.png /opt/display-manager-bg/background
+mkdir -p /usr/share/backgrounds/display-manager-bg
+cp Sources/background/default_wallpaper.png /usr/share/backgrounds/display-manager-bg/background
 
 info "La instalacion del sistema ha terminado, se recomienda REINICIAR el sistema, para que los cambios surjan efecto."
 
