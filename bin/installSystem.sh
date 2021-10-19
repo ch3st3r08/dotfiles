@@ -274,7 +274,7 @@ info "Instalando tema Nord, Nord Icon y Nord Cursor de forma Global"
    git clone https://github.com/robertovernina/NordArc Sources/NordArc_icon_theme
    git clone https://github.com/alvatip/Nordzy-cursors Sources/Nordzy-cursors
    cp -R Sources/Nordic_theme /usr/share/themes/Nordic
-   cp -R Sources/NordArc_icon_theme/NordArc-icons /usr/share/icons
+   cp -R Sources/NordArc_icon_theme/NordArc-Icons /usr/share/icons
    cp -R Sources/Nordzy-cursors/Nordzy-cursors /usr/share/icons
    cp -R Sources/Nordzy-cursors/Nordzy-cursors-white /usr/share/icons
 
