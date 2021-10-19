@@ -286,10 +286,26 @@ theme-name = Nordic
 icon-theme-name = NordArc-icons
 EOF
 
-
-info "Creando carpeta display-manager-bg en /opt"
+info "Creando carpeta display-manager-bg en /usr/share/backgrounds"
 mkdir -p /usr/share/backgrounds/display-manager-bg
 cp Sources/background/default_wallpaper.png /usr/share/backgrounds/display-manager-bg/background
+
+if [[ $_DEBUG -eq 1 ]]; then ask; fi
+
+info "Descargando tema de grub en Downloads"
+curl -Lo Downloads/debian.tar https://github.com/AdisonCavani/distro-grub-themes/releases/download/v2.2/debian.tar
+
+if [[ $_DEBUG -eq 1 ]]; then ask; fi
+
+info "Instalando tema Plymouth debian"
+cd Sources
+curl -LO https://gitlab.com/maurom/deb10/-/archive/master/deb10-master.tar.gz
+tar -xvaf deb10-master.tar.gz
+cd deb10-master
+make install
+plymouth-set-default-theme -R deb10
+cd $HOME_USUARIO
+
 
 info "La instalacion del sistema ha terminado, se recomienda REINICIAR el sistema, para que los cambios surjan efecto."
 
