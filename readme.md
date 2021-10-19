@@ -22,6 +22,9 @@ Antes de reiniciar es necesario modificar:
 - Comentar linea 'v-sync' en la configuración de Picom solo SI se usa maquina virtual
 - Cambiar nombre de interfaz de red en la configuración de Polybar
 - Eliminar la configuración de red en /etc/network/interfaces
+- Activar los temas con lxappearance (tema, iconos, cursores)
+- Modificar el Hidden=true en el desktop file de lxpolkit en /etc/xdg/autostart
+- Modificar el tema de grub con grub customizer
 
 # Listado de paquetes principales instalados
 - Build-essential
