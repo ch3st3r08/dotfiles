@@ -192,7 +192,7 @@ info "Instalando #-Startship"
 if [[ $_DEBUG -eq 1 ]]; then ask; fi
 
 info "Instalando #Alacritty (0.9.0)"
-   apt-get install cmake pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev python3 gzip -y
+   apt-get install cmake pkg-config libfreetype6-dev libIontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev python3 gzip -y
    git clone -b v0.9.0 --depth 1 http://github.com/alacritty/alacritty Sources/alacritty
    cd Sources/alacritty
    cargo build --release
@@ -211,7 +211,7 @@ info "Instalando #-Lxterminal"
 if [[ $_DEBUG -eq 1 ]]; then ask; fi
 
 info "Instalando #-Nerdfonts"
-   mkdir -p $HOME_USUARIO/.local/share/fonts
+   install -d -o $1 -g $1 $HOME_USUARIO/.local/share/fonts
    cp Sources/fonts/* $HOME_USUARIO/.local/share/fonts
    fc-cache -fv
 
@@ -264,8 +264,9 @@ info "Instalando aplicaciones de utilidad"
 if [[ $_DEBUG -eq 1 ]]; then ask; fi
 
 info "Creando directorio de themes e íconos"
-   mkdir -p $HOME_USUARIO/.local/share/themes
-   mkdir -p $HOME_USUARIO/.local/share/icons
+   install -d -o $1 -g $1 $HOME_USUARIO/.local/share/themes
+   install -d -o $1 -g $1 $HOME_USUARIO/.local/share/icons
+
 
 if [[ $_DEBUG -eq 1 ]]; then ask; fi
 
@@ -274,7 +275,7 @@ info "Instalando tema Nord, Nord Icon y Nord Cursor de forma Global"
    git clone https://github.com/robertovernina/NordArc Sources/NordArc_icon_theme
    git clone https://github.com/alvatip/Nordzy-cursors Sources/Nordzy-cursors
    cp -R Sources/Nordic_theme /usr/share/themes/Nordic
-   cp -R Sources/NordArc_icon_theme/NordArc-icons /usr/share/icons
+   cp -R Sources/NordArc_icon_theme/NordArc-Icons /usr/share/icons
    cp -R Sources/Nordzy-cursors/Nordzy-cursors /usr/share/icons
    cp -R Sources/Nordzy-cursors/Nordzy-cursors-white /usr/share/icons
 
@@ -287,7 +288,7 @@ icon-theme-name = NordArc-icons
 EOF
 
 info "Creando carpeta display-manager-bg en /usr/share/backgrounds"
-mkdir -p /usr/share/backgrounds/display-manager-bg
+install -d /usr/share/backgrounds/display-manager-bg
 cp Sources/background/default_wallpaper.png /usr/share/backgrounds/display-manager-bg/background
 
 if [[ $_DEBUG -eq 1 ]]; then ask; fi
@@ -306,6 +307,8 @@ make install
 plymouth-set-default-theme -R deb10
 cd $HOME_USUARIO
 
+info "Actualizando permisos en directorio Sources"
+chown -R $1:$1 Sources
 
 info "La instalacion del sistema ha terminado, se recomienda REINICIAR el sistema, para que los cambios surjan efecto."
 
