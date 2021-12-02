@@ -166,7 +166,7 @@ info "Instalando #-Neofetch"
 if [[ $_DEBUG -eq 1 ]]; then ask; fi
 
 info "Instalando #-Neovim"
-   curl -L -o Downloads/nvim https://github.com/neovim/neovim/releases/download/v0.5.1/nvim.appimage
+   curl -L -o Downloads/nvim https://github.com/neovim/neovim/releases/download/v0.6.0/nvim.appimage
    chmod +x Downloads/nvim
    mv Downloads/nvim /usr/local/bin
 

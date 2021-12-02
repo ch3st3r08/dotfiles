@@ -43,7 +43,7 @@ esac
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
 # should be on the output of commands, not on the prompt
-#force_color_prompt=yes
+force_color_prompt=yes
 
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
@@ -153,10 +153,15 @@ if [ "$TERM" != "linux" ]; then
    starship_precmd_user_func="set_win_title"  
    #source ~/Documents/Sources/pureline/pureline ~/.config/pureline/config
    #Nice information
-   neofetch --colors 12 7 12 12 7 7 --ascii_colors 4 7 7 7 7 7
+   #neofetch --colors 12 7 12 12 7 7 --ascii_colors 4 7 7 7 7 7
    eval "$(starship init bash)"
 fi
 
 #Include user define bin directory
 PATH="$HOME/bin:$PATH"
+PATH="/opt/sonarqube-9.1.0.47736/scanner/bin:$PATH"
 . "$HOME/.cargo/env"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
