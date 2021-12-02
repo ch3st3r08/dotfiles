@@ -50,7 +50,7 @@ Antes de reiniciar es necesario modificar:
 # Default Applications
 - Dex (XDG-AUTOSTART implementation)
 - XDG utils
-- Nodejs
+- NVM (node package manager)
 - Neofetch
 - Neovim
 - Xscreensaver
@@ -64,7 +64,6 @@ Antes de reiniciar es necesario modificar:
 - Ranger (Console file manager)
 - Feh (Simple Image Viewer)
 - Pavucontrol (PulseAudio Control)
-- Grub Customizer
 - MuPDF (Lightweight PDF Reader)
 - Mugshot (Account Services)
 - Grub Customizer
@@ -93,7 +92,6 @@ Antes de reiniciar es necesario modificar:
 - Nord Theme (crear directorio .themes) https://github.com/EliverLara/Nordic
 - NordArc Icon theme (crear directorio .icons) https://github.com/robertovernina/NordArc
 
-
 ### Fonts (URL: https://github.com/ryanoasis/nerd-fonts)
 - Sauce Code Pro Nerd Font
 - TerminessTTF Nerd Font
@@ -101,12 +99,3 @@ Antes de reiniciar es necesario modificar:
 - Hack Regular Nerd Font
 - Anonymice Nerd Font
 - DejaVu Sans Mono Nerd Font
-
-### Neovim Coc-plugins
-- coc-tsserver
-- coc-html
-- coc-css
-- coc-vetur
-- coc-json
-- coc-python
-- coc-git
