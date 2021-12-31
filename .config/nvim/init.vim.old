@@ -80,9 +80,14 @@ Plug 'ap/vim-css-color'
 Plug 'mhinz/vim-startify'
 Plug 'liuchengxu/vim-which-key'
 Plug 'tpope/vim-surround'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npm install'  }
+Plug 'junegunn/goyo.vim'
+Plug 'sotte/presenting.vim'
+
 "#####Icons
 "Plug 'ryanoasis/vim-devicons'
 Plug 'kyazdani42/nvim-web-devicons'
+
 "#####Syntax, Autocompletion and Snippets
 "Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neovim/nvim-lspconfig'
@@ -95,15 +100,19 @@ Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'rafamadriz/friendly-snippets'
 Plug 'williamboman/nvim-lsp-installer'
+
 " #####Treesitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
 " #####Fuzzy finder
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+
 "#####StatusLine
 Plug 'nvim-lualine/lualine.nvim'
 "Plug 'vim-airline/vim-airline'
 "Plug 'vim-airline/vim-airline-themes'
+
 "#####File Browser"
 "Plug 'preservim/nerdtree'
 "Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
@@ -118,153 +127,11 @@ call plug#end()
 
 "lua vim.lsp.set_log_level("debug")
 
-lua <<EOF
-local nvim_lsp = require('lspconfig')
+" Calling plugins configs
+lua require('chester.lsp')
 
--- Use an on_attach function to only map the following keys
--- after the language server attaches to the current buffer
-local on_attach = function(client, bufnr)
-    local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-    local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-
-    -- Enable completion triggered by <c-x><c-o>
-    buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
-
-    local opts = {noremap=true, silent=true}
-    buf_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-    buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
-    buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-    buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-    buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-    buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-    buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-    buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-    buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-    buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-    buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-    buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-    buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
-    buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
-    buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
-    buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-    buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
-end
-
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
-
-local lsp_installer = require("nvim-lsp-installer")
-lsp_installer.on_server_ready(function(server)
-    local opts = {}
-    opts.on_attach = on_attach
-    opts.capabilities = capabilities
-    server:setup(opts)
-end)
-
-local has_words_before = function()
-  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
-end
-
-local luasnip = require 'luasnip'
-local cmp = require 'cmp'
-
-cmp.setup({
-    snippet = {
-        expand = function(args)
-            require('luasnip').lsp_expand(args.body)
-        end,
-    },
-    mapping = {
-        ['<C-p>'] = cmp.mapping.select_prev_item(),
-        ['<C-n>'] = cmp.mapping.select_next_item(),
-        ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-        ['<C-f>'] = cmp.mapping.scroll_docs(4),
-        ['<C-Space>'] = cmp.mapping.complete(),
-        ['<C-e>'] = cmp.mapping.close(),
-        ['<CR>'] = cmp.mapping.confirm {
-            behavior = cmp.ConfirmBehavior.Replace,
-            select = true,
-            },
-        ["<Tab>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-                cmp.select_next_item()
-            elseif luasnip.expand_or_jumpable() then
-                luasnip.expand_or_jump()
-            elseif has_words_before() then
-                cmp.complete()
-            else
-                fallback()
-            end
-        end, { "i", "s" }),
-
-        ["<S-Tab>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-                cmp.select_prev_item()
-            elseif luasnip.jumpable(-1) then
-                luasnip.jump(-1)
-            else
-                fallback()
-            end
-        end, { "i", "s" }),
-    },
-    sources = cmp.config.sources({
-        { name = 'nvim_lsp' },
-        { name = 'luasnip' },
-    },{
-        { name = 'buffer' },
-    }),
-})
-cmp.setup.cmdline('/', {
-    sources = {
-        { name = 'buffer' }
-    }
-})
--- You can also use lazy loading so you only get in memory snippets of languages you use
-require("luasnip/loaders/from_vscode").lazy_load()
-EOF
-
-
-
-"Vim airline config options
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_sep = ''
-let g:airline#extensions#tabline#left_alt_sep = ''
-let g:airline#extensions#tabline#right_sep = ''
-let g:airline#extensions#tabline#right_alt_sep = ''
-
-"Enable powerline fonts
-let g:airline_powerline_fonts = 1
-let g:airline_left_sep = ''
-let g:airline_right_sep = ''
-let g:airline#extensions#whitespace#enabled = 0
-let g:airline_theme='nord'
-
-"Nerdtree options
-"let NERDTreeMinimalUI=1
-"let NERDTreeDirArrows=1
-"let NERDTreeShowHidden=1
-"nnoremap <C-n> :NERDTreeToggle<CR>
-
-"autocmd StdinReadPre * let s:std_in=1
-"autocmd VimEnter * if argc() == 0 && !exists('s:std_in') && v:this_session == '' | NERDTree | endif
-" Exit Vim if NERDTree is the only window left.
-"autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
-"    \ quit | endif
-
-"Telescope options
-nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
-nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
-nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
-nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
-
-""nvim-tree options
-nnoremap <C-n> :NvimTreeToggle<CR>
-nnoremap <leader>r :NvimTreeRefresh<CR>
-nnoremap <leader>n :NvimTreeFindFile<CR>
-
+" Required options before calling nvim-tree setup
 highlight NvimTreeFolderIcon guibg=blue
-let g:nvim_tree_gitignore = 1 "0 by default
 let g:nvim_tree_quit_on_open = 0 "0 by default, closes the tree when you open a file
 let g:nvim_tree_indent_markers = 1 "0 by default, this option shows indent markers when folders are open
 let g:nvim_tree_git_hl = 1 "0 by default, will enable file highlight for git attributes (can be used without the icons).
@@ -289,85 +156,48 @@ let g:nvim_tree_window_picker_exclude = {
     \   ]
     \ }
 
-lua <<EOF
-    require'nvim-tree'.setup{}
-EOF
-
-
-lua <<EOF
-    require'lualine'.setup({
-        options = {
-            theme = 'auto',
-            icons_enabled = true,
-        },
-        tabline = {
-            lualine_a = {
-                {
-                    'buffers',
-                    show_modified_status = true,
-                }
-            },
-            lualine_b = {},
-            lualine_c = {},
-            lualine_x = {},
-            lualine_y = {},
-            lualine_z = {'tabs'},
-        },
-        extensions = {'nvim-tree'}
-    })
-EOF
-
-lua <<EOF
-    local cmp_autopairs = require('nvim-autopairs.completion.cmp')
-    local cmp = require('cmp')
-    cmp.event:on( 'confirm_done', cmp_autopairs.on_confirm_done({  map_char = { tex = '' } }))
-    require('nvim-autopairs').setup{}
-EOF
-
-lua <<EOF
-    require'nvim-treesitter.configs'.setup {
-      highlight = {
-        enable = true,
-        -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-        -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-        -- Using this option may slow down your editor, and you may see some duplicate highlights.
-        -- Instead of true it can also be a list of languages
-        additional_vim_regex_highlighting = false,
-      },
-      indent = {
-          enable = true,
-      },
-    }
-EOF
+lua require('chester.nvim-tree')
+lua require('chester.lualine')
+lua require('chester.nvim-autopairs')
+lua require('chester.treesitter')
 
 "darker lighter oceanic palenight deep ocean
 let g:material_style = 'deep'
 
 "storm, night and day.
 let g:tokyonight_style = "storm"
-colorscheme iceberg
+colorscheme edge
 
 "To keep terminal trnasparency
 hi Normal guibg=NONE ctermbg=NONE
 hi LineNr guibg=NONE ctermbg=NONE
 hi SignColumn guibg=NONE ctermbg=NONE
 hi EndOfBuffer guibg=NONE ctermbg=NONE
-"hi NvimTreeNormal guibg=NONE ctermbg=NONE
 
-"autocmd Colorscheme * highlight NvimTreeNormal guibg=NONE
 "Vim-closetag options
 let g:closetag_filenames = '*.vue,*.html,*.xhtml,*.phtml'
 let g:closetag_filetypes = 'vue,html,xhtml,phtml'
 
 "Set format options when opening new files
 autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
-"CoC options
-"source $HOME/.config/nvim/plug-config/coc.vim
 
-"Prettier options
-"command! -nargs=0 Prettier :CocCommand prettier.formatFile
-"Funcionará hasta tener la version 0.5 de neovim
-"source $HOME/.config/nvim/plug-config/nvim-tree.vim
+" Mappings to make Neovim more friendly towards presenting slides
+autocmd BufNewFile,BufRead *.vpm call SetVimPresentationMode()
+function SetVimPresentationMode()
+    nnoremap <buffer> <Right> :n<CR>
+    nnoremap <buffer> <Left> :N<CR>
+
+    if !exists('#goyo')
+        Goyo
+    endif
+endfunction
+
+function MakeTransparentBackground()
+    hi Normal guibg=NONE ctermbg=NONE
+    hi LineNr guibg=NONE ctermbg=NONE
+    hi SignColumn guibg=NONE ctermbg=NONE
+    hi EndOfBuffer guibg=NONE ctermbg=NONE
+endfunction
 
 "Startify options
 let g:startify_lists = [
@@ -383,6 +213,18 @@ let g:startify_bookmarks = [
 
 let g:startify_fortune_use_unicode = 1
 
+let g:presenting_figlets = 1
+
+"Telescope options
+nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
+nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
+nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
+nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
+
+""nvim-tree options
+nnoremap <C-n> :NvimTreeToggle<CR>
+nnoremap <leader>r :NvimTreeRefresh<CR>
+nnoremap <leader>n :NvimTreeFindFile<CR>
 
 "Mis remapeos 
 "Guardar archivo
