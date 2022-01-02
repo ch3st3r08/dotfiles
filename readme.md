@@ -20,11 +20,15 @@
 ## Luego de la instalacion...
 Antes de reiniciar es necesario modificar:
 - Comentar linea 'v-sync' en la configuración de Picom solo SI se usa maquina virtual
+- Cambiar de GLX a XRENDER en picom.conf
 - Cambiar nombre de interfaz de red en la configuración de Polybar
-- Eliminar la configuración de red en /etc/network/interfaces
+- Eliminar la configuración de red en **/etc/network/interfaces**
 - Activar los temas con lxappearance (tema, iconos, cursores)
-- Modificar el Hidden=true en el desktop file de lxpolkit en /etc/xdg/autostart
+- Modificar el **Hidden=true** en el desktop file de lxpolkit en **/etc/xdg/autostart**
 - Modificar el tema de grub con grub customizer
+  - agregar linea **GRUB_BACKGROUND** al archivo **/etc/default/grub**
+  - modificar la linea **GRUB_GFXMODE** y agregar resolucion **1090x1200x24,auto**
+- Instalar los LSP servers, luego de abrir NVIM
 
 # Listado de paquetes principales instalados
 - Build-essential

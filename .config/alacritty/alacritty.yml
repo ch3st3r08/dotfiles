@@ -25,8 +25,8 @@ window:
      #x: 0
      #y: 0
   padding:
-    x: 2
-    y: 1
+    x: 0
+    y: 0
 
   # Window title
   #title: Prueba

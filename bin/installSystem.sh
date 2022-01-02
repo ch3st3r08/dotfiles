@@ -125,8 +125,8 @@ info "Instalando #-LightDM"
 
 if [[ $_DEBUG -eq 1 ]]; then ask; fi
 
-info "Instalando #-Rofi (1.7.0)"
-   git clone -b 1.7.0 --depth 1 https://github.com/davatorium/rofi Sources/rofi
+info "Instalando #-Rofi (1.7.2)"
+   git clone -b 1.7.2 --depth 1 https://github.com/davatorium/rofi Sources/rofi
    apt install bison flex check libgdk-pixbuf-2.0-0 libgdk-pixbuf-2.0-dev libxcb-ewmh-dev -y
    cd Sources/rofi
    git submodule update --init --recursive
@@ -154,9 +154,18 @@ info "Instalando #-XDG utils y desktop-file-utils"
 
 if [[ $_DEBUG -eq 1 ]]; then ask; fi
 
-info "Instalando #-Nodejs"
-   curl -fsSL https://deb.nodesource.com/setup_16.x | bash -
-   apt install nodejs -y
+info "Instalando #-NVM (node version manager)"
+
+  export NVM_DIR="$HOME_USUARIO/.nvm"
+  git clone https://github.com/nvm-sh/nvm.git $NVM_DIR
+  cd $NVM_DIR
+  git checkout `git describe --abbrev=0 --tags --match "v[0-9]*" $(git rev-list --tags --max-count=1)`
+  cd $HOME_USUARIO
+  chown -R $1:$1 $NVM_DIR
+
+#info "Instalando #-Nodejs"
+   #curl -fsSL https://deb.nodesource.com/setup_16.x | bash -
+   #apt install nodejs -y
 
 if [[ $_DEBUG -eq 1 ]]; then ask; fi
 
@@ -166,7 +175,7 @@ info "Instalando #-Neofetch"
 if [[ $_DEBUG -eq 1 ]]; then ask; fi
 
 info "Instalando #-Neovim"
-   curl -L -o Downloads/nvim https://github.com/neovim/neovim/releases/download/v0.6.0/nvim.appimage
+   curl -L -o Downloads/nvim https://github.com/neovim/neovim/releases/download/v0.6.1/nvim.appimage
    chmod +x Downloads/nvim
    mv Downloads/nvim /usr/local/bin
 
@@ -192,7 +201,7 @@ info "Instalando #-Startship"
 if [[ $_DEBUG -eq 1 ]]; then ask; fi
 
 info "Instalando #Alacritty (0.9.0)"
-   apt-get install cmake pkg-config libfreetype6-dev libIontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev python3 gzip -y
+   apt-get install cmake pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev python3 gzip -y
    git clone -b v0.9.0 --depth 1 http://github.com/alacritty/alacritty Sources/alacritty
    cd Sources/alacritty
    cargo build --release
@@ -212,8 +221,8 @@ if [[ $_DEBUG -eq 1 ]]; then ask; fi
 
 info "Instalando #-Nerdfonts"
    install -d -o $1 -g $1 $HOME_USUARIO/.local/share/fonts
-   cp Sources/fonts/* $HOME_USUARIO/.local/share/fonts
-   fc-cache -fv
+   cp -v Sources/fonts/* $HOME_USUARIO/.local/share/fonts
+   sudo -u $1 fc-cache -fv
 
 if [[ $_DEBUG -eq 1 ]]; then ask; fi
 
@@ -259,7 +268,7 @@ info "Instalando Grub Customizer"
 if [[ $_DEBUG -eq 1 ]]; then ask; fi
 
 info "Instalando aplicaciones de utilidad"
-   apt install mupdf youtube-dl ffmpeg xpad sct vlc font-manager seahorse galculator -y
+   apt install fd-find ripgrep xclip xarchiver exa mupdf youtube-dl ffmpeg xpad sct vlc font-manager seahorse galculator -y
 
 if [[ $_DEBUG -eq 1 ]]; then ask; fi
 
@@ -289,12 +298,24 @@ EOF
 
 info "Creando carpeta display-manager-bg en /usr/share/backgrounds"
 install -d /usr/share/backgrounds/display-manager-bg
-cp Sources/background/default_wallpaper.png /usr/share/backgrounds/display-manager-bg/background
+cp -v Sources/background/default_wallpaper.png /usr/share/backgrounds/display-manager-bg/background
+
+info "Creando archivo bg-saved.cfg"
+NITRO_PATH=$HOME_USUARIO/.config/nitrogen
+
+install -d -o $1 -g $1 $NITRO_PATH
+cat <<EOF >> $NITRO_PATH/bg-saved.cfg
+[xin_-1]
+file=$HOME_USUARIO/Sources/backgrounds/default_wallpaper.png
+mode=0
+bgcolor=#000000
+EOF
+chown -vR $1:$1 $NITRO_PATH/bg-saved.cfg
 
 if [[ $_DEBUG -eq 1 ]]; then ask; fi
 
 info "Descargando tema de grub en Downloads"
-curl -Lo Downloads/debian.tar https://github.com/AdisonCavani/distro-grub-themes/releases/download/v2.2/debian.tar
+curl -Lo Downloads/debian.tar https://github.com/AdisonCavani/distro-grub-themes/releases/download/v2.3/debian.tar
 
 if [[ $_DEBUG -eq 1 ]]; then ask; fi
 
