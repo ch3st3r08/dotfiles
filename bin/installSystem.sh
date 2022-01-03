@@ -1,4 +1,5 @@
 #!/bin/bash
+
 error() {
   printf '\E[31m'; echo "$@"; printf '\E[0m'
 }
@@ -211,6 +212,7 @@ info "Instalando #Alacritty (0.9.0)"
    update-desktop-database
    mkdir -p /usr/local/share/man/man1
    gzip -c extra/alacritty.man | tee /usr/local/share/man/man1/alacritty.1.gz > /dev/null
+   cd $HOME_USUARIO
 
 if [[ $_DEBUG -eq 1 ]]; then ask; fi
 
@@ -306,7 +308,7 @@ NITRO_PATH=$HOME_USUARIO/.config/nitrogen
 install -d -o $1 -g $1 $NITRO_PATH
 cat <<EOF >> $NITRO_PATH/bg-saved.cfg
 [xin_-1]
-file=$HOME_USUARIO/Sources/backgrounds/default_wallpaper.png
+file=$HOME_USUARIO/Sources/background/default_wallpaper.png
 mode=0
 bgcolor=#000000
 EOF
