@@ -1,9 +1,10 @@
 #Custom Aliases for bash
 
 #Better LS
-alias ls='exa --long --icons'
-alias lsa='exa --long --icons --all'
-alias lst='exa --tree --level=2'
+alias ls='exa --icons '
+alias lsl='ls --long --group --header'
+alias lsa='lsl --all'
+alias lst='exa --tree --level=2 --group'
 
 #cd up directory
 alias ..='cd ..'

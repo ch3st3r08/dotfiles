@@ -15,7 +15,6 @@ launch_bar() {
 		#polybar -q top -c "$dir/$style/config.ini" &
 		#polybar -q bottom -c "$dir/$style/config.ini" &
       polybar -q nord-top -c $dir/$style/config.ini &
-      polybar -q nord-down -c $dir/$style/config.ini &
 	elif [[ "$style" == "pwidgets" ]]; then
 		bash "$dir"/pwidgets/launch.sh --main
 	else

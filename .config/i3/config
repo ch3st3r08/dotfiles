@@ -5,16 +5,43 @@
 exec_always --no-startup-id /usr/local/bin/picom --experimental-backends -b
 #exec_always --no-startup-id /usr/bin/picom --experimental-backends -b
 exec --no-startup-id /usr/bin/nitrogen --restore
-#exec_always --no-startup-id $HOME/.config/polybar/launch.sh --default
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh --nord
 exec --no-startup-id setxkbmap -layout es
 
 # User defined variables
 set $screenShotDir /home/chester/Pictures/screenshot
 
+#Nord palete
+set $nord0 #2E3440
+set $nord1 #3B4252
+set $nord2 #434C5E
+set $nord3 #4C566A
+set $nord4 #D8DEE9
+set $nord5 #E5E9F0
+set $nord6 #ECEFF4
+set $nord7 #8FBCBB
+set $nord8 #88C0D0
+set $nord9 #81A1C1
+set $nord10 #5E81AC
+set $nord11 #BF616A
+set $nord12 #D08770
+set $nord13 #EBCB8B
+set $nord14 #A3BE8C
+set $nord15 #B48EAD
 
-for_window [class=".*"] border pixel 1
-gaps inner 7
-gaps outer 2
+
+# class                 border  backgr. text    indicator child_border
+client.focused          $nord9 $nord10 $nord6 #2e9ef4   $nord9
+client.focused_inactive $nord1 $nord3 $nord4 #484e50   $nord3
+client.unfocused        $nord1 $nord0 $nord3 #292d2e   $nord1
+client.urgent           $nord12 $nord11 $nord6 #900000   $nord11
+client.placeholder      #000000 $nord0 $nord6 #000000   #0c0c0c
+
+client.background       #ffffff
+
+for_window [class=".*"] border pixel 2
+gaps inner 5
+gaps outer 1
 
 set $mod Mod4
 
@@ -61,7 +88,7 @@ bindcode Mod1+23 exec --no-startup-id rofi -show window
 bindsym $mod+m move scratchpad
 bindsym $mod+Shift+m scratchpad show
 bindsym Print exec --no-startup-id xfce4-screenshooter -f -s $screenShotDir
-#bindsym F11 [class="Konsole"] focus
+bindsym F2 exec --no-startup-id rofi -show drun -theme 'rounded/rounded-nord-dark-drun'
 
 # start a terminal
 bindsym $mod+Return exec --no-startup-id alacritty
@@ -221,3 +248,4 @@ mode "$mod_custom" {
 #bar {
 #        status_command i3status
 #}
+
