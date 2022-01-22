@@ -48,7 +48,7 @@ Antes de reiniciar es necesario modificar:
 - LightDM (Display Manager)
 - Light-locker (Screen Locker)
 - Rofi (1.7.0) (Application Launcher)
-- Dunst (Notification service)
+- Dunst (1.7.3) (Notification service)
 - Nitrogen (Background setter)
 
 # Default Applications
@@ -71,6 +71,9 @@ Antes de reiniciar es necesario modificar:
 - MuPDF (Lightweight PDF Reader)
 - Mugshot (Account Services)
 - Grub Customizer
+- Bdsmainutils (terminal calendar)
+- Tty-clock (terminal clock)
+- Cava (Console Audio Visualizer)
 
 ### At this point, reboot the system
 

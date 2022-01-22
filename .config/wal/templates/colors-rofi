@@ -1,0 +1,10 @@
+* {{
+    bg0: {background};
+    bg1: {color1};
+    bg2: {color4};
+    bg3: {color2};
+    fg0: {foreground};
+    fg1: {color2};
+    fg2: {foreground};
+    fg3: {color6};
+  }}

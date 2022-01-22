@@ -105,6 +105,7 @@ return packer.startup(function(use)
   use "rafamadriz/neon"
   use 'EdenEast/nightfox.nvim'
   use "sainnhe/sonokai"
+  use { 'AlphaTechnolog/pywal.nvim', as = 'pywal' }
 
   --Terminal Utilities
   use "kassio/neoterm"

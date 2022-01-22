@@ -9,16 +9,18 @@ local function diff_source()
   end
 end
 
+local pywal_theme = require('pywal.lualine.themes.pywal-nvim')
+
 require'lualine'.setup({
   options = {
-    -- theme = 'dracula',
+    theme = pywal_theme,
     icons_enabled = true,
   },
   sections = {
     lualine_b = {
       {'b:gitsigns_head', icon = ''},
       {'diff', source = diff_source},
-      'diagnostics' 
+      'diagnostics'
     }
   },
   tabline = {

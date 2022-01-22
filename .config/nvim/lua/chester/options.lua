@@ -11,7 +11,7 @@ set.pumheight=10        --"Makes opoup menu smaller
 set.list=true        --"Shows non-printable charaacters
 set.listchars = {tab = "| ", trail = "⋅", nbsp = "⎵"} -- tab char must have 2 chars
 set.ruler=true          --"Show the cursor position all the time
-set.cmdheight=2        --"More space for displaying messages
+set.cmdheight=1        --"More space for displaying messages
 set.iskeyword:append('-')        --"Treat dash separated words as a word text object
 set.mouse="a"        --"Enable your mouse
 set.splitbelow=true         -- "Horizontal splits will automatically be below
@@ -61,12 +61,22 @@ vim.g.tokyonight_style = "storm"
 -- 'default', 'doom', 'dark', 'light'
 vim.g.neon_style = "default"
 
-vim.cmd([[colorscheme nordfox]])
+vim.cmd([[colorscheme pywal]])
 
 vim.cmd([[
   autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
 ]])
 
+-- Will later use it on a autogruop
+vim.cmd[[
+  function MakeTransparentBackground()
+      hi Normal guibg=NONE ctermbg=NONE
+      hi LineNr guibg=NONE ctermbg=NONE
+      hi SignColumn guibg=NONE ctermbg=NONE
+      hi EndOfBuffer guibg=NONE ctermbg=NONE
+  endfunction
+  call MakeTransparentBackground()
+]]
 
 -- Startify Configuration Options
 vim.g.startify_lists = {

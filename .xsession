@@ -7,5 +7,9 @@ exec dex -av -e LIGHTDM-XSESSION &
 #Definir resolucion
 xrandr -s 1360x768
 
+#Cargar colorschemes de WAL
+wal -R
+
 #Iniciar WM
 exec i3
+

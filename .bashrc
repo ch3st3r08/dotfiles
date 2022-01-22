@@ -159,8 +159,15 @@ fi
 
 #Include user define bin directory
 PATH="$HOME/bin:$PATH"
+PATH="$HOME/.local/bin:$PATH"
 PATH="/opt/sonarqube-9.1.0.47736/scanner/bin:$PATH"
-. "$HOME/.cargo/env"
+source "$HOME/.cargo/env"
+
+# Import colorscheme from 'wal' asynchronously
+# &   # Run the process in the background.
+# ( ) # Hide shell job control messages.
+# Not supported in the "fish" shell.
+(cat ~/.cache/wal/sequences &)
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

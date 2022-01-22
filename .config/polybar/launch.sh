@@ -26,8 +26,8 @@ if [[ "$1" == "--material" ]]; then
 	style="material"
 	launch_bar
 
-elif [[ "$1" == "--shades" ]]; then
-	style="shades"
+elif [[ "$1" == "--wal" ]]; then
+	style="wal"
 	launch_bar
 
 elif [[ "$1" == "--default" ]]; then
