@@ -28,6 +28,7 @@ Antes de reiniciar es necesario modificar:
 - Modificar el tema de grub con grub customizer
   - agregar linea **GRUB_BACKGROUND** al archivo **/etc/default/grub**
   - modificar la linea **GRUB_GFXMODE** y agregar resolucion **1090x1200x24,auto**
+  - agregar la linea **GRUB_DISABLE_OS_PROBER=false** al archivo **/etc/default/grub**
 - Instalar los LSP servers, luego de abrir NVIM
 
 # Listado de paquetes principales instalados
@@ -59,7 +60,7 @@ Antes de reiniciar es necesario modificar:
 - Neovim
 - Xscreensaver
 - Rustup
-- Startship
+- Startshi/etc/default/grubp
 - Alacritty (0.9.0)
 - Lxterminal
 - Nerdfonts

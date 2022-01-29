@@ -9,11 +9,9 @@ local function diff_source()
   end
 end
 
-local pywal_theme = require('pywal.lualine.themes.pywal-nvim')
-
 require'lualine'.setup({
   options = {
-    theme = pywal_theme,
+    theme = 'pywal-nvim',
     icons_enabled = true,
   },
   sections = {

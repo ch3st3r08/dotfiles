@@ -1,5 +1,33 @@
 #!/bin/bash
 
+_DEBUG=0
+IS_VM=0
+IS_SID=0
+
+while getopts 'hsvd' OPTION; do
+  case "$OPTION" in
+    h)
+      echo "Usage: $0 [-h] [-s] [-v] username"
+      ;;
+    s)
+      IS_SID=1
+      ;;
+    v)
+      IS_VM=1
+      ;;
+    d)
+      _DEBUG=1
+      ;;
+    *)
+      echo "Usage: $0 [-h] [-s] [-v] username" >&2
+      exit 1
+      ;;
+  esac
+done
+
+shift "$(($OPTIND -1))"
+
+
 error() {
   printf '\E[31m'; echo "$@"; printf '\E[0m'
 }
@@ -21,6 +49,12 @@ ask() {
    fi
 }
 
+
+if [[ -z $1 ]]; then
+  error "Es necesario un nombre de usuario"
+  exit 1
+fi
+
 if [[ $(id -u) -ne 0 ]]; then
    error "Se necesitan privilegios administrativos"
    exit 1
@@ -31,8 +65,6 @@ if ! id "$1" &>/dev/null; then
    exit 1
 fi
 
-_DEBUG=1
-IS_VM=1
 HOME_USUARIO="/home/$1"
 
 if [[ ! -d $HOME_USUARIO ]]; then
@@ -50,8 +82,10 @@ apt install build-essential -y
 if [[ $_DEBUG -eq 1 ]]; then ask; fi
 
 info "Instalando #-Include backports"
+if [[ $IS_SID -eq 0]]; then
    echo "deb http://deb.debian.org/debian/ bullseye-backports main contrib non-free" | tee -a /etc/apt/sources.list >/dev/null
    apt update
+fi
 
 if [[ $_DEBUG -eq 1 ]]; then ask; fi
 
@@ -127,6 +161,7 @@ info "Instalando #-LightDM"
 if [[ $_DEBUG -eq 1 ]]; then ask; fi
 
 info "Instalando #-Rofi (1.7.2)"
+if [[ $IS_SID -eq 0]]; then
    git clone -b 1.7.2 --depth 1 https://github.com/davatorium/rofi Sources/rofi
    apt install bison flex check libgdk-pixbuf-2.0-0 libgdk-pixbuf-2.0-dev libxcb-ewmh-dev -y
    cd Sources/rofi
@@ -137,6 +172,9 @@ info "Instalando #-Rofi (1.7.2)"
    make
    make install
    cd $HOME_USUARIO
+else
+  apt install rofi -y
+fi
 
 if [[ $_DEBUG -eq 1 ]]; then ask; fi
 
@@ -156,17 +194,12 @@ info "Instalando #-XDG utils y desktop-file-utils"
 if [[ $_DEBUG -eq 1 ]]; then ask; fi
 
 info "Instalando #-NVM (node version manager)"
-
   export NVM_DIR="$HOME_USUARIO/.nvm"
   git clone https://github.com/nvm-sh/nvm.git $NVM_DIR
   cd $NVM_DIR
   git checkout `git describe --abbrev=0 --tags --match "v[0-9]*" $(git rev-list --tags --max-count=1)`
   cd $HOME_USUARIO
   chown -R $1:$1 $NVM_DIR
-
-#info "Instalando #-Nodejs"
-   #curl -fsSL https://deb.nodesource.com/setup_16.x | bash -
-   #apt install nodejs -y
 
 if [[ $_DEBUG -eq 1 ]]; then ask; fi
 
@@ -176,9 +209,13 @@ info "Instalando #-Neofetch"
 if [[ $_DEBUG -eq 1 ]]; then ask; fi
 
 info "Instalando #-Neovim"
+if [[ $IS_SID -eq 0]]; then
    curl -L -o Downloads/nvim https://github.com/neovim/neovim/releases/download/v0.6.1/nvim.appimage
    chmod +x Downloads/nvim
    mv Downloads/nvim /usr/local/bin
+else
+   apt install neovim -y
+fi
 
 if [[ $_DEBUG -eq 1 ]]; then ask; fi
 
@@ -201,9 +238,9 @@ info "Instalando #-Startship"
 
 if [[ $_DEBUG -eq 1 ]]; then ask; fi
 
-info "Instalando #Alacritty (0.9.0)"
+info "Instalando #Alacritty (0.10.0)"
    apt-get install cmake pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev python3 gzip -y
-   git clone -b v0.9.0 --depth 1 http://github.com/alacritty/alacritty Sources/alacritty
+   git clone -b v0.10.0 --depth 1 http://github.com/alacritty/alacritty Sources/alacritty
    cd Sources/alacritty
    cargo build --release
    cp target/release/alacritty /usr/local/bin
@@ -212,6 +249,7 @@ info "Instalando #Alacritty (0.9.0)"
    update-desktop-database
    mkdir -p /usr/local/share/man/man1
    gzip -c extra/alacritty.man | tee /usr/local/share/man/man1/alacritty.1.gz > /dev/null
+   gzip -c extra/alacritty-msg.man | sudo tee /usr/local/share/man/man1/alacritty-msg.1.gz > /dev/null
    cd $HOME_USUARIO
 
 if [[ $_DEBUG -eq 1 ]]; then ask; fi
@@ -270,7 +308,7 @@ info "Instalando Grub Customizer"
 if [[ $_DEBUG -eq 1 ]]; then ask; fi
 
 info "Instalando aplicaciones de utilidad"
-   apt install fd-find ripgrep xclip xarchiver exa mupdf youtube-dl ffmpeg xpad sct vlc font-manager seahorse galculator -y
+   apt install fd-find ripgrep xclip xarchiver exa mupdf youtube-dl ffmpeg xpad sct vlc font-manager seahorse galculator tty-clock cava bsdmainutils -y
 
 if [[ $_DEBUG -eq 1 ]]; then ask; fi
 

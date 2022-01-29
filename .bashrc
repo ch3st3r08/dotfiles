@@ -167,7 +167,7 @@ source "$HOME/.cargo/env"
 # &   # Run the process in the background.
 # ( ) # Hide shell job control messages.
 # Not supported in the "fish" shell.
-(cat ~/.cache/wal/sequences &)
+[[ -f $HOME/.config/wpg/sequences ]] && (cat ~/.config/wpg/sequences &)
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
