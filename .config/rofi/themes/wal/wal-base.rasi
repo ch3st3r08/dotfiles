@@ -29,8 +29,8 @@ mainbox {
 }
 
 inputbar {
-    background-color:   @bg1;
-    border-color:       @bg3;
+    background-color:   @bg3;
+    border-color:       @bg1;
 
     border:         2px;
     border-radius:  16px;
@@ -81,7 +81,7 @@ element normal active {
 }
 
 element selected normal, element selected active {
-    background-color:   @bg3;
+    background-color:   @bg1;
 }
 
 element-icon {
