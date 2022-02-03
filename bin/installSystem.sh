@@ -82,7 +82,7 @@ apt install build-essential -y
 if [[ $_DEBUG -eq 1 ]]; then ask; fi
 
 info "Instalando #-Include backports"
-if [[ $IS_SID -eq 0]]; then
+if [[ $IS_SID -eq 0 ]]; then
    echo "deb http://deb.debian.org/debian/ bullseye-backports main contrib non-free" | tee -a /etc/apt/sources.list >/dev/null
    apt update
 fi
@@ -161,7 +161,7 @@ info "Instalando #-LightDM"
 if [[ $_DEBUG -eq 1 ]]; then ask; fi
 
 info "Instalando #-Rofi (1.7.2)"
-if [[ $IS_SID -eq 0]]; then
+if [[ $IS_SID -eq 0 ]]; then
    git clone -b 1.7.2 --depth 1 https://github.com/davatorium/rofi Sources/rofi
    apt install bison flex check libgdk-pixbuf-2.0-0 libgdk-pixbuf-2.0-dev libxcb-ewmh-dev -y
    cd Sources/rofi

@@ -119,6 +119,7 @@ return packer.startup(function(use)
   use "alvan/vim-closetag"
   use "moll/vim-bbye"
   use "ap/vim-css-color"
+  use "chrisbra/Colorizer"
   use "liuchengxu/vim-which-key"
   use "tpope/vim-surround"
   use "rafamadriz/friendly-snippets"
