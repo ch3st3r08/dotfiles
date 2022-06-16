@@ -1,2 +1,2 @@
 #Archivo local de las completions
-#source ~/.config/completions/alacritty
+source ~/.config/bash_completion/alacritty

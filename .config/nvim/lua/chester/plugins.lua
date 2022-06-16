@@ -136,6 +136,7 @@ return packer.startup(function(use)
       require("gitsigns").setup()
     end
   }
+  use "editorconfig/editorconfig-vim"
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then

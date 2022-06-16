@@ -131,7 +131,18 @@ info "Instalando Polybar"
 if [[ $_DEBUG -eq 1 ]]; then ask; fi
 
 info "Instalando #-Picom"
-   apt install picom -y
+if [[ $IS_SID -eq 0 ]]; then
+  git clone -b v9 --depth 1 https://github.com/yshui/picom Sources/picom
+  apt install libxext-dev libxcb1-dev libxcb-damage0-dev libxcb-xfixes0-dev libxcb-shape0-dev libxcb-render-util0-dev libxcb-render0-dev libxcb-randr0-dev libxcb-composite0-dev libxcb-image0-dev libxcb-present-dev libxcb-xinerama0-dev libxcb-glx0-dev libpixman-1-dev libdbus-1-dev libconfig-dev libgl1-mesa-dev libpcre2-dev libpcre3-dev libevdev-dev uthash-dev libev-dev libx11-xcb-dev meson -y
+  cd Sources/picom
+  git submodule update --init --recursive
+  meson --buildtype=release . build
+  ninja -C build
+  ninja -C build install
+  cd $HOME_USUARIO
+else
+  apt install picom -y
+fi
 
 if [[ $_DEBUG -eq 1 ]]; then ask; fi
 
@@ -162,7 +173,7 @@ if [[ $_DEBUG -eq 1 ]]; then ask; fi
 
 info "Instalando #-Rofi (1.7.2)"
 if [[ $IS_SID -eq 0 ]]; then
-   git clone -b 1.7.2 --depth 1 https://github.com/davatorium/rofi Sources/rofi
+   git clone -b 1.7.3 --depth 1 https://github.com/davatorium/rofi Sources/rofi
    apt install bison flex check libgdk-pixbuf-2.0-0 libgdk-pixbuf-2.0-dev libxcb-ewmh-dev -y
    cd Sources/rofi
    git submodule update --init --recursive
@@ -179,7 +190,16 @@ fi
 if [[ $_DEBUG -eq 1 ]]; then ask; fi
 
 info "Instalando #-Dunst (Notification service)"
+if [[ $IS_SID -eq 0 ]]; then
+   git clone -b v1.8.1 --depth 1 https://github.com/dunst-project/dunst Sources/dunst
+   apt install libdbus-1-dev libx11-dev libxinerama-dev libxrandr-dev libxss-dev libglib2.0-dev libpango1.0-dev libgtk-3-dev libxdg-basedir-dev libnotify-dev libnotify-bin -y
+   cd Sources/dunst
+   make
+   sudo make install
+   cd $HOME_USUARIO
+else
    apt install dunst libnotify-bin -y
+fi
 
 if [[ $_DEBUG -eq 1 ]]; then ask; fi
 
@@ -210,7 +230,7 @@ if [[ $_DEBUG -eq 1 ]]; then ask; fi
 
 info "Instalando #-Neovim"
 if [[ $IS_SID -eq 0]]; then
-   curl -L -o Downloads/nvim https://github.com/neovim/neovim/releases/download/v0.6.1/nvim.appimage
+   curl -L -o Downloads/nvim https://github.com/neovim/neovim/releases/download/v0.7.1/nvim.appimage
    chmod +x Downloads/nvim
    mv Downloads/nvim /usr/local/bin
 else
@@ -238,9 +258,9 @@ info "Instalando #-Startship"
 
 if [[ $_DEBUG -eq 1 ]]; then ask; fi
 
-info "Instalando #Alacritty (0.10.0)"
+info "Instalando #Alacritty (0.10.1)"
    apt-get install cmake pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev python3 gzip -y
-   git clone -b v0.10.0 --depth 1 http://github.com/alacritty/alacritty Sources/alacritty
+   git clone -b v0.10.1 --depth 1 http://github.com/alacritty/alacritty Sources/alacritty
    cd Sources/alacritty
    cargo build --release
    cp target/release/alacritty /usr/local/bin
@@ -355,17 +375,17 @@ chown -vR $1:$1 $NITRO_PATH/bg-saved.cfg
 if [[ $_DEBUG -eq 1 ]]; then ask; fi
 
 info "Descargando tema de grub en Downloads"
-curl -Lo Downloads/debian.tar https://github.com/AdisonCavani/distro-grub-themes/releases/download/v2.3/debian.tar
+curl -Lo Downloads/debian.tar https://github.com/AdisonCavani/distro-grub-themes/releases/download/v2.7/debian.tar
 
 if [[ $_DEBUG -eq 1 ]]; then ask; fi
 
 info "Instalando tema Plymouth debian"
 cd Sources
-curl -LO https://gitlab.com/maurom/deb10/-/archive/master/deb10-master.tar.gz
-tar -xvaf deb10-master.tar.gz
-cd deb10-master
+curl -LO https://gitlab.com/oficsu/kreelista/-/archive/master/kreelista-master.tar.gz
+tar -xvaf kreelista-master.tar.gz
+cd kreelista-master
 make install
-plymouth-set-default-theme -R deb10
+plymouth-set-default-theme -R kreelista
 cd $HOME_USUARIO
 
 info "Actualizando permisos en directorio Sources"

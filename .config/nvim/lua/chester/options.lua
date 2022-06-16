@@ -61,7 +61,7 @@ vim.g.tokyonight_style = "storm"
 -- 'default', 'doom', 'dark', 'light'
 vim.g.neon_style = "default"
 
-vim.cmd([[colorscheme pywal]])
+vim.cmd([[colorscheme sonokai]])
 
 vim.cmd([[
   autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
