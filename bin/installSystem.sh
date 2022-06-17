@@ -399,6 +399,12 @@ make install
 plymouth-set-default-theme -R kreelista
 cd $HOME_USUARIO
 
+info "Instalando WPG para el esquema de colores"
+git clone https://github.com/deviantfero/wpgtk Source/wpgtk
+cd wpgtk
+pip3 install .
+cd $HOME_USUARIO
+
 info "Actualizando permisos en directorio Sources"
 chown -R $1:$1 Sources
 
