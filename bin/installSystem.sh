@@ -339,7 +339,7 @@ apt install grub-customizer -y
 if [[ $_DEBUG -eq 1 ]]; then ask; fi
 
 info "Instalando aplicaciones de utilidad"
-apt install fd-find ripgrep xclip xarchiver exa mupdf youtube-dl ffmpeg xpad sct vlc font-manager seahorse galculator tty-clock cava bsdmainutils mpv evince -y
+apt install fd-find ripgrep xclip xarchiver exa mupdf youtube-dl ffmpeg xpad sct vlc font-manager seahorse galculator tty-clock cava bsdmainutils mpv evince imagemagick -y
 
 if [[ $_DEBUG -eq 1 ]]; then ask; fi
 
@@ -399,14 +399,7 @@ make install
 plymouth-set-default-theme -R kreelista
 cd $HOME_USUARIO
 
-info "Instalando WPG para el esquema de colores"
-git clone https://github.com/deviantfero/wpgtk Source/wpgtk
-cd wpgtk
-pip3 install .
-cd $HOME_USUARIO
-
 info "Actualizando permisos en directorio Sources"
 chown -R $1:$1 Sources
 
 info "La instalacion del sistema ha terminado, se recomienda REINICIAR el sistema, para que los cambios surjan efecto."
-
