@@ -19,7 +19,7 @@
 
 ## Luego de la instalacion...
 Antes de reiniciar es necesario modificar:
-- Comentar linea 'v-sync' en la configuración de Picom solo SI se usa maquina virtual
+- Comentar linea **v-sync** en la configuración de Picom solo SI se usa maquina virtual
 - Cambiar de GLX a XRENDER en picom.conf
 - Cambiar nombre de interfaz de red en la configuración de Polybar
 - Eliminar la configuración de red en **/etc/network/interfaces**
@@ -39,7 +39,7 @@ Antes de reiniciar es necesario modificar:
 - Curl
 - DOTFILES
 - XORG (Desktop Compositor)
-- I3wm (HEAD) (Window Manager)
+- I3wm (Window Manager)
 - Polybar (StatusBar)
 - Picom (Compositor)
 - Network Manager (Network Control)
@@ -48,8 +48,8 @@ Antes de reiniciar es necesario modificar:
 - Xfce4-power-manager (Power Manager)
 - LightDM (Display Manager)
 - Light-locker (Screen Locker)
-- Rofi (1.7.0) (Application Launcher)
-- Dunst (1.7.3) (Notification service)
+- Rofi (Application Launcher)
+- Dunst (Notification service)
 - Nitrogen (Background setter)
 
 # Default Applications
@@ -58,10 +58,9 @@ Antes de reiniciar es necesario modificar:
 - NVM (node package manager)
 - Neofetch
 - Neovim
-- Xscreensaver
 - Rustup
-- Startshi/etc/default/grubp
-- Alacritty (0.9.0)
+- Startship
+- Alacritty
 - Lxterminal
 - Nerdfonts
 - Lxappearance (GTK theme customizer)
@@ -91,6 +90,7 @@ Antes de reiniciar es necesario modificar:
 - ffmpeg
 - xpad
 - sct (Temperature monitor)
+- mpv (Video Player)
 
 ### Firmware 
 - firmware-realtek
