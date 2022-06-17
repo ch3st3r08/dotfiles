@@ -129,7 +129,7 @@ if [[ $_DEBUG -eq 1 ]]; then ask; fi
 info "Instalando Polybar"
 if [[ $IS_SID -eq 0 ]]; then
   git clone --recursive https://github.com/polybar/polybar Sources/polybar
-  apt install cmake cmake-data pkg-config python3-sphinx python3-packaging libuv1-dev libcairo2-dev libxcb1-dev libxcb-util0-dev libxcb-randr0-dev libxcb-composite0-dev python3-xcbgen xcb-proto libxcb-image0-dev libxcb-ewmh-dev libxcb-icccm4-dev libxcb-xkb-dev libxcb-xrm-dev libxcb-cursor-dev libasound2-dev libpulse-dev i3-wm libjsoncpp-dev libmpdclient-dev libcurl4-openssl-dev libnl-genl-3-dev
+  apt install cmake cmake-data pkg-config python3-sphinx python3-packaging libuv1-dev libcairo2-dev libxcb1-dev libxcb-util0-dev libxcb-randr0-dev libxcb-composite0-dev python3-xcbgen xcb-proto libxcb-image0-dev libxcb-ewmh-dev libxcb-icccm4-dev libxcb-xkb-dev libxcb-xrm-dev libxcb-cursor-dev libasound2-dev libpulse-dev i3-wm libjsoncpp-dev libmpdclient-dev libcurl4-openssl-dev libnl-genl-3-dev -y
   cd Sources/polybar
   git checkout `git describe --abbrev=0 --tags --match "[0-9]*" $(git rev-list --tags --max-count=1)`
   mkdir -p build && cd build
@@ -245,7 +245,7 @@ apt install neofetch -y
 if [[ $_DEBUG -eq 1 ]]; then ask; fi
 
 info "Instalando #-Neovim"
-if [[ $IS_SID -eq 0]]; then
+if [[ $IS_SID -eq 0 ]]; then
   curl -L -o Downloads/nvim https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
   chmod +x Downloads/nvim
   mv Downloads/nvim /usr/local/bin
@@ -270,7 +270,7 @@ sh -c "$(curl -fsSL https://starship.rs/install.sh)" -- -y
 if [[ $_DEBUG -eq 1 ]]; then ask; fi
 
 info "Instalando #Alacritty (latest tag)"
-apt-get install cmake pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev python3 gzip -y
+apt-get install cmake pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev python3 pip gzip -y
 git clone http://github.com/alacritty/alacritty Sources/alacritty
 cd Sources/alacritty
 git checkout `git describe --abbrev=0 --tags --match "v[0-9]*" $(git rev-list --tags --max-count=1)`
