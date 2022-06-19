@@ -339,7 +339,7 @@ apt install grub-customizer -y
 if [[ $_DEBUG -eq 1 ]]; then ask; fi
 
 info "Instalando aplicaciones de utilidad"
-apt install fd-find ripgrep xclip xarchiver exa mupdf youtube-dl ffmpeg xpad sct vlc font-manager seahorse galculator tty-clock cava bsdmainutils mpv evince imagemagick -y
+apt install fd-find ripgrep xclip xarchiver exa mupdf youtube-dl ffmpeg xpad sct vlc font-manager seahorse galculator tty-clock cava bsdmainutils mpv evince imagemagick htop -y
 
 if [[ $_DEBUG -eq 1 ]]; then ask; fi
 
