@@ -1,0 +1,10 @@
+[Unit]
+Description=A login sound
+After=default.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/paplay /home/chester/Music/Sounds/desktop-login.oga
+
+[Install]
+WantedBy=default.target
