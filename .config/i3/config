@@ -1,20 +1,18 @@
 # i3 config file (v4)
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
-#exec --no-startup-id xfce4-panel --disable-wm-check
 #exec_always --no-startup-id /usr/local/bin/picom --experimental-backends -b
 exec_always --no-startup-id /usr/bin/picom --experimental-backends -b
 exec --no-startup-id /usr/bin/nitrogen --restore
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh --wal
+exec_always --no-startup-id ~/.config/polybar/launch.sh
 exec --no-startup-id setxkbmap -layout es
 
 # User defined variables
-set $screenShotDir /home/chester/Pictures/screenshot
+set $screenShotDir ~/Pictures/screenshot
+set $theme themes/wal-theme.ini
 
-# Wal theme
-include ~/.cache/wal/colors-i3gaps
-# themes
-#include ~/.config/i3/nord-theme.ini
+# theme
+include $theme
 
 for_window [class=".*"] border pixel 2
 gaps inner 5
@@ -24,6 +22,16 @@ set $mod Mod4
 
 smart_borders on
 #smart_gaps on
+
+# Dialogs, popups, etc should be floating and in the center of the screen
+for_window [window_role="task_dialog"]      floating enable
+for_window [window_role="Dialog"]           floating enable
+for_window [window_role="pop-up"]           floating enable
+for_window [window_role="bubble"]           floating enable
+for_window [window_role="Preferences"]      floating enable
+for_window [window_type="dialog"]           floating enable
+for_window [window_type="menu"]             floating enable
+for_window [title="(Open File|File Upload)"] floating enable
 
 #Defining floating applications
 for_window [class="Pavucontrol"] floating enable
@@ -113,10 +121,10 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+z split h; exec --no-startup-id notify-send "Horizontal Mode" -t 1500
+bindsym $mod+z split h; exec --no-startup-id notify-send "i3wm" "Horizontal Mode" -t 1500
 
 # split in vertical orientation
-bindsym $mod+v split v; exec --no-startup-id notify-send "Vertical Mode" -t 1500
+bindsym $mod+v split v; exec --no-startup-id notify-send "i3wm" "Vertical Mode" -t 1500
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -176,13 +184,12 @@ bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
 # reload the configuration file
-bindsym $mod+Shift+c reload; exec --no-startup-id notify-send 'Reloading i3 config'
+bindsym $mod+Shift+c reload; exec --no-startup-id notify-send 'i3wm' 'Reloading i3 config'
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-#bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
-bindsym $mod+Shift+e exec "xfce4-session-logout"
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
@@ -203,15 +210,16 @@ mode "resize" {
         bindsym $mod+r mode "default"
 }
 
-bindsym $mod+r mode "resize"; exec --no-startup-id notify-send Mode '- Resize -'
+bindsym $mod+r mode "resize"
 
 set $mod_custom Launch: User Defined
-set $user_options "[r]andom background\n[n]avegador\n[b]ackground"
+set $user_options "[r]andom background\n[n]avegador\n[b]ackground\n[l]ightdm Background"
 bindsym $mod+u mode "$mod_custom"; exec --no-startup-id notify-send Options $user_options
 mode "$mod_custom" {
 	bindsym r exec --no-startup-id /usr/bin/nitrogen --save --random --set-scaled
 	bindsym n exec --no-startup-id /usr/bin/x-www-browser, mode "default"
 	bindsym b exec --no-startup-id /usr/bin/nitrogen, mode "default"
+  bindsym l exec --no-startup-id pkexec ~/bin/setLightdmBG.sh, mode "default"
 	bindsym Return mode "default"
 	bindsym Escape mode "default"
 }

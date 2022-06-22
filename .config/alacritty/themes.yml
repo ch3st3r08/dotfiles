@@ -27,6 +27,7 @@ schemes:
       magenta: '#ff92d0'
       cyan:    '#9aedfe'
       white:   '#e6e6e6'
+
   nova_theme: &nova
     primary:
       background: '#3C4C55'
@@ -55,6 +56,7 @@ schemes:
       magenta: '#D18EC2'
       cyan:    '#7FC1CA'
       white:   '#E6EEF3'
+
   nord_theme: &nord
     primary:
       background: '#2e3440'
@@ -103,4 +105,5 @@ schemes:
       magenta: '#8c738c'
       cyan: '#6d96a5'
       white: '#aeb3bb'
-colors: *nord
+
+colors: *nova

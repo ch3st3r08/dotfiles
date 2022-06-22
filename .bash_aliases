@@ -1,5 +1,8 @@
 #Custom Aliases for bash
 
+#Let us use user's defined aliases with sudo
+alias sudo='sudo '
+
 #Better LS
 alias ls='exa --icons '
 alias lsl='ls --long --group --header'
