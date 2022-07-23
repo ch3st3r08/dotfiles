@@ -142,6 +142,7 @@ fi
 
 export EDITOR='nvim'
 export VISUAL='nvim'
+export SUDO_EDITOR='nvim'
 export RANGER_LOAD_DEFAULT_RC=false
 export STARSHIP_CONFIG=~/.config/starship/config.toml
 
@@ -160,14 +161,13 @@ fi
 #Include user define bin directory
 PATH="$HOME/bin:$PATH"
 PATH="$HOME/.local/bin:$PATH"
-PATH="/opt/sonarqube-9.1.0.47736/scanner/bin:$PATH"
 source "$HOME/.cargo/env"
 
 # Import colorscheme from 'wal' asynchronously
 # &   # Run the process in the background.
 # ( ) # Hide shell job control messages.
 # Not supported in the "fish" shell.
-[[ -f $HOME/.config/wpg/sequences ]] && (cat ~/.config/wpg/sequences &)
+# [[ -f $HOME/.config/wpg/sequences ]] && (cat ~/.config/wpg/sequences &)
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

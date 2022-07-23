@@ -9,4 +9,4 @@ configuration {
   display-combi:  "";
 }
 
-@theme "wal/wal-base"
+@theme "catppuccin/catppuccin"

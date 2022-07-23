@@ -61,6 +61,9 @@ vim.g.tokyonight_style = "storm"
 -- 'default', 'doom', 'dark', 'light'
 vim.g.neon_style = "default"
 
+-- latte, frappe, macchiato, mocha
+vim.g.catppuccin_flavour = "frappe"
+
 vim.cmd([[colorscheme sonokai]])
 
 vim.cmd([[

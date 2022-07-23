@@ -106,7 +106,13 @@ return packer.startup(function(use)
   use 'EdenEast/nightfox.nvim'
   use "sainnhe/sonokai"
   use { 'AlphaTechnolog/pywal.nvim', as = 'pywal' }
-
+  use ({ 
+    "catppuccin/nvim", 
+    as = "catppuccin", 
+    config = function()
+      require("catppuccin").setup()
+    end
+  })
   --Terminal Utilities
   use "kassio/neoterm"
 
