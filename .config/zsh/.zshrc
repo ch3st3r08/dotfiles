@@ -36,13 +36,6 @@ zstyle ':completion:*' verbose true
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
-
-export EDITOR='nvim'
-export VISUAL='nvim'
-export SUDO_EDITOR='nvim'
-export RANGER_LOAD_DEFAULT_RC=false
-export STARSHIP_CONFIG=~/.config/starship/config.toml
-
 if [ "$TERM" != "linux" ]; then
    function set_win_title(){
        echo -ne "\033]0; $USER@$HOST  \007"
@@ -69,9 +62,12 @@ source "$HOME/.cargo/env"
 source "$ZDOTDIR/.zsh_aliases"
 
 #Load Plugins
-source $ZDOTDIR/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $ZDOTDIR/antigen.zsh
+
+antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle zsh-users/zsh-autosuggestions
+antigen apply
 
 #Export and load Node Version Manager
-export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
