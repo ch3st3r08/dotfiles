@@ -8,8 +8,8 @@ exec_always --no-startup-id ~/.config/polybar/launch.sh
 exec --no-startup-id setxkbmap -layout es
 
 # User defined variables
-set $screenShotDir ~/Pictures/screenshot
-set $theme themes/wal-theme.ini
+set $screenShotDir ~/Pictures/screenshots
+set $theme themes/catppuccin.ini
 
 # theme
 include $theme
@@ -72,8 +72,9 @@ floating_modifier $mod
 bindcode Mod1+23 exec --no-startup-id rofi -show window
 bindsym $mod+m move scratchpad
 bindsym $mod+Shift+m scratchpad show
-bindsym Print exec --no-startup-id xfce4-screenshooter -f -s $screenShotDir
-bindsym F2 exec --no-startup-id ~/bin/rofi-launcher.sh
+bindsym Print exec --no-startup-id flameshot gui -p $screenShotDir
+bindsym Shift+Print --no-startup-id flameshot full -c -p $screenShotDir
+bindsym Shift+F2 exec --no-startup-id ~/bin/rofi-launcher.sh
 
 # start a terminal
 bindsym $mod+Return exec --no-startup-id alacritty

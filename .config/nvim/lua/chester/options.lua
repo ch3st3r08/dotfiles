@@ -28,7 +28,7 @@ set.laststatus=0        --"Always display the status line
 set.relativenumber=true        --  "Line numbers
 set.number=true
 set.hlsearch=false
-set.cursorline=true         -- "Enable hightlightning of the cursor line
+set.cursorline=false         -- "Enable hightlightning of the cursor line
 set.showtabline=2     --  "Always show tabs
 set.showmode=false         -- "We don't need to see thigns like --INSERT --anymore
 set.backup=false            --"Recommended by CoC
@@ -64,7 +64,7 @@ vim.g.neon_style = "default"
 -- latte, frappe, macchiato, mocha
 vim.g.catppuccin_flavour = "frappe"
 
-vim.cmd([[colorscheme sonokai]])
+vim.cmd([[colorscheme catppuccin]])
 
 vim.cmd([[
   autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
