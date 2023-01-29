@@ -1,11 +1,6 @@
 # i3 config file (v4)
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
-#exec_always --no-startup-id /usr/local/bin/picom --experimental-backends -b
-exec_always --no-startup-id /usr/bin/picom --experimental-backends -b
-exec --no-startup-id /usr/bin/nitrogen --restore
-exec_always --no-startup-id ~/.config/polybar/launch.sh
-exec --no-startup-id setxkbmap -layout es
 
 # User defined variables
 set $screenShotDir ~/Pictures/screenshots
@@ -230,4 +225,10 @@ mode "$mod_custom" {
 #bar {
 #        status_command i3status
 #}
+
+# Start applications
+exec_always --no-startup-id /usr/bin/picom -b
+exec --no-startup-id /usr/bin/nitrogen --restore
+exec --no-startup-id setxkbmap -layout es
+exec_always --no-startup-id ~/.config/polybar/launch.sh
 

@@ -2,14 +2,14 @@ local set=vim.opt
 
 vim.cmd([[syntax enable]]) --Enables syntax highlighting
 vim.cmd([[filetype plugin indent on]])
---⋅
+
 set.encoding="utf-8"      --The encoding displayed
 set.fileencoding="utf-8"     --"The encoding written to file
 set.hidden=true          --"Required to keep multiple buffers open
 set.wrap=true          --"Display long lines as just one line
 set.pumheight=10        --"Makes opoup menu smaller
 set.list=true        --"Shows non-printable charaacters
-set.listchars = {tab = "| ", trail = "⋅", nbsp = "⎵"} -- tab char must have 2 chars
+set.listchars = {eol = "↴", tab = "| ", trail = "⋅", nbsp = "⎵"} -- tab char must have 2 chars
 set.ruler=true          --"Show the cursor position all the time
 set.cmdheight=1        --"More space for displaying messages
 set.iskeyword:append('-')        --"Treat dash separated words as a word text object
@@ -47,7 +47,7 @@ set.termguicolors=true
 vim.g.mapleader = " "
 
 -- 'default', 'atlantis', 'andromeda', 'shusia', 'maia', 'espresso'
-vim.g.sonokai_style = "default"
+vim.g.sonokai_style = "andromeda"
 
 -- 'darker', 'lighter', 'oceanic', 'palenight', 'deep ocean'
 vim.g.material_style = "deep ocean"
@@ -62,24 +62,27 @@ vim.g.tokyonight_style = "storm"
 vim.g.neon_style = "default"
 
 -- latte, frappe, macchiato, mocha
-vim.g.catppuccin_flavour = "frappe"
-
-vim.cmd([[colorscheme catppuccin]])
+vim.g.catppuccin_flavour = "macchiato"
 
 vim.cmd([[
   autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
 ]])
 
--- Will later use it on a autogruop
-vim.cmd[[
-  function MakeTransparentBackground()
-      hi Normal guibg=NONE ctermbg=NONE
-      hi LineNr guibg=NONE ctermbg=NONE
-      hi SignColumn guibg=NONE ctermbg=NONE
-      hi EndOfBuffer guibg=NONE ctermbg=NONE
+-- We can change this to Lua code
+--  lua require("transparent").toggle_transparent(true)
+
+vim.cmd([[
+  function! MyHighlights() abort
+    lua require("transparent").toggle_transparent(true)
   endfunction
-  call MakeTransparentBackground()
-]]
+
+  augroup MyColors
+  autocmd!
+  autocmd ColorScheme * call MyHighlights()
+  augroup END
+]])
+
+vim.cmd([[colorscheme catppuccin ]])
 
 -- Startify Configuration Options
 vim.g.startify_lists = {

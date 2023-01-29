@@ -11,8 +11,12 @@ end
 
 require'lualine'.setup({
   options = {
-    theme = 'auto',
+    theme = 'nord',
     icons_enabled = true,
+    disabled_filetypes = {
+      winbar = {"NvimTree","startify"}
+    },
+    globalstatus = true,
   },
   sections = {
     lualine_b = {
@@ -21,14 +25,17 @@ require'lualine'.setup({
       'diagnostics'
     }
   },
-  tabline = {
-    lualine_a = {
-      {
-        'buffers',
-        show_modified_status = true,
-      }
-    },
-    lualine_z = {'tabs'},
-  },
-  extensions = {'nvim-tree'}
+  -- tabline = {
+  --   lualine_a = {
+  --     {
+  --       'buffers',
+  --       show_modified_status = true,
+  --     }
+  --   },
+  --   lualine_z = {'tabs'},
+  -- },
+  -- winbar = {
+  --   lualine_z = {'%F'}
+  -- },
+  extensions = {'nvim-tree','fugitive'}
 })

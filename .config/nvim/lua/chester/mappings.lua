@@ -24,8 +24,19 @@ map("n", "gR", "<cmd>Trouble lsp_references<cr>")
 
 --"Mis remapeos
 --"Guardar archivo
-map('n','<leader>w', ':w<CR>')
-map('i','<leader>w', '<ESC>:w<CR>')
+map('n','<leader>ww', ':w<CR>')
+map('i','<leader>ww', '<ESC>:w<CR>')
+
+-- Mover texto seleccionado
+map('v', 'J', ":m '>+1<CR>gv=gv")
+map('v', 'K', ":m '<-2<CR>gv=gv")
+
+-- J sin necesidad de poner el cursor al final
+map('n', 'J', 'mzJ`z')
+
+-- C-d y C-u mejorados para mantener el cursor en el mismo lugar
+map('n','<C-d>', '<C-d>zz')
+map('n','<C-u>', '<C-u>zz')
 
 --"Salir del modo terminal de neoVim
 map('t','<leader><Esc>','<C-\\><C-n>')
@@ -64,5 +75,3 @@ map('v','<leader>x',':Bwipeout<CR>')
 
 --"Vim vim-which-key maps
 map('n','<leader>',":<c-u>WhichKey '<Space>'<CR>")
-
-
