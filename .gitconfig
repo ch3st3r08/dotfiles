@@ -7,4 +7,4 @@
 	name = Chester
 	email = nestor_chavez@hotmail.es
 [credential]
-	helper = /usr/share/doc/git/contrib/credential/libsecret/git-credential-libsecret
+	helper = libsecret

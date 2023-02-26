@@ -82,7 +82,7 @@ vim.cmd([[
   augroup END
 ]])
 
-vim.cmd([[colorscheme catppuccin ]])
+vim.cmd([[colorscheme nord ]])
 
 -- Startify Configuration Options
 vim.g.startify_lists = {

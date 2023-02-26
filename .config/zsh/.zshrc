@@ -56,7 +56,7 @@ PATH="$HOME/bin:$PATH"
 PATH="$HOME/.local/bin:$PATH"
 
 #Load rust stuff
-source "$HOME/.cargo/env"
+#source "$HOME/.cargo/env"
 
 #Load aliases
 source "$ZDOTDIR/.zsh_aliases"

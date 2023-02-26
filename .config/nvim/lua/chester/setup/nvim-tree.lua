@@ -1,7 +1,5 @@
 require'nvim-tree'.setup{
-  open_on_setup = true,
-  ignore_ft_on_setup = {"startify"},
-  view = { 
+  view = {
     side = 'left', width = 30,
     mappings = {
       list = {

@@ -11,7 +11,7 @@ end
 
 require'lualine'.setup({
   options = {
-    theme = 'nord',
+    theme = 'auto',
     icons_enabled = true,
     disabled_filetypes = {
       winbar = {"NvimTree","startify"}
