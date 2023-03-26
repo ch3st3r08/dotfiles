@@ -71,17 +71,6 @@ vim.cmd([[
 -- We can change this to Lua code
 --  lua require("transparent").toggle_transparent(true)
 
-vim.cmd([[
-  function! MyHighlights() abort
-    lua require("transparent").toggle_transparent(true)
-  endfunction
-
-  augroup MyColors
-  autocmd!
-  autocmd ColorScheme * call MyHighlights()
-  augroup END
-]])
-
 vim.cmd([[colorscheme nord ]])
 
 -- Startify Configuration Options
