@@ -1,8 +1,18 @@
 # Indicaciones Generales
 
 ## Lo primero: Instalar Sudo y Git, agregarnos al grupo sudo y generar los directorios XDG, y cerrar sesion
+
+### Debian:
       su -
       apt install sudo git -y
+      usermod -aG sudo [user]
+      exit
+      xdg-user-dirs-update
+      exit
+      
+### Arch Linux:
+      su -
+      pacman -Syu sudo git --noconfirm
       usermod -aG sudo [user]
       exit
       xdg-user-dirs-update
@@ -17,18 +27,27 @@
       config checkout
       config config --local status.showUntrackedFiles no
 
+## Luego ejecutar el script de instalación que se encuentra en bin/installSystem.sh
+
 ## Luego de la instalacion...
-Antes de reiniciar es necesario modificar:
-- Comentar linea **v-sync** en la configuración de Picom solo SI se usa maquina virtual
+Antes de reiniciar es necesario modificar 
+**Si se usa máquina virtual** :
+- Comentar linea **v-sync** en la configuración de Picom
 - Cambiar de GLX a XRENDER en picom.conf
+
+**Si se utiliza un WM (i3, sway)**
 - Cambiar nombre de interfaz de red en la configuración de Polybar
 - Eliminar la configuración de red en **/etc/network/interfaces**
-- Activar los temas con lxappearance (tema, iconos, cursores)
 - Modificar el **Hidden=true** en el desktop file de lxpolkit en **/etc/xdg/autostart**
+- Activar los temas con lxappearance (tema, iconos, cursores)
+
+Para tema de grub
 - Modificar el tema de grub con grub customizer
   - agregar linea **GRUB_BACKGROUND** al archivo **/etc/default/grub**
   - modificar la linea **GRUB_GFXMODE** y agregar resolucion **1090x1200x24,auto**
   - agregar la linea **GRUB_DISABLE_OS_PROBER=false** al archivo **/etc/default/grub**
+  
+Extras:
 - Instalar los LSP servers, luego de abrir NVIM
 
 # Listado de paquetes principales instalados
