@@ -71,7 +71,8 @@ vim.cmd([[
 -- We can change this to Lua code
 --  lua require("transparent").toggle_transparent(true)
 
-vim.cmd([[colorscheme nord ]])
+set.background="dark"
+vim.cmd([[colorscheme tokyonight-storm]])
 
 -- Startify Configuration Options
 vim.g.startify_lists = {
@@ -86,7 +87,6 @@ vim.g.startify_bookmarks = {
 }
 
 vim.g.startify_fortune_use_unicode=1
-
 
 --Vim-closetag options
 vim.g.closetag_filenames = '*.vue,*.html,*.xhtml,*.phtml'

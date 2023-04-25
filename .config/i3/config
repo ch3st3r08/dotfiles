@@ -78,7 +78,7 @@ bindsym $mod+Return exec --no-startup-id alacritty
 #For some reaseon using i3-sensible-terminal doesn’t set WN_class to x-terminal-emulator anymore
 #and passing --role gets ignore by x-terminal-emulator program, had to use direct path
 #bindsym $mod+Shift+Return exec xfce4-terminal --role=floating_term
-bindsym $mod+Shift+Return exec --no-startup-id "alacritty --class Alacritty,AlacrittyFloat"
+bindsym $mod+Shift+Return exec --no-startup-id "alacritty --class AlacrittyFloat,AlacrittyFloat"
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -213,8 +213,8 @@ set $user_options "[r]andom background\n[n]avegador\n[b]ackground\n[l]ightdm Bac
 bindsym $mod+u mode "$mod_custom"; exec --no-startup-id notify-send Options $user_options
 mode "$mod_custom" {
 	bindsym r exec --no-startup-id /usr/bin/nitrogen --save --random --set-scaled
-	bindsym n exec --no-startup-id /usr/bin/x-www-browser, mode "default"
-	bindsym b exec --no-startup-id /usr/bin/nitrogen, mode "default"
+	bindsym n exec /usr/bin/brave, mode "default"
+	bindsym b exec /usr/bin/nitrogen, mode "default"
   bindsym l exec --no-startup-id pkexec ~/bin/setLightdmBG.sh, mode "default"
 	bindsym Return mode "default"
 	bindsym Escape mode "default"
@@ -228,7 +228,12 @@ mode "$mod_custom" {
 
 # Start applications
 exec_always --no-startup-id /usr/bin/picom -b
+exec --no-startup-id xrandr -s 1360x768
+exec --no-startup-id start-pulseaudio-x11
+exec --no-startup-id xfce4-power-manager
 exec --no-startup-id /usr/bin/nitrogen --restore
 exec --no-startup-id setxkbmap -layout es
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id nm-applet
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 

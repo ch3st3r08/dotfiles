@@ -5,7 +5,7 @@ exec dex -av -e LIGHTDM-XSESSION &
 #exec xdg-autostart-launcher --both --verbose &
 
 #Definir resolucion
-xrandr -s 1360x768
+#xrandr -s 1360x768
 
 #Cargar colorschemes de WAL
 #wal -R

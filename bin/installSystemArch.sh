@@ -53,7 +53,7 @@ cd $HOME
 
 echo "---------------------------------------------------------------"
 info "Instalando archivos necesarios"
-paru -S base-devel curl libsecret pacman-contrib xorg i3 polybar picom network-manager-applet gvfs gvfs-smb thunar thunar-archive-plugin thunar-media-tags-plugin thunar-volman xarchiver rofi pulseaudio pulseaudio-alsa polkit-gnome xfce4-power-manager lightdm lightdm-gtk-greeter-settings dunst dex desktop-file-utils xdg-utils neofetch neovim starship alacritty community/exa community/ripgrep bat fd unzip seahorse mugshot grub-customizer ffmpeg mpv pavucontrol brave-browser gtk-engine-murrine lxappearance nitrogen xclip xpad font-manager seahorse feh zathura zathura-pdf-mupdf ttf-hack-nerd ttf-iosevka-nerd ttf-firacode-nerd ttf-sourcecodepro-nerd ttf-terminus-nerd plymouth-theme-arch10
+paru -S base-devel curl libsecret pacman-contrib xorg i3 polybar picom network-manager-applet zsh tmux gvfs gvfs-smb thunar thunar-archive-plugin thunar-media-tags-plugin thunar-volman xarchiver rofi pulseaudio pulseaudio-alsa polkit-gnome xfce4-power-manager lightdm lightdm-gtk-greeter-settings light-locker light-locker-settings dunst dex desktop-file-utils xdg-utils xdg-user-dirs htop neofetch neovim starship alacritty community/exa community/ripgrep bat fd unzip seahorse mugshot grub-customizer ffmpeg mpv pavucontrol brave-browser gtk-engine-murrine lxappearance mpd ncmpcpp flameshot nitrogen xclip xpad font-manager seahorse feh zathura zathura-pdf-mupdf ttf-hack-nerd ttf-iosevka-nerd ttf-firacode-nerd ttf-sourcecodepro-nerd ttf-terminus-nerd plymouth-theme-arch10
 
 
 echo "---------------------------------------------------------------"
@@ -103,5 +103,8 @@ EOF
 
 info "Descargando tema de grub en Downloads"
 curl -Lo Downloads/arch.tar https://github.com/AdisonCavani/distro-grub-themes/releases/latest/download/arch.tar
+
+info "Iniciando servicios de lightdm"
+sudo systemctl enable --now lightdm
 
 info "La instalacion del sistema ha terminado, se recomienda REINICIAR el sistema, para que los cambios surjan efecto."
