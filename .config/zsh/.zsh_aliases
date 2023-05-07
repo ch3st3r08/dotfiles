@@ -1,6 +1,6 @@
 #Custom Aliases for bash
 
-#Let us use user's defined aliases with sudo
+#Let use user's defined aliases with sudo
 alias sudo='sudo '
 
 #Better LS
@@ -14,6 +14,8 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
 alias nv='nvim'
+alias Nstart='nvim --listen /tmp/nvim.pipe' 
+alias Nsend='nvim --server /tmp/nvim.pipe --remote '
 
 #Configuration Files
 alias zshCF='nvim $ZDOTDIR/.zshrc'
