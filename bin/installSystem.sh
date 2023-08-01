@@ -81,4 +81,5 @@ sudo make install
 sudo plymouth-set-default-theme -R kreelista
 cd $HOME
 
+dotfiles config --global credential.helper /usr/share/doc/git/contrib/credential/libsecret
 info "La instalacion del sistema ha terminado, se recomienda REINICIAR el sistema, para que los cambios surjan efecto."
