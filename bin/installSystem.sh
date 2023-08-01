@@ -6,7 +6,7 @@ WM="i3"
 #FALTA DECIDIR SI SE CREA OTRO ARCHIVO
 echo "Se procederá a instalar los archivos necesarios del sistema: "
 echo "---------------------------------------------------------------"
-sudo apt install build-essential libsecret-1-0 libsecret-1-dev xorg lm-sensors mesa-utils network-manager-gnome pulseaudio lightdm light-locker lightdm-gtk-greeter-settings neovim neofetch alacritty gvfs gvfs-fuse gvfs-backends thunar-volman thunar-archive-plugin thunar-data thunar-media-tags-plugin pavucontrol mugshot grub-customizer plymouth plymouth-themes make firmware-linux zsh exa 
+sudo apt install build-essential libsecret-1-0 libsecret-1-dev xorg lm-sensors mesa-utils network-manager-gnome pulseaudio lightdm light-locker lightdm-gtk-greeter-settings neovim neofetch alacritty gvfs gvfs-fuse gvfs-backends thunar-volman thunar-archive-plugin thunar-data thunar-media-tags-plugin pavucontrol mugshot grub-customizer plymouth plymouth-themes firmware-linux zsh gtk2-engines-murrine
 
 if [ $WM == "i3" ]; then
 	sudo apt install i3 polybar picom lxpolkit lxsession-data xfce4-power-manager rofi dunst libnotify-bin dex xdg-utils desktop-file-utils lxterminal lxappearance nitrogen thunar 
