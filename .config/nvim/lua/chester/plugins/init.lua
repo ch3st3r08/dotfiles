@@ -42,6 +42,7 @@ return {
   { "cseelus/vim-colors-tone" },
   {
     "xiyaowong/transparent.nvim",
+    enabled = true,
     opts = {
       extra_groups = {
         "NormalFloat",
@@ -52,9 +53,8 @@ return {
   },
   {
     "lukas-reineke/indent-blankline.nvim",
-    opts = {
-      show_end_of_line = true
-    }
+    main = "ibl",
+    opts = { }
   },
   { 'echasnovski/mini.comment',     main = "mini.comment",   config = true },
   { 'echasnovski/mini.pairs',       main = "mini.pairs",     config = true },

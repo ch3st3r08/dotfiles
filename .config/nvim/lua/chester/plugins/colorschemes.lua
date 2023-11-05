@@ -14,6 +14,8 @@ return {
     },
   },
   { "cocopon/iceberg.vim" },
+  { "sainnhe/edge" },
+  { "edeneast/nightfox.nvim" },
   {
     "shaunsingh/nord.nvim",
     lazy = false,

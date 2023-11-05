@@ -1,5 +1,6 @@
 return {
   {
+    enabled = true,
     "nvim-lualine/lualine.nvim",
     config = function()
       local custom_auto = require 'lualine.themes.tokyonight'
@@ -7,13 +8,24 @@ return {
 
       require 'lualine'.setup({
         options = {
-          theme = custom_auto,
+          theme = 'auto',
           icons_enabled = true,
           disabled_filetypes = {
             winbar = { "NvimTree", "startify" },
             statusline = { "NvimTree", "startify", "starter" }
           },
           --globalstatus = true,
+        },
+        tabline = {
+          lualine_a = {'buffers'},
+          lualine_b = {'branch'},
+          lualine_c = {},
+          lualine_x = {},
+          lualine_y = {},
+          lualine_z = {'tabs'}
+        },
+        extensions = {
+          'quickfix', 'trouble', 'nvim-tree', 'lazy'
         },
       })
     end
