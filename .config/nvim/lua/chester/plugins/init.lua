@@ -23,6 +23,7 @@ return {
   -- Misc
   { "folke/zen-mode.nvim",           config = true },
   { "folke/twilight.nvim",           config = true },
+  { "luckasRanarison/tree-sitter-hypr" },
   {
     'Wansmer/treesj',
     keys = { '<space>m', '<space>j', '<space>s' },
