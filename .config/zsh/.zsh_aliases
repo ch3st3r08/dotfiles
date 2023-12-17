@@ -26,3 +26,9 @@ alias dunsCF='nvim $HOME/.config/dunst/dunstrc'
 alias alaCF='nvim $HOME/.config/alacritty/alacritty.yml'
 alias rofiCF='nvim $HOME/.config/rofi/config.rasi'
 
+alias dtS='dotfiles status'
+alias dtAll='dotfiles add -u'
+alias dtA='dotfiles add'
+alias dtC='dotfiles commit -m'
+alias dtP='dotfiles push origin master'
+
