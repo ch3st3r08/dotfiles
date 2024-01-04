@@ -1,0 +1,35 @@
+#Custom Aliases for bash
+
+#Let use user's defined aliases with sudo
+alias sudo='sudo '
+
+#Better LS
+alias ls='exa --icons '
+alias lsl='ls --long --group --header'
+alias lsa='lsl --all'
+alias lst='exa --tree --level=2 --group'
+
+#cd up directory
+alias ..='cd ..'
+alias ...='cd ../..'
+alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
+alias nv='nvim'
+alias Nstart='nvim --listen /tmp/nvim.pipe' 
+alias Nsend='nvim --server /tmp/nvim.pipe --remote '
+
+#Configuration Files
+alias zshCF='nvim $ZDOTDIR/.zshrc'
+alias tmuxCF='nvim $HOME/.config/tmux/tmux.conf'
+alias i3CF='nvim $HOME/.config/i3/config'
+alias polyCF='nvim $HOME/.config/polybar/config.ini'
+alias dunsCF='nvim $HOME/.config/dunst/dunstrc'
+alias alaCF='nvim $HOME/.config/alacritty/alacritty.toml'
+alias rofiCF='nvim $HOME/.config/rofi/config.rasi'
+alias hyprCF='nvim $HOME/.config/hypr/hyprland.conf'
+
+alias dtS='dotfiles status'
+alias dtAll='dotfiles add -u'
+alias dtA='dotfiles add'
+alias dtC='dotfiles commit -m'
+alias dtP='dotfiles push origin master'
+

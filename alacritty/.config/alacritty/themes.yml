@@ -1,0 +1,109 @@
+schemes:
+  dracula_theme: &dracula
+    primary:
+      background: '#282a36'
+      foreground: '#f8f8f2'
+    cursor:
+      text: CellBackground
+      cursor: CellForeground
+    selection:
+      text: CellBackground
+      background: CellForeground
+    normal:
+      black:   '#000000'
+      red:     '#ff5555'
+      green:   '#50fa7b'
+      yellow:  '#f1fa8c'
+      blue:    '#caa9fa'
+      magenta: '#ff79c6'
+      cyan:    '#8be9fd'
+      white:   '#bfbfbf'
+    bright:
+      black:   '#575b70'
+      red:     '#ff6e67'
+      green:   '#5af78e'
+      yellow:  '#f4f99d'
+      blue:    '#caa9fa'
+      magenta: '#ff92d0'
+      cyan:    '#9aedfe'
+      white:   '#e6e6e6'
+
+  nova_theme: &nova
+    primary:
+      background: '#3C4C55'
+      foreground: '#C5D4DD'
+    cursor:
+      text: '#212121'
+      cursor: '#C0C5CE'
+    selection:
+      text: CellBackground
+      background: CellForeground
+    normal:
+      black:   '#3C4C55'
+      red:     '#DF8C8C'
+      green:   '#A8CE93'
+      yellow:  '#DADA93'
+      blue:    '#83AFE5'
+      magenta: '#9A93E1'
+      cyan:    '#7FC1CA'
+      white:   '#C5D4DD'
+    bright:
+      black:   '#899BA6'
+      red:     '#F2C38F'
+      green:   '#A8CE93'
+      yellow:  '#DADA93'
+      blue:    '#83AFE5'
+      magenta: '#D18EC2'
+      cyan:    '#7FC1CA'
+      white:   '#E6EEF3'
+
+  nord_theme: &nord
+    primary:
+      background: '#2e3440'
+      foreground: '#d8dee9'
+      dim_foreground: '#a5abb6'
+    cursor:
+      text: '#2e3440'
+      cursor: '#d8dee9'
+    vi_mode_cursor:
+      text: '#2e3440'
+      cursor: '#d8dee9'
+    selection:
+      text: CellForeground
+      background: '#4c566a'
+    search:
+      matches:
+        foreground: CellBackground
+        background: '#88c0d0'
+      bar:
+        background: '#434c5e'
+        foreground: '#d8dee9'
+    normal:
+      black: '#3b4252'
+      red: '#bf616a'
+      green: '#a3be8c'
+      yellow: '#ebcb8b'
+      blue: '#81a1c1'
+      magenta: '#b48ead'
+      cyan: '#88c0d0'
+      white: '#e5e9f0'
+    bright:
+      black: '#4c566a'
+      red: '#bf616a'
+      green: '#a3be8c'
+      yellow: '#ebcb8b'
+      blue: '#81a1c1'
+      magenta: '#b48ead'
+      cyan: '#8fbcbb'
+      white: '#eceff4'
+    dim:
+      black: '#373e4d'
+      red: '#94545d'
+      green: '#809575'
+      yellow: '#b29e75'
+      blue: '#68809a'
+      magenta: '#8c738c'
+      cyan: '#6d96a5'
+      white: '#aeb3bb'
+
+colors: *nova

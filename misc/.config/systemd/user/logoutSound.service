@@ -1,0 +1,14 @@
+[Unit]
+Description=PLay a logout sound
+Before=shutdown.target reboot.target halt.target
+# This works because it is installed in the target and will be
+#   executed before the target state is entered
+# Also consider kexec.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/paplay /home/chester/Music/Sounds/desktop-logout.ogg
+TimeoutStartSec=0
+
+[Install]
+WantedBy=halt.target reboot.target shutdown.target
