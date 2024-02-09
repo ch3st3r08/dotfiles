@@ -9,4 +9,5 @@ configuration {
   display-combi:  "";
 }
 
-@theme "nord/nord"
+//@theme "nord/nord"
+@theme "/home/chester/.config/rofi/themes/spotlight-dark.rasi"
