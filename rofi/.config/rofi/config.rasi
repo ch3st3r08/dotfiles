@@ -1,0 +1,13 @@
+configuration {
+  modi: "window,run,drun,ssh";
+  font: "mono 12";
+  show-icons: true;
+  display-ssh:    "";
+  display-run:    "";
+  display-drun:   "";
+  display-window: "";
+  display-combi:  "";
+}
+
+//@theme "nord/nord"
+@theme "/home/chester/.config/rofi/themes/spotlight-dark.rasi"

@@ -1,0 +1,119 @@
+{
+    "layer": "top",
+    "height": 30,
+    "modules-left": ["custom/launcher","hyprland/workspaces", "hyprland/submap"],
+    "modules-center": ["hyprland/window"],
+    "modules-right": [
+      "idle_inhibitor",
+      "custom/pacman",
+      "pulseaudio",
+      "network",
+      "cpu",
+      "memory",
+      "temperature",
+      "keyboard-state",
+      "hyprland/language",
+      "battery",
+      "clock",
+      "tray"
+    ],
+    "custom/pacman":{
+        "format": "{} ",
+        "interval": 3600,                     // every hour
+        "exec": "checkupdates | wc -l",       // # of updates
+        "exec-if": "exit 0",                  // always run; consider advanced run conditions
+        "on-click": "alacritty -e paru -Syu && pkill -SIGRTMIN+8 waybar", // update system
+        "signal": 8
+    },
+    "custom/launcher":{
+        "format": " 󰣇 ",
+        "on-click": "nwg-drawer",
+    },
+    "hyprland/workspaces": {
+        "persistent-workspaces": {
+            "*": 5, // 5 workspaces by default on every monitor
+        }
+    },
+    "hyprland/window": {
+        "max-length": 50
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    },
+    "pulseaudio": {
+        "format": "{volume}% {icon}",
+        "format-bluetooth": "{volume}% {icon}",
+        "format-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", ""]
+        },
+        "scroll-step": 1,
+        "on-click": "pavucontrol",
+        "ignored-sinks": ["Easy Effects Sink"]
+    },
+    "cpu": {
+        "format": "{usage}% ",
+    },
+    "memory": {
+        "format": "{}% "
+    },
+    "temperature": {
+        "format": "{temperatureC}°C "
+    },
+    "keyboard-state": {
+        "numlock": false,
+        "capslock": true,
+        "format": "{name} {icon}",
+        "format-icons": {
+            "locked": "",
+            "unlocked": ""
+        }
+    },
+    "hyprland/language": {
+        "format": "{}",
+        "format-en": "EN",
+        "format-es": "ES"
+    },
+    "battery": {
+        "format": "{capacity}% {icon}",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "clock": {
+        "interval": 60,
+        "tooltip": true,
+        "format": "{:%H:%M}",
+        "format-alt": "{:%A, %B %d, %Y (%R)}",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "calendar": {
+            "on-click-right": "mode",
+            "mode-mon-col": 3,
+            "format": {
+                "months":     "<span color='#ffead3'><b>{}</b></span>",
+                "days":       "<span color='#ecc6d9'><b>{}</b></span>",
+                "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+                "today":      "<span color='#99ffdd'><b><u>{}</u></b></span>"
+            }
+        },
+        "actions":  {
+            "on-click-right": "mode",
+            "on-click-forward": "tz_up",
+            "on-click-backward": "tz_down",
+            "on-scroll-up": "shift_up",
+            "on-scroll-down": "shift_down"
+        }
+    },
+    "tray": {
+          // "icon-size": 21,
+          "spacing": 10
+     },
+}
