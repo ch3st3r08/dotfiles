@@ -36,10 +36,11 @@ zstyle ':completion:*' verbose true
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
-bindkey  "^[[H"   beginning-of-line
-bindkey  "^[[F"   end-of-line
-bindkey  "^[[1~"   beginning-of-line
-bindkey  "^[[4~"   end-of-line
+bindkey "^[[H"  beginning-of-line
+bindkey "^[[F"  end-of-line
+bindkey "^[[1~" beginning-of-line
+bindkey "^[[4~" end-of-line
+bindkey "^[[3~" delete-char
 
 if [ "$TERM" != "linux" ]; then
    function set_win_title(){
@@ -56,9 +57,6 @@ fi
 # Not supported in the "fish" shell.
 # [[ -f $HOME/.config/wpg/sequences ]] && (cat ~/.config/wpg/sequences &)
 
-#Include user define bin directory
-PATH="$HOME/bin:$PATH"
-PATH="$HOME/.local/bin:$PATH"
 
 #Load rust stuff
 #source "$HOME/.cargo/env"
@@ -67,11 +65,25 @@ PATH="$HOME/.local/bin:$PATH"
 source "$ZDOTDIR/.zsh_aliases"
 
 #Load Plugins
-source $ZDOTDIR/antigen.zsh
+# source $ZDOTDIR/antigen.zsh
+#
+# antigen bundle zsh-users/zsh-syntax-highlighting
+# antigen bundle zsh-users/zsh-autosuggestions
+# antigen apply
+#
+# Download zimfw plugin manager if missing.
+if [[ ! -e ${ZIM_HOME}/zimfw.zsh ]]; then
+  curl -fsSL --create-dirs -o ${ZIM_HOME}/zimfw.zsh \
+      https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
+fi
 
-antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle zsh-users/zsh-autosuggestions
-antigen apply
+# Install missing modules, and update ${ZIM_HOME}/init.zsh if missing or outdated.
+if [[ ! ${ZIM_HOME}/init.zsh -nt ${ZDOTDIR:-${HOME}}/.zimrc ]]; then
+  source ${ZIM_HOME}/zimfw.zsh init -q
+fi
+
+# Initialize modules
+source ${ZIM_HOME}/init.zsh
 
 #Export and load Node Version Manager
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

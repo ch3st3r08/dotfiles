@@ -31,7 +31,6 @@ cd $HOME
 
 rm -f $HOME/.bashrc
 
-git clone --recurse-submodules https://github.com/ch3st3r08/dotfiles .dotfiles
 cd .dotfiles
 stow -S alacritty hypr nvim starship git waybar tmux zsh rofi sources music bin bash misc
 
@@ -40,7 +39,7 @@ echo "Instalando archivos necesarios"
 paru -S curl pacman-contrib networkmanager network-manager-applet zsh tmux gvfs gvfs-smb gvfs-nfs pipewire pipewire-audio pipewire-pulse wireplumber gst-plugin-pipewire thunar xdg-utils fastfetch neovim starship alacritty unzip pavucontrol brave-browser gtk-engine-murrine mpd ncmpcpp rhythmbox xorg-server xorg-xinit iwd libva-mesa-driver intel-media-driver sound-theme-freedesktop xf86-video-amdgpu
 
 if [ $WM == "hypr" ]; then
-	paru -S hyprland xdg-desktop-portal-hyprland sddm waybar rofi swaync swayidle waylock swaybg nwg-look-bin azote polkit polkit-kde-agent desktop-file-utils nwg-displays nwg-drawer-bin nwg-shell-config nwg-icon-picker nwg-menu-bin hyprpicker gtklock wf-recorder ristretto cliphist galculator qt5-wayland qt6-wayland
+	paru -S hyprland xdg-desktop-portal-hyprland sddm waybar rofi swaync swayidle waylock swaybg nwg-bar nwg-look-bin azote polkit polkit-kde-agent desktop-file-utils nwg-displays nwg-drawer-bin nwg-shell-config nwg-icon-picker nwg-menu-bin hyprpicker gtklock wf-recorder ristretto cliphist galculator qt5-wayland qt6-wayland
 else
 	paru -S xfce4 xfce4-goodies mugshot sct wmctrl timeshift xclip
 fi

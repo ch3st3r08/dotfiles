@@ -8,9 +8,14 @@ export EDITOR='nvim'
 export VISUAL='nvim'
 export SUDO_EDITOR='nvim'
 
+#Include user define bin directory
+PATH="$HOME/bin:$PATH"
+PATH="$HOME/.local/bin:$PATH"
+
 #Apps config options
 export RANGER_LOAD_DEFAULT_RC=false
 export STARSHIP_CONFIG=~/.config/starship/config.toml
 export NVM_DIR="$HOME/.nvm"
 
-export ADOTDIR="${ZDOTDIR}/antigen"
+export ZIM_HOME="${ZDOTDIR}/.zim"
+#export ADOTDIR="${ZDOTDIR}/antigen"
