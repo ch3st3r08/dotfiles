@@ -88,3 +88,5 @@ source ${ZIM_HOME}/init.zsh
 #Export and load Node Version Manager
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+eval "$(zoxide init zsh)"

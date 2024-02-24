@@ -14,11 +14,13 @@
       "keyboard-state",
       "hyprland/language",
       "battery",
+      "custom/notification",
       "clock",
       "tray"
     ],
     "custom/pacman":{
         "format": "{} ",
+        "tooltip": false,
         "interval": 3600,                     // every hour
         "exec": "checkupdates | wc -l",       // # of updates
         "exec-if": "exit 0",                  // always run; consider advanced run conditions
@@ -26,8 +28,29 @@
         "signal": 8
     },
     "custom/launcher":{
+        "tooltip": false,
         "format": " 󰣇 ",
-        "on-click": "nwg-drawer",
+        "on-click": "sleep 0.1 && nwg-drawer -ft -term alacritty",
+    },
+    "custom/notification":{
+        "tooltip": false,
+        "format": "{} {icon}",
+        "format-icons": {
+          "notification": "<span foreground='red'><sup></sup></span>",
+          "none": "",
+          "dnd-notification": "<span foreground='red'><sup></sup></span>",
+          "dnd-none": "",
+          "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+          "inhibited-none": "",
+          "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+          "dnd-inhibited-none": ""
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "sleep 0.1 && swaync-client -t -sw",
+        "on-click-right": "sleep 0.1 && swaync-client -d -sw",
+        "escape": true
     },
     "hyprland/workspaces": {
         "persistent-workspaces": {

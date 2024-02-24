@@ -4,16 +4,20 @@
 alias sudo='sudo '
 
 #Better LS
-alias ls='exa --icons '
+alias ls='exa --icons'
+alias lsa='ls -a'
 alias lsl='ls --long --group --header'
-alias lsa='lsl --all'
+alias lsla='lsl -a'
 alias lst='exa --tree --level=2 --group'
+alias lsta='lst -a'
+
+alias man='batman'
+alias cat='bat'
+alias cd='z'
 
 #cd up directory
-alias ..='cd ..'
-alias ...='cd ../..'
-alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
-alias nv='nvim'
+alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME/.dotfiles"
+alias nv='nvim --clean'
 alias Nstart='nvim --listen /tmp/nvim.pipe' 
 alias Nsend='nvim --server /tmp/nvim.pipe --remote '
 
@@ -32,4 +36,3 @@ alias dtAll='dotfiles add -u'
 alias dtA='dotfiles add'
 alias dtC='dotfiles commit -m'
 alias dtP='dotfiles push origin master'
-
