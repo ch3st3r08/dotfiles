@@ -17,11 +17,7 @@ return {
   },
   {
     "alexghergh/nvim-tmux-navigation",
-    config = function()
-      require("nvim-tmux-navigation").setup({
-        disable_when_zoomed = true,
-      })
-    end,
+    opts = { disable_when_zoomed = true },
     keys = {
       { "<c-h>", "<cmd>NvimTmuxNavigateLeft<cr>", desc = "Navigate Left" },
       { "<c-j>", "<cmd>NvimTmuxNavigateDown<cr>", desc = "Navigate Down" },
@@ -31,12 +27,16 @@ return {
   },
   {
     "NvChad/nvim-colorizer.lua",
-    config = function()
-      require("colorizer").setup({
-        user_default_options = {
-          css_fn = true,
-        },
-      })
-    end,
+    opts = {
+      user_default_options = {
+        css_fn = true,
+      },
+    },
+  },
+  {
+    "Wansmer/treesj",
+    keys = { "<leader>j", "<cmd>TSJToggle<cr>", desc = "Toggle Blocks" },
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    opts = { use_default_keymaps = false },
   },
 }

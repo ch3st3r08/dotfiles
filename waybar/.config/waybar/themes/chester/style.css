@@ -1,7 +1,7 @@
 * {
     border: none;
-    border-radius: 0;
-    font-family: CodeNewRoman Nerd Font, roboto;
+    border-radius: 5;
+    font-family: roboto,CodeNewRoman Nerd Font;
     font-size: 15px;
     min-height: 10px;
 }
@@ -65,6 +65,7 @@ tooltip label {
 }
 
 #clock {
+  font-weight:bold;
 }
 
 #battery {

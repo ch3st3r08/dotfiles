@@ -12,8 +12,7 @@ alias lst='exa --tree --level=2 --group'
 alias lsta='lst -a'
 
 alias man='batman'
-alias cat='bat'
-alias cd='z'
+alias cat='bat --theme ansi'
 
 #cd up directory
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME/.dotfiles"
@@ -30,6 +29,7 @@ alias dunsCF='nvim $HOME/.config/dunst/dunstrc'
 alias alaCF='nvim $HOME/.config/alacritty/alacritty.toml'
 alias rofiCF='nvim $HOME/.config/rofi/config.rasi'
 alias hyprCF='nvim $HOME/.config/hypr/hyprland.conf'
+alias nvimCF='nvim $HOME/.config/nvim/init.lua'
 
 alias dtS='dotfiles status'
 alias dtAll='dotfiles add -u'
