@@ -1,0 +1,7 @@
+set selection-clipboard clipboard
+set default-bg "#3D3F4A"
+map [normal]     <C-r> reload
+map [fullscreen] <C-r> reload
+" Search
+set incremental-search true
+set search-hadjust true
