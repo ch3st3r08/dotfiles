@@ -16,20 +16,21 @@ alias cat='bat --theme ansi'
 
 #cd up directory
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME/.dotfiles"
-alias nv='nvim --clean'
+alias nv='NVIM_APPNAME=nvim_test nvim'
 alias Nstart='nvim --listen /tmp/nvim.pipe' 
 alias Nsend='nvim --server /tmp/nvim.pipe --remote '
+alias ..='cd ..'
 
 #Configuration Files
-alias zshCF='nvim $ZDOTDIR/.zshrc'
-alias tmuxCF='nvim $HOME/.config/tmux/tmux.conf'
-alias i3CF='nvim $HOME/.config/i3/config'
-alias polyCF='nvim $HOME/.config/polybar/config.ini'
-alias dunsCF='nvim $HOME/.config/dunst/dunstrc'
-alias alaCF='nvim $HOME/.config/alacritty/alacritty.toml'
-alias rofiCF='nvim $HOME/.config/rofi/config.rasi'
-alias hyprCF='nvim $HOME/.config/hypr/hyprland.conf'
-alias nvimCF='nvim $HOME/.config/nvim/init.lua'
+alias zshCF="$EDITOR $ZDOTDIR/.zshrc"
+alias tmuxCF="$EDITOR $HOME/.config/tmux/tmux.conf"
+alias i3CF="$EDITOR $HOME/.config/i3/config"
+alias polyCF="$EDITOR $HOME/.config/polybar/config.ini"
+alias dunsCF="$EDITOR $HOME/.config/dunst/dunstrc"
+alias alaCF="$EDITOR $HOME/.config/alacritty/alacritty.toml"
+alias rofiCF="$EDITOR $HOME/.config/rofi/config.rasi"
+alias hyprCF="$EDITOR $HOME/.config/hypr/hyprland.conf"
+alias nvimCF="$EDITOR $HOME/.config/nvim/init.lua"
 
 alias dtS='dotfiles status'
 alias dtAll='dotfiles add -u'
