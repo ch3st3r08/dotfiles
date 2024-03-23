@@ -1,0 +1,33 @@
+import = ["/home/chester/.config/alacritty/themes/themes/themes/dracula.toml"]
+
+[colors]
+draw_bold_text_with_bright_colors = false
+
+[font]
+size = 14.0
+
+[font.normal]
+family = "CodeNewRoman Nerd Font"
+style = "Regular"
+
+[mouse]
+hide_when_typing = true
+
+[scrolling]
+history = 10000
+multiplier = 3
+
+[bell]
+animation = "EaseOutCirc"
+duration = 2
+color = "#ff0055"
+command = "xkbbell"
+
+[selection]
+save_to_clipboard = false
+
+[window]
+decorations = "none"
+decorations_theme_variant = "None"
+dynamic_title = true
+opacity = 0.90
