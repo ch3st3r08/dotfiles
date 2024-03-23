@@ -45,7 +45,7 @@ else
 fi
 
 # Instalando aplicacion de utilidad
-paru -S --needed --noconfirm p7zip entr zoxide eza ripgrep bat bat-extras fd fzf lazygit zathura zathura-pdf-mupdf htop seahorse grub-customizer ffmpeg font-manager mpv vlc reflector tty-clock xarchiver thunar-archive-plugin thunar-media-tags-plugin thunar-volman ttf-hack-nerd ttf-iosevka-nerd ttf-firacode-nerd ttf-sourcecodepro-nerd ttf-terminus-nerd ttf-font-awesome otf-codenewroman-nerd plymouth plymouth-theme-arch10 dracula-gtk-theme nordic-theme nordzy-cursors nordzy-icon-theme whitesur-icon-theme ttf-ms-fonts
+paru -S --needed --noconfirm p7zip entr zoxide eza ripgrep bat bat-extras fd fzf lazygit zathura zathura-pdf-mupdf htop seahorse lssecret grub-customizer ffmpeg font-manager mpv vlc reflector tty-clock xarchiver thunar-archive-plugin thunar-media-tags-plugin thunar-volman ttf-hack-nerd ttf-iosevka-nerd ttf-firacode-nerd ttf-sourcecodepro-nerd ttf-terminus-nerd ttf-font-awesome otf-codenewroman-nerd plymouth plymouth-theme-arch10 dracula-gtk-theme nordic-theme nordzy-cursors nordzy-icon-theme whitesur-icon-theme ttf-ms-fonts
 
 echo "---------------------------------------------------------------"
 echo "Instalando #-NVM (node version manager)"

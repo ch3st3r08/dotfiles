@@ -18,4 +18,8 @@ export STARSHIP_CONFIG=~/.config/starship/config.toml
 export NVM_DIR="$HOME/.nvm"
 
 export ZIM_HOME="${ZDOTDIR}/.zim"
+<<<<<<< HEAD
+=======
+export OPENAI_API_KEY=$($HOME/.dotfiles/bin/bin/getSecret.sh openai)
+>>>>>>> e957fdf (Adding script for retrieving secrets)
 #export ADOTDIR="${ZDOTDIR}/antigen"
