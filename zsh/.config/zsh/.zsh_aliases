@@ -18,7 +18,9 @@ alias cat='bat --theme ansi'
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME/.dotfiles"
 alias nv='NVIM_APPNAME=nvim_test nvim'
 alias Nstart='nvim --listen /tmp/nvim.pipe' 
-alias Nsend='nvim --server /tmp/nvim.pipe --remote '
+function Nsend {
+  nvim --server /tmp/nvim.pipe --remote $(readlink -f $1)
+}
 alias ..='cd ..'
 
 #Configuration Files
