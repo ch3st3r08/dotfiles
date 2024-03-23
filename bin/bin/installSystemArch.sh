@@ -32,7 +32,7 @@ cd $HOME
 rm -f $HOME/.bashrc
 
 cd .dotfiles
-stow -S alacritty hypr nvim starship git waybar tmux zsh rofi sources music bin bash misc
+stow -S alacritty hypr pdf-reader nvim starship git waybar tmux zsh rofi sources music bin bash misc
 
 echo "---------------------------------------------------------------"
 echo "Instalando archivos necesarios"
