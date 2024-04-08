@@ -12,5 +12,5 @@
 # Get the line and get Secret
 #awk -F ','  '{ print $2 }' | tr -d 'Secret:[:blank:]'
 #
-result=$(lssecret -s | tr '\n' ',' | sed -e "s/,,/\\n/g" | grep "Item:[[:space:]]$1" | awk -F ',' '{ print $2 }' | tr -d 'Secret:[:blank:]')
+result=$(lssecret -s | tr '\n' ',' | sed -e "s/,,/\\n/g" | grep "Item:[[:space:]]$1" | awk -F ',' '{ print $2 }' | awk -F ' ' '{ print $2 }' )
 echo $result

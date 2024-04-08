@@ -10,9 +10,4 @@ configuration {
 }
 
 //@theme "nord/nord"
-//@theme "/home/chester/.config/rofi/themes/spotlight-dark.rasi"
-//@theme "/usr/share/rofi/themes/Paper.rasi"
-//@theme "/home/chester/.config/rofi/themes/rounded-purple-dark.rasi"
-//@theme "/home/chester/.config/rofi/themes/rounded-red-dark.rasi"
-//@theme "/home/chester/.config/rofi/themes/windows11-grid-dark.rasi"
 @theme "/home/chester/.config/rofi/themes/spotlight-dark.rasi"

@@ -39,7 +39,7 @@ echo "Instalando archivos necesarios"
 paru -S --needed --noconfirm curl pacman-contrib networkmanager sddm network-manager-applet zsh tmux gvfs gvfs-smb gvfs-nfs pipewire pipewire-audio pipewire-pulse wireplumber gst-plugin-pipewire thunar xdg-utils fastfetch neovim starship alacritty unzip pavucontrol brave-browser gtk-engine-murrine mpd ncmpcpp rhythmbox xorg-server xorg-xinit iwd libva-mesa-driver intel-media-driver sound-theme-freedesktop xf86-video-amdgpu galculator
 
 if [ $WM == "hypr" ]; then
-	paru -S --needed --noconfirm hyprland xdg-desktop-portal-hyprland waybar rofi swaync hypridle hyprlock swaybg nwg-bar nwg-look-bin waypaper polkit polkit-kde-agent desktop-file-utils nwg-displays nwg-drawer-bin nwg-icon-picker nwg-menu-bin hyprpicker wf-recorder ristretto cliphist qt5-wayland qt6-wayland
+	paru -S --needed --noconfirm hyprland xdg-desktop-portal-hyprland waybar rofi-lbonn-wayland swaync hypridle hyprlock hyprcursor swaybg nwg-bar nwg-look-bin waypaper polkit polkit-kde-agent desktop-file-utils nwg-displays nwg-drawer-bin nwg-icon-picker nwg-menu-bin hyprpicker wf-recorder ristretto cliphist qt5-wayland qt6-wayland
 else
 	paru -S --needed --noconfirm xfce4 xfce4-goodies mugshot sct wmctrl timeshift xclip
 fi
