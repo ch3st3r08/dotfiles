@@ -36,16 +36,16 @@ stow -S alacritty hypr pdf-reader nvim starship git waybar tmux zsh rofi sources
 
 echo "---------------------------------------------------------------"
 echo "Instalando archivos necesarios"
-paru -S --needed --noconfirm curl pacman-contrib networkmanager sddm network-manager-applet zsh tmux gvfs gvfs-smb gvfs-nfs pipewire pipewire-audio pipewire-pulse wireplumber gst-plugin-pipewire thunar xdg-utils fastfetch neovim starship alacritty unzip pavucontrol brave-browser gtk-engine-murrine mpd ncmpcpp rhythmbox xorg-server xorg-xinit iwd libva-mesa-driver intel-media-driver sound-theme-freedesktop xf86-video-amdgpu galculator
+paru -S --needed --noconfirm curl pacman-contrib networkmanager sddm network-manager-applet zsh tmux gvfs gvfs-smb gvfs-nfs pipewire pipewire-audio pipewire-pulse wireplumber gst-plugin-pipewire thunar xdg-utils fastfetch neovim starship alacritty unzip pavucontrol brave-browser gtk-engine-murrine mpd ncmpcpp rhythmbox xorg-server xorg-xinit iwd libva-mesa-driver intel-media-driver sound-theme-freedesktop xf86-video-amdgpu
 
 if [ $WM == "hypr" ]; then
-	paru -S --needed --noconfirm hyprland xdg-desktop-portal-hyprland waybar rofi-lbonn-wayland swaync hypridle hyprlock hyprcursor swaybg nwg-bar nwg-look-bin waypaper polkit polkit-kde-agent desktop-file-utils nwg-displays nwg-drawer-bin nwg-icon-picker nwg-menu-bin hyprpicker wf-recorder ristretto cliphist qt5-wayland qt6-wayland
+	paru -S --needed --noconfirm hyprland xdg-desktop-portal-hyprland waybar rofi-lbonn-wayland swaync hypridle hyprlock hyprcursor swaybg nwg-bar nwg-look-bin waypaper polkit polkit-gnome desktop-file-utils nwg-displays nwg-drawer-bin nwg-icon-picker nwg-menu-bin hyprpicker wf-recorder ristretto cliphist qt5-wayland qt6-wayland
 else
-	paru -S --needed --noconfirm xfce4 xfce4-goodies mugshot sct wmctrl timeshift xclip
+	paru -S --needed --noconfirm xfce4 xfce4-goodies mugshot wmctrl timeshift-gtk xclip menulibre
 fi
 
 # Instalando aplicacion de utilidad
-paru -S --needed --noconfirm p7zip entr zoxide eza ripgrep bat bat-extras fd fzf lazygit zathura zathura-pdf-mupdf htop seahorse lssecret-bin grub-customizer ffmpeg font-manager mpv vlc reflector tty-clock xarchiver thunar-archive-plugin thunar-media-tags-plugin thunar-volman ttf-hack-nerd ttf-iosevka-nerd ttf-firacode-nerd ttf-sourcecodepro-nerd ttf-terminus-nerd ttf-font-awesome otf-codenewroman-nerd plymouth plymouth-theme-arch10 dracula-gtk-theme nordic-theme nordzy-cursors nordzy-icon-theme whitesur-icon-theme ttf-ms-fonts
+paru -S --needed --noconfirm archlinux-tweak-tool-git galculator p7zip entr zoxide eza ripgrep bat bat-extras fd fzf lazygit zathura zathura-pdf-mupdf htop seahorse lssecret-bin grub-customizer ffmpeg font-manager mpv vlc reflector tty-clock xarchiver thunar-archive-plugin thunar-media-tags-plugin thunar-volman ttf-hack-nerd ttf-iosevka-nerd ttf-firacode-nerd ttf-sourcecodepro-nerd ttf-terminus-nerd ttf-font-awesome otf-codenewroman-nerd plymouth plymouth-theme-arch10 dracula-gtk-theme nordic-theme nordzy-cursors nordzy-icon-theme ttf-ms-fonts
 
 echo "---------------------------------------------------------------"
 echo "Instalando #-NVM (node version manager)"
