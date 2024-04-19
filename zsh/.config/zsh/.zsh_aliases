@@ -15,7 +15,7 @@ alias man='batman'
 alias cat='bat --theme ansi'
 
 #cd up directory
-alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME/.dotfiles"
+alias dotfiles="git -C $HOME/.dotfiles"
 alias nv='NVIM_APPNAME=nvim_test nvim'
 alias Nstart='nvim --listen /tmp/nvim.pipe' 
 function Nsend {
@@ -33,6 +33,9 @@ alias alaCF="$EDITOR $HOME/.config/alacritty/alacritty.toml"
 alias rofiCF="$EDITOR $HOME/.config/rofi/config.rasi"
 alias hyprCF="$EDITOR $HOME/.config/hypr/hyprland.conf"
 alias nvimCF="$EDITOR $HOME/.config/nvim/init.lua"
+function sddmCF {
+  sudoedit /usr/share/sddm/themes/$(grep ^Current /etc/sddm.conf | awk -F '=' '{ print $2}')/theme.conf
+}
 
 alias dtS='dotfiles status'
 alias dtAll='dotfiles add -u'
