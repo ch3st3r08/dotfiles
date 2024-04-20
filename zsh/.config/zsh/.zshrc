@@ -64,13 +64,6 @@ fi
 #Load aliases
 source "$ZDOTDIR/.zsh_aliases"
 
-#Load Plugins
-# source $ZDOTDIR/antigen.zsh
-#
-# antigen bundle zsh-users/zsh-syntax-highlighting
-# antigen bundle zsh-users/zsh-autosuggestions
-# antigen apply
-#
 # Download zimfw plugin manager if missing.
 if [[ ! -e ${ZIM_HOME}/zimfw.zsh ]]; then
   curl -fsSL --create-dirs -o ${ZIM_HOME}/zimfw.zsh \
@@ -86,8 +79,7 @@ fi
 source ${ZIM_HOME}/init.zsh
 
 #Export and load Node Version Manager
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[ -s "/usr/share/nvm/init-nvm.sh" ] && \. "/usr/share/nvm/init-nvm.sh"  # This loads nvm
 
 eval "$(zoxide init zsh)"
 eval "$(fzf --zsh)"
