@@ -28,6 +28,12 @@ return {
   {
     "NvChad/nvim-colorizer.lua",
     opts = {
+      buftypes = {
+        "*",
+        -- exclude prompt and popup buftypes from highlight
+        "!prompt",
+        "!popup",
+      },
       user_default_options = {
         css_fn = true,
       },
@@ -38,8 +44,5 @@ return {
     keys = { "<leader>j", "<cmd>TSJToggle<cr>", desc = "Toggle Blocks" },
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     opts = { use_default_keymaps = false },
-  },
-  {
-    "mfussenegger/nvim-jdtls",
   },
 }
