@@ -33,12 +33,58 @@ alias alaCF="$EDITOR $HOME/.config/alacritty/alacritty.toml"
 alias rofiCF="$EDITOR $HOME/.config/rofi/config.rasi"
 alias hyprCF="$EDITOR $HOME/.config/hypr/hyprland.conf"
 alias nvimCF="$EDITOR $HOME/.config/nvim/init.lua"
-function sddmCF {
+alias sddmCF="sddmCF_FN"
+function sddmCF_FN {
   sudoedit /usr/share/sddm/themes/$(grep ^Current /etc/sddm.conf | awk -F '=' '{ print $2}')/theme.conf
 }
+
+alias lightdmCF="sudoedit /etc/lightdm/lightdm.conf"
+alias pacmanCF="sudoedit /etc/pacman.conf"
+alias grubCF="sudoedit /etc/default/grub"
+alias confgrubCF="sudoedit /boot/grub/grub.cfg"
+alias makepkgCF="sudoedit /etc/makepkg.conf"
+alias mkinitcpioCF="sudoedit /etc/mkinitcpio.conf"
+alias mirrorlistCF="sudoedit /etc/pacman.d/mirrorlist"
+alias fstabCF="sudoedit /etc/fstab"
+alias nsswitchCF="sudoedit /etc/nsswitch.conf"
+alias sambaCF="sudoedit /etc/samba/smb.conf"
+alias gnupgconfCF="sudoedit /etc/pacman.d/gnupg/gpg.conf"
+alias hostsCF="sudoedit /etc/hosts"
+alias hostnameCF="sudoedit /etc/hostname"
+alias resolvCF="sudoedit /etc/resolv.conf"
+alias plymouthCF="sudoedit /etc/plymouth/plymouthd.conf"
+alias vconsoleCF="sudoedit /etc/vconsole.conf"
+alias environmentCF="sudoedit /etc/environment"
+alias loaderCF="sudoedit /boot/efi/loader/loader.conf"
+alias refindCF="sudoedit /boot/refind_linux.conf"
 
 alias dtS='dotfiles status'
 alias dtAll='dotfiles add -u'
 alias dtA='dotfiles add'
 alias dtC='dotfiles commit -m'
 alias dtP='dotfiles push origin master'
+
+
+function ex () {
+  if [ -f $1 ] ; then
+    case $1 in
+      *.tar.bz2)   tar xjf $1   ;;
+      *.tar.gz)    tar xzf $1   ;;
+      *.bz2)       bunzip2 $1   ;;
+      *.rar)       unrar x $1   ;;
+      *.gz)        gunzip $1    ;;
+      *.tar)       tar xf $1    ;;
+      *.tbz2)      tar xjf $1   ;;
+      *.tgz)       tar xzf $1   ;;
+      *.zip)       unzip $1     ;;
+      *.Z)         uncompress $1;;
+      *.7z)        7z x $1      ;;
+      *.deb)       ar x $1      ;;
+      *.tar.xz)    tar xf $1    ;;
+      *.tar.zst)   tar xf $1    ;;
+      *)           echo "'$1' cannot be extracted via ex()" ;;
+    esac
+  else
+    echo "'$1' is not a valid file"
+  fi
+}
