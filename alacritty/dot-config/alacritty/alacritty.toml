@@ -1,4 +1,4 @@
-import = ["/home/chester/.config/alacritty/themes/themes/themes/dracula.toml"]
+import = ["/home/chester/.config/alacritty/themes/themes/themes/catppuccin_frappe.toml"]
 
 [colors]
 draw_bold_text_with_bright_colors = false
@@ -27,7 +27,7 @@ command = "xkbbell"
 save_to_clipboard = false
 
 [window]
-decorations = "none"
+#decorations = "none"
 decorations_theme_variant = "None"
 dynamic_title = true
 opacity = 0.90

@@ -46,7 +46,6 @@
       <property name="HomePage" type="string" value="exo-open --launch WebBrowser"/>
       <property name="XF86Display" type="string" value="xfce4-display-settings --minimal"/>
       <property name="override" type="bool" value="true"/>
-      <property name="&lt;Super&gt;space" type="string" value="wmctrl -r :ACTIVE: -b toggle,above"/>
       <property name="&lt;Super&gt;Return" type="string" value="exo-open --launch TerminalEmulator"/>
       <property name="&lt;Super&gt;d" type="string" value="xfce4-appfinder --collapsed">
         <property name="startup-notify" type="bool" value="true"/>
@@ -142,7 +141,6 @@
       <property name="&lt;Primary&gt;&lt;Shift&gt;&lt;Alt&gt;Right" type="string" value="move_window_right_key"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;Right" type="string" value="right_workspace_key"/>
       <property name="&lt;Primary&gt;F11" type="string" value="workspace_11_key"/>
-      <property name="&lt;Alt&gt;Delete" type="string" value="del_workspace_key"/>
       <property name="&lt;Super&gt;Tab" type="string" value="switch_window_key"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;d" type="string" value="show_desktop_key"/>
       <property name="Up" type="string" value="up_key"/>
@@ -154,16 +152,13 @@
       <property name="&lt;Primary&gt;&lt;Alt&gt;Home" type="string" value="move_window_prev_workspace_key"/>
       <property name="&lt;Alt&gt;&lt;Shift&gt;Tab" type="string" value="cycle_reverse_windows_key"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;Left" type="string" value="left_workspace_key"/>
-      <property name="&lt;Alt&gt;F12" type="string" value="above_key"/>
       <property name="&lt;Primary&gt;&lt;Shift&gt;&lt;Alt&gt;Up" type="string" value="move_window_up_key"/>
-      <property name="&lt;Alt&gt;F8" type="string" value="resize_window_key"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;KP_7" type="string" value="move_window_workspace_7_key"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;Up" type="string" value="up_workspace_key"/>
       <property name="&lt;Primary&gt;F7" type="string" value="workspace_7_key"/>
       <property name="&lt;Primary&gt;F10" type="string" value="workspace_10_key"/>
       <property name="Left" type="string" value="left_key"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;KP_8" type="string" value="move_window_workspace_8_key"/>
-      <property name="&lt;Alt&gt;Insert" type="string" value="add_workspace_key"/>
       <property name="override" type="bool" value="true"/>
       <property name="&lt;Super&gt;1" type="string" value="workspace_1_key"/>
       <property name="&lt;Super&gt;2" type="string" value="workspace_2_key"/>
@@ -187,6 +182,11 @@
       <property name="&lt;Super&gt;Page_Up" type="string" value="tile_up_right_key"/>
       <property name="&lt;Super&gt;End" type="string" value="tile_down_left_key"/>
       <property name="&lt;Super&gt;Page_Down" type="string" value="tile_down_right_key"/>
+      <property name="&lt;Shift&gt;&lt;Super&gt;r" type="string" value="resize_window_key"/>
+      <property name="&lt;Shift&gt;&lt;Super&gt;m" type="string" value="move_window_key"/>
+      <property name="&lt;Super&gt;Insert" type="string" value="add_workspace_key"/>
+      <property name="&lt;Super&gt;Delete" type="string" value="del_workspace_key"/>
+      <property name="&lt;Super&gt;space" type="string" value="above_key"/>
     </property>
   </property>
   <property name="providers" type="array">
