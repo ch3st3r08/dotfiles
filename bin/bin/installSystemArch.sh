@@ -74,17 +74,17 @@ if [ ! -f $HOME/.bashrc.bak ]; then
 fi
 
 cd .dotfiles
-stow -S alacritty pdf-reader nvim starship git tmux zsh sources music bin bash misc
+stow --dotfiles --no-folding -S alacritty pdf-reader nvim starship git tmux zsh sources music bin bash misc
 
 echo "---------------------------------------------------------------"
 echo "Instalando archivos necesarios"
 paru -S --needed --noconfirm curl pacman-contrib networkmanager sddm network-manager-applet zsh tmux gvfs gvfs-smb gvfs-nfs pipewire pipewire-audio pipewire-pulse wireplumber gst-plugin-pipewire thunar xdg-utils fastfetch neovim starship alacritty unzip pavucontrol brave-browser gtk-engine-murrine mpd ncmpcpp rhythmbox iwd libva-mesa-driver intel-media-driver sound-theme-freedesktop xf86-video-amdgpu
 
 if [ $WM == "hypr" ]; then
-	stow -S hypr waybar rofi
-	paru -S --needed --noconfirm hyprland xdg-desktop-portal-hyprland waybar rofi-lbonn-wayland swaync hypridle hyprlock hyprcursor swaybg nwg-bar-bin nwg-look-bin waypaper polkit polkit-gnome desktop-file-utils nwg-displays nwg-drawer-bin nwg-icon-picker nwg-menu-bin hyprpicker wf-recorder ristretto cliphist qt5-wayland qt6-wayland swappy slurp grim
+	stow --dotfiles --no-folding -S hypr waybar rofi
+	paru -S --needed --noconfirm hyprland xdg-desktop-portal-hyprland waybar rofi-wayland swaync hypridle hyprlock hyprcursor swaybg nwg-bar-bin nwg-look-bin waypaper polkit polkit-gnome desktop-file-utils nwg-displays nwg-drawer-bin nwg-icon-picker nwg-menu-bin hyprpicker wf-recorder ristretto cliphist qt5-wayland qt6-wayland swappy slurp grim
 else
-	stow -S xfce4
+	stow -S --dotfiles --no-folding xfce4
 	paru -S --needed --noconfirm xorg-server xorg-xinit xfce4 xfce4-goodies mugshot wmctrl timeshift-gtk xclip menulibre
 fi
 
