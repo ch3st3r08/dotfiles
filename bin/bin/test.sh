@@ -7,7 +7,7 @@ formatStr="<txt><span weight='Bold' size='large' fgcolor='Lightgreen'><i>󰚰 </
 if [ -n "$updateInfo" ]
 then
  #some calculations
- clickActionStr="<txtclick>alacritty --hold -e 'paru' </txtclick>"
+ clickActionStr="<txtclick>alacritty -e bash -c 'paru && read -p \" Continue... \"' </txtclick>"
  tooltipStr=$(echo "$updateInfo" | awk '{print $1, $4}')
  formatStr=$formatStr$numberUpdates"</txt>"
  formatStr=$formatStr$clickActionStr

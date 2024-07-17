@@ -6,7 +6,17 @@ return {
     },
   },
   {
+    "catppuccin/nvim",
+    lazy = false,
+    name = "catppuccin",
+    opts = {
+      transparent_background = true, -- disables setting the background color.
+      show_end_of_buffer = false,
+    },
+  },
+  {
     "folke/tokyonight.nvim",
+    lazy = false,
     opts = {
       transparent = true,
       styles = {

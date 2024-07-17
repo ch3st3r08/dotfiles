@@ -92,6 +92,6 @@ fi
 paru -S --needed --noconfirm nvm galculator p7zip entr zoxide eza ripgrep bat bat-extras fd fzf lazygit zathura zathura-pdf-mupdf htop seahorse lssecret-git grub-customizer ffmpeg font-manager mpv vlc reflector tty-clock xarchiver thunar-archive-plugin thunar-media-tags-plugin thunar-volman ttf-hack-nerd ttf-iosevka-nerd ttf-firacode-nerd ttf-sourcecodepro-nerd ttf-terminus-nerd ttf-font-awesome otf-codenewroman-nerd plymouth plymouth-theme-arch-logo-new dracula-gtk-theme nordic-theme nordzy-cursors ttf-ms-fonts sddm-conf-git sddm-sugar-candy-git distro-grub-themes-arch
 
 # "Iniciando servicios de lightdm"
+sudo systemctl enable --now systemd-timesyncd.service
 sudo systemctl enable --now sddm.service
-
 echo "La instalacion del sistema ha terminado, se recomienda REINICIAR el sistema, para que los cambios surjan efecto."
