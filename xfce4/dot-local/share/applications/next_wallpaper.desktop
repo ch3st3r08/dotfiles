@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Next Wallpaper
+Comment=Changes wallpaper
+Exec=xfdesktop --next
+Icon=cs-backgrounds
+Terminal=false
+StartupNotify=false
+Categories=X-Scripts
