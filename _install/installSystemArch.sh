@@ -84,14 +84,16 @@ if [ $WM == "hypr" ]; then
     stow --dotfiles --no-folding -S hypr waybar rofi
     paru -S --needed --noconfirm hyprland xdg-desktop-portal-hyprland waybar rofi-wayland swaync hypridle hyprlock hyprcursor swaybg nwg-bar-bin nwg-look-bin waypaper polkit polkit-gnome desktop-file-utils nwg-displays nwg-drawer-bin nwg-icon-picker nwg-menu-bin hyprpicker wf-recorder ristretto cliphist qt5-wayland qt6-wayland swappy slurp grim
 else
-    stow -S --dotfiles --no-folding xfce4
+
+    stow -S --dotfiles --no-folding --adopt xfce4
+    git restore *
     paru -S --needed --noconfirm xorg-server xorg-xinit xfce4 xfce4-goodies mugshot wmctrl redshift xclip menulibre gst-libav gcolor3-xorg
 fi
 
 # Instalando aplicacion de utilidad
 paru -S --needed --noconfirm nvm galculator p7zip entr zoxide eza ripgrep bat bat-extras fd fzf lazygit zathura zathura-pdf-mupdf htop seahorse lssecret-git grub-customizer ffmpeg font-manager mpv vlc reflector tty-clock xarchiver thunar-archive-plugin thunar-media-tags-plugin thunar-volman ttf-hack-nerd ttf-iosevka-nerd ttf-firacode-nerd ttf-sourcecodepro-nerd ttf-terminus-nerd ttf-font-awesome otf-codenewroman-nerd plymouth plymouth-theme-arch-logo-new dracula-gtk-theme nordic-theme nordzy-cursors ttf-ms-fonts sddm-conf-git sddm-sugar-candy-git distro-grub-themes-arch
 
-# "Iniciando servicios de lightdm"
-sudo systemctl enable --now systemd-timesyncd.service
-sudo systemctl enable --now sddm.service
+# If not using archinstall, do this
+#sudo systemctl enable --now systemd-timesyncd.service
+#sudo systemctl enable --now sddm.service
 echo "La instalacion del sistema ha terminado, se recomienda REINICIAR el sistema, para que los cambios surjan efecto."
