@@ -110,7 +110,7 @@ if [[ $WM == "hypr" ]]; then
     SPECIFIC_PACKAGES=" hyprland xdg-desktop-portal-hyprland waybar rofi-wayland swaync hypridle hyprlock hyprcursor swaybg nwg-bar-bin nwg-look-bin waypaper polkit polkit-gnome desktop-file-utils nwg-displays nwg-drawer-bin nwg-icon-picker nwg-menu-bin hyprpicker wf-recorder ristretto cliphist qt5-wayland qt6-wayland swappy slurp grim"
 else
 
-    SPECIFIC_PACKAGES=" xorg-server xorg-xinit xfce4 xfce4-goodies mugshot wmctrl redshift xclip menulibre gst-libav gcolor3-xorg"
+    SPECIFIC_PACKAGES=" xorg-server xorg-xinit xfce4 xfce4-goodies mugshot wmctrl redshift xclip menulibre gst-libav gcolor3"
 fi
 
 UTILITY_PACKAGES=" tree nvm galculator p7zip entr zoxide eza ripgrep bat bat-extras fd fzf lazygit zathura zathura-pdf-mupdf htop seahorse lssecret-git grub-customizer ffmpeg font-manager mpv vlc reflector tty-clock xarchiver thunar-archive-plugin thunar-media-tags-plugin thunar-volman ttf-hack-nerd ttf-iosevka-nerd ttf-firacode-nerd ttf-sourcecodepro-nerd ttf-terminus-nerd ttf-font-awesome otf-codenewroman-nerd plymouth plymouth-theme-arch-logo-new dracula-gtk-theme nordic-theme nordzy-cursors ttf-ms-fonts sddm-conf-git sddm-sugar-candy-git distro-grub-themes-arch"
