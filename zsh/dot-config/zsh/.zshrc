@@ -80,8 +80,9 @@ source ${ZIM_HOME}/init.zsh
 #Export and load Node Version Manager
 [ -s "/usr/share/nvm/init-nvm.sh" ] && \. "/usr/share/nvm/init-nvm.sh"  # This loads nvm
 
-eval "$(zoxide init zsh)"
-eval "$(fzf --zsh)"
+[ -s $(command -v zoxide) ] && eval "$(zoxide init zsh)"
+[ -s $(command -v fzf) ] && eval "$(fzf --zsh)"
+
 
 export PATH="$PATH:$HOME/Sources/dart-sdk/bin"
 

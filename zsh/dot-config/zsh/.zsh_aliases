@@ -37,7 +37,7 @@ alias sddmCF="sddmCF_FN"
 function sddmCF_FN {
   sudoedit /usr/share/sddm/themes/$(grep ^Current /etc/sddm.conf | awk -F '=' '{ print $2}')/theme.conf
 }
-
+alias picomCF="$EDITOR $HOME/.config/picom/picom.conf"
 alias lightdmCF="sudoedit /etc/lightdm/lightdm.conf"
 alias pacmanCF="sudoedit /etc/pacman.conf"
 alias grubCF="sudoedit /etc/default/grub"
@@ -63,7 +63,6 @@ alias dtAll='dotfiles add -u'
 alias dtA='dotfiles add'
 alias dtC='dotfiles commit -m'
 alias dtP='dotfiles push origin master'
-
 
 function ex () {
   if [ -f $1 ] ; then

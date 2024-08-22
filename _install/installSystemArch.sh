@@ -1,16 +1,5 @@
 #!/bin/bash
 
-function configXfce4() {
-    if [[ $WM == "xfce4" ]]; then
-        cat <<EOF >>~/.config/gtk-3.0/gtk.css
-.xfce4-panel#XfcePanelWindow {
-   border-radius: 10px;
-}
-EOF
-
-    fi
-}
-
 function Help() {
     echo "Install the system and configurations."
     echo
@@ -38,6 +27,17 @@ function someError() {
     if [[ $? -ne $1 ]]; then
         echo "Error: $2"
         exit
+    fi
+}
+
+function configXfce4() {
+    if [[ $WM == "xfce4" ]]; then
+        cat <<EOF >>~/.config/gtk-3.0/gtk.css
+.xfce4-panel#XfcePanelWindow {
+   border-radius: 10px;
+}
+EOF
+
     fi
 }
 
@@ -102,18 +102,26 @@ if [ ! -f $HOME/.bashrc.bak ]; then
 fi
 
 # Packages variable
-MAIN_PACKAGES="curl pacman-contrib networkmanager sddm network-manager-applet zsh tmux gvfs gvfs-smb gvfs-nfs pipewire pipewire-audio pipewire-pulse wireplumber gst-plugin-pipewire thunar xdg-utils fastfetch neovim starship alacritty unzip pavucontrol brave-browser gtk-engine-murrine mpd ncmpcpp rhythmbox iwd libva-mesa-driver intel-media-driver sound-theme-freedesktop xf86-video-amdgpu
-"
+MAIN_PACKAGES="curl tree archlinux-contrib pacman-contrib networkmanager network-manager-applet sddm zsh tmux pipewire pipewire-audio pipewire-pulse wireplumber gst-plugin-pipewire gvfs gvfs-smb gvfs-nfs thunar xdg-utils fastfetch neovim starship alacritty unzip pavucontrol brave-browser gtk-engine-murrine mpd ncmpcpp rhythmbox iwd libva-mesa-driver intel-media-driver sound-theme-freedesktop xf86-video-amdgpu"
+
 SPECIFIC_PACKAGES=""
 
 if [[ $WM == "hypr" ]]; then
-    SPECIFIC_PACKAGES=" hyprland xdg-desktop-portal-hyprland waybar rofi-wayland swaync hypridle hyprlock hyprcursor swaybg nwg-bar-bin nwg-look-bin waypaper polkit polkit-gnome desktop-file-utils nwg-displays nwg-drawer-bin nwg-icon-picker nwg-menu-bin hyprpicker wf-recorder ristretto cliphist qt5-wayland qt6-wayland swappy slurp grim"
+    SPECIFIC_PACKAGES=" hyprland xdg-desktop-portal-hyprland waybar rofi-wayland swaync hypridle hyprlock hyprcursor swaybg nwg-bar-bin nwg-look-bin waypaper polkit polkit-gnome desktop-file-utils nwg-displays nwg-drawer-bin nwg-icon-picker nwg-menu-bin hyprpicker wf-recorder ristretto cliphist qt5-wayland qt6-wayland swappy slurp grim wvkbd"
 else
 
-    SPECIFIC_PACKAGES=" xorg-server xorg-xinit xfce4 xfce4-goodies mugshot wmctrl redshift xclip menulibre gst-libav gcolor3"
+    SPECIFIC_PACKAGES=" xorg-server xorg-xinit xfce4 xfce4-goodies xfce4-panel-profiles-git mugshot wmctrl redshift xclip menulibre gst-libav gcolor3 qtvkbd conky"
 fi
 
-UTILITY_PACKAGES=" tree nvm galculator p7zip entr zoxide eza ripgrep bat bat-extras fd fzf lazygit zathura zathura-pdf-mupdf htop seahorse lssecret-git grub-customizer ffmpeg font-manager mpv vlc reflector tty-clock xarchiver thunar-archive-plugin thunar-media-tags-plugin thunar-volman ttf-hack-nerd ttf-iosevka-nerd ttf-firacode-nerd ttf-sourcecodepro-nerd ttf-terminus-nerd ttf-font-awesome otf-codenewroman-nerd plymouth plymouth-theme-arch-logo-new dracula-gtk-theme nordic-theme nordzy-cursors ttf-ms-fonts sddm-conf-git distro-grub-themes-arch"
+utility_cmd_programs="fzf eza fd ripgrep bat bat-extras zoxide entr p7zip htop reflector lazygit mpv zathura zathura-pdf-mupdf tty-clock distro-grub-themes-arch nvm lssecret-git ffmpeg plymouth plymouth-theme-arch-logo-new informant rync grsync rclone"
+
+utility_ui_programs=" galculator seahorse grub-customizer font-manager vlc xarchiver thunar-archive-plugin thunar-media-tags-plugin thunar-volman sddm-conf-git baobab gparted"
+
+utility_fonts=" ttf-hack-nerd ttf-iosevka-nerd ttf-firacode-nerd ttf-sourcecodepro-nerd ttf-terminus-nerd ttf-font-awesome otf-codenewroman-nerd ttf-ms-fonts"
+
+utility_themes=" dracula-gtk-theme nordic-theme nordzy-cursors"
+
+UTILITY_PACKAGES="$utility_cmd_programs$utility_ui_programs$utility_fonts$utility_themes"
 
 paru -S --needed --noconfirm $MAIN_PACKAGES $SPECIFIC_PACKAGES $UTILITY_PACKAGES
 
