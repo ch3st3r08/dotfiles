@@ -59,6 +59,7 @@
       <property name="&lt;Super&gt;p" type="string" value="xfce4-settings-manager"/>
       <property name="&lt;Super&gt;l" type="string" value="xfce4-terminal --drop-down"/>
       <property name="&lt;Super&gt;less" type="string" value="xfce4-popup-whiskermenu"/>
+      <property name="&lt;Super&gt;Tab" type="string" value="xfdesktop --windowlist"/>
     </property>
   </property>
   <property name="xfwm4" type="empty">
@@ -142,7 +143,6 @@
       <property name="&lt;Primary&gt;&lt;Shift&gt;&lt;Alt&gt;Right" type="string" value="move_window_right_key"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;Right" type="string" value="right_workspace_key"/>
       <property name="&lt;Primary&gt;F11" type="string" value="workspace_11_key"/>
-      <property name="&lt;Super&gt;Tab" type="string" value="switch_window_key"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;d" type="string" value="show_desktop_key"/>
       <property name="Up" type="string" value="up_key"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;KP_6" type="string" value="move_window_workspace_6_key"/>

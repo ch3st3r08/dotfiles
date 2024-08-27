@@ -38,7 +38,7 @@
   <property name="scrolling-bar" type="string" value="TERMINAL_SCROLLBAR_NONE"/>
   <property name="shortcuts-no-menukey" type="bool" value="true"/>
   <property name="shortcuts-no-mnemonics" type="bool" value="true"/>
-  <property name="color-use-theme" type="bool" value="false"/>
+  <property name="color-use-theme" type="bool" value="true"/>
   <property name="color-cursor-use-default" type="bool" value="true"/>
   <property name="color-bold-is-bright" type="bool" value="true"/>
   <property name="dropdown-show-borders" type="bool" value="false"/>

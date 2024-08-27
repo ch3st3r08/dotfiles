@@ -2,11 +2,11 @@
     "http://www.freedesktop.org/standards/menu-spec/menu-1.0.dtd">
 <Menu>
     <Name>Applications</Name>
-<Menu>
-    <Name>Scripts</Name>
-    <Directory>xfce-scripts.directory</Directory>
-    <Include>
-        <Filename>next_wallpaper.desktop</Filename>
-    </Include>
-</Menu>
+    <Menu>
+        <Name>Scripts</Name>
+        <Directory>xfce-scripts.directory</Directory>
+        <Include>
+            <Filename>next_wallpaper.desktop</Filename>
+        </Include>
+    </Menu>
 </Menu>
