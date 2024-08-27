@@ -8,13 +8,12 @@ prompt off
 bindkey -e
 
 # Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
-HISTSIZE=1000
-SAVEHIST=1000
-HISTFILE=~/.cache/zsh/.zsh_history
-HISTDUP=erase
+HISTSIZE=10000
+SAVEHIST=10000
+HISTFILE=~/.zsh_history
 setopt appendhistory sharehistory hist_ignore_space
 setopt hist_ignore_all_dups hist_save_no_dups hist_ignore_dups
-setopt hist_find_no_dups
+setopt hist_find_no_dups extended_history
 # Use modern completion system
 autoload -Uz compinit
 compinit
