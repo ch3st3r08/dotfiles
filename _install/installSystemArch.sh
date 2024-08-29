@@ -119,7 +119,7 @@ utility_ui_programs=" galculator seahorse grub-customizer font-manager vlc xarch
 
 utility_fonts=" ttf-hack-nerd ttf-iosevka-nerd ttf-firacode-nerd ttf-sourcecodepro-nerd ttf-terminus-nerd ttf-font-awesome otf-codenewroman-nerd ttf-ms-fonts"
 
-utility_themes=" dracula-gtk-theme nordic-theme nordzy-cursors"
+utility_themes=" skeuos-gtk-theme-git nordic-theme nordzy-cursors tela-circle-icon-theme-blue"
 
 UTILITY_PACKAGES="$utility_cmd_programs$utility_ui_programs$utility_fonts$utility_themes"
 
