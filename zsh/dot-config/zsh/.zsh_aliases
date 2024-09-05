@@ -22,7 +22,9 @@ function Nsend {
   nvim --server /tmp/nvim.pipe --remote $(readlink -f $1)
 }
 alias ..='cd ..'
-
+function cdl() {
+    cd $1 && lsa
+}
 #Configuration Files
 alias zshCF="$EDITOR $ZDOTDIR/.zshrc"
 alias tmuxCF="$EDITOR $HOME/.config/tmux/tmux.conf"
