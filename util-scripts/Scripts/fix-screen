@@ -1,0 +1,2 @@
+xrandr -display :0 --output HDMI-A-2 --off
+xrandr -display :0 --output HDMI-A-2 --auto

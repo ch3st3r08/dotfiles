@@ -187,10 +187,10 @@
       <property name="&lt;Super&gt;Insert" type="string" value="add_workspace_key"/>
       <property name="&lt;Super&gt;Delete" type="string" value="del_workspace_key"/>
       <property name="&lt;Super&gt;space" type="string" value="above_key"/>
-      <property name="&lt;Super&gt;braceleft" type="string" value="next_workspace_key"/>
-      <property name="&lt;Super&gt;braceright" type="string" value="prev_workspace_key"/>
       <property name="&lt;Super&gt;6" type="string" value="workspace_6_key"/>
       <property name="&lt;Super&gt;1" type="string" value="workspace_1_key"/>
+      <property name="&lt;Super&gt;braceleft" type="string" value="prev_workspace_key"/>
+      <property name="&lt;Super&gt;braceright" type="string" value="next_workspace_key"/>
     </property>
   </property>
   <property name="providers" type="array">

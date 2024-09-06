@@ -3,10 +3,10 @@
 <channel name="xfce4-terminal" version="1.0">
   <property name="background-mode" type="string" value="TERMINAL_BACKGROUND_TRANSPARENT"/>
   <property name="background-darkness" type="double" value="0.84999999999999998"/>
-  <property name="color-foreground" type="string" value="#ffffff"/>
-  <property name="color-background" type="string" value="#000000"/>
-  <property name="color-cursor" type="string" value=""/>
-  <property name="color-palette" type="string" value="#000000;#cc0000;#4e9a06;#c4a000;#3465a4;#75507b;#06989a;#d3d7cf;#555753;#ef2929;#8ae234;#fce94f;#739fcf;#ad7fa8;#34e2e2;#eeeeec"/>
+  <property name="color-foreground" type="string" value="#dcdcdc"/>
+  <property name="color-background" type="string" value="#2c2c2c"/>
+  <property name="color-cursor" type="string" value="#dcdcdc"/>
+  <property name="color-palette" type="string" value="#3f3f3f;#705050;#60b48a;#dfaf8f;#9ab8d7;#dc8cc3;#8cd0d3;#dcdcdc;#709080;#dca3a3;#72d5a3;#f0dfaf;#94bff3;#ec93d3;#93e0e3;#ffffff"/>
   <property name="font-name" type="string" value="Hack Nerd Font 16"/>
   <property name="misc-always-show-tabs" type="bool" value="false"/>
   <property name="misc-bell" type="bool" value="true"/>
@@ -38,7 +38,7 @@
   <property name="scrolling-bar" type="string" value="TERMINAL_SCROLLBAR_NONE"/>
   <property name="shortcuts-no-menukey" type="bool" value="true"/>
   <property name="shortcuts-no-mnemonics" type="bool" value="true"/>
-  <property name="color-use-theme" type="bool" value="true"/>
+  <property name="color-use-theme" type="bool" value="false"/>
   <property name="color-cursor-use-default" type="bool" value="true"/>
   <property name="color-bold-is-bright" type="bool" value="true"/>
   <property name="dropdown-show-borders" type="bool" value="false"/>
@@ -59,4 +59,5 @@
   <property name="dropdown-position" type="uint" value="37"/>
   <property name="dropdown-toggle-focus" type="bool" value="true"/>
   <property name="dropdown-height" type="uint" value="40"/>
+  <property name="font-allow-bold" type="bool" value="false"/>
 </channel>

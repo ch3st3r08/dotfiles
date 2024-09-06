@@ -42,7 +42,7 @@
   <property name="plugins" type="empty">
     <property name="notes" type="empty">
       <property name="global" type="empty">
-        <property name="background-color" type="string" value="#F7EB96"/>
+        <property name="background-color" type="string" value="#BFA6E9"/>
         <property name="font-description" type="string" value="FreeSans 12"/>
         <property name="skip-taskbar-hint" type="bool" value="true"/>
         <property name="tabs-position" type="int" value="0"/>
