@@ -148,7 +148,7 @@
       </property>
     </property>
     <property name="plugin-7" type="string" value="genmon">
-      <property name="command" type="string" value="/home/chester/bin/test.sh"/>
+      <property name="command" type="string" value="/home/chester/Scripts/test.sh"/>
       <property name="use-label" type="bool" value="true"/>
       <property name="text" type="string" value=""/>
       <property name="update-period" type="int" value="30000"/>
