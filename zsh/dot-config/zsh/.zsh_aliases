@@ -91,7 +91,7 @@ function ex () {
 }
 
 function myScripts () {
-    local selectedScript=$(fd . ~/bin \
+    local selectedScript=$(fd . ~/Scripts \
         | xargs basename -a \
         | fzf --tmux --border=rounded --prompt="  "  --border-label="Select script" --layout=reverse-list)
 

@@ -52,7 +52,7 @@ fi
 # &   # Run the process in the background.
 # ( ) # Hide shell job control messages.
 # Not supported in the "fish" shell.
-# [[ -f $HOME/.config/wpg/sequences ]] && (cat ~/.config/wpg/sequences &)
+[[ -f $HOME/.config/wpg/sequences ]] && (cat ~/.config/wpg/sequences &)
 
 
 #Load rust stuff
