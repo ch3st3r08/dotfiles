@@ -89,7 +89,7 @@
       <value type="string" value=" "/>
       <value type="string" value="Workspace 6"/>
     </property>
-    <property name="margin_top" type="int" value="58"/>
+    <property name="margin_top" type="int" value="18"/>
     <property name="margin_left" type="int" value="20"/>
     <property name="margin_right" type="int" value="20"/>
     <property name="margin_bottom" type="int" value="18"/>

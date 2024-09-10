@@ -37,6 +37,7 @@
       <property name="position-locked" type="bool" value="true"/>
       <property name="size" type="uint" value="35"/>
       <property name="icon-size" type="uint" value="24"/>
+      <property name="autohide-behavior" type="uint" value="2"/>
     </property>
   </property>
   <property name="plugins" type="empty">
@@ -143,6 +144,7 @@
       <property name="button-icon" type="string" value="archlinux-logo"/>
       <property name="button-single-row" type="bool" value="true"/>
       <property name="recent" type="array">
+        <value type="string" value="xfce4-notes.desktop"/>
         <value type="string" value="conky.desktop"/>
         <value type="string" value="qtvkbd.desktop"/>
       </property>
