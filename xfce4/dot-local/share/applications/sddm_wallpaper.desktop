@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Set SDDM Wallpaper
+Comment=Changes Sddm wallpaper to current Xfce4
+Exec=sh -c "~/Scripts/setSddmBGfromXfce4.sh"
+Icon=cs-backgrounds
+Terminal=false
+Categories=X-Scripts

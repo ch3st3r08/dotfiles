@@ -54,12 +54,14 @@ fi
 # Not supported in the "fish" shell.
 [[ -f $HOME/.config/wpg/sequences ]] && (cat ~/.config/wpg/sequences &)
 
-
 #Load rust stuff
 #source "$HOME/.cargo/env"
 
 #Load aliases
 source "$ZDOTDIR/.zsh_aliases"
+
+# zshenv path
+# $ZDOTDIR/.zshenv
 
 # Download zimfw plugin manager if missing.
 if [[ ! -e ${ZIM_HOME}/zimfw.zsh ]]; then
@@ -83,8 +85,8 @@ source ${ZIM_HOME}/init.zsh
 [ -s $(command -v fzf) ] && eval "$(fzf --zsh)"
 
 
-export PATH="$PATH:$HOME/Sources/dart-sdk/bin"
+#PATH="$HOME/Sources/dart-sdk/bin:$PATH"
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+[[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] && source "$SDKMAN_DIR/bin/sdkman-init.sh"

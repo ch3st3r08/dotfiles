@@ -3,9 +3,9 @@ export EDITOR='nvim'
 export VISUAL='nvim'
 export SUDO_EDITOR='nvim'
 
-#Include user define bin directory
-PATH="$HOME/bin:$PATH"
-PATH="$HOME/.local/bin:$PATH"
+#Using zsh builtin way of managing PATH variable
+typeset -U path
+path=($HOME/.local/bin $HOME/Scripts $path)
 
 #Apps config options
 export STARSHIP_CONFIG=~/.config/starship/config.toml

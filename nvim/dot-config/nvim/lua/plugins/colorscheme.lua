@@ -2,7 +2,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "duskfox",
+      colorscheme = "wildcharm",
     },
   },
   {
@@ -10,7 +10,7 @@ return {
     lazy = false,
     name = "catppuccin",
     opts = {
-      transparent_background = true, -- disables setting the background color.
+      transparent_background = false, -- disables setting the background color.
       show_end_of_buffer = false,
     },
   },
@@ -18,11 +18,11 @@ return {
     "folke/tokyonight.nvim",
     lazy = false,
     opts = {
-      transparent = true,
-      styles = {
-        sidebars = "transparent",
-        floats = "transparent",
-      },
+      transparent = false,
+      -- styles = {
+      --   sidebars = "transparent",
+      --   floats = "transparent",
+      -- },
     },
   },
   {
@@ -32,23 +32,19 @@ return {
   {
     "AlexvZyl/nordic.nvim",
     lazy = false,
-    config = function()
-      require("nordic").setup({
-        bold_keywords = false,
-        italic_comments = false,
-        transparent_bg = true,
-      })
-    end,
+    opts = {
+      bold_keywords = false,
+      italic_comments = false,
+      transparent_bg = false,
+    },
   },
   {
     "EdenEast/nightfox.nvim",
-    config = function()
-      require("nightfox").setup({
-        options = {
-          transparent = true,
-        },
-      })
-    end,
+    opts = {
+      options = {
+        transparent = false,
+      },
+    },
   },
   {
     "neanias/everforest-nvim",

@@ -36,10 +36,8 @@
       <property name="XF86WWW" type="string" value="exo-open --launch WebBrowser"/>
       <property name="XF86Mail" type="string" value="exo-open --launch MailReader"/>
       <property name="Print" type="string" value="xfce4-screenshooter"/>
-      <property name="&lt;Primary&gt;Escape" type="string" value="xfdesktop --menu"/>
       <property name="&lt;Shift&gt;Print" type="string" value="xfce4-screenshooter -r"/>
       <property name="&lt;Alt&gt;&lt;Super&gt;s" type="string" value="orca"/>
-      <property name="&lt;Alt&gt;F1" type="string" value="xfce4-popup-applicationsmenu"/>
       <property name="&lt;Primary&gt;&lt;Shift&gt;Escape" type="string" value="xfce4-taskmanager"/>
       <property name="&lt;Super&gt;e" type="string" value="thunar"/>
       <property name="HomePage" type="string" value="exo-open --launch WebBrowser"/>
@@ -50,7 +48,6 @@
         <property name="startup-notify" type="bool" value="true"/>
       </property>
       <property name="&lt;Shift&gt;&lt;Super&gt;x" type="string" value="xkill"/>
-      <property name="&lt;Super&gt;w" type="string" value="xflock4"/>
       <property name="&lt;Shift&gt;&lt;Super&gt;d" type="string" value="xfce4-appfinder">
         <property name="startup-notify" type="bool" value="true"/>
       </property>
@@ -60,6 +57,10 @@
       <property name="&lt;Super&gt;l" type="string" value="xfce4-terminal --drop-down"/>
       <property name="&lt;Super&gt;less" type="string" value="xfce4-popup-whiskermenu"/>
       <property name="&lt;Super&gt;Tab" type="string" value="xfdesktop --windowlist"/>
+      <property name="&lt;Shift&gt;&lt;Super&gt;w" type="string" value="xflock4"/>
+      <property name="&lt;Super&gt;s" type="string" value="xfdesktop --menu"/>
+      <property name="&lt;Primary&gt;&lt;Shift&gt;h" type="string" value="hide_panel_margins.sh"/>
+      <property name="&lt;Super&gt;Escape" type="string" value="xfce4-popup-applicationsmenu --pointer"/>
     </property>
   </property>
   <property name="xfwm4" type="empty">

@@ -6,7 +6,7 @@
         <Name>Scripts</Name>
         <Directory>xfce-scripts.directory</Directory>
         <Include>
-            <Filename>next_wallpaper.desktop</Filename>
+            <Category>X-Scripts</Category>
         </Include>
     </Menu>
 </Menu>

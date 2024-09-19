@@ -13,4 +13,4 @@ echo "The theme path is $themeFile"
 #TODO
 # Get the themeFile line with the background option using Sed and
 # and try to replace it with currentBg
-sudo sed -E -i "s#^Background=.+#Background=\"$currentBg\"#" $themeFile
+pkexec sed -E -i "s#^Background=.+#Background=\"$currentBg\"#" $themeFile
