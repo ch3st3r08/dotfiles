@@ -35,7 +35,7 @@ return {
     opts = {
       bold_keywords = false,
       italic_comments = false,
-      transparent_bg = false,
+      transparent = false,
     },
   },
   {
