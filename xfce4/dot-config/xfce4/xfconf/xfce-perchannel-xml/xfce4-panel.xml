@@ -39,6 +39,8 @@
       <property name="size" type="uint" value="35"/>
       <property name="icon-size" type="uint" value="24"/>
       <property name="autohide-behavior" type="uint" value="0"/>
+      <property name="enter-opacity" type="uint" value="80"/>
+      <property name="leave-opacity" type="uint" value="80"/>
     </property>
   </property>
   <property name="plugins" type="empty">
@@ -62,13 +64,19 @@
     </property>
     <property name="plugin-19" type="string" value="systray">
       <property name="hide-new-items" type="bool" value="false"/>
-      <property name="icon-size" type="int" value="28"/>
+      <property name="icon-size" type="int" value="0"/>
       <property name="known-items" type="array">
+        <value type="string" value="remmina-icon"/>
+        <value type="string" value="obs"/>
+        <value type="string" value="proton-vpn-app"/>
+        <value type="string" value="ulauncher"/>
+        <value type="string" value="virt-manager"/>
         <value type="string" value="qtvkbd"/>
         <value type="string" value="chrome_status_icon_1"/>
         <value type="string" value="redshift"/>
       </property>
       <property name="known-legacy-items" type="array">
+        <value type="string" value="drop-down terminal"/>
         <value type="string" value="no network connection"/>
         <value type="string" value="xfce terminal"/>
         <value type="string" value="networkmanager applet"/>
@@ -79,8 +87,8 @@
       </property>
       <property name="menu-is-primary" type="bool" value="true"/>
       <property name="single-row" type="bool" value="false"/>
-      <property name="square-icons" type="bool" value="false"/>
-      <property name="symbolic-icons" type="bool" value="false"/>
+      <property name="square-icons" type="bool" value="true"/>
+      <property name="symbolic-icons" type="bool" value="true"/>
     </property>
     <property name="plugin-20" type="string" value="actions">
       <property name="appearance" type="uint" value="1"/>
@@ -90,7 +98,7 @@
     <property name="plugin-21" type="string" value="notification-plugin"/>
     <property name="plugin-22" type="string" value="pulseaudio">
       <property name="enable-keyboard-shortcuts" type="bool" value="true"/>
-      <property name="known-players" type="string" value="Brave;firefox"/>
+      <property name="known-players" type="string" value="Brave;firefox;org.gnome.Rhythmbox3;parole"/>
       <property name="play-sound" type="bool" value="true"/>
     </property>
     <property name="plugin-25" type="string" value="clock">
@@ -146,6 +154,8 @@
       <property name="button-icon" type="string" value="archlinux-logo"/>
       <property name="button-single-row" type="bool" value="true"/>
       <property name="recent" type="array">
+        <value type="string" value="org.nickvision.tubeconverter.desktop"/>
+        <value type="string" value="thunar-bulk-rename.desktop"/>
         <value type="string" value="libreoffice-startcenter.desktop"/>
         <value type="string" value="xfce-backdrop-settings.desktop"/>
         <value type="string" value="xfce-keyboard-settings.desktop"/>
@@ -208,6 +218,16 @@
       <property name="show-generic-names" type="bool" value="false"/>
       <property name="button-title" type="string" value=" "/>
       <property name="button-icon" type="string" value="overflow-menu"/>
+    </property>
+    <property name="clipman" type="empty">
+      <property name="settings" type="empty">
+        <property name="show-qr-code" type="bool" value="true"/>
+        <property name="add-primary-clipboard" type="bool" value="true"/>
+        <property name="enable-actions" type="bool" value="false"/>
+      </property>
+      <property name="tweaks" type="empty">
+        <property name="popup-at-pointer" type="bool" value="true"/>
+      </property>
     </property>
   </property>
 </channel>

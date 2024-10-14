@@ -43,9 +43,9 @@
   <property name="color-bold-is-bright" type="bool" value="true"/>
   <property name="dropdown-show-borders" type="bool" value="false"/>
   <property name="dropdown-keep-open-default" type="bool" value="true"/>
-  <property name="dropdown-opacity" type="uint" value="90"/>
+  <property name="dropdown-opacity" type="uint" value="100"/>
   <property name="dropdown-animation-time" type="uint" value="300"/>
-  <property name="dropdown-always-show-tabs" type="bool" value="true"/>
+  <property name="dropdown-always-show-tabs" type="bool" value="false"/>
   <property name="dropdown-width" type="uint" value="40"/>
   <property name="dropdown-position-vertical" type="uint" value="7"/>
   <property name="color-background-vary" type="bool" value="false"/>
@@ -56,7 +56,7 @@
   <property name="color-bold" type="string" value=""/>
   <property name="color-bold-use-default" type="bool" value="true"/>
   <property name="tab-activity-color" type="string" value="#aa0000"/>
-  <property name="dropdown-position" type="uint" value="37"/>
+  <property name="dropdown-position" type="uint" value="50"/>
   <property name="dropdown-toggle-focus" type="bool" value="true"/>
   <property name="dropdown-height" type="uint" value="40"/>
   <property name="font-allow-bold" type="bool" value="false"/>
