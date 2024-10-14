@@ -1,7 +1,9 @@
 #!/bin/sh
 
 # get current xfce4 wallpaper
-currentBg=$(xfconf-query -c xfce4-desktop -lv | grep "workspace0/last-image" | sed 's/  */ /g' | cut -d" " -f2 | xargs realpath)
+
+currentMonitor=$(xrandr | grep "\bconnected" | awk '{ print $1}')
+currentBg=$(xfconf-query -c xfce4-desktop -lv | grep "monitor$currentMonitor/workspace0/last-image" | sed 's/  */ /g' | cut -d" " -f2 | xargs realpath)
 echo "The background path is $currentBg"
 # Sddm conf file path
 sddmConf="/etc/sddm.conf"

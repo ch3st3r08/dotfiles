@@ -44,13 +44,17 @@ EOF
 #Default variables
 _DEBUG=0
 IS_VM=0
+_EXISTING=0
 WM="xfce4" #hypr
 
-while getopts ":hbmdw:" option; do
+while getopts ":hebmdw:" option; do
     case $option in
     h)
         Help
         exit
+        ;;
+    e)
+        _EXISTING=1
         ;;
     b)
         _DEBUG=1
@@ -110,10 +114,10 @@ if [[ $WM == "hypr" ]]; then
     SPECIFIC_PACKAGES=" hyprland xdg-desktop-portal-hyprland waybar rofi-wayland swaync hypridle hyprlock hyprcursor swaybg nwg-bar-bin nwg-look-bin waypaper polkit polkit-gnome desktop-file-utils nwg-displays nwg-drawer-bin nwg-icon-picker nwg-menu-bin hyprpicker wf-recorder ristretto cliphist qt5-wayland qt6-wayland swappy slurp grim wvkbd"
 else
 
-    SPECIFIC_PACKAGES=" xorg-server xorg-xinit xfce4 xfce4-goodies xfce4-panel-profiles-git mugshot wmctrl redshift xclip menulibre gst-libav gcolor3 qtvkbd conky"
+    SPECIFIC_PACKAGES=" xorg-server xorg-xinit xfce4 xfce4-goodies xfce4-panel-profiles gigolo transmission-gtk catfish atril mugshot wmctrl redshift xclip menulibre gst-libav gcolor3 qtvkbd conky"
 fi
 
-utility_cmd_programs="fzf eza fd ripgrep bat bat-extras zoxide entr p7zip htop reflector lazygit mpv zathura zathura-pdf-mupdf tty-clock distro-grub-themes-arch nvm lssecret-git ffmpeg plymouth plymouth-theme-arch-logo-new informant rync grsync rclone"
+utility_cmd_programs="fzf eza fd ripgrep bat bat-extras zoxide entr p7zip htop reflector lazygit mpv zathura zathura-pdf-mupdf tty-clock distro-grub-themes-arch nvm lssecret-git ffmpeg plymouth plymouth-theme-arch-logo-new informant rsync grsync rclone"
 
 utility_ui_programs=" galculator seahorse grub-customizer font-manager vlc xarchiver thunar-archive-plugin thunar-media-tags-plugin thunar-volman sddm-conf-git baobab gparted"
 
@@ -131,18 +135,24 @@ if [[ $? -ne 0 ]]; then
 fi
 
 cd .dotfiles
-stow --dotfiles --no-folding -S alacritty pdf-reader nvim starship git tmux zsh sources music bin bash misc
+stow --dotfiles --no-folding -S alacritty pdf-reader nvim starship git tmux zsh sources music util-scripts bash misc
 if [[ $WM == "hypr" ]]; then
     stow --dotfiles --no-folding -S hypr waybar rofi
 else
-    stow -S --dotfiles --no-folding --adopt xfce4
-    git restore *
-    configXfce4
+    # Si existe la carpeta hacer esto:
+    if [ -d $HOME/.config/xfce4/xfconf ]; then
+        stow -S --dotfiles --no-folding --adopt xfce4
+        git restore *
+    else
+        stow -S --dotfiles --no-folding xfce4
+    fi
+        configXfce4
 fi
 
-# If not using archinstall, do this
-#sudo systemctl enable --now systemd-timesyncd.service
-#sudo systemctl enable --now sddm.service
+systemctl is-active --quiet systemd-timesync || sudo systemctl enable --now systemd-timesyncd.service
+systemctl is-active --quiet sddm || sudo systemctl enable --now sddm.service
+
+
 echo "Nota: Si quieres tener los wallpapers, descargalos a la ubicacion /usr/share/backgrounds y symlink a Pictures"
 echo "Nota: Si quieres thema de Sddm, descargalo e instalalo en la ubicación /usr/share/sddm/themes y modifica el archivo sddm.conf "
 echo "--------------------------------------------------"

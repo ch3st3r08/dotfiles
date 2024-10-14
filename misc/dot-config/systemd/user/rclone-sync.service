@@ -1,0 +1,23 @@
+[Unit]
+Description=Mount Google Drive using rclone
+After=network-online.target
+Before=shutdown.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+Environment=REMOTE_NAME="gdrive"
+Environment=MOUNT_DIR="%h/Gdrive"
+Environment=RCLONE_CONF="%h/.config/rclone/rclone.conf"
+
+ExecStart=/usr/bin/rclone mount "${REMOTE_NAME}:" ${MOUNT_DIR} \
+    --config="${RCLONE_CONF}" \
+    --vfs-cache-mode=writes \
+    --dir-cache-time=1h
+
+ExecStop=/bin/fusermount -u ${MOUNT_DIR}
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=default.target
