@@ -154,6 +154,7 @@
       <property name="button-icon" type="string" value="archlinux-logo"/>
       <property name="button-single-row" type="bool" value="true"/>
       <property name="recent" type="array">
+        <value type="string" value="io.github.flattool.Warehouse.desktop"/>
         <value type="string" value="org.nickvision.tubeconverter.desktop"/>
         <value type="string" value="thunar-bulk-rename.desktop"/>
         <value type="string" value="libreoffice-startcenter.desktop"/>

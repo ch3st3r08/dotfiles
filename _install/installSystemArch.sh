@@ -119,11 +119,11 @@ fi
 
 utility_cmd_programs="fzf eza fd ripgrep bat bat-extras zoxide entr p7zip htop reflector lazygit mpv zathura zathura-pdf-mupdf tty-clock distro-grub-themes-arch nvm lssecret-git ffmpeg plymouth plymouth-theme-arch-logo-new informant rsync grsync rclone"
 
-utility_ui_programs=" galculator seahorse grub-customizer font-manager vlc xarchiver thunar-archive-plugin thunar-media-tags-plugin thunar-volman sddm-conf-git baobab gparted"
+utility_ui_programs=" galculator seahorse grub-customizer font-manager vlc xarchiver thunar-archive-plugin thunar-media-tags-plugin thunar-volman sddm-conf-git baobab gparted thunderbird"
 
 utility_fonts=" ttf-hack-nerd ttf-iosevka-nerd ttf-firacode-nerd ttf-sourcecodepro-nerd ttf-terminus-nerd ttf-font-awesome otf-codenewroman-nerd ttf-ms-fonts"
 
-utility_themes=" skeuos-gtk-theme-git nordic-theme nordzy-cursors tela-circle-icon-theme-blue"
+utility_themes=" nordic-theme nordzy-cursors kora-icon-theme"
 
 UTILITY_PACKAGES="$utility_cmd_programs$utility_ui_programs$utility_fonts$utility_themes"
 
@@ -146,12 +146,11 @@ else
     else
         stow -S --dotfiles --no-folding xfce4
     fi
-        configXfce4
+    configXfce4
 fi
 
 systemctl is-active --quiet systemd-timesync || sudo systemctl enable --now systemd-timesyncd.service
 systemctl is-active --quiet sddm || sudo systemctl enable --now sddm.service
-
 
 echo "Nota: Si quieres tener los wallpapers, descargalos a la ubicacion /usr/share/backgrounds y symlink a Pictures"
 echo "Nota: Si quieres thema de Sddm, descargalo e instalalo en la ubicación /usr/share/sddm/themes y modifica el archivo sddm.conf "
