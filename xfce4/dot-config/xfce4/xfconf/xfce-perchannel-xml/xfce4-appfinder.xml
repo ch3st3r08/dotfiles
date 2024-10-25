@@ -10,6 +10,7 @@
     <value type="int" value="6"/>
     <value type="int" value="7"/>
     <value type="int" value="8"/>
+    <value type="int" value="9"/>
     <property name="action-5" type="empty">
       <property name="type" type="int" value="0"/>
       <property name="pattern" type="string" value="//"/>
@@ -51,6 +52,10 @@
     <property name="action-8" type="empty">
       <property name="pattern" type="string" value="aur?"/>
       <property name="command" type="string" value="exo-open --launch WebBrowser https://aur.archlinux.org/packages?O=0&amp;K=%s"/>
+    </property>
+    <property name="action-9" type="empty">
+      <property name="pattern" type="string" value="!es"/>
+      <property name="command" type="string" value="exo-open --launch WebBrowser https://dictionary.cambridge.org/us/dictionary/english-spanish/%s"/>
     </property>
   </property>
   <property name="last" type="empty">

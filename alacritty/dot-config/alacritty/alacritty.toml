@@ -1,4 +1,5 @@
-import = ["/home/chester/.config/alacritty/themes/themes/themes/catppuccin_frappe.toml"]
+[general]
+import = ["/home/chester/.config/alacritty/themes/alacrytheme/themes/nightfox.toml"]
 
 [colors]
 draw_bold_text_with_bright_colors = false
@@ -27,7 +28,6 @@ command = "xkbbell"
 save_to_clipboard = false
 
 [window]
-#decorations = "none"
-decorations_theme_variant = "None"
+#decorations = "None"
 dynamic_title = true
-opacity = 0.90
+opacity = 0.85

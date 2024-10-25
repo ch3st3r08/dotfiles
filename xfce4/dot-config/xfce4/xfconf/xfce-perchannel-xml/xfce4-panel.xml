@@ -154,16 +154,16 @@
       <property name="button-icon" type="string" value="archlinux-logo"/>
       <property name="button-single-row" type="bool" value="true"/>
       <property name="recent" type="array">
+        <value type="string" value="xfce-keyboard-settings.desktop"/>
+        <value type="string" value="org.squidowl.halloy.desktop"/>
         <value type="string" value="io.github.flattool.Warehouse.desktop"/>
         <value type="string" value="org.nickvision.tubeconverter.desktop"/>
         <value type="string" value="thunar-bulk-rename.desktop"/>
         <value type="string" value="libreoffice-startcenter.desktop"/>
         <value type="string" value="xfce-backdrop-settings.desktop"/>
-        <value type="string" value="xfce-keyboard-settings.desktop"/>
         <value type="string" value="xfce-settings-manager.desktop"/>
         <value type="string" value="xfce4-notes.desktop"/>
         <value type="string" value="conky.desktop"/>
-        <value type="string" value="qtvkbd.desktop"/>
       </property>
     </property>
     <property name="plugin-7" type="string" value="genmon">
@@ -223,8 +223,9 @@
     <property name="clipman" type="empty">
       <property name="settings" type="empty">
         <property name="show-qr-code" type="bool" value="true"/>
-        <property name="add-primary-clipboard" type="bool" value="true"/>
+        <property name="add-primary-clipboard" type="bool" value="false"/>
         <property name="enable-actions" type="bool" value="false"/>
+        <property name="history-ignore-primary-clipboard" type="bool" value="true"/>
       </property>
       <property name="tweaks" type="empty">
         <property name="popup-at-pointer" type="bool" value="true"/>

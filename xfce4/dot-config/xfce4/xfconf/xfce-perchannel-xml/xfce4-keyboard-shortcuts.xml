@@ -45,9 +45,6 @@
       <property name="override" type="bool" value="true"/>
       <property name="&lt;Super&gt;Return" type="string" value="exo-open --launch TerminalEmulator"/>
       <property name="&lt;Shift&gt;&lt;Super&gt;x" type="string" value="xkill"/>
-      <property name="&lt;Shift&gt;&lt;Super&gt;d" type="string" value="xfce4-appfinder">
-        <property name="startup-notify" type="bool" value="true"/>
-      </property>
       <property name="&lt;Shift&gt;&lt;Super&gt;e" type="string" value="xfce4-session-logout"/>
       <property name="&lt;Shift&gt;&lt;Super&gt;Return" type="string" value="exo-open --launch TerminalEmulator -e tmux"/>
       <property name="&lt;Super&gt;p" type="string" value="xfce4-settings-manager"/>
@@ -59,6 +56,12 @@
       <property name="&lt;Primary&gt;&lt;Shift&gt;h" type="string" value="hide_panel_margins.sh"/>
       <property name="&lt;Super&gt;Escape" type="string" value="xfce4-popup-applicationsmenu --pointer"/>
       <property name="&lt;Super&gt;plus" type="string" value="xfce4-find-cursor"/>
+      <property name="&lt;Super&gt;d" type="string" value="xfce4-appfinder --collapsed">
+        <property name="startup-notify" type="bool" value="true"/>
+      </property>
+      <property name="&lt;Shift&gt;&lt;Super&gt;d" type="string" value="xfce4-appfinder">
+        <property name="startup-notify" type="bool" value="true"/>
+      </property>
     </property>
   </property>
   <property name="xfwm4" type="empty">
