@@ -1,5 +1,11 @@
 return {
   {
+    "neovim/nvim-lspconfig",
+    opts = {
+      inlay_hints = { enabled = false },
+    },
+  },
+  {
     "RRethy/vim-illuminate",
     enabled = false,
   },
@@ -44,5 +50,12 @@ return {
     keys = { "<leader>j", "<cmd>TSJToggle<cr>", desc = "Toggle Blocks" },
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     opts = { use_default_keymaps = false },
+  },
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    keys = {
+      { "<leader>e", false },
+      { "<leader>E", false },
+    },
   },
 }

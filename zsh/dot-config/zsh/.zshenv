@@ -18,3 +18,4 @@ export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --e
 export FZF_DEFAULT_OPTS="--height=60% --info=inline --border --margin=1 --padding=1"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_TMUX_OPTS='-p80%,60%'
+. "$HOME/.cargo/env"

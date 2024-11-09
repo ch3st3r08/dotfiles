@@ -12,17 +12,19 @@
         <value type="int" value="6"/>
         <value type="int" value="5"/>
         <value type="int" value="12"/>
+        <value type="int" value="14"/>
+        <value type="int" value="15"/>
         <value type="int" value="16"/>
         <value type="int" value="13"/>
-        <value type="int" value="15"/>
-        <value type="int" value="14"/>
         <value type="int" value="24"/>
         <value type="int" value="17"/>
+        <value type="int" value="9"/>
         <value type="int" value="25"/>
         <value type="int" value="30"/>
         <value type="int" value="7"/>
         <value type="int" value="1"/>
         <value type="int" value="2"/>
+        <value type="int" value="11"/>
         <value type="int" value="28"/>
         <value type="int" value="29"/>
         <value type="int" value="27"/>
@@ -46,7 +48,7 @@
   <property name="plugins" type="empty">
     <property name="notes" type="empty">
       <property name="global" type="empty">
-        <property name="background-color" type="string" value="#BFA6E9"/>
+        <property name="background-color" type="string" value="#FF96AC"/>
         <property name="font-description" type="string" value="FreeSans 12"/>
         <property name="skip-taskbar-hint" type="bool" value="true"/>
         <property name="tabs-position" type="int" value="0"/>
@@ -66,6 +68,8 @@
       <property name="hide-new-items" type="bool" value="false"/>
       <property name="icon-size" type="int" value="0"/>
       <property name="known-items" type="array">
+        <value type="string" value="Screenkey"/>
+        <value type="string" value="toolbox"/>
         <value type="string" value="remmina-icon"/>
         <value type="string" value="obs"/>
         <value type="string" value="proton-vpn-app"/>
@@ -93,7 +97,7 @@
     <property name="plugin-20" type="string" value="actions">
       <property name="appearance" type="uint" value="1"/>
       <property name="button-title" type="uint" value="3"/>
-      <property name="custom-title" type="string" value="󰐥 "/>
+      <property name="custom-title" type="string" value=" 󰐥 "/>
     </property>
     <property name="plugin-21" type="string" value="notification-plugin"/>
     <property name="plugin-22" type="string" value="pulseaudio">
@@ -154,14 +158,14 @@
       <property name="button-icon" type="string" value="archlinux-logo"/>
       <property name="button-single-row" type="bool" value="true"/>
       <property name="recent" type="array">
-        <value type="string" value="xfce-keyboard-settings.desktop"/>
-        <value type="string" value="org.squidowl.halloy.desktop"/>
-        <value type="string" value="io.github.flattool.Warehouse.desktop"/>
-        <value type="string" value="org.nickvision.tubeconverter.desktop"/>
-        <value type="string" value="thunar-bulk-rename.desktop"/>
-        <value type="string" value="libreoffice-startcenter.desktop"/>
-        <value type="string" value="xfce-backdrop-settings.desktop"/>
+        <value type="string" value="qtvkbd.desktop"/>
+        <value type="string" value="remote-viewer.desktop"/>
         <value type="string" value="xfce-settings-manager.desktop"/>
+        <value type="string" value="sddm_conf.desktop"/>
+        <value type="string" value="grub-customizer.desktop"/>
+        <value type="string" value="xfce-keyboard-settings.desktop"/>
+        <value type="string" value="thunar-bulk-rename.desktop"/>
+        <value type="string" value="xfce-backdrop-settings.desktop"/>
         <value type="string" value="xfce4-notes.desktop"/>
         <value type="string" value="conky.desktop"/>
       </property>
@@ -182,22 +186,22 @@
     </property>
     <property name="plugin-13" type="string" value="launcher">
       <property name="items" type="array">
-        <value type="string" value="17241860251.desktop"/>
+        <value type="string" value="17299809933.desktop"/>
       </property>
     </property>
     <property name="plugin-14" type="string" value="launcher">
       <property name="items" type="array">
-        <value type="string" value="17241860824.desktop"/>
+        <value type="string" value="17299809571.desktop"/>
       </property>
     </property>
     <property name="plugin-15" type="string" value="launcher">
       <property name="items" type="array">
-        <value type="string" value="17241860663.desktop"/>
+        <value type="string" value="17299809732.desktop"/>
       </property>
     </property>
     <property name="plugin-16" type="string" value="launcher">
       <property name="items" type="array">
-        <value type="string" value="17241860432.desktop"/>
+        <value type="string" value="17299810084.desktop"/>
       </property>
     </property>
     <property name="plugin-17" type="string" value="separator">
@@ -231,5 +235,41 @@
         <property name="popup-at-pointer" type="bool" value="true"/>
       </property>
     </property>
+    <property name="plugin-9" type="string" value="weather">
+      <property name="location" type="empty">
+        <property name="name" type="string" value="San Salvador, El Salvador"/>
+        <property name="latitude" type="string" value="13.680600"/>
+        <property name="longitude" type="string" value="-89.180300"/>
+      </property>
+      <property name="msl" type="int" value="728"/>
+      <property name="timezone" type="string" value="America/El_Salvador"/>
+      <property name="offset" type="string" value="-06:00"/>
+      <property name="cache-max-age" type="int" value="172800"/>
+      <property name="power-saving" type="bool" value="true"/>
+      <property name="units" type="empty">
+        <property name="temperature" type="int" value="0"/>
+        <property name="pressure" type="int" value="0"/>
+        <property name="windspeed" type="int" value="0"/>
+        <property name="precipitation" type="int" value="0"/>
+        <property name="altitude" type="int" value="0"/>
+        <property name="apparent-temperature" type="int" value="0"/>
+      </property>
+      <property name="round" type="bool" value="true"/>
+      <property name="single-row" type="bool" value="true"/>
+      <property name="tooltip-style" type="int" value="0"/>
+      <property name="forecast" type="empty">
+        <property name="layout" type="int" value="1"/>
+        <property name="days" type="int" value="5"/>
+      </property>
+      <property name="theme-dir" type="string" value="/usr/share/xfce4/weather/icons/liquid"/>
+      <property name="scrollbox" type="empty">
+        <property name="show" type="bool" value="true"/>
+        <property name="animate" type="bool" value="true"/>
+        <property name="lines" type="int" value="1"/>
+        <property name="color" type="string" value="rgba(0,0,0,0)"/>
+        <property name="use-color" type="bool" value="false"/>
+      </property>
+    </property>
+    <property name="plugin-11" type="string" value="places"/>
   </property>
 </channel>

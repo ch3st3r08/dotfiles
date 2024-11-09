@@ -80,6 +80,7 @@ source ${ZIM_HOME}/init.zsh
 
 #Export and load Node Version Manager
 [ -s "/usr/share/nvm/init-nvm.sh" ] && \. "/usr/share/nvm/init-nvm.sh"  # This loads nvm
+[ -s "$HOME/.cargo/env" ] && \. "$HOME/.cargo/env"  # This loads nvm
 
 [ -s $(command -v zoxide) ] && eval "$(zoxide init zsh)"
 [ -s $(command -v fzf) ] && eval "$(fzf --zsh)"
