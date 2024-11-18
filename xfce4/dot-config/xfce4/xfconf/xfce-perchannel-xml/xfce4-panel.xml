@@ -4,7 +4,7 @@
   <property name="configver" type="int" value="2"/>
   <property name="panels" type="array">
     <value type="int" value="3"/>
-    <property name="dark-mode" type="bool" value="false"/>
+    <property name="dark-mode" type="bool" value="true"/>
     <property name="panel-3" type="empty">
       <property name="length" type="double" value="100"/>
       <property name="plugin-ids" type="array">
@@ -39,7 +39,7 @@
       <property name="position" type="string" value="p=2;x=1636;y=19"/>
       <property name="position-locked" type="bool" value="true"/>
       <property name="size" type="uint" value="35"/>
-      <property name="icon-size" type="uint" value="24"/>
+      <property name="icon-size" type="uint" value="0"/>
       <property name="autohide-behavior" type="uint" value="0"/>
       <property name="enter-opacity" type="uint" value="80"/>
       <property name="leave-opacity" type="uint" value="80"/>
@@ -48,7 +48,7 @@
   <property name="plugins" type="empty">
     <property name="notes" type="empty">
       <property name="global" type="empty">
-        <property name="background-color" type="string" value="#FF96AC"/>
+        <property name="background-color" type="string" value="#BFA6E9"/>
         <property name="font-description" type="string" value="FreeSans 12"/>
         <property name="skip-taskbar-hint" type="bool" value="true"/>
         <property name="tabs-position" type="int" value="0"/>
@@ -158,6 +158,8 @@
       <property name="button-icon" type="string" value="archlinux-logo"/>
       <property name="button-single-row" type="bool" value="true"/>
       <property name="recent" type="array">
+        <value type="string" value="atril.desktop"/>
+        <value type="string" value="timeshift-gtk.desktop"/>
         <value type="string" value="qtvkbd.desktop"/>
         <value type="string" value="remote-viewer.desktop"/>
         <value type="string" value="xfce-settings-manager.desktop"/>
@@ -166,9 +168,8 @@
         <value type="string" value="xfce-keyboard-settings.desktop"/>
         <value type="string" value="thunar-bulk-rename.desktop"/>
         <value type="string" value="xfce-backdrop-settings.desktop"/>
-        <value type="string" value="xfce4-notes.desktop"/>
-        <value type="string" value="conky.desktop"/>
       </property>
+      <property name="menu-width" type="int" value="480"/>
     </property>
     <property name="plugin-7" type="string" value="genmon">
       <property name="command" type="string" value="/home/chester/Scripts/test.sh"/>
