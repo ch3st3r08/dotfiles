@@ -54,9 +54,6 @@ fi
 # Not supported in the "fish" shell.
 [[ -f $HOME/.config/wpg/sequences ]] && (cat ~/.config/wpg/sequences &)
 
-#Load rust stuff
-#source "$HOME/.cargo/env"
-
 #Load aliases
 source "$ZDOTDIR/.zsh_aliases"
 
@@ -80,7 +77,7 @@ source ${ZIM_HOME}/init.zsh
 
 #Export and load Node Version Manager
 [ -s "/usr/share/nvm/init-nvm.sh" ] && \. "/usr/share/nvm/init-nvm.sh"  # This loads nvm
-[ -s "$HOME/.cargo/env" ] && \. "$HOME/.cargo/env"  # This loads nvm
+[ -s "$HOME/.cargo/env" ] && \. "$HOME/.cargo/env"  # This loads cargo
 
 [ -s $(command -v zoxide) ] && eval "$(zoxide init zsh)"
 [ -s $(command -v fzf) ] && eval "$(fzf --zsh)"
@@ -91,3 +88,6 @@ source ${ZIM_HOME}/init.zsh
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
+
+# bun completions
+[ -s "/home/chester/.bun/_bun" ] && source "/home/chester/.bun/_bun"

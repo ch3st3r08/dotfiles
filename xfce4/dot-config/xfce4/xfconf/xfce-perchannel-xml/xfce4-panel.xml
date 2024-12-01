@@ -4,7 +4,7 @@
   <property name="configver" type="int" value="2"/>
   <property name="panels" type="array">
     <value type="int" value="3"/>
-    <property name="dark-mode" type="bool" value="true"/>
+    <property name="dark-mode" type="bool" value="false"/>
     <property name="panel-3" type="empty">
       <property name="length" type="double" value="100"/>
       <property name="plugin-ids" type="array">
@@ -68,6 +68,7 @@
       <property name="hide-new-items" type="bool" value="false"/>
       <property name="icon-size" type="int" value="0"/>
       <property name="known-items" type="array">
+        <value type="string" value="steam"/>
         <value type="string" value="Screenkey"/>
         <value type="string" value="toolbox"/>
         <value type="string" value="remmina-icon"/>
@@ -158,16 +159,16 @@
       <property name="button-icon" type="string" value="archlinux-logo"/>
       <property name="button-single-row" type="bool" value="true"/>
       <property name="recent" type="array">
+        <value type="string" value="com.usebottles.bottles.desktop"/>
+        <value type="string" value="vesktop.desktop"/>
+        <value type="string" value="xfce-session-settings.desktop"/>
+        <value type="string" value="nvim.desktop"/>
+        <value type="string" value="xfce4-screenshooter.desktop"/>
         <value type="string" value="atril.desktop"/>
         <value type="string" value="timeshift-gtk.desktop"/>
         <value type="string" value="qtvkbd.desktop"/>
         <value type="string" value="remote-viewer.desktop"/>
         <value type="string" value="xfce-settings-manager.desktop"/>
-        <value type="string" value="sddm_conf.desktop"/>
-        <value type="string" value="grub-customizer.desktop"/>
-        <value type="string" value="xfce-keyboard-settings.desktop"/>
-        <value type="string" value="thunar-bulk-rename.desktop"/>
-        <value type="string" value="xfce-backdrop-settings.desktop"/>
       </property>
       <property name="menu-width" type="int" value="480"/>
     </property>
