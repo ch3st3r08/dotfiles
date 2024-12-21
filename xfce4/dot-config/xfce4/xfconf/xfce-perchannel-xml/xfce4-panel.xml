@@ -159,6 +159,7 @@
       <property name="button-icon" type="string" value="archlinux-logo"/>
       <property name="button-single-row" type="bool" value="true"/>
       <property name="recent" type="array">
+        <value type="string" value="firefox.desktop"/>
         <value type="string" value="com.usebottles.bottles.desktop"/>
         <value type="string" value="vesktop.desktop"/>
         <value type="string" value="xfce-session-settings.desktop"/>
@@ -168,7 +169,6 @@
         <value type="string" value="timeshift-gtk.desktop"/>
         <value type="string" value="qtvkbd.desktop"/>
         <value type="string" value="remote-viewer.desktop"/>
-        <value type="string" value="xfce-settings-manager.desktop"/>
       </property>
       <property name="menu-width" type="int" value="480"/>
     </property>

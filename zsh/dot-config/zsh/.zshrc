@@ -91,3 +91,4 @@ export SDKMAN_DIR="$HOME/.sdkman"
 
 # bun completions
 [ -s "/home/chester/.bun/_bun" ] && source "/home/chester/.bun/_bun"
+[ -s $(command -v luarocks) ] && eval "$(luarocks path --bin)"
