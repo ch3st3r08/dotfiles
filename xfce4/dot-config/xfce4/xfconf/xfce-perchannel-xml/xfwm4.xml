@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.1" encoding="UTF-8"?>
 
 <channel name="xfwm4" version="1.0">
   <property name="general" type="empty">
@@ -59,7 +59,7 @@
     <property name="snap_to_windows" type="bool" value="true"/>
     <property name="snap_width" type="int" value="14"/>
     <property name="vblank_mode" type="string" value="auto"/>
-    <property name="theme" type="string" value="WhiteSur-Light-solid-blue"/>
+    <property name="theme" type="string" value="McOS-CTLina-XFCE"/>
     <property name="tile_on_move" type="bool" value="true"/>
     <property name="title_alignment" type="string" value="center"/>
     <property name="title_font" type="string" value="System-ui Bold 10"/>
@@ -89,7 +89,7 @@
       <value type="string" value=" "/>
       <value type="string" value="Workspace 6"/>
     </property>
-    <property name="margin_top" type="int" value="58"/>
+    <property name="margin_top" type="int" value="18"/>
     <property name="margin_left" type="int" value="20"/>
     <property name="margin_right" type="int" value="20"/>
     <property name="margin_bottom" type="int" value="18"/>

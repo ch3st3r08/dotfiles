@@ -1,22 +1,27 @@
 * {
-    border: none;
-    border-radius: 5;
-    font-family: roboto,CodeNewRoman Nerd Font;
+    /*border: none;*/
+    border-radius: 5px;
+    font-family: Roboto, CodeNewRoman Nerd Font;
     font-size: 15px;
     min-height: 10px;
 }
 
+#window {
+    padding-left: 15px;
+}
+
 window#waybar {
-    background: alpha(shade(@theme_base_color, 1.25), 0.5);
+    background: alpha(shade(@theme_base_color, 1), 0.5);
     color: @theme_text_color;
 }
 
 tooltip {
-  background: rgba(43, 48, 59, 0.5);
-  border: 1px solid rgba(100, 114, 125, 0.5);
+    background: rgba(43, 48, 59, 0.5);
+    border: 1px solid rgba(100, 114, 125, 0.5);
 }
+
 tooltip label {
-  color: white;
+    color: white;
 }
 
 #workspaces button {
@@ -28,21 +33,25 @@ tooltip label {
 
 #workspaces button.active {
     background: @theme_selected_bg_color;
-    color: @theme_text_color;
+    color: @theme_selected_fg_color;
     border-bottom: 3px solid @theme_text_color;
 }
+
 #submap {
-  margin: 0 5px;
-  padding: 0 5px;
-  background-color: @theme_selected_bg_color;
-  border: 1px solid @theme_text_color;
+    margin: 0 5px;
+    padding: 0 5px;
+    background-color: @theme_selected_bg_color;
+    border: 1px solid @theme_text_color;
 }
-.modules-right > widget > * {
+
+.modules-right>widget>* {
     padding: 0 12px;
 }
-#custom-launcher{
-  font-size: 1.8em;
+
+#custom-launcher {
+    font-size: 1.8em;
 }
+
 /* #idle_inhibitor, */
 /* #pulseaudio, */
 /* #network, */
@@ -65,7 +74,7 @@ tooltip label {
 }
 
 #clock {
-  font-weight:bold;
+    font-weight: bold;
 }
 
 #battery {

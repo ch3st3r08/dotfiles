@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.1" encoding="UTF-8"?>
 
 <channel name="xfce4-panel" version="1.0">
   <property name="configver" type="int" value="2"/>
@@ -40,7 +40,7 @@
       <property name="position-locked" type="bool" value="true"/>
       <property name="size" type="uint" value="35"/>
       <property name="icon-size" type="uint" value="0"/>
-      <property name="autohide-behavior" type="uint" value="0"/>
+      <property name="autohide-behavior" type="uint" value="2"/>
       <property name="enter-opacity" type="uint" value="80"/>
       <property name="leave-opacity" type="uint" value="80"/>
     </property>
@@ -52,7 +52,7 @@
         <property name="font-description" type="string" value="FreeSans 12"/>
         <property name="skip-taskbar-hint" type="bool" value="true"/>
         <property name="tabs-position" type="int" value="0"/>
-        <property name="version" type="string" value="1.11.0"/>
+        <property name="version" type="string" value="1.11.1"/>
       </property>
       <property name="new-window" type="empty">
         <property name="height" type="int" value="337"/>
@@ -81,6 +81,7 @@
         <value type="string" value="redshift"/>
       </property>
       <property name="known-legacy-items" type="array">
+        <value type="string" value="virt-manager"/>
         <value type="string" value="drop-down terminal"/>
         <value type="string" value="no network connection"/>
         <value type="string" value="xfce terminal"/>
@@ -159,6 +160,7 @@
       <property name="button-icon" type="string" value="archlinux-logo"/>
       <property name="button-single-row" type="bool" value="true"/>
       <property name="recent" type="array">
+        <value type="string" value="xfce-settings-manager.desktop"/>
         <value type="string" value="firefox.desktop"/>
         <value type="string" value="com.usebottles.bottles.desktop"/>
         <value type="string" value="vesktop.desktop"/>
@@ -168,7 +170,6 @@
         <value type="string" value="atril.desktop"/>
         <value type="string" value="timeshift-gtk.desktop"/>
         <value type="string" value="qtvkbd.desktop"/>
-        <value type="string" value="remote-viewer.desktop"/>
       </property>
       <property name="menu-width" type="int" value="480"/>
     </property>

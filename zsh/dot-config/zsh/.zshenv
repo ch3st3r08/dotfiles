@@ -21,3 +21,5 @@ export FZF_TMUX_OPTS='-p80%,60%'
 
 export BUN_INSTALL="$HOME/.bun" 
 path=("$BUN_INSTALL/bin" $path)
+
+export LIBVIRT_DEFAULT_URI="qemu:///system"

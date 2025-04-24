@@ -111,19 +111,19 @@ MAIN_PACKAGES="curl tree archlinux-contrib pacman-contrib networkmanager network
 SPECIFIC_PACKAGES=""
 
 if [[ $WM == "hypr" ]]; then
-    SPECIFIC_PACKAGES=" hyprland xdg-desktop-portal-hyprland waybar rofi-wayland swaync hypridle hyprlock hyprcursor swaybg nwg-bar-bin nwg-look-bin waypaper polkit polkit-gnome desktop-file-utils nwg-displays nwg-drawer-bin nwg-icon-picker nwg-menu-bin hyprpicker wf-recorder ristretto cliphist qt5-wayland qt6-wayland swappy slurp grim wvkbd"
+    SPECIFIC_PACKAGES=" hyprland xdg-desktop-portal-hyprland waybar rofi-wayland swaync hypridle hyprlock hyprcursor swaybg nwg-bar nwg-look waypaper polkit polkit-gnome desktop-file-utils nwg-displays nwg-drawer nwg-icon-picker nwg-menu hyprpicker wf-recorder ristretto cliphist qt5-wayland qt6-wayland swappy slurp grim wvkbd"
 else
 
     SPECIFIC_PACKAGES=" xorg-server xorg-xinit xorg-apps xfce4 xfce4-goodies xfce4-panel-profiles gigolo transmission-gtk catfish atril mugshot wmctrl redshift geoclue xclip menulibre gst-libav gcolor3 qtvkbd conky"
 fi
 
-utility_cmd_programs="fzf eza fd ripgrep bat bat-extras zoxide entr p7zip htop reflector lazygit mpv zathura zathura-pdf-mupdf tty-clock distro-grub-themes-arch nvm lssecret-git ffmpeg plymouth plymouth-theme-arch-logo-new informant rsync grsync rclone"
+utility_cmd_programs="fzf eza fd ripgrep bat bat-extras zoxide entr 7zip htop reflector lazygit mpv zathura zathura-pdf-mupdf tty-clock distro-grub-themes-arch nvm lssecret-git ffmpeg plymouth plymouth-theme-arch-logo-new informant rsync grsync rclone yazi"
 
 utility_ui_programs=" galculator seahorse grub-customizer font-manager vlc xarchiver thunar-archive-plugin thunar-media-tags-plugin thunar-volman sddm-conf-git baobab gparted thunderbird"
 
 utility_fonts=" ttf-hack-nerd ttf-iosevka-nerd ttf-firacode-nerd ttf-sourcecodepro-nerd ttf-terminus-nerd ttf-font-awesome otf-codenewroman-nerd ttf-ms-fonts noto-fonts-emoji"
 
-utility_themes=" nordic-theme nordzy-cursors kora-icon-theme"
+utility_themes=" nordic-theme nordzy-cursors"
 
 UTILITY_PACKAGES="$utility_cmd_programs$utility_ui_programs$utility_fonts$utility_themes"
 
