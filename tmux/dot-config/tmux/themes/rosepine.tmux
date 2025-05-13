@@ -1,5 +1,5 @@
 set -g @plugin 'rose-pine/tmux'
-set -g @rose_pine_variant 'main' # Options are 'main', 'moon' or 'dawn'
+set -g @rose_pine_variant 'dawn' # Options are 'main', 'moon' or 'dawn'
 
 set -g @rose_pine_host 'on'           # Enables hostname in the status bar
 set -g @rose_pine_date_time ''        # It accepts the date UNIX command format (man date for info)
@@ -11,7 +11,7 @@ set -g @rose_pine_bar_bg_disable 'on' # Disables background color, for transpare
 # See more on http://man.openbsd.org/OpenBSD-current/man1/tmux.1#STYLES
 set -g @rose_pine_bar_bg_disabled_color_option 'default'
 
-set -g @rose_pine_only_windows 'on'               # Leaves only the window module, for max focus and space
+set -g @rose_pine_only_windows 'off'               # Leaves only the window module, for max focus and space
 set -g @rose_pine_disable_active_window_menu 'on' # Disables the menu that shows the active window on the left
 
 set -g @rose_pine_default_window_behavior 'on' # Forces tmux default window list behaviour

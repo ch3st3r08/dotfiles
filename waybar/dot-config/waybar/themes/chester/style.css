@@ -16,12 +16,12 @@ window#waybar {
 }
 
 tooltip {
-    background: rgba(43, 48, 59, 0.5);
-    border: 1px solid rgba(100, 114, 125, 0.5);
+    background: alpha(@theme_base_color, 0.5);
+    border: 1px solid @unfocused_borders;
 }
 
 tooltip label {
-    color: white;
+    color: @theme_text_color;
 }
 
 #workspaces button {
@@ -30,11 +30,15 @@ tooltip label {
     color: @theme_text_color;
     border-bottom: 3px solid transparent;
 }
+#workspaces button.empty {
+    color: @unfocused_borders;
+}
 
 #workspaces button.active {
-    background: @theme_selected_bg_color;
-    color: @theme_selected_fg_color;
-    border-bottom: 3px solid @theme_text_color;
+    /* background: @theme_selected_bg_color; */
+    /* color: @theme_selected_fg_color; */
+    /* border-bottom: 2px solid @theme_text_color; */
+    color: @theme_selected_bg_color;
 }
 
 #submap {
@@ -50,6 +54,7 @@ tooltip label {
 
 #custom-launcher {
     font-size: 1.8em;
+    color: shade(@theme_selected_bg_color,1);
 }
 
 /* #idle_inhibitor, */

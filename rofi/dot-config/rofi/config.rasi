@@ -1,13 +1,13 @@
 configuration {
   modi: "window,run,drun,ssh";
-  font: "mono 12";
+  font: "Hack Nerd Font 12";
   show-icons: true;
-  display-ssh:    "";
-  display-run:    "";
-  display-drun:   "";
-  display-window: "";
-  display-combi:  "";
+  display-ssh:    " ";
+  display-run:    " ";
+  display-drun:   " ";
+  display-window: " ";
+  display-combi:  " ";
 }
 
 //@theme "nord/nord"
-@theme "/home/chester/.config/rofi/themes/spotlight-dark.rasi"
+@theme "/home/chester/.config/rofi/themes/squared-everforest.rasi"

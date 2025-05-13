@@ -1,14 +1,14 @@
 [general]
-import = ["/home/chester/.config/alacritty/themes/alacrytheme/themes/nightfox.toml"]
+import = ["/home/chester/.config/alacritty/themes/alacrytheme/themes/rose-pine-dawn.toml"]
 
 [colors]
 draw_bold_text_with_bright_colors = false
 
 [font]
-size = 14.0
+size = 15.0
 
 [font.normal]
-family = "CodeNewRoman Nerd Font"
+family = "0xproto Nerd Font Mono"
 style = "Regular"
 
 [mouse]
@@ -28,6 +28,6 @@ command = "xkbbell"
 save_to_clipboard = false
 
 [window]
-#decorations = "None"
-dynamic_title = true
+decorations = "None"
 opacity = 0.85
+padding = {x = 5, y = 5}
