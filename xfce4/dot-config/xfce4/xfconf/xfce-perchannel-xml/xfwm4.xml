@@ -59,10 +59,10 @@
     <property name="snap_to_windows" type="bool" value="true"/>
     <property name="snap_width" type="int" value="14"/>
     <property name="vblank_mode" type="string" value="auto"/>
-    <property name="theme" type="string" value="McOS-CTLina-XFCE"/>
+    <property name="theme" type="string" value="Default"/>
     <property name="tile_on_move" type="bool" value="true"/>
     <property name="title_alignment" type="string" value="center"/>
-    <property name="title_font" type="string" value="System-ui Bold 10"/>
+    <property name="title_font" type="string" value="Adwaita Sans Medium 11"/>
     <property name="title_horizontal_offset" type="int" value="0"/>
     <property name="titleless_maximize" type="bool" value="true"/>
     <property name="title_shadow_active" type="string" value="false"/>
@@ -82,14 +82,14 @@
     <property name="zoom_desktop" type="bool" value="true"/>
     <property name="zoom_pointer" type="bool" value="true"/>
     <property name="workspace_names" type="array">
-      <value type="string" value=" "/>
-      <value type="string" value="󰊯 "/>
-      <value type="string" value=" "/>
-      <value type="string" value=" "/>
-      <value type="string" value=" "/>
+      <value type="string" value=""/>
+      <value type="string" value=""/>
+      <value type="string" value=""/>
+      <value type="string" value=""/>
+      <value type="string" value=""/>
       <value type="string" value="Workspace 6"/>
     </property>
-    <property name="margin_top" type="int" value="18"/>
+    <property name="margin_top" type="int" value="58"/>
     <property name="margin_left" type="int" value="20"/>
     <property name="margin_right" type="int" value="20"/>
     <property name="margin_bottom" type="int" value="18"/>

@@ -6,10 +6,11 @@ return {
     build = "make",
     opts = {
       -- add any opts here
-      provider = "openai",
-      openai = {
-        endpoint = "https://api.openai.com/v1",
-        model = "gpt-4o-mini",
+      providers = {
+        openai = {
+          endpoint = "https://api.openai.com/v1",
+          model = "gpt-4o-mini",
+        },
       },
     },
     keys = {
