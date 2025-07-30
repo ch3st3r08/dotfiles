@@ -1,0 +1,4 @@
+- name: "Essential | Installing Display Manager packages"
+  community.general.pacman:
+    name:
+      - sddm

@@ -1,0 +1,47 @@
+--- 
+# Unir todos los playbooks
+
+- name: "Main file for all playbooks"
+  hosts: localhost
+  become: false
+  vars:
+    sudo_password: "{{ do_pass }}"
+    de_option: xfce
+    _name: Main
+ 
+  pre_tasks:
+    - name: "{{_name}} | Sync and Upgrade system"
+      community.general.pacman:
+        update_cache: true
+        upgrade: true
+      become: true
+      tags: update
+
+    - name: "{{_name}} | Ensure base development packages are installed" 
+      community.general.pacman:
+        name:
+          - base-devel
+          - git
+          - curl
+      become: true
+
+  roles:
+   # - role: webbrowser
+    # - role: os
+    #   tags: os
+    # - role: xfce4
+    #   tags: xfce4
+    #   when: de_option == "xfce4" 
+    # - role: hyprland
+    #   tags: hyprland
+    #   when: de_option == "hypr" 
+    # - role: neovim
+    #   tags: neovim
+    # - role: zsh
+    #   tags: zsh
+    - role: tmux
+    #   tags: tmux
+    # - role: alacritty
+    #   tags: alacritty
+    # - role: sddm
+    #   tags: sddm

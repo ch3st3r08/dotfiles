@@ -1,0 +1,3 @@
+user_name: chester
+home: "/home/{{user_name}}"
+config_dir: "{{home}}/.config"

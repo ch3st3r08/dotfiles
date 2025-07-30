@@ -1,0 +1,35 @@
+- name: "Hyprland | Installing Hyprland packages"
+  community.general.pacman:
+    name:
+      - hyprland
+      - xdg-desktop-portal-hyprland
+      - waybar
+      - rofi-wayland
+      - swaync
+      - hypridle
+      - hyprlock
+      - hyprcursor
+      - swaybg
+      - nwg-bar
+      - nwg-look
+      - polkit
+      - hyprpolkitagent
+      - desktop-file-utils
+      - nwg-displays
+      - nwg-drawer
+      - nwg-icon-picker
+      - nwg-menu
+      - hyprpicker
+      - wf-recorder
+      - ristretto
+      - cliphist
+      - qt5-wayland
+      - qt6-wayland
+      - swappy
+      - slurp
+      - grim
+
+- name: "Hyrpland | Installing AUR packages"
+  ansible.builtin.expect:
+  command: paru -S --noconfirm --needed hyprsysteminfo wvkbd waypaper
+  responses: {{sudo_password}}

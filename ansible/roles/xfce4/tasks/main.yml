@@ -1,0 +1,26 @@
+- name: "XFCE4 | Installing Xfce4 related packages"
+  community.general.pacman:
+    name:
+      - xorg-server
+      - xorg-xinit
+      - xorg-apps
+      - xfce4
+      - xfce4-goodies
+      - xfce4-panel-profiles
+      - gvfs
+      - gvfs-smb
+      - gvfs-nfs
+      - gigolo
+      - transmission-gtk
+      - catfish
+      - atril
+      - mugshot
+      - wmctrl
+      - redshift
+      - geoclue
+      - xclip
+      - gst-libav
+      - gcolor3
+      - conky
+      
+# some configuration

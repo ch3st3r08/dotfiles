@@ -1,0 +1,4 @@
+- name: "Essential | Installing Shell and Terminal Emulator packages"
+  community.general.pacman:
+    name:
+      - alacritty

@@ -1,0 +1,4 @@
+- name: "Essential | Installing Editor packages"
+  community.general.pacman:
+    name:
+      - neovim

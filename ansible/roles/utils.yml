@@ -1,0 +1,56 @@
+- name: Utils | Installing utility cmd packages
+  community.general.pacman:
+    name:
+      - fzf
+      - eza
+      - fd
+      - ripgrep
+      - bat
+      - bat-extras
+      - zoxide
+      - entr
+      - 7zip
+      - htop
+      - lazygit
+      - mpv
+      - mpd
+      - ncmpcpp
+      - zathura
+      - zathura-pdf-mupdf
+      - nvm
+      - ffmpeg
+      - plymouth
+      - rsync
+      - rclone
+      - yazi
+      - fastfetch
+    state: present
+
+- name: Utils | Installing utility UI packages
+  community.general.pacman:
+    name:
+      - galculator
+      - seahorse
+      - grub-customizer
+      - font-manager
+      - vlc
+      - xarchiver
+      - baobab
+      - gparted
+      - thunderbird
+      - grsync
+      - rhythmbox
+    state: present
+
+- name: Installing utility Font packages
+  community.general.pacman:
+    name:
+      - ttf-hack-nerd
+      - ttf-iosevka-nerd
+      - ttf-firacode-nerd
+      - ttf-sourcecodepro-nerd
+      - ttf-terminus-nerd
+      - ttf-font-awesome
+      - otf-codenewroman-nerd
+      - noto-fonts-emoji
+    state: present
