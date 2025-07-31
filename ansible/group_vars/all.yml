@@ -1,3 +1,8 @@
 user_name: chester
-home: "/home/{{user_name}}"
-config_dir: "{{home}}/.config"
+# home: "/home/{{user_name}}"
+# config_dir: "{{home}}/.config"
+
+
+
+root_dir: "{{playbook_dir}}"
+config_dir: "{{root_dir}}/test/config"

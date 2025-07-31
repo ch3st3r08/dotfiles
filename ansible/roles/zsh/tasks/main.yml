@@ -3,3 +3,48 @@
     name:
       - zsh
       - starship
+
+- name: Create a zsh directory
+  ansible.builtin.file:
+    path: "{{config_dir}}/zsh"
+    state: directory
+    mode: '0755'
+
+- name: Copying zsh config files
+  ansible.builtin.copy:
+    src: "{{ item }}"
+    dest: "{{config_dir}}/zsh"
+    force: yes
+  with_fileglob:
+    - ".*"
+
+- name: Copying top level zshenv
+  ansible.builtin.copy:
+    src: dot-zshenv
+    dest: "{{home}}.zshenv"
+    force: yes
+
+- name: Create a starship directory
+  ansible.builtin.file:
+    path: "{{config_dir}}/starship"
+    state: directory
+    mode: '0755'
+
+- name: Copying starship config file
+  ansible.builtin.copy:
+    src: "config.toml"
+    dest: "{{config_dir}}/starship"
+    force: yes
+
+- name: Check default shell
+  ansible.builtin.shell: basename $SHELL
+  register: dshell
+  changed_when: false
+
+- name: Output default shell
+  debug:
+    msg: "Default shell is {{ dshell.stdout }}"
+
+- name: Set zsh as default shell
+  ansible.builtin.command: chsh -s /bin/zsh
+  when: dshell.stdout != "zsh"

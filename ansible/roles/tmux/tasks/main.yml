@@ -3,7 +3,11 @@
     name:
       - tmux
 
-- name: Get stats of the FS object
+- name: Debug some Info
+  debug:
+    msg: "Name of config dir: {{config_dir}}"
+
+- name: Get info about tmux config folder
   ansible.builtin.stat:
     path: "{{config_dir}}/tmux"
   register: p
@@ -13,15 +17,15 @@
     path: "{{config_dir}}/tmux"
     state: directory
     mode: '0755'
-  when: p.stat.isdir is not defined and not p.stat.isdir
 
-- name: Print a debug message
-  ansible.builtin.debug:
-    msg: "Path exists and is a directory"
-  when: p.stat.isdir is defined and p.stat.isdir
-
-- name: "Copying config files"
+- name: "Copying config file"
   ansible.builtin.copy:
     src: tmux.conf
     dest: "{{config_dir}}/tmux"
-# tpm download and config, and install plugin
+    force: yes
+
+- name: "Copying Theme Folder"
+  ansible.builtin.copy:
+    src: themes
+    dest: "{{config_dir}}/tmux/"
+    force: yes

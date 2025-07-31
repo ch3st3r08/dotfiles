@@ -37,9 +37,9 @@
     #   when: de_option == "hypr" 
     # - role: neovim
     #   tags: neovim
-    # - role: zsh
+    - role: zsh
     #   tags: zsh
-    - role: tmux
+    # - role: tmux
     #   tags: tmux
     # - role: alacritty
     #   tags: alacritty
