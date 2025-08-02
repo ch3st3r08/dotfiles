@@ -2,3 +2,15 @@
   community.general.pacman:
     name:
       - alacritty
+
+- name: Create Alacritty config dir
+  ansible.builtin.file:
+    path: "{{config_dir}}/alacritty"
+    state: directory
+    mode: '0755'
+
+- name: Copying Alacritty Config
+  ansible.builtin.copy:
+    src: alacritty.toml
+    dest: "{{config_dir}}/alacritty"
+    force: yes

@@ -3,6 +3,6 @@ user_name: chester
 # config_dir: "{{home}}/.config"
 
 
-
 root_dir: "{{playbook_dir}}"
+home: "{{root_dir}}/test"
 config_dir: "{{root_dir}}/test/config"

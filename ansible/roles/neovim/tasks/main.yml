@@ -2,3 +2,24 @@
   community.general.pacman:
     name:
       - neovim
+
+- name: Create Neovim config dir
+  ansible.builtin.file:
+    path: "{{config_dir}}/nvim"
+    state: directory
+    mode: '0755'
+
+- name: Copying Neovim Config
+  ansible.builtin.copy:
+    src: "{{ item }}"
+    dest: "{{config_dir}}/nvim"
+    force: yes
+  loop:
+    - lua
+    - init.lua
+    - stylua.toml
+    - lazyvim.json
+    - .neoconf.json
+
+# Execute neovim to install packages without opening GUI
+# Execute mason to install LSP servers

@@ -14,14 +14,11 @@
   when: paru_exist is succeeded
   with_items:
     - sddm-conf-git
-    - brave-bin
     - distro-grub-themes-arch
     - lssecret-git
     - menulibre
-    - nordic-theme
-    - nordzy-cursors
+    - colloid-cursors-git
     - numix-circle-icon-theme-git
-    - numix-icon-theme-git
     - plymouth-theme-arch-logo-new
     - sddm-eucalyptus-drop
     - ttf-ms-fonts

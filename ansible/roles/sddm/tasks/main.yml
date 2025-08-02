@@ -1,4 +1,16 @@
-- name: "Essential | Installing Display Manager packages"
+- name: "Installing Display Manager packages"
   community.general.pacman:
     name:
       - sddm
+
+- name: "Installing SDDM AUR packages"
+  ansible.builtin.expect:
+    command: paru -S --noprogressbar --noconfirm --needed {{item}}
+    responses: 
+      password: "{{sudo_password}}"
+  when: paru_exist is succeeded
+  with_items:
+      - sddm-conf-git
+      - sddm-eucalyptus-drop
+
+#- name: 

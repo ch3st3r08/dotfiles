@@ -1,0 +1,104 @@
+- name: Creating necessary folders
+  ansible.builtin.file:
+    path: "{{item}}"
+    state: directory
+    mode: '0755'
+    recurse: true
+  loop:
+    - '{{home}}/Sources'
+    - '{{home}}/.local/share/themes'
+
+- name: Utils | Installing utility cmd packages
+  community.general.pacman:
+    name:
+      - fzf
+      - eza
+      - fd
+      - ripgrep
+      - bat
+      - bat-extras
+      - zoxide
+      - entr
+      - 7zip
+      - htop
+      - lazygit
+      - mpv
+      - mpd
+      - ncmpcpp
+      - zathura
+      - zathura-pdf-mupdf
+      - nvm
+      - ffmpeg
+      - plymouth
+      - rsync
+      - rclone
+      - yazi
+      - fastfetch
+      - gtk-engine-murrine
+    state: present
+
+- name: Utils | Installing utility UI packages
+  community.general.pacman:
+    name:
+      - galculator
+      - seahorse
+      - grub-customizer
+      - font-manager
+      - vlc
+      - xarchiver
+      - baobab
+      - gparted
+      - thunderbird
+      - grsync
+      - rhythmbox
+    state: present
+
+- name: Installing utility Font packages
+  community.general.pacman:
+    name:
+      - ttf-hack-nerd
+      - ttf-iosevka-nerd
+      - ttf-firacode-nerd
+      - ttf-sourcecodepro-nerd
+      - ttf-terminus-nerd
+      - woff2-font-awesome
+      - otf-codenewroman-nerd
+      - noto-fonts-emoji
+    state: present
+
+- name: Installing UI related packages
+  block:
+    - name: Checking if Colloid dir exists
+      ansible.builtin.stat:
+        path: "{{home}}/Sources/Colloid-gtk-theme"
+      register: colloid
+
+    - name: Downloading Colloid theme
+      ansible.builtin.git:
+        repo: "https://github.com/vinceliuice/Colloid-gtk-theme"
+        dest: "{{home}}/Sources/Colloid-gtk-theme"
+      when: colloid.stat.isdir is not defined and not colloid.stat.isdir
+
+    - name: Installing Colloid theme
+      ansible.builtin.command:
+        - cmd: ./install -t all --tweaks nord -d "{{home}}/.local/share/themes"
+        - chdir: "{{home}}/Sources/Colloid-gtk-theme"
+      when: colloid.stat.isdir is not defined and not colloid.stat.isdir
+
+- name: "Installing AUR packages"
+  ansible.builtin.expect:
+    command: paru -S --noprogressbar --noconfirm --needed {{item}}
+    responses: 
+      password: "{{sudo_password}}"
+  when: paru_exist is succeeded
+  with_items:
+    - distro-grub-themes-arch
+    - lssecret-git
+    - menulibre
+    - colloid-cursors-git
+    - numix-circle-icon-theme-git
+    - nordzy-icon-theme
+    - plymouth-theme-arch-logo-new
+    - ttf-ms-fonts
+    - tty-clock
+  become: false

@@ -21,7 +21,7 @@
 - name: Copying top level zshenv
   ansible.builtin.copy:
     src: dot-zshenv
-    dest: "{{home}}.zshenv"
+    dest: "{{home}}/.zshenv"
     force: yes
 
 - name: Create a starship directory

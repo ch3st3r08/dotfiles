@@ -1,4 +1,4 @@
-- name: "Essential | Installing essential DE packages"
+- name: "OS | Installing essential packages"
   community.general.pacman:
     name:
       - curl
@@ -9,18 +9,23 @@
       - stow
       - xdg-user-dirs
       - unzip
-      - gtk-engine-murrine
       - libva-mesa-driver
       - intel-media-driver
       - sound-theme-freedesktop
       - xf86-video-amdgpu
 
-- name: "Essential | Installing networking packages"
-  community.general.pacman:
-    name:
-      - iwd
-      - networkmanager
-      - network-manager-applet
+- name: "OS | Installing networking packages"
+  block:
+    community.general.pacman:
+      name:
+        - iwd
+        - networkmanager
+        - network-manager-applet
+
+    ansible.builtin.systemd_service:
+      name: NetworkManager.service
+      enable: true
+      status: started
 
 - name: "OS | Installing audio packages"
   block:
@@ -39,6 +44,7 @@
         name: pipewire.service
         enable: true
         status: started
+        scope: user
 
 - name: "Install Paru AUR manager"
   import_tasks: paru.yml

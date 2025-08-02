@@ -35,9 +35,9 @@
     # - role: hyprland
     #   tags: hyprland
     #   when: de_option == "hypr" 
-    # - role: neovim
+    - role: neovim
     #   tags: neovim
-    - role: zsh
+    # - role: zsh
     #   tags: zsh
     # - role: tmux
     #   tags: tmux
