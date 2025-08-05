@@ -14,18 +14,20 @@
       - sound-theme-freedesktop
       - xf86-video-amdgpu
 
-- name: "OS | Installing networking packages"
+- name: "OS | Installing networking packages and services"
   block:
-    community.general.pacman:
-      name:
-        - iwd
-        - networkmanager
-        - network-manager-applet
-
-    ansible.builtin.systemd_service:
-      name: NetworkManager.service
-      enable: true
-      status: started
+    - name: Installing networking packages
+      community.general.pacman:
+        name:
+          - iwd
+          - networkmanager
+          - network-manager-applet
+ 
+    - name: Starting and enabling networkmanager service
+      ansible.builtin.systemd_service:
+        name: NetworkManager.service
+        enabled: true
+        state: started
 
 - name: "OS | Installing audio packages"
   block:
@@ -42,8 +44,8 @@
     - name: "Enable and Start Pipewire systemd user unit"
       ansible.builtin.systemd_service:
         name: pipewire.service
-        enable: true
-        status: started
+        enabled: true
+        state: started
         scope: user
 
 - name: "Install Paru AUR manager"

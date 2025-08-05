@@ -1,4 +1,4 @@
-- name: "Hyprland | Installing Hyprland packages"
+- name: "Installing Hyprland packages"
   community.general.pacman:
     name:
       - hyprland
@@ -29,10 +29,10 @@
       - slurp
       - grim
 
-- name: "Hyrpland | Installing AUR packages"
+- name: "Installing AUR packages"
   ansible.builtin.expect:
-  command: paru -S --noconfirm --needed hyprsysteminfo wvkbd waypaper
-  responses: {{sudo_password}}
+    command: paru -S --noconfirm --needed hyprsysteminfo wvkbd waypaper
+    responses: "{{sudo_password}}"
 
 - name: Creating config directory if it doesn't exist
   ansible.builtin.file:
@@ -50,3 +50,6 @@
     - hypr/hyprland.conf
     - hypr/hyprlock.conf
     - hypr/includes.conf
+
+- name: Configuring Waybar
+  include_tasks: waybar.yml

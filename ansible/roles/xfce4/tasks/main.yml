@@ -1,4 +1,4 @@
-- name: "XFCE4 | Installing Xfce4 related packages"
+- name: "Installing Xfce4 related packages"
   community.general.pacman:
     name:
       - xorg-server

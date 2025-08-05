@@ -1,8 +1,8 @@
-- name: "Web Browsers | Checking if Paru is installed"
+- name: "Checking if Paru is installed"
   include_tasks: "{{ playbook_dir }}/pre_tasks/check_paru.yml"
   when: paru_exist is not defined
 
-- name: "Web Browsers | Installing Web Browser packages"
+- name: "Installing Web Browser packages"
   block:
     - name: Installing Firefox Browser
       community.general.pacman:
