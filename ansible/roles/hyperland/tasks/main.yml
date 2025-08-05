@@ -44,8 +44,9 @@
   ansible.builtin.copy:
     src: "{{item}}"
     dest: "{{config_dir}}/hypr"
+    force: yes
   loop:
-    - hypridle.conf
-    - hyprland.conf
-    - hyprlock.conf
-    - includes.conf
+    - hypr/hypridle.conf
+    - hypr/hyprland.conf
+    - hypr/hyprlock.conf
+    - hypr/includes.conf

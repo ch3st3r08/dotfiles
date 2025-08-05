@@ -1,0 +1,16 @@
+- name: Creating config directory if it doesn't exist
+  ansible.builtin.file:
+    path: "{{config_dir}}/waybar"
+    state: directory
+    mode: '0755'
+
+- name: Copying config files
+  ansible.builtin.copy:
+    src: "{{item}}"
+    dest: "{{config_dir}}/waybar"
+    force: yes
+  loop:
+    - waybar/config
+    - waybar/style.css
+    - waybar.sh
+    - waybar/themes
