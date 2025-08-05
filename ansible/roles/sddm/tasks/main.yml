@@ -13,4 +13,6 @@
       - sddm-conf-git
       - sddm-eucalyptus-drop
 
-#- name: 
+- name: Configuring SDDM theme
+  ansible.builtin.command: sed 's/Current=.*/Current=eucalyptus-drop/g' /etc/sddm.conf
+  become: yes
