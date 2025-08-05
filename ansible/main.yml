@@ -26,22 +26,22 @@
       become: true
 
   roles:
-   # - role: webbrowser
-    # - role: os
-    #   tags: os
-    # - role: xfce4
-    #   tags: xfce4
-    #   when: de_option == "xfce4" 
-    # - role: hyprland
-    #   tags: hyprland
-    #   when: de_option == "hypr" 
+    - role: webbrowser
+    - role: os
+      tags: os
+    - role: xfce4
+      tags: xfce4
+      when: de_option == "xfce4" 
+    - role: hyprland
+      tags: hyprland
+      when: de_option == "hypr" 
     - role: neovim
-    #   tags: neovim
-    # - role: zsh
-    #   tags: zsh
-    # - role: tmux
-    #   tags: tmux
-    # - role: alacritty
-    #   tags: alacritty
-    # - role: sddm
-    #   tags: sddm
+      tags: neovim
+    - role: zsh
+      tags: zsh
+    - role: tmux
+      tags: tmux
+    - role: alacritty
+      tags: alacritty
+    - role: sddm
+      tags: sddm

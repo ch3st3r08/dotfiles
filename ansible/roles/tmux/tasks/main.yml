@@ -1,4 +1,4 @@
-- name: "Installing Terminal Multiplexer packages"
+- name: Installing Terminal Multiplexer packages
   community.general.pacman:
     name:
       - tmux
