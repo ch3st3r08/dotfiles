@@ -1,3 +1,7 @@
+- name: "SDDM | Checking if Paru is installed"
+  include_tasks: "{{ playbook_dir }}/pre_tasks/check_paru.yml"
+  when: paru_exist is not defined
+
 - name: "Installing Display Manager packages"
   community.general.pacman:
     name:
