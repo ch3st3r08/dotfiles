@@ -59,7 +59,7 @@
     <property name="snap_to_windows" type="bool" value="true"/>
     <property name="snap_width" type="int" value="14"/>
     <property name="vblank_mode" type="string" value="auto"/>
-    <property name="theme" type="string" value="Default"/>
+    <property name="theme" type="string" value="Colloid-Yellow-Dark-Catppuccin"/>
     <property name="tile_on_move" type="bool" value="true"/>
     <property name="title_alignment" type="string" value="center"/>
     <property name="title_font" type="string" value="Adwaita Sans Medium 11"/>
@@ -82,11 +82,11 @@
     <property name="zoom_desktop" type="bool" value="true"/>
     <property name="zoom_pointer" type="bool" value="true"/>
     <property name="workspace_names" type="array">
-      <value type="string" value=""/>
-      <value type="string" value=""/>
-      <value type="string" value=""/>
-      <value type="string" value=""/>
-      <value type="string" value=""/>
+      <value type="string" value=" "/>
+      <value type="string" value=" "/>
+      <value type="string" value=" "/>
+      <value type="string" value=" "/>
+      <value type="string" value=" "/>
       <value type="string" value="Workspace 6"/>
     </property>
     <property name="margin_top" type="int" value="58"/>

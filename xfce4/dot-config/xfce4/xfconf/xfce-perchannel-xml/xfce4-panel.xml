@@ -236,7 +236,7 @@
       <property name="show-menu-icons" type="bool" value="true"/>
       <property name="show-generic-names" type="bool" value="false"/>
       <property name="button-title" type="string" value=" "/>
-      <property name="button-icon" type="string" value="overflow-menu"/>
+      <property name="button-icon" type="string" value="org.xfce.panel.separator"/>
     </property>
     <property name="clipman" type="empty">
       <property name="settings" type="empty">
