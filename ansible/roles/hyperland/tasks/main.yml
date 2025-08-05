@@ -33,3 +33,19 @@
   ansible.builtin.expect:
   command: paru -S --noconfirm --needed hyprsysteminfo wvkbd waypaper
   responses: {{sudo_password}}
+
+- name: Creating config directory if it doesn't exist
+  ansible.builtin.file:
+    path: "{{config_dir}}/hypr"
+    state: directory
+    mode: '0755'
+
+- name: Copying config files
+  ansible.builtin.copy:
+    src: "{{item}}"
+    dest: "{{config_dir}}/hypr"
+  loop:
+    - hypridle.conf
+    - hyprland.conf
+    - hyprlock.conf
+    - includes.conf
