@@ -22,5 +22,22 @@
       - gst-libav
       - gcolor3
       - conky
-      
+
 # some configuration
+- name: Creating xfce4 config directory
+  ansible.builtin.file:
+    path: "{{config_dir}}/xfce4/xfconf/xfce-perchannel-xml"
+    state: directory
+    mode: '0755'
+    recurse: true
+
+- name: Copying xfce4 config files
+  ansible.builtin.copy:
+    src: "{{item}}"
+    dest: "{{config_dir}}/xfce4/xfconf/xfce-perchannel-xml"
+  loop:
+    - thunar.xml
+    - xfce4-keyboard-shortcuts.xml
+    - xfce4-panel
+    - xfce4-terminal
+    - xfwm4.xml
