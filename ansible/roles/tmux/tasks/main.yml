@@ -20,3 +20,10 @@
     src: themes
     dest: "{{config_dir}}/tmux/"
     force: yes
+
+- name: Copying Tmux scripts
+  ansible.builtin.copy:
+    src: "{{item}}"
+    dest: "{{script_config}}"
+  with_fileglob:
+    - "scripts/*"

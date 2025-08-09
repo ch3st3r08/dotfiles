@@ -2,6 +2,7 @@ user_name: chester
 # home: "/home/{{user_name}}"
 # config_dir: "{{home}}/.config"
 
+script_dir: "{{home}}/Scripts"
 
 root_dir: "{{playbook_dir}}"
 home: "{{root_dir}}/test"
