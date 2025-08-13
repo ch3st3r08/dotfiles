@@ -41,7 +41,8 @@ bindkey "^[[3~" delete-char
 
 if [ "$TERM" != "linux" ]; then
    function set_win_title(){
-       echo -ne "\033]0; $USER@$HOST  \007"
+       TERM_EMU=$(readlink "/proc/$(cat /proc/$(echo $$)/stat | cut -d ' ' -f 4)/exe")
+       echo -ne "\033]0; $USER@$HOST: $(basename $PWD) - $(basename $TERM_EMU)  \007"
    }
    precmd_functions+=(set_win_title)
    eval "$(starship init zsh)"

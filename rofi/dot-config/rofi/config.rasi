@@ -9,9 +9,6 @@ configuration {
   display-combi:  " ";
 }
 
-//@theme "nord/nord"
-//@theme "/home/chester/.config/rofi/themes/squared-everforest.rasi"
+//@theme "/usr/share/rofi/themes/Paper.rasi"
 
-//@theme "/usr/share/rofi/themes/material.rasi"
-
-@theme "/usr/share/rofi/themes/Paper.rasi"
+@theme "/home/chester/.config/rofi/themes/gtk/gtk-base.rasi"

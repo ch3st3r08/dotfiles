@@ -23,17 +23,19 @@
     ],
     "custom/pacman":{
         "format": "{} ",
-        "tooltip": false,
+        "tooltip": true,
         "interval": 3600,                     // every hour
-        "exec": "checkupdates | wc -l",       // # of updates
+        // "exec": "checkupdates | wc -l",       // # of updates
+        "exec": "test.sh -j",
         "exec-if": "exit 0",                  // always run; consider advanced run conditions
         "on-click": "alacritty -e bash -c 'paru && pkill -SIGRTMIN+8 waybar && read -p \"echo Presione para continuar... \" '", // update system
-        "signal": 8
+        "signal": 8,
+        "return-type":"json"
     },
     "custom/launcher":{
         "tooltip": false,
         "format": " 󰣇 ",
-        "on-click": "sleep 0.1 && nwg-drawer -ft -term alacritty",
+        "on-click": "sleep 0.1 && nwg-drawer -ft -term alacritty"
     },
     "custom/notification":{
         "tooltip": false,
@@ -59,14 +61,22 @@
         "format": "{icon} ",
         "format-icons": {
             "active": "",
-            "default": ""
+            "empty": "",
+            "default": ""
         },
         "persistent-workspaces": {
             "*": 5, // 5 workspaces by default on every monitor
         }
     },
     "hyprland/window": {
-        "format": "   {}"
+        "format": "  {}",
+        "max-length": 60,
+        "rewrite": {
+          "(.*) - Brave": "󰾔 $1",
+          "(.*) - alacritty": " $1",
+          "(.*) - tmux": " $1",
+        },
+        "icon": false
     },
     "idle_inhibitor": {
         "format": "{icon}",
