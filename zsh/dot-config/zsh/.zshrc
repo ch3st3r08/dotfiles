@@ -33,6 +33,7 @@ fi
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
+bindkey "^U" backward-kill-line
 bindkey "^[[H"  beginning-of-line
 bindkey "^[[F"  end-of-line
 bindkey "^[[1~" beginning-of-line

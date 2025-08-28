@@ -9,6 +9,4 @@ configuration {
   display-combi:  " ";
 }
 
-//@theme "/usr/share/rofi/themes/Paper.rasi"
-
-@theme "/home/chester/.config/rofi/themes/gtk/gtk-base.rasi"
+@theme "/home/chester/.config/rofi/themes/rose-pine.rasi"

@@ -1,0 +1,226 @@
+@import "./rose-pine.css";
+@define-color barBorder @highlightHigh;
+* {
+    font-family: Roboto, CodeNewRoman Nerd Font;
+    font-size: 15px;
+    min-height: 10px;
+}
+
+
+window#waybar {
+    background: @overlay;
+    color: @text;
+    border-radius: 5px;
+    border: 1px solid transparent;
+}
+
+tooltip {
+    background: alpha(@overlay, 0.5);
+    border: 1px solid @muted;
+}
+
+tooltip label {
+    color: @text;
+}
+
+#window {
+    padding-left: 15px;
+    font-weight: bold;
+    color: @gold;
+}
+#workspaces {
+  border: 1px solid @barBorder;
+  background: @surface;
+  margin: 5px;
+  border-radius: 8px;
+}
+
+#workspaces button {
+    padding: 0 5px;
+    background: transparent;
+    color: @text;
+    border: 1px solid transparent;
+    border-radius: 0px;
+}
+#workspaces button.empty {
+    color: @subtle;
+}
+
+/* #workspaces button.active { */
+/*     color: @gold; */
+/* } */
+#mpd {
+  color: @foam;
+  font-weight:bold;
+}
+#submap {
+    margin: 5px 5px;
+    padding: 0 5px;
+    background-color: @pine;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    color: @text
+}
+
+.modules-right>widget>* {
+    padding: 0 12px;
+}
+
+#custom-launcher {
+    font-size: 1.8em;
+    color: shade(@foam,1);
+}
+
+#custom-pacman {
+  color: @foam;
+  border: 1px solid @barBorder;
+  border-left: none;
+  padding: 0px 15px 0px 10px;
+  margin: 5px 0px 5px 0px;
+  border-radius: 0 8px 8px 0;
+  background: @base;
+}
+
+#idle_inhibitor{
+  color: @text;
+  border: 1px solid @barBorder;
+  padding: 0px 15px 0px 10px;
+  margin: 5px 0px 5px 0px;
+  border-radius: 8px 0 0 8px;
+  background: @base;
+}
+
+#cpu{
+  color: @pine;
+  border: 1px solid @barBorder;
+  border-right: none;
+  border-radius: 8px 0 0 8px;
+  padding: 0px 15px 0px 10px;
+  margin: 5px 0px 5px 10px;
+  background: @base;
+}
+#memory{
+  color: @iris;
+  border: 1px solid @barBorder;
+  border-right: none;
+  border-radius: 0;
+  padding: 0px 15px 0px 10px;
+  margin: 5px 0px 5px 0px;
+  background: @base;
+}
+#temperature{
+  color: @gold;
+  border: 1px solid @barBorder;
+  border-right: none;
+  padding: 0px 15px 0px 10px;
+  margin: 5px 0px 5px 0px;
+  border-radius: 0;
+  background: @base;
+}
+#network{
+  color: @rose;
+  border: 1px solid @barBorder;
+  padding: 0px 15px 0px 10px;
+  margin: 5px 0px 5px 0px;
+  border-radius: 0 8px 8px 0;
+  background: @base;
+}
+
+#keyboard-state{
+  color: @love;
+}
+#pulseaudio{
+  color: @love;
+  border: 1px solid @barBorder;
+  border-right: none;
+  border-radius: 8px 0 0 8px;
+  padding: 0px 15px 0px 10px;
+  margin: 5px 0px 5px 10px;
+  background: @base;
+}
+#language {
+  color: @text;
+  border: 1px solid @barBorder;
+  border-right: none;
+  padding: 0px 15px 0px 10px;
+  margin: 5px 0px 5px 0px;
+  border-radius: 0;
+  background: @base;
+}
+#custom-notification {
+  color: @rose;
+  border: 1px solid @barBorder;
+  padding: 0px 15px 0px 10px;
+  margin: 5px 0px 5px 0px;
+  border-radius: 0 8px 8px 0;
+  background: @base;
+}
+/* #battery, */
+#tray {
+  border: 1px solid @barBorder;
+  padding: 0px 15px 0px 10px;
+  margin: 5px 5px 5px 10px;
+  border-radius: 8px;
+  background: @base;
+}
+
+#mode {
+    background: #64727D;
+    border-bottom: 3px solid @theme_text_color;
+}
+
+#clock {
+  background: @base;
+  color: @gold;
+  margin: 5px 0px 5px 5px;
+}
+#clock.hour {
+    font-weight: bold;
+    border: 1px solid @barBorder;
+    border-right: none;
+    border-radius: 8px 0 0 8px;
+    padding: 0px 2px 0px 5px;
+}
+
+#clock.calc {
+    font-weight: bold;
+    border: 1px solid @barBorder;
+    border-left: none;
+    padding: 0px 5px 0px 10px;
+    margin-left: 0px;
+}
+#custom-weather {
+  background:@base;
+  border: 1px solid @barBorder;
+  border-left: none;
+  border-radius: 0 8px 8px 0;
+  padding: 0px 5px 0px 10px;
+  margin: 5px 0px 5px 0px;
+}
+
+#battery {
+    background-color: #ffffff;
+    color: black;
+}
+
+#battery.charging {
+    color: white;
+    background-color: #26A65B;
+}
+
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: black;
+    }
+}
+
+#battery.warning:not(.charging) {
+    background: #f53c3c;
+    color: white;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: steps(12);
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
