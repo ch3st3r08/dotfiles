@@ -6,6 +6,7 @@
       - archlinux-contrib
       - pacman-contrib
       - xdg-utils
+      - libsecret
       - stow
       - xdg-user-dirs
       - unzip
@@ -47,6 +48,16 @@
         enabled: true
         state: started
         scope: user
+
+- name: "Compiling git libsecret credential"
+  ansible.builtin.command:
+    cmd: make
+    chdir: /usr/share/git/credential/libsecret/
+  become: yes
+
+- name: Copy git configuration
+  ansible.builtin.command:
+    cmd: stow -d {{root_dir}}/../ -t {{home}} --no-folding --dotfiles -S git
 
 - name: "Install Paru AUR manager"
   import_tasks: paru.yml

@@ -108,7 +108,7 @@
 
 - name: Copying Fastfetch, Zathura and MPD configuration
   ansible.builtin.command:
-    cmd: stow -d {{root_dir}}/../ -t {{home}} --no-folding --dotfiles -S fastfetch pdf-reader util-scripts mpd
+    cmd: stow -d {{root_dir}}/../ -t {{home}} --no-folding --dotfiles -S fastfetch pdf-reader util-scripts mpd music
 
 - name: Creating necessary files for MPD
   ansible.builtin.file:
