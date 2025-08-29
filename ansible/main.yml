@@ -6,7 +6,7 @@
   become: false
   vars:
     sudo_password: "{{ do_pass }}"
-    de_option: xfce
+    de_option: "{{ de | default('xfce4')}}"
     _name: Main
  
   pre_tasks:
@@ -34,6 +34,9 @@
     - role: xfce4
       tags: xfce4
       when: de_option == "xfce4" 
+    - role: picom
+      tags: picom
+      when: de_option == "xfce4" 
     - role: hyprland
       tags: hyprland
       when: de_option == "hypr" 
@@ -43,6 +46,8 @@
       tags: zsh
     - role: tmux
       tags: tmux
+    - role: rofi
+      tags: rofi
     - role: alacritty
       tags: alacritty
     - role: sddm

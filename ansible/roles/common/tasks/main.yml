@@ -83,8 +83,8 @@
 
     - name: Installing Colloid theme
       ansible.builtin.command:
-        - cmd: ./install -t all --tweaks nord -d "{{home}}/.local/share/themes"
-        - chdir: "{{home}}/Sources/Colloid-gtk-theme"
+        cmd: ./install -t all --tweaks nord -d "{{home}}/.local/share/themes"
+        chdir: "{{home}}/Sources/Colloid-gtk-theme"
       when: colloid.stat.isdir is not defined and not colloid.stat.isdir
 
 - name: "Installing AUR packages"
