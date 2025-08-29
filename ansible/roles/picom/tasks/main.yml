@@ -10,6 +10,5 @@
     mode: '0755'
 
 - name: Copying config file
-  ansible.builtin.copy:
-    src: picom.conf
-    dest: "{{config_dir}}/picom"
+  ansible.builtin.command:
+    cmd: stow -d {{root_dir}}/../ -t {{home}} --no-folding --dotfiles -S picom

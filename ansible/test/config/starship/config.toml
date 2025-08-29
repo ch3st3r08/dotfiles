@@ -1,0 +1,47 @@
+scan_timeout = 10
+add_newline = false
+right_format = """$time"""
+
+[character]
+success_symbol = "[](bold green) "
+error_symbol = "[](bold red) "
+
+[line_break]
+#disabled = true
+
+[directory]
+#fish_style_pwd_dir_length = 1
+
+[status]
+#symbol = "🔴"
+format = '[\[$symbol $common_meaning$signal_name$maybe_int $status\]]($style) '
+#format = '[\[$symbol $status\]]($style) '
+map_symbol = true
+disabled = false
+
+[time]
+disabled = true
+time_format = "%R" # Hour:Minute Format
+style = "bg:#33658A"
+format = '[ ♥ $time ]($style)'
+
+[username]
+style_user = "bold green"
+show_always = false
+
+[hostname]
+style = 'bold green'
+ssh_only = false
+format = '[$ssh_symbol$hostname]($style) [::](bold red) '
+
+
+[git_branch]
+format = '\([$symbol$branch(:$remote_branch)]($style)\) '
+
+[os]
+disabled = false
+style = 'bold cyan'
+
+[os.symbols]
+Arch = "󰣇 "
+

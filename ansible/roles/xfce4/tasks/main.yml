@@ -32,12 +32,5 @@
     recurse: true
 
 - name: Copying xfce4 config files
-  ansible.builtin.copy:
-    src: "{{item}}"
-    dest: "{{config_dir}}/xfce4/xfconf/xfce-perchannel-xml"
-  loop:
-    - thunar.xml
-    - xfce4-keyboard-shortcuts.xml
-    - xfce4-panel
-    - xfce4-terminal
-    - xfwm4.xml
+  ansible.builtin.command:
+    cmd: stow -d {{root_dir}}/../ -t {{home}} --no-folding --dotfiles -S xfce4

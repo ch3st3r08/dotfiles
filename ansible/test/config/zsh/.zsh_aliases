@@ -1,0 +1,131 @@
+#Custom Aliases for bash
+
+#Let use user's defined aliases with sudo
+alias sudo='sudo '
+
+#Better LS
+alias ls='exa --icons'
+alias lsa='ls -a'
+alias lsl='ls --long --group --header'
+alias lsla='lsl -a'
+alias lst='exa --tree --level=2 --group'
+alias lsta='lst -a'
+
+alias man='batman'
+alias cat='bat --theme ansi'
+
+#cd up directory
+alias dotfiles="git -C $HOME/.dotfiles"
+alias nv='NVIM_APPNAME=nvim_test nvim'
+alias Nstart='nvim --listen /tmp/nvim.pipe' 
+function Nsend {
+  nvim --server /tmp/nvim.pipe --remote $(readlink -f $1)
+}
+alias ..='cd ..'
+function cdl() {
+    cd $1 && lsa
+}
+function copyOnline() {
+    curl -F"file=@$1" https://0x0.st
+}
+#Configuration Files
+alias zshCF="$EDITOR $ZDOTDIR/.zshrc"
+alias tmuxCF="$EDITOR $HOME/.config/tmux/tmux.conf"
+alias i3CF="$EDITOR $HOME/.config/i3/config"
+alias polyCF="$EDITOR $HOME/.config/polybar/config.ini"
+alias dunsCF="$EDITOR $HOME/.config/dunst/dunstrc"
+alias alaCF="$EDITOR $HOME/.config/alacritty/alacritty.toml"
+alias rofiCF="$EDITOR $HOME/.config/rofi/config.rasi"
+alias hyprCF="$EDITOR $HOME/.config/hypr/hyprland.conf"
+alias nvimCF="$EDITOR $HOME/.config/nvim/init.lua"
+alias sddmCF="sddmCF_FN"
+function sddmCF_FN {
+  sudoedit /usr/share/sddm/themes/$(grep ^Current /etc/sddm.conf | awk -F '=' '{ print $2}')/theme.conf
+}
+alias picomCF="$EDITOR $HOME/.config/picom/picom.conf"
+alias lightdmCF="sudoedit /etc/lightdm/lightdm.conf"
+alias pacmanCF="sudoedit /etc/pacman.conf"
+alias grubCF="sudoedit /etc/default/grub"
+alias confgrubCF="sudoedit /boot/grub/grub.cfg"
+alias makepkgCF="sudoedit /etc/makepkg.conf"
+alias mkinitcpioCF="sudoedit /etc/mkinitcpio.conf"
+alias mirrorlistCF="sudoedit /etc/pacman.d/mirrorlist"
+alias fstabCF="sudoedit /etc/fstab"
+alias nsswitchCF="sudoedit /etc/nsswitch.conf"
+alias sambaCF="sudoedit /etc/samba/smb.conf"
+alias gnupgconfCF="sudoedit /etc/pacman.d/gnupg/gpg.conf"
+alias hostsCF="sudoedit /etc/hosts"
+alias hostnameCF="sudoedit /etc/hostname"
+alias resolvCF="sudoedit /etc/resolv.conf"
+alias plymouthCF="sudoedit /etc/plymouth/plymouthd.conf"
+alias vconsoleCF="sudoedit /etc/vconsole.conf"
+alias environmentCF="sudoedit /etc/environment"
+alias loaderCF="sudoedit /boot/efi/loader/loader.conf"
+alias refindCF="sudoedit /boot/refind_linux.conf"
+
+alias dtS='dotfiles status'
+alias dtAll='dotfiles add -u'
+alias dtA='dotfiles add'
+alias dtC='dotfiles commit -m'
+alias dtP='dotfiles push origin master'
+
+function updateGdrive() {
+    path1="$HOME/Documents/gDrive"
+    path2="gdrive:"
+    if [[ -z $(command -v rclone) ]]; then
+        echo "Rclone no está instalado"
+        exit 1
+    fi
+    rclone bisync $path1 $path2 \
+        --create-empty-src-dirs
+}
+
+function initGdrive () {
+    if [[ -z $(command -v rclone) ]]; then
+        echo "Rclone no está instalado"
+        exit 1
+    fi
+    path1=$1
+    path2=$2
+    shift 2
+    rclone bisync $path1 $path2 \
+        --create-empty-src-dirs \
+        --slow-hash-sync-only \
+        --drive-skip-gdocs \
+        --resync-mode newer \
+        $@
+}
+
+function ex () {
+  if [ -f $1 ] ; then
+    case $1 in
+      *.tar.bz2)   tar xjf $1   ;;
+      *.tar.gz)    tar xzf $1   ;;
+      *.bz2)       bunzip2 $1   ;;
+      *.rar)       unrar x $1   ;;
+      *.gz)        gunzip $1    ;;
+      *.tar)       tar xf $1    ;;
+      *.tbz2)      tar xjf $1   ;;
+      *.tgz)       tar xzf $1   ;;
+      *.zip)       unzip $1     ;;
+      *.Z)         uncompress $1;;
+      *.7z)        7z x $1      ;;
+      *.deb)       ar x $1      ;;
+      *.tar.xz)    tar xf $1    ;;
+      *.tar.zst)   tar xf $1    ;;
+      *)           echo "'$1' cannot be extracted via ex()" ;;
+    esac
+  else
+    echo "'$1' is not a valid file"
+  fi
+}
+
+function myScripts () {
+    local selectedScript=$(fd . ~/Scripts \
+        | xargs basename -a \
+        | fzf --tmux --border=rounded --prompt="  "  --border-label="Select script" --layout=reverse-list)
+
+    if [ ! -z $selectedScript ]; then
+        sh $selectedScript
+    fi
+}

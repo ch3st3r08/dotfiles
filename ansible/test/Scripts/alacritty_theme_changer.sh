@@ -1,0 +1,1 @@
+../../../alacritty/Scripts/alacritty_theme_changer.sh

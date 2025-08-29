@@ -10,16 +10,8 @@
     mode: '0755'
 
 - name: Copying Neovim Config
-  ansible.builtin.copy:
-    src: "{{ item }}"
-    dest: "{{config_dir}}/nvim"
-    force: yes
-  loop:
-    - lua
-    - init.lua
-    - stylua.toml
-    - lazyvim.json
-    - .neoconf.json
+  ansible.builtin.command:
+    cmd: stow -d {{root_dir}}/../ -t {{home}} --no-folding --dotfiles -S neovim
 
 # Execute neovim to install packages without opening GUI
 # Execute mason to install LSP servers

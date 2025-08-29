@@ -10,20 +10,5 @@
     mode: '0755'
 
 - name: "Copying config file"
-  ansible.builtin.copy:
-    src: tmux.conf
-    dest: "{{config_dir}}/tmux"
-    force: yes
-
-- name: "Copying Theme Folder"
-  ansible.builtin.copy:
-    src: themes
-    dest: "{{config_dir}}/tmux/"
-    force: yes
-
-- name: Copying Tmux scripts
-  ansible.builtin.copy:
-    src: "{{item}}"
-    dest: "{{script_config}}"
-  with_fileglob:
-    - "scripts/*"
+  ansible.builtin.command:
+    cmd: stow -d {{root_dir}}/../ -t {{home}} --no-folding --dotfiles -S tmux

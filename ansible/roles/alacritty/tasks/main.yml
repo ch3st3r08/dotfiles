@@ -9,8 +9,6 @@
     state: directory
     mode: '0755'
 
-- name: Copying Alacritty Config
-  ansible.builtin.copy:
-    src: alacritty.toml
-    dest: "{{config_dir}}/alacritty"
-    force: yes
+- name: Copying Alacrity configuration
+  ansible.builtin.command:
+    cmd: stow -d {{root_dir}}/../ -t {{home}} --no-folding --dotfiles -S alacritty

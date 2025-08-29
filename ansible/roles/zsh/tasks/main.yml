@@ -10,31 +10,9 @@
     state: directory
     mode: '0755'
 
-- name: Copying zsh config files
-  ansible.builtin.copy:
-    src: "{{ item }}"
-    dest: "{{config_dir}}/zsh"
-    force: yes
-  with_fileglob:
-    - ".*"
-
-- name: Copying top level zshenv
-  ansible.builtin.copy:
-    src: dot-zshenv
-    dest: "{{home}}/.zshenv"
-    force: yes
-
-- name: Create a starship directory
-  ansible.builtin.file:
-    path: "{{config_dir}}/starship"
-    state: directory
-    mode: '0755'
-
-- name: Copying starship config file
-  ansible.builtin.copy:
-    src: "config.toml"
-    dest: "{{config_dir}}/starship"
-    force: yes
+- name: Copy zsh configuration
+  ansible.builtin.command:
+    cmd: stow -d {{root_dir}}/../ -t {{home}} --no-folding --dotfiles -S tmux starship
 
 - name: Check default shell
   ansible.builtin.shell: basename $SHELL

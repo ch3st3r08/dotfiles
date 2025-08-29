@@ -42,15 +42,5 @@
     mode: '0755'
 
 - name: Copying config files
-  ansible.builtin.copy:
-    src: "{{item}}"
-    dest: "{{config_dir}}/hypr"
-    force: yes
-  loop:
-    - hypr/hypridle.conf
-    - hypr/hyprland.conf
-    - hypr/hyprlock.conf
-    - hypr/includes.conf
-
-- name: Configuring Waybar
-  include_tasks: waybar.yml
+  ansible.builtin.command:
+    cmd: stow -d {{root_dir}}/../ -t {{home}} --no-folding --dotfiles -S hypr waybar

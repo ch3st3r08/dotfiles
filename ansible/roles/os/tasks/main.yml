@@ -23,7 +23,7 @@
           - networkmanager
           - network-manager-applet
  
-    - name: Starting and enabling networkmanager service
+    - name: "Starting and enabling networkmanager service"
       ansible.builtin.systemd_service:
         name: NetworkManager.service
         enabled: true
