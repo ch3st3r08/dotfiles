@@ -1,0 +1,12 @@
+* {
+        bg: {{color1}}55;
+        cur: {{color0}};
+        fgd: {{color7}};
+        cmt: {{color8}};
+        cya: {{color2}};
+        grn: {{color3}};
+        ora: {{color9}};
+        pur: {{color7}};
+        red: {{color3}};
+        yel: {{color14}};
+}

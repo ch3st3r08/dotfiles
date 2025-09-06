@@ -1,0 +1,3 @@
+{% for c in colors -%}
+  @define-color color{{- loop.index-1 }} {{ c -}};
+{% endfor %}

@@ -50,11 +50,10 @@ if [ "$TERM" != "linux" ]; then
    #neofetch --colors 12 7 12 12 7 7 --ascii_colors 4 7 7 7 7 7
 fi
 
-# Import colorscheme from 'wal' asynchronously
+# Import colorscheme from 'wallust' asynchronously
 # &   # Run the process in the background.
 # ( ) # Hide shell job control messages.
-# Not supported in the "fish" shell.
-[[ -f $HOME/.config/wpg/sequences ]] && (cat ~/.config/wpg/sequences &)
+[[ -f $HOME/.cache/wallust/sequences ]] && (cat ~/.cache/wallust/sequences &)
 
 #Load aliases
 source "$ZDOTDIR/.zsh_aliases"

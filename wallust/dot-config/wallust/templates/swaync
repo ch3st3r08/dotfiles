@@ -1,0 +1,5 @@
+:root {
+  {% for c in colors -%}
+   --color{{- loop.index-1 }}: {{ c | rgb -}};
+  {% endfor %}
+}

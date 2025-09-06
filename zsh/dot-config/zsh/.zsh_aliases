@@ -13,8 +13,8 @@ alias lsta='lst -a'
 
 alias man='batman'
 alias cat='bat --theme ansi'
-
 #cd up directory
+alias ff='fastfetch -c examples/13.jsonc'
 alias dotfiles="git -C $HOME/.dotfiles"
 alias nv='NVIM_APPNAME=nvim_test nvim'
 alias Nstart='nvim --listen /tmp/nvim.pipe' 

@@ -1,0 +1,75 @@
+[colors.primary]
+background = '#52627F' # base
+foreground = '#DEF1F3' # text
+# Bright and dim foreground colors
+dim_foreground = '#DEF1F3' # text
+bright_foreground = '#DEF1F3' # text
+
+# Cursor colors
+[colors.cursor]
+text = '#52627F' # base
+cursor = '#DBB9AC' # rosewater
+
+[colors.vi_mode_cursor]
+text = '#52627F' # base
+cursor = '#BAA180' # lavender
+
+# Search colors
+[colors.search.matches]
+foreground = '#52627F' # base
+background = '#9BA9AA' # subtext0
+
+[colors.search.focused_match]
+foreground = '#52627F' # base
+background = '#2EBE7B' # green
+
+[colors.footer_bar]
+foreground = '#52627F' # base
+background = '#9BA9AA' # subtext0
+
+# Keyboard regex hints
+[colors.hints.start]
+foreground = '#52627F' # base
+background = '#CEF4F7' # yellow
+
+[colors.hints.end]
+foreground = '#52627F' # base
+background = '#9BA9AA' # subtext0
+
+# Selection colors
+[colors.selection]
+text = '#52627F' # base
+background = '#DBB9AC' # rosewater
+
+# Normal colors
+[colors.normal]
+black = '#101214' # surface1
+red = '#2B7A6F' # red
+green = '#2EBE7B' # green
+yellow = '#CEF4F7' # yellow
+blue = '#BAA180' # blue
+magenta = '#2B7A6F' # pink
+cyan = '#965945' # teal
+white = '#DEF1F3' # subtext1
+
+# Bright colors
+[colors.bright]
+black = '#404143' # surface1
+red = '#55958C' # red
+green = '#58CB95' # green
+yellow = '#D8F6F9' # yellow
+blue = '#C8B499' # blue
+magenta = '#55958C' # pink
+cyan = '#AB7A6A' # teal
+white = '#E5F4F5' # subtext1
+
+# Dim colors
+[colors.dim]
+black = '#0D0E10' # surface1
+red = '#226259' # red
+green = '#259862' # green
+yellow = '#A5C3C6' # yellow
+blue = '#958166' # blue
+magenta = '#226259' # pink
+cyan = '#784737' # teal
+white = '#B2C1C2' # subtext1

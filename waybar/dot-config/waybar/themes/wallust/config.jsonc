@@ -1,0 +1,88 @@
+{
+    "layer": "top",
+    "reload_style_on_change": true,
+    "position": "top",
+    "height": 40,
+    "margin-top": 8,
+    "margin-left": 50,
+    "margin-right": 50,
+    "margin-bottom": 5,
+    // Define theme own custom modules
+    "hyprland/window": {
+        "format": "󰣆  {title}",
+        "max-length": 40,
+        "rewrite": {
+          "(.*) - Brave": "󰾔  Brave",
+          "(.*) — Mozilla Firefox": "  Firefox",
+          "(.*) - alacritty": "  Alacritty",
+          "(.*) - tmux": "  Tmux",
+          "^.*v( .*|$)": "  Neovim",
+          "(.*) ": "  Empty"
+        },
+        "icon": false
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "󰔢",
+            "deactivated": "󰨚"
+        }
+    },
+    "custom/power": {
+        "format" : "⏻",
+        "tooltip": false,
+        "on-click": "nwg-bar"
+    },
+    "clock": {
+      "interval": 60,
+      "format": "{:%H:%M %p}",
+      "format-alt": "{:%A, %B %d, %Y} ",
+      "tooltip": true,
+      "tooltip-format": "{:%Y-%m-%d}"
+    },
+    "group/info": {
+      "orientation": "horizontal",
+      "modules": [
+              "cpu",
+              "memory",
+              "temperature"
+      ],
+      "drawer": {
+        "transition-duration": 500,
+        "transition-left-to-right": false,
+        "click-to-reveal": true
+      }
+    },
+    "group/noti": {
+      "orientation": "horizontal",
+      "modules": [
+              "tray",
+              "pulseaudio",
+              "hyprland/language",
+              "custom/notification"
+      ]
+    },
+    "hyprland/workspaces": {
+        "format": "{icon} ",
+        "format-icons": {
+            "active": "",
+            "empty": "",
+            "default": ""
+        },
+        "persistent-workspaces": {
+            "*": 5, // 5 workspaces by default on every monitor
+        }
+    },
+    "include": ["$HOME/.config/waybar/themes/wallust/modules.jsonc"],
+    "modules-left": ["custom/launcher", "hyprland/window","hyprland/submap"],
+    "modules-center": ["hyprland/workspaces"],
+    "modules-right": [
+      "idle_inhibitor",
+      "custom/pacman",
+      "group/info",
+      "group/noti",
+      "battery",
+      "clock",
+      "custom/power"
+    ]
+}

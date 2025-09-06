@@ -1,0 +1,19 @@
+{% for c in colors -%}
+  $color{{loop.index-1}}=rgba({{c | strip -}}EE)
+{% endfor -%}
+
+general {
+    col.inactive_border = $color0
+    col.active_border = $color3 $color2 $color14 90deg
+}
+
+group {
+    col.border_active = $color2
+    col.border_inactive = $color8 $color0 123deg
+    col.border_locked_active = $color4
+    col.border_locked_inactive = $color7 $color6 123deg
+    groupbar {
+        col.active = $color12
+        col.locked_active = $color5
+    }
+}
