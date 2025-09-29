@@ -1,12 +1,12 @@
 * {
-        bg: {{color1}}55;
-        cur: {{color0}};
+        bg: rgba({{ background | rgb }}, 0.65);
+        cur: {{color1}};
         fgd: {{color7}};
+        grn: {{color9}};
+        red: {{color3}};
+        ora: {{color1}};
         cmt: {{color8}};
         cya: {{color2}};
-        grn: {{color3}};
-        ora: {{color9}};
         pur: {{color7}};
-        red: {{color3}};
         yel: {{color14}};
 }

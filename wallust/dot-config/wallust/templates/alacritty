@@ -1,75 +1,26 @@
+# wallust.toml needs to include this
+# alacritty = { template = 'alacritty.toml', target = '~/.config/alacritty/colors.toml' }
+# and alacritty.toml should import that file under [general]
 [colors.primary]
-background = '{{color1}}' # base
-foreground = '{{color7}}' # text
-# Bright and dim foreground colors
-dim_foreground = '{{color7}}' # text
-bright_foreground = '{{color7}}' # text
+background = "{{background}}"
+foreground = "{{foreground}}"
 
-# Cursor colors
-[colors.cursor]
-text = '{{color1}}' # base
-cursor = '{{cursor}}' # rosewater
-
-[colors.vi_mode_cursor]
-text = '{{color1}}' # base
-cursor = '{{color4}}' # lavender
-
-# Search colors
-[colors.search.matches]
-foreground = '{{color1}}' # base
-background = '{{color8}}' # subtext0
-
-[colors.search.focused_match]
-foreground = '{{color1}}' # base
-background = '{{color5}}' # green
-
-[colors.footer_bar]
-foreground = '{{color1}}' # base
-background = '{{color8}}' # subtext0
-
-# Keyboard regex hints
-[colors.hints.start]
-foreground = '{{color1}}' # base
-background = '{{color14}}' # yellow
-
-[colors.hints.end]
-foreground = '{{color1}}' # base
-background = '{{color8}}' # subtext0
-
-# Selection colors
-[colors.selection]
-text = '{{color1}}' # base
-background = '{{cursor}}' # rosewater
-
-# Normal colors
 [colors.normal]
-black = '{{background}}' # surface1
-red = '{{color3}}' # red
-green = '{{color5}}' # green
-yellow = '{{color14}}' # yellow
-blue = '{{color4}}' # blue
-magenta = '{{color3}}' # pink
-cyan = '{{color2}}' # teal
-white = '{{color7}}' # subtext1
+black   = "{{color0}}"
+red     = "{{color1}}"
+green   = "{{color2}}"
+yellow  = "{{color3}}"
+blue    = "{{color4}}"
+magenta = "{{color5}}"
+cyan    = "{{color6}}"
+white   = "{{color7}}"
 
-# Bright colors
 [colors.bright]
-black = '{{background | lighten(0.2)}}' # surface1
-red = '{{color3 | lighten(0.2)}}' # red
-green = '{{color5 | lighten(0.2)}}' # green
-yellow = '{{color14 | lighten(0.2)}}' # yellow
-blue = '{{color4 | lighten(0.2)}}' # blue
-magenta = '{{color3 | lighten(0.2)}}' # pink
-cyan = '{{color2 | lighten(0.2)}}' # teal
-white = '{{color7 | lighten(0.2)}}' # subtext1
-
-# Dim colors
-[colors.dim]
-black = '{{background | darken(0.2)}}' # surface1
-red = '{{color3 | darken(0.2)}}' # red
-green = '{{color5 | darken(0.2)}}' # green
-yellow = '{{color14 | darken(0.2)}}' # yellow
-blue = '{{color4 | darken(0.2)}}' # blue
-magenta = '{{color3 | darken(0.2)}}' # pink
-cyan = '{{color2 | darken(0.2)}}' # teal
-white = '{{color7 | darken(0.2)}}' # subtext1
+black   = "{{color8}}"
+red     = "{{color9}}"
+green   = "{{color10}}"
+yellow  = "{{color11}}"
+blue    = "{{color12}}"
+magenta = "{{color13}}"
+cyan    = "{{color14}}"
+white   = "{{color15}}"

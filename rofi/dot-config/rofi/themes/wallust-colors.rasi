@@ -1,0 +1,12 @@
+* {
+        bg: rgba(17,17,17, 0.65);
+        cur: #45261F;
+        fgd: #EBD6CF;
+        grn: #5C3329;
+        red: #7E2F22;
+        ora: #45261F;
+        cmt: #A49691;
+        cya: #313439;
+        pur: #EBD6CF;
+        yel: #E7BEAF;
+}

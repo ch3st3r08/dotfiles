@@ -53,7 +53,7 @@ fi
 # Import colorscheme from 'wallust' asynchronously
 # &   # Run the process in the background.
 # ( ) # Hide shell job control messages.
-[[ -f $HOME/.cache/wallust/sequences ]] && (cat ~/.cache/wallust/sequences &)
+#[[ -f $HOME/.cache/wallust/sequences ]] && (cat ~/.cache/wallust/sequences &)
 
 #Load aliases
 source "$ZDOTDIR/.zsh_aliases"

@@ -53,5 +53,5 @@ swaync.dst='~/.config/swaync/themes/wallust-colors.css'
 waybar.src='waybar'
 waybar.dst='~/.config/waybar/themes/wallust/colors.css'
 alacri.src='alacritty'
-alacri.dst='~/.config/alacritty/themes/wallust-colors.toml'
+alacri.dst='~/.config/alacritty/themes/wallust.toml'
 

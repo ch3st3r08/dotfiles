@@ -1,4 +1,4 @@
-@import "./rose-pine.css";
+@import "rosepine.css";
 @define-color barBorder @highlightHigh;
 * {
     font-family: Roboto, CodeNewRoman Nerd Font;
