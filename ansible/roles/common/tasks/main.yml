@@ -90,7 +90,7 @@
 - name: "Installing AUR packages"
   ansible.builtin.expect:
     command: paru -S --noprogressbar --noconfirm --needed {{item}}
-    responses: 
+    responses:
       password: "{{sudo_password}}"
   when: paru_exist is succeeded
   with_items:
@@ -121,3 +121,13 @@
     - { path: "{{config_dir}}/mpd/stickers.sql", state: "touch", mode: "0644" }
     - { path: "{{config_dir}}/mpd/pid", state: "touch", mode: "0644" }
     - { path: "{{config_dir}}/mpd/state", state: "touch", mode: "0644" }
+
+- name: Setting plymouth theme to arch-logo-new
+  ansible.builtin.command:
+    cmd: plymouth-set-default-theme -R arch-logo-new
+  become: true
+
+- name: Moving Arch grub theme to correct path
+  ansible.builtin.command:
+    cmd: mv /usr/share/grub/themes/arch-linux /boot/grub/themes/arch-linux
+  become: true
