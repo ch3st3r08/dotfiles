@@ -6,34 +6,33 @@
         "tooltip": true,
         "interval": 3600
     },
-    "custom/pacman":{
-        "format": "{} ",
+    "custom/pacman": {
+        "format": " {}",
         "tooltip": true,
-        "interval": 3600,                     // every hour
-        // "exec": "checkupdates | wc -l",       // # of updates
+        "interval": 3600, // every hour
         "exec": "test.sh -j",
-        "exec-if": "exit 0",                  // always run; consider advanced run conditions
+        "exec-if": "exit 0", // always run; consider advanced run conditions
         "on-click": "alacritty -e bash -c 'paru && pkill -SIGRTMIN+8 waybar && read -p \"echo Presione para continuar... \" '", // update system
         "signal": 8,
-        "return-type":"json"
+        "return-type": "json"
     },
-    "custom/launcher":{
+    "custom/launcher": {
         "tooltip": false,
         "format": "",
         "on-click": "sleep 0.1 && nwg-drawer -ft -term alacritty"
     },
-    "custom/notification":{
+    "custom/notification": {
         "tooltip": false,
         "format": "{} {icon}",
         "format-icons": {
-          "notification": "<span foreground='red'><sup></sup></span>",
-          "none": "",
-          "dnd-notification": "<span foreground='red'><sup></sup></span>",
-          "dnd-none": "",
-          "inhibited-notification": "<span foreground='red'><sup></sup></span>",
-          "inhibited-none": "",
-          "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
-          "dnd-inhibited-none": ""
+            "notification": "<span foreground='red'><sup></sup></span>",
+            "none": "",
+            "dnd-notification": "<span foreground='red'><sup></sup></span>",
+            "dnd-none": "",
+            "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+            "inhibited-none": "",
+            "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+            "dnd-inhibited-none": ""
         },
         "return-type": "json",
         "exec-if": "which swaync-client",
@@ -43,30 +42,24 @@
         "escape": true
     },
     "custom/power": {
-        "format" : "⏻",
+        "format": "⏻",
         "tooltip": false,
-        "on-click": "nwg-bar"
+        "on-click": "rofi-logout.sh"
     },
     "hyprland/workspaces": {
         "format": "{icon} ",
-        "format-icons": {
-            "active": "",
-            "empty": "",
-            "default": ""
-        },
         "persistent-workspaces": {
-            "*": 5, // 5 workspaces by default on every monitor
+            "*": 5 // 5 workspaces by default on every monitor
         }
     },
     "hyprland/window": {
         "format": "  {}",
         "max-length": 40,
-        "rewrite": {
-          "(.*) - Brave": "󰾔 $1",
-          "(.*) - alacritty": " $1",
-          "(.*) - tmux": " $1",
-        },
         "icon": false
+    },
+    "hyprland/submap": {
+        "format": "{}",
+        "tooltip": false
     },
     "idle_inhibitor": {
         "format": "{icon}",
@@ -86,12 +79,17 @@
             "phone": "",
             "portable": "",
             "car": "",
-            "default": ["", ""]
+            "default": [
+                "",
+                ""
+            ]
         },
         "scroll-step": 1,
         "on-click": "pavucontrol",
         "on-click-middle": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
-        "ignored-sinks": ["Easy Effects Sink"]
+        "ignored-sinks": [
+            "Easy Effects Sink"
+        ]
     },
     "cpu": {
         "format": "{usage}% "
@@ -112,21 +110,27 @@
         }
     },
     "hyprland/language": {
-                "format": " {}",
-                "min-length": 5,
-                "on-click": "hyprctl switchxkblayout current next",
-                "tooltip": false
-     },
+        "format": " {}",
+        "min-length": 5,
+        "on-click": "hyprctl switchxkblayout current next",
+        "tooltip": false
+    },
     "battery": {
         "format": "{capacity}% {icon}",
-        "format-icons": ["", "", "", "", ""]
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
     },
     "clock": {
-      "internal": 60
+        "internal": 60
     },
     "clock#hour": {
-      "interval": 60,
-      "format": "   {:%H:%M}",
+        "interval": 60,
+        "format": "   {:%H:%M}"
     },
     "clock#calc": {
         "interval": 60,
@@ -138,13 +142,13 @@
             "on-click-right": "mode",
             "mode-mon-col": 3,
             "format": {
-                "months":     "<span color='#ffead3'><b>{}</b></span>",
-                "days":       "<span color='#ecc6d9'><b>{}</b></span>",
-                "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
-                "today":      "<span color='#99ffdd'><b><u>{}</u></b></span>"
+                "months": "<span color='#ffead3'><b>{}</b></span>",
+                "days": "<span color='#ecc6d9'><b>{}</b></span>",
+                "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+                "today": "<span color='#99ffdd'><b><u>{}</u></b></span>"
             }
         },
-        "actions":  {
+        "actions": {
             "on-click-right": "mode",
             "on-click-forward": "tz_up",
             "on-click-backward": "tz_down",
@@ -153,17 +157,17 @@
         }
     },
     "tray": {
-          // "icon-size": 21,
-          "spacing": 10
-     },
-    "network":{
-      "format-wifi": "{essid} ({signalStrength}%) ",
-      "format-ethernet": "{ipaddr}/{cidr} ",
-      "format-disconnected": "", //An empty format will hide the module.
-      "tooltip-format": "{ifname} via {gwaddr}  ",
-      "tooltip-format-wifi": "{essid} ({signalStrength}%)  ",
-      "tooltip-format-disconnected": "Disconnected",
-      "max-length": 50
+        // "icon-size": 21,
+        "spacing": 10
+    },
+    "network": {
+        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-ethernet": "{ipaddr}/{cidr} ",
+        "format-disconnected": "", //An empty format will hide the module.
+        "tooltip-format": "{ifname} via {gwaddr}  ",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%)  ",
+        "tooltip-format-disconnected": "Disconnected",
+        "max-length": 50
     },
     "mpd": {
         "format": "{stateIcon} {consumeIcon}{repeatIcon}{singleIcon} {artist} - {title} ",

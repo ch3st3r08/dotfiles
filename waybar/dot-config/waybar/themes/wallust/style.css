@@ -7,10 +7,10 @@
 window#waybar {
     font-size: 16px;
     font-weight: bold;
-    background: alpha(@color1, 0.65);
+    background: alpha(@color16, 0.65);
     color: @color7;
     border-radius: 5px;
-    border: 1px solid transparent;
+    border: 1px solid @color0;
 }
 
 tooltip {
@@ -24,7 +24,7 @@ tooltip label {
 
 #window, #custom-launcher, #workspaces, #clock, #submap, #custom-pacman, #idle_inhibitor, #custom-power, #info, #noti {
     border-radius: 8px;
-    background: alpha(@color7,0.2);
+    background: alpha(@color7,0.12);
     margin: 5px 8px;
     border: 1px solid transparent;
     color:@color7;
@@ -38,7 +38,7 @@ tooltip label {
     padding: 0px 20px 0px 10px;
 }
 #workspaces {
-  background: alpha(@color7, 0.2);
+  /* background: alpha(@color7, 0.2); */
 }
 #workspaces button {
     padding: 0 15px;
@@ -76,7 +76,7 @@ tooltip label {
   margin: 0px 9px;
 }
 #tray {
-  border: 1px solid @color8;
+  border: 1px solid alpha(@color8,0.5);
   border-radius: 5px;
   padding: 5px;
   margin: 3px 5px 3px 9px;

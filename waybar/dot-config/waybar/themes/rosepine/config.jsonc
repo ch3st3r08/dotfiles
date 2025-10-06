@@ -7,6 +7,9 @@
     "margin-left": 5,
     "margin-right": 5,
     "margin-bottom": 5,
+    "include": [
+        "$HOME/.config/waybar/themes/modules.jsonc"
+    ],
     "modules-left": ["clock#hour","clock#calc","custom/weather","hyprland/workspaces", "hyprland/submap","hyprland/window"],
     "modules-center": ["mpd"],
     "modules-right": [
@@ -22,58 +25,12 @@
       "custom/notification",
       "tray"
     ],
-    "custom/weather": {
-        "exec": "${HOME}/.config/waybar/scripts/get_weather.sh Morazan+El%20Salvador",
-        "return-type": "json",
-        "format": "{}",
-        "tooltip": true,
-        "interval": 3600
-    },
-    "custom/pacman":{
-        "format": "{} ",
-        "tooltip": true,
-        "interval": 3600,                     // every hour
-        // "exec": "checkupdates | wc -l",       // # of updates
-        "exec": "test.sh -j",
-        "exec-if": "exit 0",                  // always run; consider advanced run conditions
-        "on-click": "alacritty -e bash -c 'paru && pkill -SIGRTMIN+8 waybar && read -p \"echo Presione para continuar... \" '", // update system
-        "signal": 8,
-        "return-type":"json"
-    },
-    "custom/launcher":{
-        "tooltip": false,
-        "format": " 󰣇 ",
-        "on-click": "sleep 0.1 && nwg-drawer -ft -term alacritty"
-    },
-    "custom/notification":{
-        "tooltip": false,
-        "format": "{} {icon}",
-        "format-icons": {
-          "notification": "<span foreground='red'><sup></sup></span>",
-          "none": "",
-          "dnd-notification": "<span foreground='red'><sup></sup></span>",
-          "dnd-none": "",
-          "inhibited-notification": "<span foreground='red'><sup></sup></span>",
-          "inhibited-none": "",
-          "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
-          "dnd-inhibited-none": ""
-        },
-        "return-type": "json",
-        "exec-if": "which swaync-client",
-        "exec": "swaync-client -swb",
-        "on-click": "sleep 0.1 && swaync-client -t -sw",
-        "on-click-right": "sleep 0.1 && swaync-client -d -sw",
-        "escape": true
-    },
     "hyprland/workspaces": {
         "format": "{icon} ",
         "format-icons": {
             "active": "",
             "empty": "",
             "default": ""
-        },
-        "persistent-workspaces": {
-            "*": 5, // 5 workspaces by default on every monitor
         }
     },
     "hyprland/window": {
@@ -82,129 +39,12 @@
         "rewrite": {
           "(.*) - Brave": "󰾔 $1",
           "(.*) - alacritty": " $1",
-          "(.*) - tmux": " $1",
-        },
-        "icon": false
-    },
-    "idle_inhibitor": {
-        "format": "{icon}",
-        "format-icons": {
-            "activated": "",
-            "deactivated": ""
-        }
-    },
-    "pulseaudio": {
-        "format": "{volume}% {icon}",
-        "format-bluetooth": "{volume}% {icon}",
-        "format-muted": "",
-        "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["", ""]
-        },
-        "scroll-step": 1,
-        "on-click": "pavucontrol",
-        "ignored-sinks": ["Easy Effects Sink"]
-    },
-    "cpu": {
-        "format": "{usage}% "
-    },
-    "memory": {
-        "format": "{}% "
-    },
-    "temperature": {
-        "format": "{temperatureC}°C "
-    },
-    "keyboard-state": {
-        "numlock": false,
-        "capslock": true,
-        "format": "{name} {icon}",
-        "format-icons": {
-            "locked": "",
-            "unlocked": ""
+          "(.*) - tmux": " $1"
         }
     },
     "hyprland/language": {
         "format": "  {}",
         "format-en": "EN",
         "format-es": "ES"
-    },
-    "battery": {
-        "format": "{capacity}% {icon}",
-        "format-icons": ["", "", "", "", ""]
-    },
-    "clock": {
-      "internal": 60
-    },
-    "clock#hour": {
-      "interval": 60,
-      "format": "   {:%H:%M}",
-    },
-    "clock#calc": {
-        "interval": 60,
-        "tooltip": true,
-        "format": "   {:%d/%m}",
-        "format-alt": "{:%R}",
-        "tooltip-format": "<tt><small>{calendar}</small></tt>",
-        "calendar": {
-            "on-click-right": "mode",
-            "mode-mon-col": 3,
-            "format": {
-                "months":     "<span color='#ffead3'><b>{}</b></span>",
-                "days":       "<span color='#ecc6d9'><b>{}</b></span>",
-                "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
-                "today":      "<span color='#99ffdd'><b><u>{}</u></b></span>"
-            }
-        },
-        "actions":  {
-            "on-click-right": "mode",
-            "on-click-forward": "tz_up",
-            "on-click-backward": "tz_down",
-            "on-scroll-up": "shift_up",
-            "on-scroll-down": "shift_down"
-        }
-    },
-    "tray": {
-          // "icon-size": 21,
-          "spacing": 10
-     },
-    "network":{
-      "format-wifi": "{essid} ({signalStrength}%) ",
-      "format-ethernet": "{ipaddr}/{cidr} ",
-      "format-disconnected": "", //An empty format will hide the module.
-      "tooltip-format": "{ifname} via {gwaddr}  ",
-      "tooltip-format-wifi": "{essid} ({signalStrength}%)  ",
-      "tooltip-format-disconnected": "Disconnected",
-      "max-length": 50
-    },
-    "mpd": {
-        "format": "{stateIcon} {consumeIcon}{repeatIcon}{singleIcon} {artist} - {title} ",
-        "format-disconnected": "Disconnected ",
-        "format-stopped": "{consumeIcon}{repeatIcon}{singleIcon} Stopped ",
-        "interval": 10,
-        "consume-icons": {
-            "on": " " // Icon shows only when "consume" is on
-        },
-        "random-icons": {
-            "off": "<span color=\"#f53c3c\"></span> ", // Icon grayed out when "random" is off
-            "on": " "
-        },
-        "repeat-icons": {
-            "on": " "
-        },
-        "single-icons": {
-            "on": "1 "
-        },
-        "state-icons": {
-            "paused": "",
-            "playing": ""
-        },
-        "tooltip-format": "MPD (connected)",
-        "tooltip-format-disconnected": "MPD (disconnected)",
-        "on-click": "mpc toggle"
     }
 }

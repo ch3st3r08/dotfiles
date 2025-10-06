@@ -8,30 +8,25 @@
     "margin-right": 50,
     "margin-bottom": 5,
     // Define theme own custom modules
-    "hyprland/window": {
-        "format": "󰣆  {title}",
-        "max-length": 40,
-        "rewrite": {
-          "(.*) - Brave": "󰾔  Brave",
-          "(.*) — Mozilla Firefox": "  Firefox",
-          "(.*) - alacritty": "  Alacritty",
-          "(.*) - tmux": "  Tmux",
-          "^.*v( .*|$)": "  Neovim",
-          "(.*) ": "  Empty"
-        },
-        "icon": false
-    },
+    "include": ["$HOME/.config/waybar/themes/modules.jsonc"],
+    "modules-left": ["custom/launcher", "hyprland/window","hyprland/submap"],
+    "modules-center": ["hyprland/workspaces"],
+    "modules-right": [
+      "idle_inhibitor",
+      "custom/pacman",
+      "group/info",
+      "group/noti",
+      "battery",
+      "clock",
+      "custom/power"
+    ],
+
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
             "activated": "󰔢",
             "deactivated": "󰨚"
         }
-    },
-    "custom/power": {
-        "format" : "⏻",
-        "tooltip": false,
-        "on-click": "nwg-bar"
     },
     "clock": {
       "interval": 60,
@@ -68,21 +63,19 @@
             "active": "",
             "empty": "",
             "default": ""
-        },
-        "persistent-workspaces": {
-            "*": 5, // 5 workspaces by default on every monitor
         }
     },
-    "include": ["$HOME/.config/waybar/themes/wallust/modules.jsonc"],
-    "modules-left": ["custom/launcher", "hyprland/window","hyprland/submap"],
-    "modules-center": ["hyprland/workspaces"],
-    "modules-right": [
-      "idle_inhibitor",
-      "custom/pacman",
-      "group/info",
-      "group/noti",
-      "battery",
-      "clock",
-      "custom/power"
-    ]
+    "hyprland/window": {
+        "format": "󰣆  {title}",
+        "max-length": 40,
+        "rewrite": {
+          "(.*) - Brave": "󰾔  Brave",
+          "(.*) — Mozilla Firefox": "  Firefox",
+          "(.*) - alacritty": "  Alacritty",
+          "(.*) - tmux": "  Tmux",
+          "^.*v( .*|$)": "  Neovim",
+          "(.*) ": "  Empty"
+        },
+        "icon": false
+    }
 }
