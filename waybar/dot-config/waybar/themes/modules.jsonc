@@ -7,7 +7,7 @@
         "interval": 3600
     },
     "custom/pacman": {
-        "format": " {}",
+        "format": "  {}",
         "tooltip": true,
         "interval": 3600, // every hour
         "exec": "test.sh -j",
@@ -69,7 +69,7 @@
         }
     },
     "pulseaudio": {
-        "format": "{icon} {volume}%",
+        "format": "{icon}  {volume}%",
         "format-bluetooth": "{volume}% {icon}",
         "format-muted": "",
         "format-icons": {
@@ -111,6 +111,8 @@
     },
     "hyprland/language": {
         "format": " {}",
+        "format-es": "ES",
+        "format-en": "EN",
         "min-length": 5,
         "on-click": "hyprctl switchxkblayout current next",
         "tooltip": false

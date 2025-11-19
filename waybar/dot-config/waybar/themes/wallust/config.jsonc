@@ -17,7 +17,7 @@
       "group/info",
       "group/noti",
       "battery",
-      "clock",
+      "clock#calc",
       "custom/power"
     ],
 
@@ -28,12 +28,9 @@
             "deactivated": "󰨚"
         }
     },
-    "clock": {
-      "interval": 60,
-      "format": "{:%H:%M %p}",
-      "format-alt": "{:%A, %B %d, %Y} ",
-      "tooltip": true,
-      "tooltip-format": "{:%Y-%m-%d}"
+    "clock#calc": {
+      "format-alt": "   {:%d/%m}",
+      "format": " {:%R}"
     },
     "group/info": {
       "orientation": "horizontal",
