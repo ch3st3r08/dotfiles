@@ -8,5 +8,5 @@ echo "Creating xdg directories"
 #xdg-user-dirs-update
 
 echo "Installing system"
-ansible-playbook ansible/main.yml --ask-become-pass -e "do_pass=$1" $2
+ansible-playbook ansible/main.yml --ask-become-pass -e "do_pass=$1" "$2"
 
