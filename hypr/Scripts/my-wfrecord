@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+
+PIDFILE="/tmp/wf-recorder-toggle.pid"
+OUTDIR="$HOME/Videos/recordings"
+
+mkdir -p "$OUTDIR"
+
+# ---- 1. If recording is running, stop it ----
+if [[ -f "$PIDFILE" ]]; then
+    PID=$(cat "$PIDFILE")
+
+    if kill -0 "$PID" 2>/dev/null; then
+        notify-send "Screen Recording" "Stopping recording…"
+        kill -SIGINT "$PID"       # stop wf-recorder cleanly
+        rm -f "$PIDFILE"
+        exit 0
+    else
+        # PID file exists but process is dead → clean stale file
+        rm -f "$PIDFILE"
+    fi
+fi
+
+# checking if rofi is installed
+if command -v rofi >/dev/null 2>&1; then
+  option=$(echo -e '1|Fullscreen\n2|Select Region' \
+    | rofi -dmenu -no-fixed-num-lines -i \
+    | cut -d"|" -f1)
+  [ -z "$option" ] && exit 1
+fi
+
+# ---- 2. No active recording → start a new one ----
+if [ "$option" == "2" ]; then
+  notify-send "Screen Recording" "Select region to record…"
+  GEOM=$(slurp) || exit 1
+fi
+
+OUTFILE="$OUTDIR/vid-$(date +"%Y-%m-%d-%H%M%S").mp4"
+
+notify-send "Screen Recording" "Recording started."
+
+wf-recorder -a -f "$OUTFILE" -g "$GEOM" &
+PID=$!
+
+echo "$PID" > "$PIDFILE"
+wait "$PID"
+
+# Cleanup after finishing
+rm -f "$PIDFILE"
+notify-send "Screen Recording" "Recording saved: $(basename "$OUTFILE")"
