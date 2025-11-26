@@ -1,6 +1,8 @@
 #!/bin/sh
-PATH_TO_THEMES=~/.config/alacritty/themes/alacrytheme/themes
-OPTION=$(ls -1 $PATH_TO_THEMES | cut -d"." -f 1 | rofi -dmenu -p "Selecciona un tema")
+THEME_PATH=themes/alacrytheme/themes
+ABS_THEME_PATH=~/.config/alacritty/$THEME_PATH
+
+OPTION=$(find $ABS_THEME_PATH -type f,l -exec basename {} \; | cut -d"." -f 1 | rofi -dmenu -p "Selecciona un tema")
 if [ -n "$OPTION" ]; then
-        sed --follow-symlinks -i -E "s/\w+-*\w*.toml/$OPTION\.toml/" ~/.config/alacritty/alacritty.toml
+        sed --follow-symlinks -i -E "s|(^import.* )(\[\")(.+)(\.toml\"\])|\1\2$THEME_PATH\/$OPTION\4|" ~/.config/alacritty/alacritty.toml
 fi

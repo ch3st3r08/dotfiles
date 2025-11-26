@@ -9,4 +9,4 @@ configuration {
   display-combi:  " ";
 }
 
-@theme "themes/rosepine.rasi"
+@theme "themes/everforest.rasi"
