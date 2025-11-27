@@ -30,10 +30,9 @@
         <value type="int" value="28"/>
         <value type="int" value="29"/>
         <value type="int" value="27"/>
+        <value type="int" value="22"/>
         <value type="int" value="19"/>
         <value type="int" value="26"/>
-        <value type="int" value="22"/>
-        <value type="int" value="37"/>
         <value type="int" value="21"/>
         <value type="int" value="20"/>
         <value type="int" value="3"/>
@@ -43,8 +42,8 @@
       <property name="size" type="uint" value="35"/>
       <property name="icon-size" type="uint" value="0"/>
       <property name="autohide-behavior" type="uint" value="0"/>
-      <property name="enter-opacity" type="uint" value="80"/>
-      <property name="leave-opacity" type="uint" value="80"/>
+      <property name="enter-opacity" type="uint" value="100"/>
+      <property name="leave-opacity" type="uint" value="100"/>
     </property>
   </property>
   <property name="plugins" type="empty">
@@ -142,9 +141,6 @@
     <property name="plugin-3" type="string" value="separator">
       <property name="style" type="uint" value="0"/>
     </property>
-    <property name="plugin-37" type="string" value="separator">
-      <property name="style" type="uint" value="0"/>
-    </property>
     <property name="plugin-5" type="string" value="pager">
       <property name="rows" type="uint" value="1"/>
       <property name="miniature-view" type="bool" value="false"/>
@@ -163,6 +159,9 @@
       <property name="button-icon" type="string" value="archlinux-logo"/>
       <property name="button-single-row" type="bool" value="true"/>
       <property name="recent" type="array">
+        <value type="string" value="thunar-volman-settings.desktop"/>
+        <value type="string" value="nm-connection-editor.desktop"/>
+        <value type="string" value="lstopo.desktop"/>
         <value type="string" value="xfce4-sensors.desktop"/>
         <value type="string" value="xfce4-notes.desktop"/>
         <value type="string" value="org.nickvision.tubeconverter.desktop"/>
@@ -170,9 +169,6 @@
         <value type="string" value="com.github.maoschanz.drawing.desktop"/>
         <value type="string" value="firefox.desktop"/>
         <value type="string" value="org.remmina.Remmina.desktop"/>
-        <value type="string" value="docker-desktop.desktop"/>
-        <value type="string" value="xfce-settings-manager.desktop"/>
-        <value type="string" value="com.usebottles.bottles.desktop"/>
       </property>
       <property name="menu-width" type="int" value="480"/>
       <property name="favorites" type="array">
@@ -187,7 +183,7 @@
       <property name="command" type="string" value="/home/chester/Scripts/test.sh"/>
       <property name="use-label" type="bool" value="false"/>
       <property name="text" type="string" value=""/>
-      <property name="update-period" type="int" value="61000"/>
+      <property name="update-period" type="int" value="1800000"/>
       <property name="enable-single-row" type="bool" value="true"/>
       <property name="font" type="string" value="Cantarell 11"/>
     </property>
@@ -226,6 +222,7 @@
       <property name="show-handle" type="bool" value="true"/>
       <property name="show-tooltips" type="bool" value="true"/>
       <property name="flat-buttons" type="bool" value="false"/>
+      <property name="show-wireframes" type="bool" value="false"/>
     </property>
     <property name="plugin-30" type="string" value="separator">
       <property name="style" type="uint" value="0"/>
@@ -251,11 +248,11 @@
     </property>
     <property name="plugin-9" type="string" value="weather">
       <property name="location" type="empty">
-        <property name="name" type="string" value="San Salvador, El Salvador"/>
-        <property name="latitude" type="string" value="13.680600"/>
-        <property name="longitude" type="string" value="-89.180300"/>
+        <property name="name" type="string" value="San Francisco Gotera, Morazán"/>
+        <property name="latitude" type="string" value="13.678901"/>
+        <property name="longitude" type="string" value="-88.092398"/>
       </property>
-      <property name="msl" type="int" value="728"/>
+      <property name="msl" type="int" value="237"/>
       <property name="timezone" type="string" value="America/El_Salvador"/>
       <property name="offset" type="string" value="-06:00"/>
       <property name="cache-max-age" type="int" value="172800"/>
@@ -284,7 +281,9 @@
         <property name="use-color" type="bool" value="false"/>
       </property>
     </property>
-    <property name="plugin-11" type="string" value="places"/>
+    <property name="plugin-11" type="string" value="places">
+      <property name="show-button-type" type="int" value="0"/>
+    </property>
     <property name="plugin-10" type="string" value="xfce4-mpc-plugin"/>
     <property name="plugin-18" type="string" value="separator">
       <property name="style" type="uint" value="0"/>

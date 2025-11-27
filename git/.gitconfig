@@ -8,3 +8,9 @@
 	email = nestor_chavez@hotmail.es
 [credential]
 	helper = /usr/share/git/credential/libsecret/git-credential-libsecret
+[alias]
+  st = status
+  stt = status --short --branch
+  ci = commit -a -v
+  adu = add -u
+  pum = push origin master
