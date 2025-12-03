@@ -1,4 +1,4 @@
---- 
+---
 # Unir todos los playbooks
 
 - name: "Main file for all playbooks"
@@ -8,16 +8,16 @@
     sudo_password: "{{ do_pass }}"
     de_option: "{{ de | default('xfce4')}}"
     _name: Main
- 
+
   pre_tasks:
     - name: "{{_name}} | Sync and Upgrade system"
       community.general.pacman:
         update_cache: true
         upgrade: true
       become: true
-      tags: update
+      tags: always
 
-    - name: "{{_name}} | Ensure base development packages are installed" 
+    - name: "{{_name}} | Ensure base development packages are installed"
       community.general.pacman:
         name:
           - base-devel
@@ -33,13 +33,13 @@
     - role: webbrowser
     - role: xfce4
       tags: xfce4
-      when: de_option == "xfce4" 
+      when: de_option == "xfce4"
     - role: picom
       tags: picom
-      when: de_option == "xfce4" 
+      when: de_option == "xfce4"
     - role: hyprland
       tags: hyprland
-      when: de_option == "hypr" 
+      when: de_option == "hypr"
     - role: neovim
       tags: neovim
     - role: zsh

@@ -12,3 +12,4 @@
 - name: Copying config file
   ansible.builtin.command:
     cmd: stow -d {{root_dir}}/../ -t {{home}} --no-folding --dotfiles -S picom
+  changed_when: true

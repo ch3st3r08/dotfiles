@@ -10,13 +10,16 @@
 - name: "Installing SDDM AUR packages"
   ansible.builtin.expect:
     command: paru -S --noprogressbar --noconfirm --needed {{item}}
-    responses: 
+    responses:
       password: "{{sudo_password}}"
   when: paru_exist is succeeded
   with_items:
-      - sddm-conf-git
-      - sddm-eucalyptus-drop
+    - sddm-conf-git
+    - sddm-eucalyptus-drop
 
 - name: Configuring SDDM theme
-  ansible.builtin.command: sed 's/Current=.*/Current=eucalyptus-drop/g' /etc/sddm.conf
-  become: yes
+  ansible.builtin.lineinfile:
+    path: /etc/sddm.conf
+    regexp: '^Current='
+    line: Current=eucalyptus-drop
+  become: true

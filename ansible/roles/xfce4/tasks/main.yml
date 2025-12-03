@@ -1,27 +1,7 @@
-- name: "Installing Xfce4 related packages"
+- name: Installing Xfce4 related packages
   community.general.pacman:
-    name:
-      - xorg-server
-      - xorg-xinit
-      - xorg-apps
-      - xfce4
-      - xfce4-goodies
-      - xfce4-panel-profiles
-      - gvfs
-      - gvfs-smb
-      - gvfs-nfs
-      - gigolo
-      - transmission-gtk
-      - catfish
-      - atril
-      - mugshot
-      - wmctrl
-      - redshift
-      - geoclue
-      - xclip
-      - gst-libav
-      - gcolor3
-      - conky
+    name: "{{item}}"
+  with_items: "{{xfce_pkgs}}"
 
 # some configuration
 - name: Creating xfce4 config directory
@@ -34,3 +14,4 @@
 - name: Copying xfce4 config files
   ansible.builtin.command:
     cmd: stow -d {{root_dir}}/../ -t {{home}} --no-folding --dotfiles -S xfce4
+  changed_when: true

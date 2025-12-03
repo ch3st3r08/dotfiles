@@ -1,34 +1,11 @@
+- name: Test if paru is already installed
+  import_tasks: "{{ playbook_dir }}/pre_tasks/check_paru.yml"
+  when: paru_exist is not defined
+
 - name: "Installing Hyprland packages"
   community.general.pacman:
-    name:
-      - hyprland
-      - xdg-desktop-portal-hyprland
-      - waybar
-      - rofi-wayland
-      - swaync
-      - hypridle
-      - hyprlock
-      - hyprcursor
-      - swaybg
-      - nwg-bar
-      - nwg-look
-      - polkit
-      - hyprpolkitagent
-      - desktop-file-utils
-      - nwg-displays
-      - nwg-drawer
-      - nwg-icon-picker
-      - nwg-menu
-      - hyprpicker
-      - wf-recorder
-      - ristretto
-      - cliphist
-      - qt5-wayland
-      - qt6-wayland
-      - swappy
-      - slurp
-      - grim
-      - wlsunset
+    name: "{{item}}"
+  with_items: "{{hyprland_pkgs}}"
 
 - name: "Installing AUR packages"
   ansible.builtin.expect:
@@ -44,3 +21,4 @@
 - name: Copying config files
   ansible.builtin.command:
     cmd: stow -d {{root_dir}}/../ -t {{home}} --no-folding --dotfiles -S hypr waybar
+  changed_when: true

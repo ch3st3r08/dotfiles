@@ -1,0 +1,48 @@
+- name: Installing Colloid Theme (theme, icon, cursor)
+  vars:
+    theme_name: Colloid-gtk-theme
+    icon_name: Colloid-icon-theme
+  block:
+    - name: Check if a directory starting with 'Colloid' exists
+      find:
+        paths: "{{themes_path + icons_path}}"
+        file_type: directory
+        patterns: "Colloid*"
+      register: colloid
+
+    - name: Downloading Colloid theme
+      ansible.builtin.git:
+        repo: "https://github.com/vinceliuice/{{theme_name}}"
+        dest: "{{home}}/Sources/{{theme_name}}"
+        depth: 1
+        version: master
+      when: colloid.matched > 0
+
+    - name: Installing Colloid theme
+      ansible.builtin.command:
+        cmd: ./install -t default --tweaks nord -d "{{home}}/.local/share/themes"
+        chdir: "{{home}}/Sources/{{theme_name}}"
+      changed_when: true
+      when: colloid.matched > 0
+
+    - name: Downloading Colloid Icon and Cursor theme
+      ansible.builtin.git:
+        repo: "https://github.com/vinceliuice/{{icon_name}}"
+        dest: "{{home}}/Sources/{{icon_name}}"
+        depth: 1
+        version: main
+      when: colloid.matched > 0
+
+    - name: Installing Colloid Icon theme
+      ansible.builtin.command:
+        cmd: ./install"
+        chdir: "{{home}}/Sources/{{icon_name}}"
+      changed_when: true
+      when: colloid.matched > 0
+
+    - name: Installing Colloid Cursor theme
+      ansible.builtin.command:
+        cmd: ./install"
+        chdir: "{{home}}/Sources/{{icon_name}}/cursors"
+      changed_when: true
+      when: colloid.matched > 0

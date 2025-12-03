@@ -7,3 +7,135 @@ script_dir: "{{home}}/Scripts"
 root_dir: "{{playbook_dir}}"
 # home: "{{root_dir}}/test"
 # config_dir: "{{root_dir}}/test/config"
+
+themes_path:
+  - /usr/share/themes
+  - "{{home}}/.local/share/themes"
+icons_path:
+  - /usr/share/icons
+  - "{{home}}/.local/share/icons"
+
+xfce_pkgs:
+  - xorg-server
+  - xorg-xinit
+  - xorg-apps
+  - xfce4
+  - xfce4-goodies
+  - xfce4-panel-profiles
+  - gvfs
+  - gvfs-smb
+  - gvfs-nfs
+  - gigolo
+  - catfish
+  - mugshot
+  - wmctrl
+  - redshift
+  - geoclue
+  - xclip
+  - gst-libav
+  - gcolor3
+  - conky
+hyprland_pkgs:
+  - hyprland
+  - xdg-desktop-portal-hyprland
+  - waybar
+  - rofi-wayland
+  - swaync
+  - hypridle
+  - hyprlock
+  - hyprcursor
+  - swaybg
+  - polkit
+  - hyprpolkitagent
+  - desktop-file-utils
+  - nwg-look
+  - nwg-displays
+  - nwg-drawer
+  - nwg-icon-picker
+  - hyprpicker
+  - wf-recorder
+  - ristretto
+  - wl-clipboard
+  - cliphist
+  - qt5-wayland
+  - qt6-wayland
+  - swappy
+  - slurp
+  - grim
+  - wlsunset
+xorg_amdgpu:
+  - xf86-video-amdgpu
+os_intgpu:
+  - intel-media-driver
+os_essential:
+  - archlinux-contrib
+  - pacman-contrib
+  - xdg-utils
+  - libsecret
+  - xdg-user-dirs
+  - unzip
+  - lshw
+  - mesa-utils
+  - libva-mesa-driver
+os_network:
+  - iwd
+  - networkmanager
+  - network-manager-applet
+os_audio:
+  - pavucontrol
+  - pipewire
+  - pipewire-audio
+  - pipewire-pulse
+  - wireplumber
+  - gst-plugin-pipewire
+common_cmd_util:
+  - fzf
+  - eza
+  - fd
+  - ripgrep
+  - bat
+  - bat-extras
+  - zoxide
+  - entr
+  - tree
+  - htop
+  - lazygit
+  - lazydocker
+  - yazi
+  - 7zip
+  - ffmpeg
+  - rsync
+  - mpv
+  - mpd
+  - ncmpcpp
+  - zathura
+  - zathura-pdf-mupdf
+  - nvm
+  - plymouth
+  - rclone
+  - fastfetch
+  - gtk-engine-murrine
+  - sound-theme-freedesktop
+common_gui_util:
+  - galculator
+  - seahorse
+  - grub-customizer
+  - font-manager
+  - xarchiver
+  - baobab
+  - gparted
+  - grsync
+  - rhythmbox
+  - transmission-gtk
+  - atril
+common_fonts:
+  - ttf-hack-nerd
+  - ttf-iosevka-nerd
+  - ttf-firacode-nerd
+  - ttf-sourcecodepro-nerd
+  - ttf-terminus-nerd
+  - ttf-0xproto-nerd
+  - ttf-bigblueterminal-nerd
+  - otf-codenewroman-nerd
+  - woff2-font-awesome
+  - noto-fonts-emoji

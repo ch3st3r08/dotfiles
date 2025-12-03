@@ -3,4 +3,4 @@
   register: paru_exist
   ignore_errors: true
   become: false
-  changed_when: false
+  changed_when: paru_exist is failed

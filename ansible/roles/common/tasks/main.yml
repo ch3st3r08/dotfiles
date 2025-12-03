@@ -6,86 +6,30 @@
     recurse: true
   loop:
     - '{{home}}/Sources'
-    - '{{home}}/.local/share/themes'
+    - '{{themes_path}}'
+    - '{{icons_path}}'
 
 - name: Utils | Installing utility cmd packages
   community.general.pacman:
-    name:
-      - fzf
-      - eza
-      - fd
-      - ripgrep
-      - bat
-      - bat-extras
-      - zoxide
-      - entr
-      - 7zip
-      - htop
-      - lazygit
-      - mpv
-      - mpd
-      - ncmpcpp
-      - zathura
-      - zathura-pdf-mupdf
-      - nvm
-      - ffmpeg
-      - plymouth
-      - rsync
-      - rclone
-      - yazi
-      - fastfetch
-      - gtk-engine-murrine
+    name: "{{item}}"
     state: present
+  with_items: "{{common_cmd_util}}"
 
 - name: Utils | Installing utility GUI packages
   community.general.pacman:
-    name:
-      - galculator
-      - seahorse
-      - grub-customizer
-      - font-manager
-      - vlc
-      - xarchiver
-      - baobab
-      - gparted
-      - thunderbird
-      - grsync
-      - rhythmbox
+    name: "{{item}}"
     state: present
+  with_items: "{{common_gui_util}}"
 
 - name: Installing utility Font packages
   community.general.pacman:
-    name:
-      - ttf-hack-nerd
-      - ttf-iosevka-nerd
-      - ttf-firacode-nerd
-      - ttf-sourcecodepro-nerd
-      - ttf-terminus-nerd
-      - ttf-0xproto-nerd
-      - ttf-bigblueterminal-nerd
-      - otf-codenewroman-nerd
-      - woff2-font-awesome
-      - noto-fonts-emoji
+    name: "{{item}}"
     state: present
+  with_items: "{{common_fonts}}"
 
-- name: Installing UI related packages
-  block:
-    - name: Checking if Colloid dir exists
-      ansible.builtin.stat:
-        path: "{{home}}/Sources/Colloid-gtk-theme"
-      register: colloid
-
-    - name: Downloading Colloid theme
-      ansible.builtin.git:
-        repo: "https://github.com/vinceliuice/Colloid-gtk-theme"
-        dest: "{{home}}/Sources/Colloid-gtk-theme"
-      when: colloid.stat.isdir is not defined and not colloid.stat.isdir
-
-    - name: Installing Colloid theme
-      ansible.builtin.command:
-        cmd: ./install -t all --tweaks nord -d "{{home}}/.local/share/themes"
-        chdir: "{{home}}/Sources/Colloid-gtk-theme"
-      when: colloid.stat.isdir is not defined and not colloid.stat.isdir
+- name: Test if paru is already installed
+  import_tasks: "{{ playbook_dir }}/pre_tasks/check_paru.yml"
+  when: paru_exist is not defined
 
 - name: "Installing AUR packages"
   ansible.builtin.expect:
@@ -97,18 +41,15 @@
     - distro-grub-themes-arch
     - lssecret-git
     - menulibre
-    - colloid-cursors-git
-    - numix-circle-icon-theme-git
-    - nordzy-icon-theme
     - plymouth-theme-arch-logo-new
     - ttf-ms-fonts
     - tty-clock
   become: false
 
-
 - name: Copying Fastfetch, Zathura and MPD configuration
   ansible.builtin.command:
     cmd: stow -d {{root_dir}}/../ -t {{home}} --no-folding --dotfiles -S fastfetch pdf-reader util-scripts mpd music
+  changed_when: true
 
 - name: Creating necessary files for MPD
   ansible.builtin.file:
@@ -125,9 +66,23 @@
 - name: Setting plymouth theme to arch-logo-new
   ansible.builtin.command:
     cmd: plymouth-set-default-theme -R arch-logo-new
+  changed_when: true
   become: true
 
 - name: Moving Arch grub theme to correct path
-  ansible.builtin.command:
-    cmd: mv /usr/share/grub/themes/arch-linux /boot/grub/themes/arch-linux
-  become: true
+  block:
+    - name: Checking existence
+      ansible.builtin.stat:
+        path: /usr/share/grub/themes/arch-linux
+      register: f_stat
+
+    - name: Moving
+      ansible.builtin.copy:
+        src: /usr/share/grub/themes/arch-linux
+        dest: /boot/grub/themes/arch-linux
+        mode: '0644'
+      become: true
+      when: f_stat.stat.exists
+
+- name: "Themes"
+  import_tasks: themes.yml

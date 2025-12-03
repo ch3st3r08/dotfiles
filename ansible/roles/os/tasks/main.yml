@@ -1,29 +1,16 @@
-- name: "OS | Installing essential packages"
+- name: OS | Installing essential packages
   community.general.pacman:
-    name:
-      - curl
-      - tree
-      - archlinux-contrib
-      - pacman-contrib
-      - xdg-utils
-      - libsecret
-      - stow
-      - xdg-user-dirs
-      - unzip
-      - libva-mesa-driver
-      - intel-media-driver
-      - sound-theme-freedesktop
-      - xf86-video-amdgpu
+    name: "{{items}}"
+    state: present
+  with_items: "{{os_essential}}"
 
 - name: "OS | Installing networking packages and services"
   block:
     - name: Installing networking packages
       community.general.pacman:
-        name:
-          - iwd
-          - networkmanager
-          - network-manager-applet
- 
+        name: "{{items}}"
+      with_items: "{{os_network}}"
+
     - name: "Starting and enabling networkmanager service"
       ansible.builtin.systemd_service:
         name: NetworkManager.service
@@ -34,13 +21,8 @@
   block:
     - name: "Installing packages"
       community.general.pacman:
-        name:
-          - pavucontrol
-          - pipewire
-          - pipewire-audio
-          - pipewire-pulse
-          - wireplumber
-          - gst-plugin-pipewire
+        name: "{{items}}"
+      with_items: "{{os_audio}}"
 
     - name: "Enable and Start Pipewire systemd user unit"
       ansible.builtin.systemd_service:
@@ -49,15 +31,23 @@
         state: started
         scope: user
 
+- name: Check if libsecret credential program exists
+  ansible.builtin.stat:
+    path: /usr/share/git/credential/libsecret/git-credential-libsecret
+  register: lib_secret_file_status
+
 - name: "Compiling git libsecret credential"
   ansible.builtin.command:
     cmd: make
     chdir: /usr/share/git/credential/libsecret/
-  become: yes
+  become: true
+  changed_when: not lib_secret_file_status.stat.exists
 
 - name: Copy git configuration
   ansible.builtin.command:
     cmd: stow -d {{root_dir}}/../ -t {{home}} --no-folding --dotfiles -S git
+  register: my_output
+  changed_when: my_output.rc != 0
 
 - name: "Install Paru AUR manager"
   import_tasks: paru.yml

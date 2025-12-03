@@ -12,3 +12,5 @@
 - name: Copying Alacrity configuration
   ansible.builtin.command:
     cmd: stow -d {{root_dir}}/../ -t {{home}} --no-folding --dotfiles -S alacritty
+  register: ala_ouput
+  changed_when: ala_output.stat.rc != 0

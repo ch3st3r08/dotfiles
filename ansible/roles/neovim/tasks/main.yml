@@ -12,6 +12,7 @@
 - name: Copying Neovim Config
   ansible.builtin.command:
     cmd: stow -d {{root_dir}}/../ -t {{home}} --no-folding --dotfiles -S neovim
+  changed_when: true
 
 # Execute neovim to install packages without opening GUI
 # Execute mason to install LSP servers
