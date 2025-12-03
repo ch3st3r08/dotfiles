@@ -1,0 +1,24 @@
+- name: Test if paru is already installed
+  import_tasks: "{{ playbook_dir }}/pre_tasks/check_paru.yml"
+  when: paru_exist is not defined
+
+- name: "Installing Hyprland packages"
+  community.general.pacman:
+    name: "{{item}}"
+  with_items: "{{hyprland_pkgs}}"
+
+- name: "Installing AUR packages"
+  ansible.builtin.expect:
+    command: paru -S --noconfirm --needed hyprsysteminfo wvkbd waypaper grimblast
+    responses: "{{sudo_password}}"
+
+- name: Creating config directory if it doesn't exist
+  ansible.builtin.file:
+    path: "{{config_dir}}/hypr"
+    state: directory
+    mode: '0755'
+
+- name: Copying config files
+  ansible.builtin.command:
+    cmd: stow -d {{root_dir}}/../ -t {{home}} --no-folding --dotfiles -S hypr waybar
+  changed_when: true

@@ -1,0 +1,78 @@
+---
+- name: Playbook de prueba
+  hosts: localhost
+  vars:
+    is_amdgpu: "Advanced Micro Devices, Inc. [AMD/ATI]"
+    is_nvidia: "NVIDIA Corporation"
+    is_intel: GenuineIntel
+    is_amd: AuthenticAMD
+    my_list:
+      - nvim
+      - gcolor3
+    other_list:
+      - rofi
+    theme_path:
+          - /usr/share/icons
+          - "{{home}}/.local/share/icons"
+
+  tasks:
+    - name: Get GPU vendor and model
+      become: true
+      ansible.builtin.shell: |
+        lshw -class display -json | jq -r '.[].vendor'
+      register: gpu_info
+      changed_when: true
+
+    - name: Set GPU information as a fact
+      ansible.builtin.set_fact:
+        gpu_vendor: "{{ gpu_info.stdout }}"
+
+    - name: Printing gpu vendor
+      ansible.builtin.debug:
+        msg: Veamos que tal {{ gpu_vendor }}
+
+    - name: Conditional rendering of msgs
+      ansible.builtin.debug:
+        msg: Usando AMD bb
+      when: gpu_vendor == is_amd
+
+    - name: Displaying some facts
+      ansible.builtin.debug:
+        msg:
+          - "{{ ansible_facts.processor[1] }}"
+    - name: Mergin lists
+      set_fact:
+        my_list: "{{ my_list + other_list }}"
+      when: ansible_facts.processor[1] == is_intel
+
+    - name: Displaying result list
+      community.general.pacman:
+        name: "{{item}}"
+        state: present
+        extra_args: -p
+      with_items: "{{ my_list }}"
+
+    - name: Check if a directory starting with 'backup_' exists
+      vars:
+        lista:
+          - /usr/share/icons
+          - "{{home}}/.local/share/icons"
+      find:
+        paths: "{{lista[0]}}"
+        file_type: directory
+        patterns: "Colloid*"
+      register: found_dirs
+
+    - name: Debug result
+      debug:
+        msg: "Directory starting with 'Colloid' found, we search in {{my_list[0]}}"
+      when: found_dirs.matched > 0
+
+    - name: Creating necessary folders
+      ansible.builtin.file:
+        path: "{{item}}"
+        state: directory
+        mode: '0755'
+        recurse: true
+      loop:
+        - '{{theme_path}}'

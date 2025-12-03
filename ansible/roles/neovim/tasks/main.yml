@@ -1,0 +1,18 @@
+- name: "Installing Editor packages"
+  community.general.pacman:
+    name:
+      - neovim
+
+- name: Create Neovim config dir
+  ansible.builtin.file:
+    path: "{{config_dir}}/nvim"
+    state: directory
+    mode: '0755'
+
+- name: Copying Neovim Config
+  ansible.builtin.command:
+    cmd: stow -d {{root_dir}}/../ -t {{home}} --no-folding --dotfiles -S neovim
+  changed_when: true
+
+# Execute neovim to install packages without opening GUI
+# Execute mason to install LSP servers

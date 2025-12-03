@@ -1,0 +1,17 @@
+- name: Installing Xfce4 related packages
+  community.general.pacman:
+    name: "{{item}}"
+  with_items: "{{xfce_pkgs}}"
+
+# some configuration
+- name: Creating xfce4 config directory
+  ansible.builtin.file:
+    path: "{{config_dir}}/xfce4/xfconf/xfce-perchannel-xml"
+    state: directory
+    mode: '0755'
+    recurse: true
+
+- name: Copying xfce4 config files
+  ansible.builtin.command:
+    cmd: stow -d {{root_dir}}/../ -t {{home}} --no-folding --dotfiles -S xfce4
+  changed_when: true

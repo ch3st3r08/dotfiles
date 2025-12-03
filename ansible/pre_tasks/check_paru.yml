@@ -1,0 +1,6 @@
+- name: "Test if paru is already installed"
+  shell: command -v paru
+  register: paru_exist
+  ignore_errors: true
+  become: false
+  changed_when: paru_exist is failed

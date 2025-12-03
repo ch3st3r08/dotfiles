@@ -1,18 +1,23 @@
 # Indicaciones Generales
 
-## Lo primero: Instalar Sudo y Git, agregarnos al grupo sudo y generar los directorios XDG, y cerrar sesion
+## Lo primero: Instalar Sudo y Git, agregarnos al grupo sudo, y cerrar sesion
 
 ### Arch Linux:
-      pacman -Syu sudo git xdg-user-dirs --noconfirm
-      usermod -aG sudo [user]
-      xdg-user-dirs-update
-      exit
+```sh
+    pacman -Syu sudo git xdg-user-dirs --noconfirm
+    usermod -aG sudo [user]
+    exit
+```
 
 ## Luego hay que descargar los DOTFILES de github
-      git clone https://github.com/ch3st3r08/dotfiles $HOME/.dotfiles
-      rm -f .bashrc
+```sh
+    git clone --recurse-submodules https://github.com/ch3st3r08/dotfiles $HOME/.dotfiles
+```
 
-## Luego ejecutar el script de instalación que se encuentra en bin/installSystem.sh
+## Luego ejecutar el script de instalación que se encuentra en .dotfile/install.sh
+```sh
+    ./install.sh
+```
 
 ## Luego de la instalacion...
 Para tema de grub

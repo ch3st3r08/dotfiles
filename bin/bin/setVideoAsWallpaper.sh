@@ -1,1 +1,0 @@
-xwinwrap -b -s -fs -st -sp -nf -ov -fdt -- mpv -wid WID --really-quiet --framedrop=vo --no-audio --no-osc --no-osd-bar --no-input-default-bindings --loop-file  --panscan="1.0" ~/Downloads/shogun-raiden-video001.mp4

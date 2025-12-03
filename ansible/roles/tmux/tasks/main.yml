@@ -1,0 +1,15 @@
+- name: Installing Terminal Multiplexer packages
+  community.general.pacman:
+    name:
+      - tmux
+
+- name: Create a directory if it does not exist
+  ansible.builtin.file:
+    path: "{{config_dir}}/tmux"
+    state: directory
+    mode: '0755'
+
+- name: "Copying config file"
+  ansible.builtin.command:
+    cmd: stow -d {{root_dir}}/../ -t {{home}} --no-folding --dotfiles -S tmux
+  changed_when: true

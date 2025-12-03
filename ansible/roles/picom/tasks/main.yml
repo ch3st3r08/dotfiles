@@ -1,0 +1,15 @@
+- name: "Picom | Installing X11 compositor"
+  community.general.pacman:
+    name:
+      - picom
+
+- name: Creating config directory
+  ansible.builtin.file:
+    path: "{{config_dir}}/picom"
+    state: directory
+    mode: '0755'
+
+- name: Copying config file
+  ansible.builtin.command:
+    cmd: stow -d {{root_dir}}/../ -t {{home}} --no-folding --dotfiles -S picom
+  changed_when: true

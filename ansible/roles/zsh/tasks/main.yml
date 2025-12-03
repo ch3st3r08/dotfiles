@@ -1,0 +1,30 @@
+- name: "Installing Shell and Terminal Emulator packages"
+  community.general.pacman:
+    name:
+      - zsh
+      - starship
+
+- name: Create a zsh directory
+  ansible.builtin.file:
+    path: "{{config_dir}}/zsh"
+    state: directory
+    mode: '0755'
+
+- name: Copy zsh configuration
+  ansible.builtin.command:
+    cmd: stow -d {{root_dir}}/../ -t {{home}} --no-folding --dotfiles -S tmux starship
+  changed_when: true
+
+- name: Check default shell
+  ansible.builtin.shell: basename $SHELL
+  register: dshell
+  changed_when: false
+
+- name: Output default shell
+  debug:
+    msg: "Default shell is {{ dshell.stdout }}"
+
+- name: Set zsh as default shell
+  ansible.builtin.command: chsh -s /bin/zsh
+  changed_when: true
+  when: dshell.stdout != "zsh"
