@@ -20,6 +20,7 @@ map("n", "<A-j>", "<cmd>execute 'move .+' . v:count1<cr>==", { desc = "Move Down
 map("n", "<A-k>", "<cmd>execute 'move .-' . (v:count1 + 1)<cr>==", { desc = "Move Up" })
 map({ "n" }, "<C-s>", "<cmd>w<cr>", { desc = "Save File" })
 map("n", "x", '"_x', {desc="Delete one char"})
+map("n", "<localleader>p", "<cmd>let @+ = expand('%:f')<cr>", { desc = "Copy file path to Clipboard" })
 
 --MiniBufremove
 map("n", "<localleader>d", '<cmd>lua MiniBufremove.wipeout()<cr>')

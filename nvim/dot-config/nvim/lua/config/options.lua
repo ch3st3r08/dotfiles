@@ -17,10 +17,16 @@ opt.scrolloff = 2
 opt.showmode = false
 opt.splitbelow = true
 opt.splitright = true
-opt.completeopt = { "menu", "popup", "noselect", "noinsert" }
+opt.completeopt = { "fuzzy", "menuone", "popup", "noselect", "noinsert" }
 vim.o.winborder = 'rounded'
 vim.diagnostic.config({ virtual_text = { current_line = true } })
 --Explorer
 vim.g.netrw_banner = 0
 vim.g.netrw_liststyle = 0
 vim.g.netrw_browse_split = 4
+vim.cmd.colorscheme('rose-pine')
+vim.filetype.add({
+  extension = {
+    yml = 'yaml.ansible'
+  }
+})

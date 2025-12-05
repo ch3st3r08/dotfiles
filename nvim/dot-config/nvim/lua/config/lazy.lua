@@ -31,6 +31,9 @@ require("lazy").setup({
   -- colorscheme that will be used when installing plugins.
   install = { colorscheme = { "habamax" } },
   -- automatically check for plugin updates
+  ui = {
+    border = "rounded",
+  },
   checker = { enabled = false },
   performance = {
     rtp = {
@@ -38,7 +41,7 @@ require("lazy").setup({
         -- "gzip",
         -- "matchit",
         -- "matchparen",
-        -- "netrwPlugin",
+        "netrwPlugin",
         -- "tarPlugin",
         -- "tohtml",
         -- "tutor",

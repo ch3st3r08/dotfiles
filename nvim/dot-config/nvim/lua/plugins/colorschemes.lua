@@ -18,7 +18,7 @@ return {
       variant = "auto", -- auto, main, moon, or dawn
       dark_variant = "main", -- main, moon, or dawn
       styles = {
-        transparency = false,
+        transparency = true,
       },
     },
   }
