@@ -116,6 +116,7 @@ common_cmd_util:
   - fastfetch
   - gtk-engine-murrine
   - sound-theme-freedesktop
+  - tealdeer
 common_gui_util:
   - galculator
   - seahorse
