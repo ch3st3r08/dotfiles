@@ -1,3 +1,5 @@
+-- Dealing with nested instances
+vim.env.NVIM_LISTEN_ADDRESS = vim.v.servername
 -- Options
 local opt = vim.opt
 opt.termguicolors = true
