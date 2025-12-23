@@ -1,4 +1,6 @@
-scan_timeout = 20
+# Move the directory to the second line
+#format = '$all$directory$character'
+scan_timeout = 50
 add_newline = false
 right_format = """$time"""
 
@@ -20,18 +22,17 @@ map_symbol = true
 disabled = false
 
 [time]
-disabled = true
-time_format = "%R" # Hour:Minute Format
-style = "bg:#33658A"
-format = '[ ♥ $time ]($style)'
+disabled = false
+#time_format = "%R" # Hour:Minute Format
+format = '[ 󰥔 $time ]($style)'
 
 [username]
 style_user = "bold green"
-show_always = false
+#show_always = true
 
 [hostname]
 style = 'bold green'
-ssh_only = false
+#ssh_only = false
 format = '[$ssh_symbol$hostname]($style) [::](bold red) '
 
 
