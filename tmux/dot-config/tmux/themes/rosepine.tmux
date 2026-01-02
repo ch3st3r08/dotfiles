@@ -1,9 +1,8 @@
-set -g @plugin 'rose-pine/tmux'
 set -g @rose_pine_variant 'dawn' # Options are 'main', 'moon' or 'dawn'
 
-set -g @rose_pine_host 'on'           # Enables hostname in the status bar
 set -g @rose_pine_date_time ''        # It accepts the date UNIX command format (man date for info)
-set -g @rose_pine_user 'on'           # Turn on the username component in the statusbar
+set -g @rose_pine_host 'off'           # Enables hostname in the status bar
+set -g @rose_pine_user 'off'           # Turn on the username component in the statusbar
 set -g @rose_pine_directory 'off'      # Turn on the current folder component in the status bar
 set -g @rose_pine_bar_bg_disable 'on' # Disables background color, for transparent terminal emulators
 # If @rose_pine_bar_bg_disable is set to 'on', uses the provided value to set the background color
@@ -33,7 +32,9 @@ set -g @rose_pine_hostname_icon '󰒋'             # Changes the default icon to
 set -g @rose_pine_date_time_icon '󰃰'            # Changes the default icon to the right of the date module
 set -g @rose_pine_window_status_separator "  " # Changes the default icon that appears between window names
 
-# Very beta and specific opt-in settings, tested on v3.2a, look at issue #10
-set -g @rose_pine_prioritize_windows 'on' # Disables the right side functionality in a certain window count / terminal width
-set -g @rose_pine_width_to_hide '80'      # Specify a terminal width to toggle off most of the right side functionality
-set -g @rose_pine_window_count '5'        # Specify a number of windows, if there are more than the number, do the same as width_to_hide
+# Add to the beginning / end of the left and right sections your own.
+#set -g @rose_pine_status_left_prepend_section 'CU'
+set -g @rose_pine_status_left_append_section ' -  '
+#set -g @rose_pine_status_right_prepend_section 'with normal text'
+#set -g @rose_pine_status_right_append_section 'too'
+set -g @plugin 'rose-pine/tmux'

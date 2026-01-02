@@ -31,17 +31,19 @@
         state: started
         scope: user
 
-- name: Check if libsecret credential program exists
-  ansible.builtin.stat:
-    path: /usr/share/git/credential/libsecret/git-credential-libsecret
-  register: lib_secret_file_status
+- name: "OS | Setting Libcredential"
+  block:
+    - name: Check if libsecret credential program exists
+      ansible.builtin.stat:
+        path: /usr/share/git/credential/libsecret/git-credential-libsecret
+      register: lib_secret_file_status
 
-- name: "Compiling git libsecret credential"
-  ansible.builtin.command:
-    cmd: make
-    chdir: /usr/share/git/credential/libsecret/
-  become: true
-  changed_when: not lib_secret_file_status.stat.exists
+    - name: "Compiling git libsecret credential"
+      ansible.builtin.command:
+        cmd: make
+        chdir: /usr/share/git/credential/libsecret/
+      become: true
+      changed_when: not lib_secret_file_status.stat.exists
 
 - name: Copy git configuration
   ansible.builtin.command:

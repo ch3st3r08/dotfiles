@@ -27,8 +27,9 @@
         <value type="int" value="1"/>
         <value type="int" value="2"/>
         <value type="int" value="11"/>
-        <value type="int" value="28"/>
         <value type="int" value="29"/>
+        <value type="int" value="4"/>
+        <value type="int" value="28"/>
         <value type="int" value="27"/>
         <value type="int" value="22"/>
         <value type="int" value="19"/>
@@ -106,7 +107,7 @@
     <property name="plugin-21" type="string" value="notification-plugin"/>
     <property name="plugin-22" type="string" value="pulseaudio">
       <property name="enable-keyboard-shortcuts" type="bool" value="true"/>
-      <property name="known-players" type="string" value="Brave;firefox;org.gnome.Rhythmbox3;parole"/>
+      <property name="known-players" type="string" value="Brave;firefox;org.gnome.Rhythmbox3;parole;qutebrowser"/>
       <property name="play-sound" type="bool" value="true"/>
     </property>
     <property name="plugin-25" type="string" value="clock">
@@ -159,16 +160,16 @@
       <property name="button-icon" type="string" value="archlinux-logo"/>
       <property name="button-single-row" type="bool" value="true"/>
       <property name="recent" type="array">
+        <value type="string" value="io.github.flattool.Warehouse.desktop"/>
+        <value type="string" value="org.gnome.baobab.desktop"/>
+        <value type="string" value="firefox.desktop"/>
         <value type="string" value="thunar-volman-settings.desktop"/>
+        <value type="string" value="org.nickvision.tubeconverter.desktop"/>
         <value type="string" value="nm-connection-editor.desktop"/>
         <value type="string" value="lstopo.desktop"/>
         <value type="string" value="xfce4-sensors.desktop"/>
         <value type="string" value="xfce4-notes.desktop"/>
-        <value type="string" value="org.nickvision.tubeconverter.desktop"/>
         <value type="string" value="brave-browser.desktop"/>
-        <value type="string" value="com.github.maoschanz.drawing.desktop"/>
-        <value type="string" value="firefox.desktop"/>
-        <value type="string" value="org.remmina.Remmina.desktop"/>
       </property>
       <property name="menu-width" type="int" value="480"/>
       <property name="favorites" type="array">
@@ -288,5 +289,6 @@
     <property name="plugin-18" type="string" value="separator">
       <property name="style" type="uint" value="0"/>
     </property>
+    <property name="plugin-4" type="string" value="xfce4-sensors-plugin"/>
   </property>
 </channel>

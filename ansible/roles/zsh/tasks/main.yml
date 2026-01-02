@@ -25,6 +25,6 @@
     msg: "Default shell is {{ dshell.stdout }}"
 
 - name: Set zsh as default shell
-  ansible.builtin.command: chsh -s /bin/zsh
+  ansible.builtin.command: chsh -s /usr/bin/zsh
   changed_when: true
   when: dshell.stdout != "zsh"

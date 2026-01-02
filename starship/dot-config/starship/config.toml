@@ -1,7 +1,7 @@
 # Move the directory to the second line
 #format = '$all$directory$character'
 scan_timeout = 50
-add_newline = false
+add_newline = true
 right_format = """$time"""
 
 [character]

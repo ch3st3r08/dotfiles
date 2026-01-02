@@ -45,7 +45,6 @@ hyprland_pkgs:
   - hyprlock
   - hyprcursor
   - swaybg
-  - polkit
   - hyprpolkitagent
   - desktop-file-utils
   - nwg-look
@@ -77,6 +76,7 @@ os_essential:
   - lshw
   - mesa-utils
   - libva-mesa-driver
+  - sound-theme-freedesktop
 os_network:
   - iwd
   - networkmanager
@@ -115,7 +115,6 @@ common_cmd_util:
   - rclone
   - fastfetch
   - gtk-engine-murrine
-  - sound-theme-freedesktop
   - tealdeer
 common_gui_util:
   - galculator
@@ -140,3 +139,18 @@ common_fonts:
   - otf-codenewroman-nerd
   - woff2-font-awesome
   - noto-fonts-emoji
+
+flatpak_pkgs:
+  - com.github.johnfactotum.Foliate
+  - com.github.maoschanz.drawing
+  - com.usebottles.Bottles
+  - com.vscodium.codium
+  - io.github.flattool.Warehouse
+  - com.github.tchx84.Flatseal
+  - io.github.flattool.Ignition
+  - md.obsidian.Obsidian
+  - net.ankiweb.Anki
+  - org.gnome.SimpleScan
+  - org.openshot.OpenShot
+  - org.nickvision.tubeconverter
+  - org.remmina.Remmina
