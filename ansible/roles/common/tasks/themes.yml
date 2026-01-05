@@ -1,3 +1,9 @@
+- name: Installing dependecies for themes
+  community.general.pacman:
+    name:
+      - sassc
+  become: true
+
 - name: Installing Colloid Theme (theme, icon, cursor)
   vars:
     theme_name: Colloid-gtk-theme
@@ -27,7 +33,7 @@
 
     - name: Installing Colloid theme
       ansible.builtin.command:
-        cmd: ./install -t default --tweaks nord -d "{{home}}/.local/share/themes"
+        cmd: ./install.sh --tweaks nord
         chdir: "{{home}}/Sources/{{theme_name}}"
       changed_when: true
       when: colloid_theme.matched <= 0
@@ -42,14 +48,14 @@
 
     - name: Installing Colloid Icon theme
       ansible.builtin.command:
-        cmd: ./install
+        cmd: ./install.sh
         chdir: "{{home}}/Sources/{{icon_name}}"
       changed_when: true
       when: colloid_icon.matched <= 0
 
     - name: Installing Colloid Cursor theme
       ansible.builtin.command:
-        cmd: ./install
+        cmd: ./install.sh
         chdir: "{{home}}/Sources/{{icon_name}}/cursors"
       changed_when: true
       when: colloid_icon.matched <= 0

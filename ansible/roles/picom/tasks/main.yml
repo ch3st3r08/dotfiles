@@ -2,6 +2,7 @@
   community.general.pacman:
     name:
       - picom
+  become: true
 
 - name: Creating config directory
   ansible.builtin.file:

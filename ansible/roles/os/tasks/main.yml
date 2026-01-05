@@ -1,15 +1,17 @@
 - name: OS | Installing essential packages
   community.general.pacman:
-    name: "{{items}}"
+    name: "{{item}}"
     state: present
   with_items: "{{os_essential}}"
+  become: true
 
 - name: "OS | Installing networking packages and services"
   block:
     - name: Installing networking packages
       community.general.pacman:
-        name: "{{items}}"
+        name: "{{item}}"
       with_items: "{{os_network}}"
+      become: true
 
     - name: "Starting and enabling networkmanager service"
       ansible.builtin.systemd_service:
@@ -21,8 +23,9 @@
   block:
     - name: "Installing packages"
       community.general.pacman:
-        name: "{{items}}"
+        name: "{{item}}"
       with_items: "{{os_audio}}"
+      become: true
 
     - name: "Enable and Start Pipewire systemd user unit"
       ansible.builtin.systemd_service:

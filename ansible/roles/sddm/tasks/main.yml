@@ -6,6 +6,7 @@
   community.general.pacman:
     name:
       - sddm
+    become: true
 
 - name: "Installing SDDM AUR packages"
   ansible.builtin.expect:
@@ -17,9 +18,15 @@
     - sddm-conf-git
     - sddm-eucalyptus-drop
 
+- name: Checking existence of config file
+  ansible.builtin.stat:
+    path: /etc/sddm.conf
+  register: f_stat
+
 - name: Configuring SDDM theme
   ansible.builtin.lineinfile:
     path: /etc/sddm.conf
     regexp: '^Current='
     line: Current=eucalyptus-drop
   become: true
+  when: f_stat.stat.exists

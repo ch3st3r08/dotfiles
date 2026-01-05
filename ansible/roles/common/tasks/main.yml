@@ -4,28 +4,29 @@
     state: directory
     mode: '0755'
     recurse: true
-  loop:
-    - '{{home}}/Sources'
-    - '{{themes_path}}'
-    - '{{icons_path}}'
+  loop: "{{ [home ~ '/Sources]' + themes_path + icons_path}}"
+  become: true
 
 - name: Utils | Installing utility cmd packages
   community.general.pacman:
     name: "{{item}}"
     state: present
   with_items: "{{common_cmd_util}}"
+  become: true
 
 - name: Utils | Installing utility GUI packages
   community.general.pacman:
     name: "{{item}}"
     state: present
   with_items: "{{common_gui_util}}"
+  become: true
 
 - name: Installing utility Font packages
   community.general.pacman:
     name: "{{item}}"
     state: present
   with_items: "{{common_fonts}}"
+  become: true
 
 - name: Test if paru is already installed
   import_tasks: "{{ playbook_dir }}/pre_tasks/check_paru.yml"
@@ -44,6 +45,7 @@
     - plymouth-theme-arch-logo-new
     - ttf-ms-fonts
     - tty-clock
+    - grub-customizer
   become: false
 
 - name: Copying Fastfetch, Zathura and MPD configuration

@@ -3,6 +3,7 @@
     name:
       - zsh
       - starship
+  become: true
 
 - name: Create a zsh directory
   ansible.builtin.file:
@@ -12,7 +13,7 @@
 
 - name: Copy zsh configuration
   ansible.builtin.command:
-    cmd: stow -d {{root_dir}}/../ -t {{home}} --no-folding --dotfiles -S tmux starship
+    cmd: stow -d {{root_dir}}/../ -t {{home}} --no-folding --dotfiles -S zsh starship
   changed_when: true
 
 - name: Check default shell
@@ -26,5 +27,6 @@
 
 - name: Set zsh as default shell
   ansible.builtin.command: chsh -s /usr/bin/zsh
-  changed_when: true
+  become: true
+  changed_when: dshell.stdout != "zsh"
   when: dshell.stdout != "zsh"

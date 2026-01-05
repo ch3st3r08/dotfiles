@@ -2,6 +2,7 @@
   community.general.pacman:
     name: "{{item}}"
   with_items: "{{xfce_pkgs}}"
+  become: true
 
 # some configuration
 - name: Creating xfce4 config directory

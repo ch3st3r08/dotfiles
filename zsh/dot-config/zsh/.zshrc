@@ -18,6 +18,10 @@ setopt hist_find_no_dups extended_history
 autoload -Uz compinit
 compinit
 
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey '^x^e' edit-command-line
+
 zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=* l:|=*'
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' menu no
@@ -80,8 +84,8 @@ source ${ZIM_HOME}/init.zsh
 [ -s "/usr/share/nvm/init-nvm.sh" ] && \. "/usr/share/nvm/init-nvm.sh"  # This loads nvm
 [ -s "$HOME/.cargo/env" ] && \. "$HOME/.cargo/env"  # This loads cargo
 
-[ -s $(command -v zoxide) ] && eval "$(zoxide init zsh)"
-[ -s $(command -v fzf) ] && eval "$(fzf --zsh)"
+[ -s "$(command -v zoxide)" ] && eval "$(zoxide init zsh)"
+[ -s "$(command -v fzf)" ] && eval "$(fzf --zsh)"
 
 
 #PATH="$HOME/Sources/dart-sdk/bin:$PATH"
@@ -92,4 +96,4 @@ export SDKMAN_DIR="$HOME/.sdkman"
 
 # bun completions
 [ -s "/home/chester/.bun/_bun" ] && source "/home/chester/.bun/_bun"
-[ -s $(command -v luarocks) ] && eval "$(luarocks path --bin)"
+[ -s "$(command -v luarocks)" ] && eval "$(luarocks path --bin)"

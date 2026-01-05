@@ -114,7 +114,6 @@ common_cmd_util:
   - plymouth
   - rclone
   - fastfetch
-  - gtk-engine-murrine
   - tealdeer
 common_gui_util:
   - galculator

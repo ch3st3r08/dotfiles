@@ -2,6 +2,7 @@
   community.general.pacman:
     name:
       - rofi
+  become: true
 
 - name: Create rofi config dir
   ansible.builtin.file:

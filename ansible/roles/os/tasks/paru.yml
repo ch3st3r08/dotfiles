@@ -3,6 +3,7 @@
     name:
       - python-pexpect
     state: present
+    become: true
 
 - name: Test if paru is already installed
   import_tasks: "{{ playbook_dir }}/pre_tasks/check_paru.yml"
