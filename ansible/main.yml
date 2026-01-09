@@ -30,7 +30,6 @@
       tags: os
     - role: common
       tags: common
-    - role: webbrowser
     - role: xfce4
       tags: xfce4
       when: de_option == "xfce4"
@@ -50,5 +49,6 @@
       tags: rofi
     - role: alacritty
       tags: alacritty
+    - role: webbrowser
     - role: sddm
       tags: sddm

@@ -4,11 +4,12 @@
 
 - name: "Installing Web Browser packages"
   block:
-    - name: Installing Firefox Browser
+    - name: Installing Firefox and Qute Browser
       community.general.pacman:
         name:
           - firefox
           - firefox-addons
+          - qutebrowser
       become: true
 
     - name: "Installing Brave Browser"

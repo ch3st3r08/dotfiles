@@ -9,7 +9,7 @@
 
 - name: "Installing AUR packages"
   ansible.builtin.expect:
-    command: paru -S --noconfirm --needed hyprsysteminfo wvkbd waypaper grimblast
+    command: paru -S --noconfirm --needed hyprsysteminfo wvkbd waypaper grimblast-git
     responses: "{{sudo_password}}"
 
 - name: Creating config directory if it doesn't exist

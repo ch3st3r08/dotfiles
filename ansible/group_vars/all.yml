@@ -15,6 +15,16 @@ icons_path:
   - /usr/share/icons
   - "{{home}}/.local/share/icons"
 
+thunar_pkgs:
+  - gvfs
+  - gvfs-smb
+  - gvfs-nfs
+  - thunar
+  - thunar-volman
+  - thunar-shares-plugin
+  - thunar-archive-plugin
+  - thunar-media-tags-plugin
+
 xfce_pkgs:
   - xorg-server
   - xorg-xinit
@@ -22,65 +32,98 @@ xfce_pkgs:
   - xfce4
   - xfce4-goodies
   - xfce4-panel-profiles
-  - gvfs
-  - gvfs-smb
-  - gvfs-nfs
-  - gigolo
+# for tumblerd
+  - ffmpegthumbnailer
+  - freetype2
+  - libgepub
+  - libgsf
+  - libopenraw
+# -------------
   - catfish
+  - gigolo
   - mugshot
   - wmctrl
   - redshift
   - geoclue
   - xclip
   - gst-libav
-  - gcolor3
   - conky
-hyprland_pkgs:
-  - hyprland
-  - xdg-desktop-portal-hyprland
-  - waybar
-  - rofi-wayland
-  - swaync
-  - hypridle
-  - hyprlock
-  - hyprcursor
-  - swaybg
-  - hyprpolkitagent
+  - screenkey
+  - xdg-desktop-portal-xapp
+
+wayland_common_pkgs:
+  - swaybg # Background setter
+  - waybar # Statusbar
+  - swaync # Notification Center
+  - swww # animations
+  - swaybg # Background setter
+  - waypaper # Background setter
+  - imv # Image Viewer
+  - rofi-wayland # App Launcher
+  - nwg-look # Theme picker
+  - nwg-displays # Display settings
+  - nwg-drawer # Big menu
+  - nwg-icon-picker # Icon picker
+  - wl-clipboard # Clipboard
+  - cliphist # Clipboard manager
+  - wf-recorder # Screen recorder
+  - slurp # Selection area
+  - grim # Screenshotter
+  - wlsunset # Gamma adjuster
+  - xdg-desktop-portal-gtk
   - desktop-file-utils
-  - nwg-look
-  - nwg-displays
-  - nwg-drawer
-  - nwg-icon-picker
-  - hyprpicker
-  - wf-recorder
-  - ristretto
-  - wl-clipboard
-  - cliphist
+  - wev
+  - wallust
+
+sway_pkgs:
+  - sway
+  - swayidle
+  - swaylock
+  - xdg-desktop-portal-wlr
+  - polkit-gnome
+
+hyprland_pkgs:
+  - hyprland # Wayland compositor
+  - hypridle # Idle Manager
+  - hyprlock # Lock screen
+  - hyprcursor
+  - hyprpolkitagent # Polkit agent
+  - hyprpicker # Color picker
+  - xdg-desktop-portal-hyprland
   - qt5-wayland
   - qt6-wayland
-  - swappy
-  - slurp
-  - grim
-  - wlsunset
+
 xorg_amdgpu:
   - xf86-video-amdgpu
 os_intgpu:
   - intel-media-driver
+
 os_essential:
   - archlinux-contrib
   - pacman-contrib
+  - man-db
+  - man-pages
+  - arch-audit
   - xdg-utils
   - libsecret
   - xdg-user-dirs
+  - unrar
   - unzip
   - lshw
+  - lsof
   - mesa-utils
-  - libva-mesa-driver
+  - mesa
   - sound-theme-freedesktop
+  - nvme-cli
+  - flatpak
+  - tree
+  - plymouth
+
 os_network:
   - iwd
   - networkmanager
   - network-manager-applet
+
 os_audio:
   - pavucontrol
   - pipewire
@@ -88,6 +131,7 @@ os_audio:
   - pipewire-pulse
   - wireplumber
   - gst-plugin-pipewire
+
 common_cmd_util:
   - fzf
   - eza
@@ -96,13 +140,17 @@ common_cmd_util:
   - bat
   - bat-extras
   - zoxide
+  - jq
   - entr
-  - tree
-  - htop
-  - lazygit
-  - lazydocker
-  - yazi
   - 7zip
+  - htop
+  - yazi
+# yazi optional dependencies
+  - poppler
+  - imagemagick
+  - chafa
+  - resvg
+# ---------------
   - ffmpeg
   - rsync
   - mpv
@@ -110,11 +158,11 @@ common_cmd_util:
   - ncmpcpp
   - zathura
   - zathura-pdf-mupdf
-  - nvm
-  - plymouth
   - rclone
   - fastfetch
   - tealdeer
+  - freerdp
+
 common_gui_util:
   - galculator
   - seahorse
@@ -127,6 +175,11 @@ common_gui_util:
   - rhythmbox
   - transmission-gtk
   - atril
+  - lxterminal
+  - gimp # image editor
+  - inkscape # svg editor
+  - localsend-bin # share files local
+
 common_fonts:
   - ttf-hack-nerd
   - ttf-iosevka-nerd
@@ -136,6 +189,7 @@ common_fonts:
   - ttf-0xproto-nerd
   - ttf-bigblueterminal-nerd
   - otf-codenewroman-nerd
+  - ttf-nerd-fonts-symbols
   - woff2-font-awesome
   - noto-fonts-emoji
 
@@ -153,3 +207,40 @@ flatpak_pkgs:
   - org.openshot.OpenShot
   - org.nickvision.tubeconverter
   - org.remmina.Remmina
+  - com.protonvpn.www
+
+dev_pkgs:
+  - podman
+  - podman-desktop
+  - docker
+  - docker-desktop
+  - lazygit
+  - lazydocker
+  - quickemu-git
+  - toolbox
+  - distrobox
+  - radeontop
+  - amdgpu_top
+  - sshpass # for ansible-core
+  - swtpm # for libvirt
+# Virtualization/emulation
+  - qemu-desktop
+  - virt-manager
+  - virt-viewer
+  - dnsmasq
+  - guestfs-tools
+  - iptables-nft
+# -----------------
+  - glib2-devel
+
+dev_misc_pkgs:
+  - android-studio
+  - lynis # audit tool CVEs
+
+misc_pkgs:
+  - vesktop-bin # discord modified
+  - libreoffice-fresh
+  - obs-studio
+  - steam
+  - yt-dlp
+  - yt-x
