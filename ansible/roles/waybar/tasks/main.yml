@@ -1,7 +1,8 @@
 - name: "Installing Waybar packages"
   ansible.builtin.expect:
     command: paru -S --noprogressbar --noconfirm --needed {{item}}
-    responses: "{{sudo_password}}"
+    responses:
+      password: "{{sudo_password}}"
   loop:
     - waybar
 

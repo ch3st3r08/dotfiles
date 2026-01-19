@@ -4,8 +4,6 @@ script_dir: "{{home}}/Scripts"
 
 root_dir: "{{playbook_dir}}"
 stow_dir: "{{root_dir}}/../"
-# home: "{{root_dir}}/test"
-# config_dir: "{{root_dir}}/test/config"
 
 themes_path:
   - /usr/share/themes
@@ -53,11 +51,8 @@ xfce_pkgs:
 wayland_common_pkgs:
   main:
     - swaybg # Background setter
-    - waybar # Statusbar
-    - swaync # Notification Center
     - swww # animations
     - imv # Image Viewer
-    - rofi-wayland # App Launcher
     - nwg-look # Theme picker
     - nwg-displays # Display settings
     - nwg-drawer # Big menu
@@ -221,26 +216,22 @@ flatpak_pkgs:
 
 dev_pkgs:
   main:
-    - podman
-    - podman-desktop
     - docker
-    - docker-desktop
     - lazygit
     - lazydocker
     - toolbox
     - distrobox
-    - radeontop
-    - amdgpu_top
     - glib2-devel
   aur:
     - quickemu-git
 
-dev_misc_pkgs:
-  - android-studio
-  - lynis # audit tool CVEs
-
 misc_pkgs:
   - vesktop-bin # discord modified
+  - docker-desktop
   - libreoffice-fresh
   - obs-studio
   - steam
+  - android-studio
+  - lynis # audit tool CVEs
+  - radeontop
+  - amdgpu_top

@@ -4,15 +4,13 @@
     state: directory
     mode: '0755'
     recurse: true
-  loop: "{{ [home ~ '/Sources'] + themes_path + icons_path}}"
+  loop:
+    - "{{ [home ~ '/Sources'] }}"
+    - "{{themes_path[1]}}"
+    - "{{icons_path[1]}}"
   become: true
-
-# - name: Utils | Installing utility cmd packages
-#   community.general.pacman:
-#     name: "{{item}}"
-#     state: present
-#   loop: "{{common_cmd_util}}"
-#   become: true
+  when: not ansible_check_mode
+  tags: main
 
 - name: Utils | Installing utility cmd packages
   ansible.builtin.expect:
@@ -22,13 +20,7 @@
   when: paru_exist is succeeded
   loop: "{{common_cmd_util.values() | flatten}}"
   become: false
-
-# - name: Utils | Installing utility GUI packages
-#   community.general.pacman:
-#     name: "{{item}}"
-#     state: present
-#   loop: "{{common_gui_util}}"
-#   become: true
+  tags: main
 
 - name: Utils | Installing utility GUI packages
   ansible.builtin.expect:
@@ -38,13 +30,7 @@
   when: paru_exist is succeeded
   loop: "{{common_gui_util.values() | flatten}}"
   become: false
-
-# - name: Installing utility Font packages
-#   community.general.pacman:
-#     name: "{{item}}"
-#     state: present
-#   loop: "{{common_fonts}}"
-#   become: true
+  tags: main
 
 - name: Installing utility Font packages
   ansible.builtin.expect:
@@ -52,9 +38,11 @@
     responses:
       password: "{{sudo_password}}"
   when: paru_exist is succeeded
-  loop: "{{common_fonts.values | flatten}}"
+  loop: "{{common_fonts.values() | flatten}}"
   become: false
+  tags: main
 
+  # tryin to decide where to move this tasks, in their own Misc Role perhaps??
 - name: Copying Fastfetch
   ansible.builtin.command:
     cmd: stow -d {{stow_dir}} -t {{home}} --no-folding --dotfiles -S fastfetch util-scripts music

@@ -1,0 +1,13 @@
+---
+dependencies:
+  - role: xfce4
+  - role: picom
+  - role: alacritty
+  - role: tmux
+  - role: zsh
+  - role: neovim
+  - role: sddm
+  - role: yazi
+  - role: zathura
+  - role: git
+  - role: mpd

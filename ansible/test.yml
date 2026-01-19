@@ -70,9 +70,11 @@
       when: ansible_facts.processor[1] == is_intel
 
     - name: Displaying result list
+      vars:
+        mixiado: "{{ (myDict.values() + myDict2.values()) }}"
       ansible.builtin.debug:
         # msg: "{{ myDict.values() | list | union(myDict2.values() | list) | flatten }}"
-        msg: "{{ (myDict.values() + myDict2.values()) | flatten }}"
+        msg: "{{ (mixiado + [my_list]) | flatten }}"
 
     - name: Check if a directory starting with 'backup_' exists
       vars:

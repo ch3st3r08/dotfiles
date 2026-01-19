@@ -1,0 +1,16 @@
+---
+dependencies:
+  - role: sway
+  - role: waybar
+  - role: swaync
+  - role: swappy
+  - role: alacritty
+  - role: tmux
+  - role: zsh
+  - role: neovim
+  - role: sddm
+  - role: yazi
+  - role: zathura
+  - role: git
+  - role: mpd
+  - role: webbrowser

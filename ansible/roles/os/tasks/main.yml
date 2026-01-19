@@ -6,6 +6,7 @@
     state: present
   loop: "{{os_essential}}"
   become: true
+  tags: main
 
 - name: "OS | Installing networking packages and services"
   block:
@@ -20,6 +21,7 @@
         name: NetworkManager.service
         enabled: true
         state: started
+  tags: main
 
 - name: "OS | Installing audio packages"
   block:
@@ -35,6 +37,7 @@
         enabled: true
         state: started
         scope: user
+  tags: main
 
 - name: "OS | Setting Libcredential"
   block:
@@ -49,3 +52,4 @@
         chdir: /usr/share/git/credential/libsecret/
       become: true
       changed_when: not lib_secret_file_status.stat.exists
+  tags: main

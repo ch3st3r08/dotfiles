@@ -1,5 +1,5 @@
 - name: Installing MPD and Player
-  ansible.community.pacman:
+  community.general.pacman:
     name:
       - mpd
       - ncmpcpp
@@ -12,10 +12,12 @@
     path: "{{item.path}}"
     state: "{{item.state}}"
     mode: "{{item.mode}}"
+    modification_time: preserve
+    access_time: preserve
   loop:
     - { path: "{{config_dir}}/mpd/playlists", state: "directory", mode: "0755" }
     - { path: "{{config_dir}}/mpd/db", state: "touch", mode: "0644" }
-    - { path: "{{config_dir}}/mpd/stickers.sql", state: "touch", mode: "0644" }
+    - { path: "{{config_dir}}/mpd/sticker.sql", state: "touch", mode: "0644" }
     - { path: "{{config_dir}}/mpd/pid", state: "touch", mode: "0644" }
     - { path: "{{config_dir}}/mpd/state", state: "touch", mode: "0644" }
   tags: mpd
