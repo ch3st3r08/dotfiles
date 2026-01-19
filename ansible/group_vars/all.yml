@@ -1,10 +1,9 @@
-user_name: "{{ lookup('env', 'USER') }}"
-home: "/home/{{user_name}}"
+home: "{{ ansible_facts['user_dir'] }}"
 config_dir: "{{home}}/.config"
-
 script_dir: "{{home}}/Scripts"
 
 root_dir: "{{playbook_dir}}"
+stow_dir: "{{root_dir}}/../"
 # home: "{{root_dir}}/test"
 # config_dir: "{{root_dir}}/test/config"
 
@@ -52,28 +51,30 @@ xfce_pkgs:
   - xdg-desktop-portal-xapp
 
 wayland_common_pkgs:
-  - swaybg # Background setter
-  - waybar # Statusbar
-  - swaync # Notification Center
-  - swww # animations
-  - swaybg # Background setter
-  - waypaper # Background setter
-  - imv # Image Viewer
-  - rofi-wayland # App Launcher
-  - nwg-look # Theme picker
-  - nwg-displays # Display settings
-  - nwg-drawer # Big menu
-  - nwg-icon-picker # Icon picker
-  - wl-clipboard # Clipboard
-  - cliphist # Clipboard manager
-  - wf-recorder # Screen recorder
-  - slurp # Selection area
-  - grim # Screenshotter
-  - wlsunset # Gamma adjuster
-  - xdg-desktop-portal-gtk
-  - desktop-file-utils
-  - wev
-  - wallust
+  main:
+    - swaybg # Background setter
+    - waybar # Statusbar
+    - swaync # Notification Center
+    - swww # animations
+    - imv # Image Viewer
+    - rofi-wayland # App Launcher
+    - nwg-look # Theme picker
+    - nwg-displays # Display settings
+    - nwg-drawer # Big menu
+    - nwg-icon-picker # Icon picker
+    - wl-clipboard # Clipboard
+    - cliphist # Clipboard manager
+    - wf-recorder # Screen recorder
+    - slurp # Selection area
+    - grim # Screenshotter
+    - wlsunset # Gamma adjuster
+    - xdg-desktop-portal-gtk
+    - desktop-file-utils
+    - wev
+    - wallust
+  aur:
+    - waypaper # Background setter
+    - wvkbd
 
 sway_pkgs:
   - sway
@@ -81,20 +82,26 @@ sway_pkgs:
   - swaylock
   - xdg-desktop-portal-wlr
   - polkit-gnome
+  - grimshot
 
 hyprland_pkgs:
-  - hyprland # Wayland compositor
-  - hypridle # Idle Manager
-  - hyprlock # Lock screen
-  - hyprcursor
-  - hyprpolkitagent # Polkit agent
-  - hyprpicker # Color picker
-  - xdg-desktop-portal-hyprland
-  - qt5-wayland
-  - qt6-wayland
+  main:
+    - hyprland # Wayland compositor
+    - hypridle # Idle Manager
+    - hyprlock # Lock screen
+    - hyprcursor
+    - hyprpolkitagent # Polkit agent
+    - hyprpicker # Color picker
+    - xdg-desktop-portal-hyprland
+    - qt5-wayland
+    - qt6-wayland
+  aur:
+    - hyprsysteminfo
+    - grimblast-git
 
 xorg_amdgpu:
   - xf86-video-amdgpu
+
 os_intgpu:
   - intel-media-driver
 
@@ -133,65 +140,68 @@ os_audio:
   - gst-plugin-pipewire
 
 common_cmd_util:
-  - fzf
-  - eza
-  - fd
-  - ripgrep
-  - bat
-  - bat-extras
-  - zoxide
-  - jq
-  - entr
-  - 7zip
-  - htop
-  - yazi
-# yazi optional dependencies
-  - poppler
-  - imagemagick
-  - chafa
-  - resvg
-# ---------------
-  - ffmpeg
-  - rsync
-  - mpv
-  - mpd
-  - ncmpcpp
-  - zathura
-  - zathura-pdf-mupdf
-  - rclone
-  - fastfetch
-  - tealdeer
-  - freerdp
+  main:
+    - fzf
+    - eza
+    - fd
+    - ripgrep
+    - bat
+    - bat-extras
+    - zoxide
+    - jq
+    - entr
+    - 7zip
+    - htop
+    - ffmpeg
+    - rsync
+    - mpv
+    - rclone
+    - fastfetch
+    - tealdeer
+    - freerdp
+    - yt-x
+  aur:
+    - lssecret-git
+    - tty-clock
 
 common_gui_util:
-  - galculator
-  - seahorse
-  - grub-customizer
-  - font-manager
-  - xarchiver
-  - baobab
-  - gparted
-  - grsync
-  - rhythmbox
-  - transmission-gtk
-  - atril
-  - lxterminal
-  - gimp # image editor
-  - inkscape # svg editor
-  - localsend-bin # share files local
+  main:
+    - galculator
+    - seahorse
+    - grub-customizer
+    - font-manager
+    - xarchiver
+    - baobab
+    - gparted
+    - grsync
+    - rhythmbox
+    - transmission-gtk
+    - atril
+    - lxterminal
+    - gimp # image editor
+    - inkscape # svg editor
+  aur:
+    - distro-grub-themes-arch
+    - menulibre
+    - plymouth-theme-arch-logo-new
+    - grub-customizer
+    - localsend-bin # share files local
 
 common_fonts:
-  - ttf-hack-nerd
-  - ttf-iosevka-nerd
-  - ttf-firacode-nerd
-  - ttf-sourcecodepro-nerd
-  - ttf-terminus-nerd
-  - ttf-0xproto-nerd
-  - ttf-bigblueterminal-nerd
-  - otf-codenewroman-nerd
-  - ttf-nerd-fonts-symbols
-  - woff2-font-awesome
-  - noto-fonts-emoji
+  main:
+    - ttf-hack-nerd
+    - ttf-iosevka-nerd
+    - ttf-firacode-nerd
+    - ttf-sourcecodepro-nerd
+    - ttf-terminus-nerd
+    - ttf-0xproto-nerd
+    - ttf-bigblueterminal-nerd
+    - otf-codenewroman-nerd
+    - ttf-nerd-fonts-symbols
+    - woff2-font-awesome
+    - noto-fonts-emoji
+  aur:
+    - ttf-ms-fonts
 
 flatpak_pkgs:
   - com.github.johnfactotum.Foliate
@@ -210,28 +220,20 @@ flatpak_pkgs:
   - com.protonvpn.www
 
 dev_pkgs:
-  - podman
-  - podman-desktop
-  - docker
-  - docker-desktop
-  - lazygit
-  - lazydocker
-  - quickemu-git
-  - toolbox
-  - distrobox
-  - radeontop
-  - amdgpu_top
-  - sshpass # for ansible-core
-  - swtpm # for libvirt
-# Virtualization/emulation
-  - qemu-desktop
-  - virt-manager
-  - virt-viewer
-  - dnsmasq
-  - guestfs-tools
-  - iptables-nft
-# -----------------
-  - glib2-devel
+  main:
+    - podman
+    - podman-desktop
+    - docker
+    - docker-desktop
+    - lazygit
+    - lazydocker
+    - toolbox
+    - distrobox
+    - radeontop
+    - amdgpu_top
+    - glib2-devel
+  aur:
+    - quickemu-git
 
 dev_misc_pkgs:
   - android-studio
@@ -242,5 +244,3 @@ misc_pkgs:
   - libreoffice-fresh
   - obs-studio
   - steam
-  - yt-dlp
-  - yt-x

@@ -1,34 +1,48 @@
-- name: Ensure base development packages are installed
+---
+
+- name: Ensure Expect package is installed
   community.general.pacman:
     name:
       - python-pexpect
     state: present
-    become: true
+  become: true
 
-- name: Test if paru is already installed
-  import_tasks: "{{ playbook_dir }}/pre_tasks/check_paru.yml"
-
-- name: Clone Paru repository
-  git:
-    repo: https://aur.archlinux.org/paru-bin.git
-    dest: ~/paru
-    update: true
-    version: master
-  when: paru_exist is failed
+- name: "Test if paru is already installed"
+  command: command -v paru
+  register: paru_exist
+  ignore_errors: true
   become: false
+  changed_when: paru_exist is failed
 
-- name: Build and Install Paru package
-  ansible.builtin.expect:
-    chdir: ~/paru
-    command: makepkg -si --noconfirm
-    responses:
-      password: "{{sudo_password}}"
-  failed_when: false
+- name: Installing Paru AUR Helper
   when: paru_exist is failed
-  become: false
+  block:
+    - name: Clone Paru repository
+      git:
+        repo: https://aur.archlinux.org/paru-bin.git
+        dest: ~/paru
+        update: true
+        version: master
+      become: false
 
-- name: Clean up build files
-  file:
-    path: ~/paru
-    state: absent
-  when: paru_exist is failed
+    - name: Build and Install Paru package
+      ansible.builtin.expect:
+        chdir: ~/paru
+        command: makepkg -si --noconfirm
+        responses:
+          password: "{{sudo_password}}"
+      failed_when: false
+      become: false
+
+    - name: Clean up build files
+      file:
+        path: ~/paru
+        state: absent
+  rescue:
+    - name: Could not install Paru
+      debug:
+        msg: "Installation failed. Cleaning up and exiting."
+
+    - name: Exitting gracefully
+      fail:
+        msg: "Deployment aborted due to package installation failure"

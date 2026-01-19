@@ -9,19 +9,10 @@
     theme_name: Colloid-gtk-theme
     icon_name: Colloid-icon-theme
   block:
-    - name: Checking for 'Colloid' theme
-      find:
-        paths: "{{themes_path}}"
-        file_type: directory
-        patterns: "Colloid*"
-      register: colloid_theme
-
-    - name: Checking for 'Colloid' icon theme
-      find:
-        paths: "{{icons_path}}"
-        file_type: directory
-        patterns: "Colloid*"
-      register: colloid_icon
+    - name: Checking theme source existence
+      ansible.builtin.stat:
+        path: "{{home}}/Sources/{{theme_name}}"
+      register: theme_exist
 
     - name: Downloading Colloid theme
       ansible.builtin.git:
@@ -29,14 +20,18 @@
         dest: "{{home}}/Sources/{{theme_name}}"
         depth: 1
         version: master
-      when: colloid_theme.matched <= 0
+      when: not theme_exist.stat.exists
 
     - name: Installing Colloid theme
       ansible.builtin.command:
         cmd: ./install.sh --tweaks nord
         chdir: "{{home}}/Sources/{{theme_name}}"
       changed_when: true
-      when: colloid_theme.matched <= 0
+
+    - name: Checking Icon source existence
+      ansible.builtin.stat:
+        path: "{{home}}/Sources/{{icon_name}}"
+      register: icon_exist
 
     - name: Downloading Colloid Icon and Cursor theme
       ansible.builtin.git:
@@ -44,18 +39,16 @@
         dest: "{{home}}/Sources/{{icon_name}}"
         depth: 1
         version: main
-      when: colloid_icon.matched <= 0
+      when: not icon_exist.stat.exists
 
     - name: Installing Colloid Icon theme
       ansible.builtin.command:
         cmd: ./install.sh
         chdir: "{{home}}/Sources/{{icon_name}}"
       changed_when: true
-      when: colloid_icon.matched <= 0
 
     - name: Installing Colloid Cursor theme
       ansible.builtin.command:
         cmd: ./install.sh
         chdir: "{{home}}/Sources/{{icon_name}}/cursors"
       changed_when: true
-      when: colloid_icon.matched <= 0

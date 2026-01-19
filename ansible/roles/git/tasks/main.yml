@@ -1,0 +1,13 @@
+- name: Installing Git
+  community.general.pacman:
+    name: git
+    state: present
+  become: true
+  tags: git
+
+- name: Copy git configuration
+  ansible.builtin.command:
+    cmd: stow -d {{stow_dir}} -t {{home}} --no-folding --dotfiles -S git
+  register: my_output
+  changed_when: my_output.rc != 0
+  tags: git

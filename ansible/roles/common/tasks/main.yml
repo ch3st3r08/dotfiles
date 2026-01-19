@@ -4,66 +4,61 @@
     state: directory
     mode: '0755'
     recurse: true
-  loop: "{{ [home ~ '/Sources]' + themes_path + icons_path}}"
+  loop: "{{ [home ~ '/Sources'] + themes_path + icons_path}}"
   become: true
+
+# - name: Utils | Installing utility cmd packages
+#   community.general.pacman:
+#     name: "{{item}}"
+#     state: present
+#   loop: "{{common_cmd_util}}"
+#   become: true
 
 - name: Utils | Installing utility cmd packages
-  community.general.pacman:
-    name: "{{item}}"
-    state: present
-  with_items: "{{common_cmd_util}}"
-  become: true
-
-- name: Utils | Installing utility GUI packages
-  community.general.pacman:
-    name: "{{item}}"
-    state: present
-  with_items: "{{common_gui_util}}"
-  become: true
-
-- name: Installing utility Font packages
-  community.general.pacman:
-    name: "{{item}}"
-    state: present
-  with_items: "{{common_fonts}}"
-  become: true
-
-- name: Test if paru is already installed
-  import_tasks: "{{ playbook_dir }}/pre_tasks/check_paru.yml"
-  when: paru_exist is not defined
-
-- name: "Installing AUR packages"
   ansible.builtin.expect:
     command: paru -S --noprogressbar --noconfirm --needed {{item}}
     responses:
       password: "{{sudo_password}}"
   when: paru_exist is succeeded
-  with_items:
-    - distro-grub-themes-arch
-    - lssecret-git
-    - menulibre
-    - plymouth-theme-arch-logo-new
-    - ttf-ms-fonts
-    - tty-clock
-    - grub-customizer
+  loop: "{{common_cmd_util.values() | flatten}}"
   become: false
 
-- name: Copying Fastfetch, Zathura and MPD configuration
-  ansible.builtin.command:
-    cmd: stow -d {{root_dir}}/../ -t {{home}} --no-folding --dotfiles -S fastfetch pdf-reader util-scripts mpd music
-  changed_when: true
+# - name: Utils | Installing utility GUI packages
+#   community.general.pacman:
+#     name: "{{item}}"
+#     state: present
+#   loop: "{{common_gui_util}}"
+#   become: true
 
-- name: Creating necessary files for MPD
-  ansible.builtin.file:
-    path: "{{item.path}}"
-    state: "{{item.state}}"
-    mode: "{{item.mode}}"
-  loop:
-    - { path: "{{config_dir}}/mpd/playlists", state: "directory", mode: "0755" }
-    - { path: "{{config_dir}}/mpd/db", state: "touch", mode: "0644" }
-    - { path: "{{config_dir}}/mpd/stickers.sql", state: "touch", mode: "0644" }
-    - { path: "{{config_dir}}/mpd/pid", state: "touch", mode: "0644" }
-    - { path: "{{config_dir}}/mpd/state", state: "touch", mode: "0644" }
+- name: Utils | Installing utility GUI packages
+  ansible.builtin.expect:
+    command: paru -S --noprogressbar --noconfirm --needed {{item}}
+    responses:
+      password: "{{sudo_password}}"
+  when: paru_exist is succeeded
+  loop: "{{common_gui_util.values() | flatten}}"
+  become: false
+
+# - name: Installing utility Font packages
+#   community.general.pacman:
+#     name: "{{item}}"
+#     state: present
+#   loop: "{{common_fonts}}"
+#   become: true
+
+- name: Installing utility Font packages
+  ansible.builtin.expect:
+    command: paru -S --noprogressbar --noconfirm --needed {{item}}
+    responses:
+      password: "{{sudo_password}}"
+  when: paru_exist is succeeded
+  loop: "{{common_fonts.values | flatten}}"
+  become: false
+
+- name: Copying Fastfetch
+  ansible.builtin.command:
+    cmd: stow -d {{stow_dir}} -t {{home}} --no-folding --dotfiles -S fastfetch util-scripts music
+  changed_when: true
 
 - name: Setting plymouth theme to arch-logo-new
   ansible.builtin.command:
@@ -73,18 +68,15 @@
 
 - name: Moving Arch grub theme to correct path
   block:
-    - name: Checking existence
+    - name: Checking existence of Grub's theme
       ansible.builtin.stat:
         path: /usr/share/grub/themes/arch-linux
       register: f_stat
 
-    - name: Moving
+    - name: Moving theme to boot mount
       ansible.builtin.copy:
         src: /usr/share/grub/themes/arch-linux
         dest: /boot/grub/themes/arch-linux
         mode: '0644'
       become: true
       when: f_stat.stat.exists
-
-- name: "Themes"
-  import_tasks: themes.yml

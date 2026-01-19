@@ -1,0 +1,8 @@
+- name: Dev | Installing packages
+  ansible.builtin.expect:
+    command: paru -S --noprogressbar --noconfirm --needed {{item}}
+    responses:
+      password: "{{sudo_password}}"
+  when: paru_exist is succeeded
+  loop: "{{ dev_pkgs.values() | flatten }}"
+  become: false

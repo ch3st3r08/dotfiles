@@ -1,0 +1,13 @@
+- name: "Installing Flatpak"
+  community.general.pacman:
+    name:
+      - flatpak
+  become: true
+  tags: flatpak
+
+- name: "Installing Flatpak packages"
+  ansible.builtin.expect:
+    command: paru -S --noprogressbar --noconfirm --needed {{item}}
+    responses: "{{sudo_password}}"
+  loop: "{{ flatpak_pkgs }}"
+  tags: flatpak

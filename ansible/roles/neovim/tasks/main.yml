@@ -3,17 +3,25 @@
     name:
       - neovim
   become: true
+  tags: neovim
 
 - name: Create Neovim config dir
   ansible.builtin.file:
     path: "{{config_dir}}/nvim"
     state: directory
     mode: '0755'
+  tags: neovim
 
 - name: Copying Neovim Config
   ansible.builtin.command:
-    cmd: stow -d {{root_dir}}/../ -t {{home}} --no-folding --dotfiles -S nvim
+    cmd: stow -d {{stow_dir}} -t {{home}} --no-folding --dotfiles -S nvim
   changed_when: true
+  tags: neovim
 
+- name: Installing Plugins
+  ansible.builtin.command:
+    cmd: nvim --headless "+Lazy! sync" "+qa"
+  tags: neovim
+  changed_when: false
 # Execute neovim to install packages without opening GUI
 # Execute mason to install LSP servers

@@ -1,0 +1,14 @@
+- name: Yazi | Installing packages
+  ansible.builtin.expect:
+    command: paru -S --noprogressbar --noconfirm --needed {{item}}
+    responses:
+      password: "{{sudo_password}}"
+  when: paru_exist is succeeded
+  loop:
+    - yazi
+    - poppler
+    - imagemagick
+    - chafa
+    - resvg
+  become: false
+  tags: yazi

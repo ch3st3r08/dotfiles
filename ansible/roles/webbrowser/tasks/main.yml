@@ -1,26 +1,11 @@
-- name: "Checking if Paru is installed"
-  include_tasks: "{{ playbook_dir }}/pre_tasks/check_paru.yml"
-  when: paru_exist is not defined
-
 - name: "Installing Web Browser packages"
   block:
-    - name: Installing Firefox and Qute Browser
-      community.general.pacman:
-        name:
-          - firefox
-          - firefox-addons
-          - qutebrowser
-      become: true
-
     - name: "Installing Brave Browser"
       ansible.builtin.expect:
         command: paru -S --noprogressbar --noconfirm --needed {{item}}
         responses:
           password: "{{ sudo_password }}"
       when: paru_exist is succeeded
-      with_items:
+      loop:
         - brave-bin
-
-    - name: Show Debug Info
-      ansible.builtin.debug:
-        msg: "Paru State: '{{ paru_exist }}'"
+        - qutebrowser

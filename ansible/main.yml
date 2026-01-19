@@ -6,8 +6,22 @@
   become: false
   vars:
     sudo_password: "{{ do_pass }}"
-    de_option: "{{ de | default('xfce4')}}"
+    de_option: "{{ de | default('none')}}"
     _name: Main
+    main_roles:
+      - os
+      - sudo
+      - common
+    tool_roles:
+      - neovim
+      - zsh
+      - tmux
+      - rofi
+      - yazi
+      - zathura
+      - alacritty
+      - webbrowser
+      - sddm
 
   pre_tasks:
     - name: "{{_name}} | Sync and Upgrade system"
@@ -21,34 +35,61 @@
       community.general.pacman:
         name:
           - base-devel
-          - git
           - curl
       become: true
 
-  roles:
-    - role: os
-      tags: os
-    - role: common
-      tags: common
-    - role: xfce4
+    - name: "Main | Check and Install Paru AUR Helper"
+      ansible.builtin.import_role:
+        name: os
+        tasks_from: paru
+      tags: always
+
+  tasks:
+    - name: Main Roles
+      ansible.builtin.include_role:
+        name: '{{ role_name }}'
+      loop: "{{ main_roles }}"
+      loop_control:
+        loop_var: role_name
+      tags: mainroles
+
+    - name: Installing Xfce4
+      ansible.builtin.include_role:
+        name: '{{ role_name }}'
+        apply:
+          tags: ['{{ role_name}}']
+      loop: [xfce4, picom]
+      loop_control:
+        loop_var: role_name
+      when: de_option == "xfce4" or 'xfce4' in ansible_run_tags
       tags: xfce4
-      when: de_option == "xfce4"
-    - role: picom
-      tags: picom
-      when: de_option == "xfce4"
-    - role: hyprland
-      tags: hyprland
-      when: de_option == "hypr"
-    - role: neovim
-      tags: neovim
-    - role: zsh
-      tags: zsh
-    - role: tmux
-      tags: tmux
-    - role: rofi
-      tags: rofi
-    - role: alacritty
-      tags: alacritty
-    - role: webbrowser
-    - role: sddm
-      tags: sddm
+
+    - name: Installing Hyprland
+      ansible.builtin.include_role:
+        name: '{{ role_name }}'
+        apply:
+          tags: ['{{ role_name}}']
+      loop: [hyprland]
+      loop_control:
+        loop_var: role_name
+      when: de_option == "hypr" or 'hypr' in ansible_run_tags
+      tags: hypr
+
+    - name: Installing SwayWM
+      ansible.builtin.include_role:
+        name: '{{ role_name }}'
+        apply:
+          tags: ['{{ role_name}}']
+      loop: [sway]
+      loop_control:
+        loop_var: role_name
+      when: de_option == "sway" or 'sway' in ansible_run_tags
+      tags: sway
+
+    - name: Tool Roles
+      ansible.builtin.include_role:
+        name: '{{ role_name }}'
+      loop: "{{ tool_roles }}"
+      loop_control:
+        loop_var: role_name
+      tags: toolroles

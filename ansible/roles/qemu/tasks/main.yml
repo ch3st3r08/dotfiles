@@ -1,0 +1,25 @@
+- name: Qemu | Installing packages
+  ansible.builtin.expect:
+    command: paru -S --noprogressbar --noconfirm --needed {{item}}
+    responses:
+      password: "{{sudo_password}}"
+  when: paru_exist is succeeded
+  loop:
+    - qemu-desktop
+    - virt-manager
+    - virt-viewer
+    - libosinfo
+    - dnsmasq
+    - guestfs-tools
+    - iptables-nft
+    - swtpm
+    - edk2-ovmf
+  become: false
+  tags: qemu
+
+- name: Qemu | Extra Info
+  ansible.builtin.debug:
+    msg:
+      - "Add the line: 'iommu=pt' if using Amd processor"
+      - "or previous one plus 'intel_iommu=on' if using Intel"
+  tags: qemu

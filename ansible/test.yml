@@ -12,8 +12,22 @@
     other_list:
       - rofi
     theme_path:
-          - /usr/share/icons
-          - "{{home}}/.local/share/icons"
+      - /usr/share/icons
+      - "{{home}}/.local/share/icons"
+    myDict:
+      elem1:
+        - joder
+        - parce
+      elem2:
+        - concha
+        - delalora
+    myDict2:
+      elem1:
+        - cuca
+        - shucaj
+      elem2:
+        - loquito
+        - cuchardo
 
   tasks:
     - name: Get GPU vendor and model
@@ -23,13 +37,22 @@
       register: gpu_info
       changed_when: true
 
+    - name: Show the user used to connect to the host
+      ansible.builtin.debug:
+        msg: "I connected as {{ ansible_facts['user_id'] }}"
+
+    - name: Show the user used to SUDO
+      ansible.builtin.debug:
+        msg: "I connected as {{  ansible_facts['user_id']  }}"
+      become: true
+
     - name: Set GPU information as a fact
       ansible.builtin.set_fact:
         gpu_vendor: "{{ gpu_info.stdout }}"
 
     - name: Printing gpu vendor
       ansible.builtin.debug:
-        msg: Veamos que tal {{ gpu_vendor }}
+        msg: Veamos que tal {{ gpu_vendor }} el gpu info es {{gpu_info.stdout}}
 
     - name: Conditional rendering of msgs
       ansible.builtin.debug:
@@ -40,17 +63,16 @@
       ansible.builtin.debug:
         msg:
           - "{{ ansible_facts.processor[1] }}"
+
     - name: Mergin lists
       set_fact:
         my_list: "{{ my_list + other_list }}"
       when: ansible_facts.processor[1] == is_intel
 
     - name: Displaying result list
-      community.general.pacman:
-        name: "{{item}}"
-        state: present
-        extra_args: -p
-      with_items: "{{ my_list }}"
+      ansible.builtin.debug:
+        # msg: "{{ myDict.values() | list | union(myDict2.values() | list) | flatten }}"
+        msg: "{{ (myDict.values() + myDict2.values()) | flatten }}"
 
     - name: Check if a directory starting with 'backup_' exists
       vars:
@@ -68,11 +90,11 @@
         msg: "Directory starting with 'Colloid' found, we search in {{my_list[0]}}"
       when: found_dirs.matched > 0
 
-    - name: Creating necessary folders
-      ansible.builtin.file:
-        path: "{{item}}"
-        state: directory
-        mode: '0755'
-        recurse: true
-      loop:
-        - '{{theme_path}}'
+    # - name: Creating necessary folders
+    #   ansible.builtin.file:
+    #     path: "{{item}}"
+    #     state: directory
+    #     mode: '0755'
+    #     recurse: true
+    #   loop:
+    #     - '{{theme_path}}'

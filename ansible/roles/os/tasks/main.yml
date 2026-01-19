@@ -1,8 +1,10 @@
+---
+
 - name: OS | Installing essential packages
   community.general.pacman:
     name: "{{item}}"
     state: present
-  with_items: "{{os_essential}}"
+  loop: "{{os_essential}}"
   become: true
 
 - name: "OS | Installing networking packages and services"
@@ -10,7 +12,7 @@
     - name: Installing networking packages
       community.general.pacman:
         name: "{{item}}"
-      with_items: "{{os_network}}"
+      loop: "{{os_network}}"
       become: true
 
     - name: "Starting and enabling networkmanager service"
@@ -24,7 +26,7 @@
     - name: "Installing packages"
       community.general.pacman:
         name: "{{item}}"
-      with_items: "{{os_audio}}"
+      loop: "{{os_audio}}"
       become: true
 
     - name: "Enable and Start Pipewire systemd user unit"
@@ -47,12 +49,3 @@
         chdir: /usr/share/git/credential/libsecret/
       become: true
       changed_when: not lib_secret_file_status.stat.exists
-
-- name: Copy git configuration
-  ansible.builtin.command:
-    cmd: stow -d {{root_dir}}/../ -t {{home}} --no-folding --dotfiles -S git
-  register: my_output
-  changed_when: my_output.rc != 0
-
-- name: "Install Paru AUR manager"
-  import_tasks: paru.yml

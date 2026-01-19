@@ -1,16 +1,16 @@
-- name: "Installing Hyprland packages"
+- name: "Installing Sway packages"
   ansible.builtin.expect:
     command: paru -S --noprogressbar --noconfirm --needed {{item}}
     responses: "{{sudo_password}}"
-  loop: "{{(hyprland_pkgs.values() + wayland_common_pkgs.values()) | flatten }}"
+  loop: "{{(sway_pkgs.values() + wayland_common_pkgs.values()) | flatten }}"
 
 - name: Creating config directory if it doesn't exist
   ansible.builtin.file:
-    path: "{{config_dir}}/hypr"
+    path: "{{config_dir}}/sway"
     state: directory
     mode: '0755'
 
 - name: Copying config files
   ansible.builtin.command:
-    cmd: stow -d {{stow_dir}} -t {{home}} --no-folding --dotfiles -S hypr waybar
+    cmd: stow -d {{stow_dir}} -t {{home}} --no-folding --dotfiles -S sway
   changed_when: true

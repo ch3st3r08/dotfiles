@@ -1,27 +1,20 @@
-- name: "Checking if Paru is installed"
-  include_tasks: "{{ playbook_dir }}/pre_tasks/check_paru.yml"
-  when: paru_exist is not defined
-
-- name: "Installing Display Manager packages"
-  community.general.pacman:
-    name:
-      - sddm
-    become: true
-
-- name: "Installing SDDM AUR packages"
+- name: "Installing SDDM packages"
   ansible.builtin.expect:
     command: paru -S --noprogressbar --noconfirm --needed {{item}}
     responses:
       password: "{{sudo_password}}"
   when: paru_exist is succeeded
-  with_items:
+  loop:
+    - sddm
     - sddm-conf-git
     - sddm-eucalyptus-drop
+  tags: sddm
 
 - name: Checking existence of config file
   ansible.builtin.stat:
     path: /etc/sddm.conf
   register: f_stat
+  tags: sddm
 
 - name: Configuring SDDM theme
   ansible.builtin.lineinfile:
@@ -30,3 +23,16 @@
     line: Current=eucalyptus-drop
   become: true
   when: f_stat.stat.exists
+  tags: sddm
+
+- name: "Enable and SDDM systemd unit"
+  ansible.builtin.systemd_service:
+    name: sddm.service
+    enabled: true
+  tags: sddm
+
+- name: "Debugging SDDM config"
+  ansible.builtin.debug:
+    msg: "Could not find config file, you'll need to set up theme manually"
+  when: not f_stat.stat.exists
+  tags: sddm

@@ -2,14 +2,17 @@
   community.general.pacman:
     name:
       - tmux
+  tags: tmux
 
 - name: Create a directory if it does not exist
   ansible.builtin.file:
     path: "{{config_dir}}/tmux"
     state: directory
     mode: '0755'
+  tags: tmux
 
 - name: "Copying config file"
   ansible.builtin.command:
-    cmd: stow -d {{root_dir}}/../ -t {{home}} --no-folding --dotfiles -S tmux
+    cmd: stow -d {{stow_dir}} -t {{home}} --no-folding --dotfiles -S tmux
   changed_when: true
+  tags: tmux

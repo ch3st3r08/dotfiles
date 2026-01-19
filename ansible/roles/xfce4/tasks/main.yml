@@ -14,5 +14,5 @@
 
 - name: Copying xfce4 config files
   ansible.builtin.command:
-    cmd: stow -d {{root_dir}}/../ -t {{home}} --no-folding --dotfiles -S xfce4
+    cmd: stow -d {{stow_dir}} -t {{home}} --no-folding --dotfiles -S xfce4
   changed_when: true

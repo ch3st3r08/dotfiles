@@ -1,0 +1,15 @@
+- name: "Installing Sudo"
+  community.general.pacman:
+    name:
+      - sudo
+  become: true
+
+- name: Apply dynamic sudoers configuration
+  ansible.builtin.template:
+    src: sudoers.j2
+    dest: /etc/sudoers.d/{{ ansible_facts['user_id'] }}_permits
+    owner: root
+    group: root
+    mode: '0440'
+    validate: /usr/sbin/visudo -cf %s
+  become: true

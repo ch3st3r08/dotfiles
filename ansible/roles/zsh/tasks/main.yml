@@ -4,29 +4,35 @@
       - zsh
       - starship
   become: true
+  tags: zsh
 
 - name: Create a zsh directory
   ansible.builtin.file:
     path: "{{config_dir}}/zsh"
     state: directory
     mode: '0755'
+  tags: zsh
 
 - name: Copy zsh configuration
   ansible.builtin.command:
-    cmd: stow -d {{root_dir}}/../ -t {{home}} --no-folding --dotfiles -S zsh starship
+    cmd: stow -d {{stow_dir}} -t {{home}} --no-folding --dotfiles -S zsh starship
   changed_when: true
+  tags: zsh
 
 - name: Check default shell
   ansible.builtin.shell: basename $SHELL
   register: dshell
   changed_when: false
+  tags: zsh
 
 - name: Output default shell
   debug:
     msg: "Default shell is {{ dshell.stdout }}"
+  tags: zsh
 
 - name: Set zsh as default shell
-  ansible.builtin.command: chsh -s /usr/bin/zsh
-  become: true
-  changed_when: dshell.stdout != "zsh"
+  ansible.builtin.user:
+    name: "{{ ansible_facts['user_id'] }}"
+    shell: /usr/bin/zsh
   when: dshell.stdout != "zsh"
+  tags: zsh

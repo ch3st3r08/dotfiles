@@ -1,0 +1,14 @@
+- name: Installing Zathura PDF reader
+  community.general.pacman:
+    name:
+      - zathura
+      - zathura-pdf-mupdf
+    state: present
+  become: true
+  tags: zathura
+
+- name: Copying Zathura config
+  ansible.builtin.command:
+    cmd: stow -d {{stow_dir}} -t {{home}} --no-folding --dotfiles -S pdf-reader
+  changed_when: true
+  tags: zathura
