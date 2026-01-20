@@ -100,3 +100,14 @@
     #     recurse: true
     #   loop:
     #     - '{{theme_path}}'
+    - name: Yazi | Installing packages
+      kewlfft.aur.aur:
+        name: "{{item}}"
+      loop:
+        - yazi
+        - poppler
+        - imagemagick
+        - chafa
+        - resvg
+      become: false
+      tags: yazi

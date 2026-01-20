@@ -7,6 +7,9 @@ echo "Installing necessary packages"
 echo "Creating xdg directories"
 #xdg-user-dirs-update
 
+echo "Installing collections"
+ansible-galaxy install -r ansible/requirements.yml
+
 echo "Installing system"
 ansible-playbook ansible/main.yml --ask-become-pass -e "do_pass=$1" "de=$2"
 

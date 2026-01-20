@@ -9,6 +9,7 @@
   tags: main
 
 - name: "OS | Installing networking packages and services"
+  tags: main
   block:
     - name: Installing networking packages
       community.general.pacman:
@@ -21,9 +22,9 @@
         name: NetworkManager.service
         enabled: true
         state: started
-  tags: main
 
 - name: "OS | Installing audio packages"
+  tags: main
   block:
     - name: "Installing packages"
       community.general.pacman:
@@ -37,9 +38,9 @@
         enabled: true
         state: started
         scope: user
-  tags: main
 
 - name: "OS | Setting Libcredential"
+  tags: main
   block:
     - name: Check if libsecret credential program exists
       ansible.builtin.stat:
@@ -52,4 +53,3 @@
         chdir: /usr/share/git/credential/libsecret/
       become: true
       changed_when: not lib_secret_file_status.stat.exists
-  tags: main
