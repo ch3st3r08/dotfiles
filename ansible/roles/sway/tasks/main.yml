@@ -1,7 +1,6 @@
 - name: "Installing Sway packages"
-  ansible.builtin.expect:
-    command: paru -S --noprogressbar --noconfirm --needed {{item}}
-    responses: "{{sudo_password}}"
+  kewlfft.aur.aur:
+    name: "{{ item }}"
   loop: "{{(sway_pkgs.values() + wayland_common_pkgs.values()) | flatten }}"
 
 - name: Creating config directory if it doesn't exist

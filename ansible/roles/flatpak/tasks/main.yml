@@ -6,8 +6,7 @@
   tags: flatpak
 
 - name: "Installing Flatpak packages"
-  ansible.builtin.expect:
-    command: paru -S --noprogressbar --noconfirm --needed {{item}}
-    responses: "{{sudo_password}}"
+  kewlfft.aur.aur:
+    name: "{{ item }}"
   loop: "{{ flatpak_pkgs }}"
   tags: flatpak

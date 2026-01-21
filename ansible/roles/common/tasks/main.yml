@@ -13,33 +13,21 @@
   tags: main
 
 - name: Utils | Installing utility cmd packages
-  ansible.builtin.expect:
-    command: paru -S --noprogressbar --noconfirm --needed {{item}}
-    responses:
-      password: "{{sudo_password}}"
-  when: paru_exist is succeeded
+  kewlfft.aur.aur:
+    name: "{{ item }}"
   loop: "{{common_cmd_util.values() | flatten}}"
-  become: false
   tags: main
 
 - name: Utils | Installing utility GUI packages
-  ansible.builtin.expect:
-    command: paru -S --noprogressbar --noconfirm --needed {{item}}
-    responses:
-      password: "{{sudo_password}}"
-  when: paru_exist is succeeded
+  kewlfft.aur.aur:
+    name: "{{ item }}"
   loop: "{{common_gui_util.values() | flatten}}"
-  become: false
   tags: main
 
 - name: Installing utility Font packages
-  ansible.builtin.expect:
-    command: paru -S --noprogressbar --noconfirm --needed {{item}}
-    responses:
-      password: "{{sudo_password}}"
-  when: paru_exist is succeeded
+  kewlfft.aur.aur:
+    name: "{{ item }}"
   loop: "{{common_fonts.values() | flatten}}"
-  become: false
   tags: main
 
   # tryin to decide where to move this tasks, in their own Misc Role perhaps??

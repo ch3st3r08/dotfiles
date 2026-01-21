@@ -64,50 +64,14 @@
         msg:
           - "{{ ansible_facts.processor[1] }}"
 
-    - name: Mergin lists
-      set_fact:
-        my_list: "{{ my_list + other_list }}"
-      when: ansible_facts.processor[1] == is_intel
 
-    - name: Displaying result list
-      vars:
-        mixiado: "{{ (myDict.values() + myDict2.values()) }}"
+    - name: Getting mail and some secrets
+      ansible.builtin.command:
+        cmd: bw get password githu
+      register: out
+      changed_when: false
+
+    - name: Displaying data
       ansible.builtin.debug:
-        # msg: "{{ myDict.values() | list | union(myDict2.values() | list) | flatten }}"
-        msg: "{{ (mixiado + [my_list]) | flatten }}"
-
-    - name: Check if a directory starting with 'backup_' exists
-      vars:
-        lista:
-          - /usr/share/icons
-          - "{{home}}/.local/share/icons"
-      find:
-        paths: "{{lista[0]}}"
-        file_type: directory
-        patterns: "Colloid*"
-      register: found_dirs
-
-    - name: Debug result
-      debug:
-        msg: "Directory starting with 'Colloid' found, we search in {{my_list[0]}}"
-      when: found_dirs.matched > 0
-
-    # - name: Creating necessary folders
-    #   ansible.builtin.file:
-    #     path: "{{item}}"
-    #     state: directory
-    #     mode: '0755'
-    #     recurse: true
-    #   loop:
-    #     - '{{theme_path}}'
-    - name: Yazi | Installing packages
-      kewlfft.aur.aur:
-        name: "{{item}}"
-      loop:
-        - yazi
-        - poppler
-        - imagemagick
-        - chafa
-        - resvg
-      become: false
-      tags: yazi
+        msg:
+          - "Datito es: {{out.stdout}}"

@@ -1,8 +1,6 @@
 - name: "Installing Swaync packages"
-  ansible.builtin.expect:
-    command: paru -S --noprogressbar --noconfirm --needed {{item}}
-    responses:
-      password: "{{sudo_password}}"
+  kewlfft.aur.aur:
+    name: "{{ item }}"
   loop:
     - swappy
 

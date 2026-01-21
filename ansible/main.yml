@@ -5,7 +5,6 @@
   hosts: localhost
   become: false
   vars:
-    sudo_password: "{{ do_pass }}"
     _name: Main
 
   pre_tasks:
@@ -26,8 +25,11 @@
     - name: Misc packages you might want to install later
       ansible.builtin.debug:
         msg:
+          - "Attention: Install flatpak default packages with tag 'flatpak'"
           - "Misc packages you might want to install later"
           - "Packages: {{misc_pkgs}}"
+          - "--------------------------------------------"
+          - "It is advice to restart the system!"
       tags: always
 
   tasks:
@@ -55,7 +57,7 @@
         name: hyprland_desktop
       tags:
         - never
-        - hypr
+        - hyprland
 
     - name: Installing SwayWM desktop role
       ansible.builtin.import_role:

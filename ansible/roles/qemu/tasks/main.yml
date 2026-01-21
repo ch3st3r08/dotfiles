@@ -1,9 +1,6 @@
 - name: Qemu | Installing packages
-  ansible.builtin.expect:
-    command: paru -S --noprogressbar --noconfirm --needed {{item}}
-    responses:
-      password: "{{sudo_password}}"
-  when: paru_exist is succeeded
+  kewlfft.aur.aur:
+    name: "{{ item }}"
   loop:
     - qemu-desktop
     - virt-manager
@@ -14,7 +11,6 @@
     - iptables-nft
     - swtpm
     - edk2-ovmf
-  become: false
   tags: qemu
 
 - name: Qemu | Extra Info

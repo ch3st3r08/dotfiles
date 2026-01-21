@@ -1,9 +1,6 @@
 - name: "Installing SDDM packages"
-  ansible.builtin.expect:
-    command: paru -S --noprogressbar --noconfirm --needed {{item}}
-    responses:
-      password: "{{sudo_password}}"
-  when: paru_exist is succeeded
+  kewlfft.aur.aur:
+    name: "{{ item }}"
   loop:
     - sddm
     - sddm-conf-git

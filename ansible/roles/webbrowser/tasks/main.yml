@@ -1,11 +1,8 @@
 - name: "Installing Web Browser packages"
   block:
     - name: "Installing Brave Browser"
-      ansible.builtin.expect:
-        command: paru -S --noprogressbar --noconfirm --needed {{item}}
-        responses:
-          password: "{{ sudo_password }}"
-      when: paru_exist is succeeded
+      kewlfft.aur.aur:
+        name: "{{ item }}"
       loop:
         - brave-bin
         - qutebrowser

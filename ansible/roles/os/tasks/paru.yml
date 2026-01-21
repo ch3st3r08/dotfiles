@@ -1,18 +1,10 @@
 ---
 
-- name: Ensure Expect package is installed
-  community.general.pacman:
-    name:
-      - python-pexpect
-    state: present
-  become: true
-
 - name: "Test if paru is already installed"
   command: command -v paru
   register: paru_exist
   ignore_errors: true
-  become: false
-  changed_when: paru_exist is failed
+  changed_when: false
 
 - name: Installing Paru AUR Helper
   when: paru_exist is failed
@@ -23,16 +15,13 @@
         dest: ~/paru
         update: true
         version: master
-      become: false
 
     - name: Build and Install Paru package
-      ansible.builtin.expect:
+      ansible.builtin.command:
         chdir: ~/paru
-        command: makepkg -si --noconfirm
-        responses:
-          password: "{{sudo_password}}"
-      failed_when: false
-      become: false
+        cmd: makepkg -si --noconfirm
+      register: parumake
+      changed_when: parumake.rc != 0
 
     - name: Clean up build files
       file:
