@@ -21,7 +21,7 @@ while getopts "ce:lt:vh" opt; do
     l)
       LIST_DE=1
       ;;
-    n)
+    t)
       TAG="$OPTARG"
       ;;
     v)
@@ -62,7 +62,7 @@ if [[ -z "$TAG_LINE" ]]; then
 fi
 
 echo "Installing necessary packages"
-sudo pacman -S --noconfirm --needed ansible-core xdg-user-dirs
+sudo pacman -S --noconfirm --needed ansible-core xdg-user-dirs stow
 
 #Should we download bw here?
 # or should that be a different process?

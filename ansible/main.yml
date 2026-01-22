@@ -21,6 +21,11 @@
         tasks_from: paru
       tags: always
 
+    - name: "{{_name}} | Install Sudo and copy template"
+      ansible.builtin.import_role:
+        name: sudo
+      tags: always
+
   post_tasks:
     - name: Misc packages you might want to install later
       ansible.builtin.debug:
@@ -38,7 +43,6 @@
         name: '{{ role_name }}'
       loop:
         - os
-        - sudo
         - common
       loop_control:
         loop_var: role_name
@@ -86,3 +90,11 @@
       tags:
         - never
         - dev
+
+    - name: Installing UI Themes
+      ansible.builtin.import_role:
+        name: common
+        tasks_from: themes
+      tags:
+        - never
+        - themes

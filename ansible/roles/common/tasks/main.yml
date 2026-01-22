@@ -8,7 +8,6 @@
     - "{{ [home ~ '/Sources'] }}"
     - "{{themes_path[1]}}"
     - "{{icons_path[1]}}"
-  become: true
   when: not ansible_check_mode
   tags: main
 

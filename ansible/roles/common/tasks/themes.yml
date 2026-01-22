@@ -19,7 +19,7 @@
         repo: "https://github.com/vinceliuice/{{theme_name}}"
         dest: "{{home}}/Sources/{{theme_name}}"
         depth: 1
-        version: master
+        version: main
       when: not theme_exist.stat.exists
 
     - name: Installing Colloid theme

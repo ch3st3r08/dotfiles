@@ -31,3 +31,4 @@
     shell: /usr/bin/zsh
   when: dshell.stdout != "zsh"
   tags: zsh
+  become: true

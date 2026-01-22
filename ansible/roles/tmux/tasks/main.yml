@@ -3,6 +3,7 @@
     name:
       - tmux
   tags: tmux
+  become: true
 
 - name: Create a directory if it does not exist
   ansible.builtin.file:

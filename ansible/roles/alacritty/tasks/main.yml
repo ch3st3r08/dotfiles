@@ -3,6 +3,7 @@
     name:
       - alacritty
   tags: alacritty
+  become: true
 
 - name: Create Alacritty config dir
   ansible.builtin.file:
@@ -14,6 +15,6 @@
 - name: Copying Alacrity configuration
   ansible.builtin.command:
     cmd: stow -d {{stow_dir}} -t {{home}} --no-folding --dotfiles -S alacritty
-  register: ala_ouput
-  changed_when: ala_output.stat.rc != 0
+  register: ala_output
+  changed_when: ala_output.rc != 0
   tags: alacritty

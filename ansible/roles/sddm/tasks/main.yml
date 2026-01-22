@@ -27,6 +27,7 @@
     name: sddm.service
     enabled: true
   tags: sddm
+  become: true
 
 - name: "Debugging SDDM config"
   ansible.builtin.debug:

@@ -6,6 +6,7 @@ dependencies:
   - role: swappy
   - role: alacritty
   - role: tmux
+  - role: rofi
   - role: zsh
   - role: neovim
   - role: sddm
