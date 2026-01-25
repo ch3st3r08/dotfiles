@@ -10,7 +10,14 @@ my_error ()
   exit 1
 }
 
-while getopts "ce:lt:vh" opt; do
+list_de ()
+{
+  _list=$(find . -type d -name "*_desktop" -exec basename {} \; \
+    | sed 's/_desktop//')
+  echo $_list
+}
+
+while getopts "ce:lt:h" opt; do
   case $opt in
     c)
       CHECK="--check"
@@ -23,9 +30,6 @@ while getopts "ce:lt:vh" opt; do
       ;;
     t)
       TAG="$OPTARG"
-      ;;
-    v)
-      VERBOSE=1
       ;;
     h)
       my_help
@@ -43,6 +47,28 @@ done
 
 shift $((OPTIND-1))
 
+# Checking repo existences
+if [ ! -d $HOME/.dotfiles ]; then
+  echo "No existe, hay que crearlos"
+  git clone https://github.com/ch3st3r08/dotfiles "$HOME/.dotfiles"
+  cd $HOME/.dotfiles
+fi
+
+if [[ -z "$TAG" ]] && [[ -z "$DE" ]]; then
+  read -ra options <<< $(list_de)
+  options+=("Exit")
+  PS3='Choose an option: '
+  select opt in "${options[@]}"; do
+      if (( REPLY >= 1 && REPLY < ${#options[@]}  )); then
+         DE=${options[REPLY-1]}
+      elif (( REPLY == ${#options[@]} )); then
+          echo "Goodbye!"
+      else
+          echo "Invalid option"
+      fi
+      break
+  done
+fi
 
 if [[ -n "$TAG" ]]; then
   TAG_LINE="--tags $TAG"
@@ -51,14 +77,8 @@ if [[ -n "$DE" ]]; then
   TAG_LINE="--tags main,$DE"
 fi
 if [[ -n "$LIST_DE" ]]; then
-  _list=$(find . -type d -name "*_desktop" -exec basename {} \; \
-    | sed 's/_desktop//')
-  echo -e "Available DE: \n$_list"
+  echo -e "Available DE: \n$(list_de)"
   exit 0
-fi
-
-if [[ -z "$TAG_LINE" ]]; then
-  my_error
 fi
 
 echo "Installing necessary packages"

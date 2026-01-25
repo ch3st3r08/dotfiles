@@ -1,4 +1,6 @@
 \.git
 readme.md
 \.gitmodule
-_install
+install.sh
+\.ansible
+ansible/

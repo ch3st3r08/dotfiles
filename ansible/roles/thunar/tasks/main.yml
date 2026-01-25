@@ -1,0 +1,32 @@
+- name: "Installing Thunar File Manager Standalone"
+  community.general.pacman:
+    name: "{{item}}"
+  loop:
+    - gvfs
+    - gvfs-smb
+    - gvfs-nfs
+    - thunar
+    - thunar-volman
+    - thunar-shares-plugin
+    - thunar-archive-plugin
+    - thunar-media-tags-plugin
+  become: true
+  tags: thunar
+
+- name: Create xfce4 config dir
+  ansible.builtin.file:
+    path: "{{config_dir}}/xfce4"
+    state: directory
+    mode: '0755'
+    recurse: true
+  tags: thunar
+
+- name: Configuring Default Terminal theme
+  ansible.builtin.lineinfile:
+    path: "{{config_dir}}/xfce4/helpers.rc"
+    line: "TerminalEmulator={{default_apps.terminal}}"
+    create: true
+    mode: '0644'
+  tags: thunar
+# mkdir -p ~/.config/xfce4
+# echo "TerminalEmulator=your-terminal" >> ~/.config/xfce4/helpers.rc

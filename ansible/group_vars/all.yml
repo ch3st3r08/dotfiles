@@ -12,6 +12,14 @@ icons_path:
   - /usr/share/icons
   - "{{home}}/.local/share/icons"
 
+default_apps:
+  terminal:
+    - alacritty
+  filemanager:
+    - thunar
+  browser:
+    - brave
+
 thunar_pkgs:
   - gvfs
   - gvfs-smb
