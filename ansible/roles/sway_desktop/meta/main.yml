@@ -13,4 +13,5 @@ dependencies:
   - role: zathura
   - role: git
   - role: mpd
+  - role: fastfetch
   - role: webbrowser

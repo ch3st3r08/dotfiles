@@ -1,0 +1,17 @@
+- name: "Installing Fastfetch packages"
+  ansible.builtin.pacman:
+    name: fastfetch
+    state: present
+
+- name: Creating config directory if it doesn't exist
+  ansible.builtin.file:
+    path: "{{config_dir}}/fastfetch"
+    state: directory
+    mode: '0755'
+
+  # tryin to decide where to move this tasks, in their own Misc Role perhaps??
+- name: Copying Fastfetch config
+  ansible.builtin.command:
+    cmd: stow -d {{stow_dir}} -t {{home}} --no-folding --dotfiles -S fastfetch
+  register: _fastfetch
+  changed_when: _fastfetch.rc != 0

@@ -15,15 +15,15 @@
       become: true
       tags: always
 
+    - name: "{{_name}} | Install Sudo and copy template"
+      ansible.builtin.import_role:
+        name: sudo
+      tags: always
+
     - name: "{{_name}} | Check and Install Paru AUR Helper"
       ansible.builtin.import_role:
         name: os
         tasks_from: paru
-      tags: always
-
-    - name: "{{_name}} | Install Sudo and copy template"
-      ansible.builtin.import_role:
-        name: sudo
       tags: always
 
   post_tasks:

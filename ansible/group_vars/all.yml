@@ -160,7 +160,6 @@ common_cmd_util:
     - rsync
     - mpv
     - rclone
-    - fastfetch
     - tealdeer
     - freerdp
     - yt-x
@@ -193,6 +192,7 @@ common_gui_util:
 
 common_fonts:
   main:
+    - ttf-nunito
     - ttf-hack-nerd
     - ttf-iosevka-nerd
     - ttf-firacode-nerd

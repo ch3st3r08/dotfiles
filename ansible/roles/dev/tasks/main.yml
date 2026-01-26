@@ -1,4 +1,4 @@
 - name: Dev | Installing packages
-  kewlfft.aur.aur:
+  aur:
     name: "{{ item }}"
   loop: "{{ dev_pkgs.values() | flatten }}"

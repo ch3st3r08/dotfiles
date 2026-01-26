@@ -1,17 +1,18 @@
 ---
 
 - name: "Test if paru is already installed"
-  ansible.builtin.shell: command -v parucush
+  ansible.builtin.shell: command -v paru
   register: paru_exist
-  ignore_errors: false
+  ignore_errors: true
   changed_when: paru_exist.rc != 0
+  failed_when: paru_exist.rc != 0
 
 - name: Installing Paru AUR Helper
   when: paru_exist is failed
   block:
     - name: Clone Paru repository
       git:
-        repo: https://aur.archlinux.org/paru-bin.git
+        repo: https://aur.archlinux.org/paru.git
         dest: ~/paru
         update: true
         version: master
@@ -19,24 +20,9 @@
     - name: Build Paru package
       ansible.builtin.command:
         chdir: ~/paru
-        cmd: makepkg -s --noconfirm
+        cmd: makepkg -si --noconfirm
       register: parumake
       changed_when: parumake.rc != 0
-
-    - name: Find Compiled Paru package
-      ansible.builtin.find:
-        paths: ~/paru
-        patterns: "paru-*.pkg.tar.zst"
-      register: parupkg
-      changed_when: parupkg.rc != 0
-
-    - name: Install Paru package
-      ansible.builtin.command:
-        cmd: pacman -U --noconfirm "{{parupkg.files[0].path}}"
-      become: true
-      register: paruinstall
-      when: parupkg.rc == 0
-      changed_when: paruinstall.rc != 0
 
     - name: Clean up build files
       file:

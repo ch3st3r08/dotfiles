@@ -5,41 +5,41 @@
     mode: '0755'
     recurse: true
   loop:
-    - "{{ [home ~ '/Sources'] }}"
+    - "{{ home ~ '/Sources' }}"
     - "{{themes_path[1]}}"
     - "{{icons_path[1]}}"
   when: not ansible_check_mode
   tags: main
 
 - name: Utils | Installing utility cmd packages
-  kewlfft.aur.aur:
+  aur:
     name: "{{ item }}"
   loop: "{{common_cmd_util.values() | flatten}}"
   tags: main
 
 - name: Utils | Installing utility GUI packages
-  kewlfft.aur.aur:
+  aur:
     name: "{{ item }}"
   loop: "{{common_gui_util.values() | flatten}}"
   tags: main
 
 - name: Installing utility Font packages
-  kewlfft.aur.aur:
+  aur:
     name: "{{ item }}"
   loop: "{{common_fonts.values() | flatten}}"
   tags: main
-
-  # tryin to decide where to move this tasks, in their own Misc Role perhaps??
-- name: Copying Fastfetch
-  ansible.builtin.command:
-    cmd: stow -d {{stow_dir}} -t {{home}} --no-folding --dotfiles -S fastfetch util-scripts music
-  changed_when: true
 
 - name: Setting plymouth theme to arch-logo-new
   ansible.builtin.command:
     cmd: plymouth-set-default-theme -R arch-logo-new
   changed_when: true
   become: true
+
+- name: Copying util config
+  ansible.builtin.command:
+    cmd: stow -d {{stow_dir}} -t {{home}} --no-folding --dotfiles -S util-scripts music
+  register: _utils
+  changed_when: _utils.rc != 0
 
 - name: Moving Arch grub theme to correct path
   block:

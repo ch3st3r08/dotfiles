@@ -1,5 +1,5 @@
 - name: "Installing Sway packages"
-  kewlfft.aur.aur:
+  aur:
     name: "{{ item }}"
   loop: "{{(sway_pkgs.values() + wayland_common_pkgs.values()) | flatten }}"
 

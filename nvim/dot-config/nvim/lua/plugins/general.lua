@@ -29,6 +29,9 @@ return {
     'echasnovski/mini.statusline', version = '*', opts = {}
   },
   {
+    'echasnovski/mini.diff', version = '*', opts = {}
+  },
+  {
     'nvim-telescope/telescope.nvim',
     branch = '0.1.x',
     opts = {},

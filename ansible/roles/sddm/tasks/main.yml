@@ -1,5 +1,5 @@
 - name: "Installing SDDM packages"
-  kewlfft.aur.aur:
+  aur:
     name: "{{ item }}"
   loop:
     - sddm

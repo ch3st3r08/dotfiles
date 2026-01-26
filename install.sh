@@ -95,5 +95,27 @@ xdg-user-dirs-update
 echo "Installing collections"
 ansible-galaxy install -r ansible/requirements.yml
 
+if [ $? -ne 0 ]; then
+  echo "An Error ocurred while atempting to download collections. Should we manually download and install? [N/y]"
+  read -r shallwe
+  if ! [[ "$shallwe" =~ ^[Yy]$ ]]; then
+    exit 1
+  fi
+  # Descargar kewlffs aur package
+  mkdir -p $HOME/.ansible/plugins/modules
+  curl -o $HOME/.ansible/plugins/modules/aur.py https://raw.githubusercontent.com/kewlfft/ansible-aur/master/plugins/modules/aur.py
+  if [ $? -ne 0 ]; then
+    echo "Could not manually download ansible-aur module. Aborting"
+    exit 1
+  fi
+  echo "Downloading ansible entire collection"
+  sudo pacman -S --noconfirm --needed ansible
+  if [ $? -ne 0 ]; then
+    echo "Could not manually download ansible collections. Aborting"
+    exit 1
+  fi
+
+fi
+
 echo "Installing system"
 ansible-playbook ansible/main.yml --ask-become-pass $TAG_LINE $CHECK

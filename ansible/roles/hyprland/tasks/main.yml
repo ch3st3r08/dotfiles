@@ -1,7 +1,7 @@
 - name: "Installing Hyprland packages"
   vars:
     pkgs: "{{ hyprland_pkgs.values() + wayland_common_pkgs.values() }}"
-  kewlfft.aur.aur:
+  aur:
     name: "{{ item }}"
   loop: "{{ (pkgs + [thunar_pkgs]) | flatten }}"
   tags: hyprland

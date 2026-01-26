@@ -1,4 +1,4 @@
-- name: Installing dependecies for themes
+- name: Installing dependecies for UI themes
   community.general.pacman:
     name:
       - sassc
