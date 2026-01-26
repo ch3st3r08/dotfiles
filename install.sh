@@ -63,8 +63,10 @@ if [[ -z "$TAG" ]] && [[ -z "$DE" ]]; then
          DE=${options[REPLY-1]}
       elif (( REPLY == ${#options[@]} )); then
           echo "Goodbye!"
+          exit 0
       else
           echo "Invalid option"
+          exit 1
       fi
       break
   done
