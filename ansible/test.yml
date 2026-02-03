@@ -62,16 +62,27 @@
     - name: Displaying some facts
       ansible.builtin.debug:
         msg:
-          - "{{ ansible_facts.processor[1] }}"
+          - "{{ ansible_facts.processor[1] }} es igual a {{is_intel}}"
 
+    - name: Testing pacman parameters
+      community.general.pacman:
+        name: "{{my_list}}"
+      become: true
 
-    - name: Getting mail and some secrets
-      ansible.builtin.command:
-        cmd: bw get password githu
-      register: out
-      changed_when: false
-
-    - name: Displaying data
+    - name: Creating necessary folders debug
       ansible.builtin.debug:
-        msg:
-          - "Datito es: {{out.stdout}}"
+        msg: "{{item}}"
+      loop:
+        - "{{ home ~ '/Sources' }}"
+        - "{{themes_path[1]}}"
+        - "{{icons_path[1]}}"
+    # - name: Getting mail and some secrets
+    #   ansible.builtin.command:
+    #     cmd: bw get password githu
+    #   register: out
+    #   changed_when: false
+    #
+    # - name: Displaying data
+    #   ansible.builtin.debug:
+    #     msg:
+    #       - "Datito es: {{out.stdout}}"

@@ -8,6 +8,23 @@
   become: true
   tags: main
 
+- name: "OS | Installing microcode for CPU"
+  when: ansible_facts["virtualization_role"] = "host"
+  block:
+    - name: Trying to install AMD microcode
+      community.general.pacman:
+        name: "amd-ucode"
+        state: present
+      become: true
+      when: ansible_facts.processor[1] == is_amd
+
+    - name: Trying to install Intel microcode
+      community.general.pacman:
+        name: "intel-ucode"
+        state: present
+      become: true
+      when: ansible_facts.processor[1] == is_intel
+
 - name: "OS | Installing networking packages and services"
   tags: main
   block:

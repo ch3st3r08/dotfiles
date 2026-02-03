@@ -12,6 +12,11 @@ icons_path:
   - /usr/share/icons
   - "{{home}}/.local/share/icons"
 
+is_amdgpu: "Advanced Micro Devices, Inc. [AMD/ATI]"
+is_nvidia: "NVIDIA Corporation"
+is_intel: GenuineIntel
+is_amd: AuthenticAMD
+
 default_apps:
   terminal:
     - alacritty
@@ -19,16 +24,6 @@ default_apps:
     - thunar
   browser:
     - brave
-
-thunar_pkgs:
-  - gvfs
-  - gvfs-smb
-  - gvfs-nfs
-  - thunar
-  - thunar-volman
-  - thunar-shares-plugin
-  - thunar-archive-plugin
-  - thunar-media-tags-plugin
 
 xfce_pkgs:
   - xorg-server
@@ -208,6 +203,16 @@ common_fonts:
   aur:
     - ttf-ms-fonts
 
+thunar_pkgs:
+  - gvfs
+  - gvfs-smb
+  - gvfs-nfs
+  - thunar
+  - thunar-volman
+  - thunar-shares-plugin
+  - thunar-archive-plugin
+  - thunar-media-tags-plugin
+
 flatpak_pkgs:
   - com.github.johnfactotum.Foliate
   - com.github.maoschanz.drawing
@@ -227,6 +232,7 @@ flatpak_pkgs:
 dev_pkgs:
   main:
     - docker
+    - podman
     - lazygit
     - lazydocker
     - toolbox
@@ -236,12 +242,15 @@ dev_pkgs:
     - quickemu-git
 
 misc_pkgs:
-  - vesktop-bin # discord modified
-  - docker-desktop
-  - libreoffice-fresh
-  - obs-studio
-  - steam
-  - android-studio
-  - lynis # audit tool CVEs
-  - radeontop
-  - amdgpu_top
+  main:
+    - docker-desktop
+    - libreoffice-fresh
+    - obs-studio
+    - steam
+    - android-studio
+    - lynis # audit tool CVEs
+  amdgpu:
+    - radeontop
+    - amdgpu_top
+  aur:
+    - vesktop-bin # discord modified

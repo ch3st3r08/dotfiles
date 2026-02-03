@@ -1,15 +1,7 @@
 - name: "Installing Thunar File Manager Standalone"
   community.general.pacman:
-    name: "{{item}}"
-  loop:
-    - gvfs
-    - gvfs-smb
-    - gvfs-nfs
-    - thunar
-    - thunar-volman
-    - thunar-shares-plugin
-    - thunar-archive-plugin
-    - thunar-media-tags-plugin
+    name: "{{ item }}"
+  loop: "{{ thunar_pkgs }}"
   become: true
   tags: thunar
 
@@ -28,5 +20,3 @@
     create: true
     mode: '0644'
   tags: thunar
-# mkdir -p ~/.config/xfce4
-# echo "TerminalEmulator=your-terminal" >> ~/.config/xfce4/helpers.rc
