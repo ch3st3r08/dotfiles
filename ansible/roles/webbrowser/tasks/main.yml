@@ -1,7 +1,7 @@
 - name: "Installing Web Browser packages"
   block:
     - name: "Installing Brave Browser"
-      aur:
+      kewlfft.aur.aur:
         name: "{{ item }}"
       loop:
         - brave-bin

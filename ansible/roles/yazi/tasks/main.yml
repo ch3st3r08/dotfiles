@@ -1,5 +1,5 @@
 - name: Yazi | Installing packages
-  aur:
+  kewlfft.aur.aur:
     name: "{{item}}"
   loop:
     - yazi

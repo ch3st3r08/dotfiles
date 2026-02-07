@@ -1,5 +1,5 @@
 - name: Qemu | Installing packages
-  aur:
+  kewlfft.aur.aur:
     name: "{{ item }}"
   loop:
     - qemu-desktop

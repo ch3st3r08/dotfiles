@@ -2,8 +2,8 @@
   community.general.pacman:
     name:
       - tmux
-  tags: tmux
   become: true
+  tags: tmux
 
 - name: Create a directory if it does not exist
   ansible.builtin.file:
@@ -15,5 +15,11 @@
 - name: "Copying config file"
   ansible.builtin.command:
     cmd: stow -d {{stow_dir}} -t {{home}} --no-folding --dotfiles -S tmux
+  changed_when: true
+  tags: tmux
+
+- name: "Install tmux plugins"
+  ansible.builtin.command:
+    cmd: "{{config_dir}}/tmux/plugins/tpm/bin/install_plugins"
   changed_when: true
   tags: tmux

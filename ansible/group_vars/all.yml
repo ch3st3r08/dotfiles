@@ -25,32 +25,6 @@ default_apps:
   browser:
     - brave
 
-xfce_pkgs:
-  - xorg-server
-  - xorg-xinit
-  - xorg-apps
-  - xfce4
-  - xfce4-goodies
-  - xfce4-panel-profiles
-# for tumblerd
-  - ffmpegthumbnailer
-  - freetype2
-  - libgepub
-  - libgsf
-  - libopenraw
-# -------------
-  - catfish
-  - gigolo
-  - mugshot
-  - wmctrl
-  - redshift
-  - geoclue
-  - xclip
-  - gst-libav
-  - conky
-  - screenkey
-  - xdg-desktop-portal-xapp
-
 wayland_common_pkgs:
   main:
     - swaybg # Background setter
@@ -74,32 +48,6 @@ wayland_common_pkgs:
     - wvkbd
    # - wallust-git
 
-sway_pkgs:
-  - sway
-  - swayidle
-  - swaylock
-  - xdg-desktop-portal-wlr
-  - polkit-gnome
-  - grimshot
-
-hyprland_pkgs:
-  main:
-    - hyprland # Wayland compositor
-    - hypridle # Idle Manager
-    - hyprlock # Lock screen
-    - hyprcursor
-    - hyprpolkitagent # Polkit agent
-    - hyprpicker # Color picker
-    - xdg-desktop-portal-hyprland
-    - qt5-wayland
-    - qt6-wayland
-  aur:
-    - grimblast-git
-   # - hyprsysteminfo-git
-
-xorg_amdgpu:
-  - xf86-video-amdgpu
-
 os_intgpu:
   - intel-media-driver
 
@@ -113,17 +61,13 @@ os_essential:
   - xdg-utils
   - libsecret
   - xdg-user-dirs
-  - unrar
-  - unzip
-  - lshw
-  - lsof
   - mesa-utils
   - mesa
   - sound-theme-freedesktop
   - nvme-cli
   - flatpak
-  - tree
   - plymouth
+  - zram-generator
 
 os_network:
   - iwd
@@ -149,15 +93,20 @@ common_cmd_util:
     - zoxide
     - jq
     - entr
-    - 7zip
     - htop
     - ffmpeg
-    - rsync
-    - mpv
+    - rsync # file copying tool
+    - mpv # Media Player cmd
     - rclone
-    - tealdeer
-    - freerdp
-    - yt-x
+    - tealdeer # Summarized man pages
+    - freerdp # Remote desktop cli
+    - yt-x # youtube cmd player
+    - 7zip
+    - unrar
+    - unzip
+    - lshw  # list hardware
+    - lsof # list open files
+    - tree
   aur:
     - lssecret-git
     - tty-clock
@@ -166,16 +115,16 @@ common_gui_util:
   main:
     - galculator
     - seahorse
-    - grub-customizer
     - font-manager
-    - xarchiver
+    - xarchiver # frontend for cli archivers
     - baobab
-    - gparted
-    - grsync
-    - rhythmbox
-    - transmission-gtk
-    - atril
-    - lxterminal
+    - gparted # gui for parted
+    - grsync # gui for rsync
+    - rhythmbox # music player
+    - transmission-gtk # torrent manager
+    - remmina # remote desktop
+    - atril # pdf reader
+    - lxterminal # light terminal emulator
     - gimp # image editor
     - inkscape # svg editor
   aur:
@@ -226,7 +175,6 @@ flatpak_pkgs:
   - org.gnome.SimpleScan
   - org.openshot.OpenShot
   - org.nickvision.tubeconverter
-  - org.remmina.Remmina
   - com.protonvpn.www
 
 dev_pkgs:
@@ -254,3 +202,10 @@ misc_pkgs:
     - amdgpu_top
   aur:
     - vesktop-bin # discord modified
+
+btrfs_pkgs:
+  - snapper
+  - snap-pac
+  - snapper-rollback
+  - btrfs-assistant-git
+  - grub-btrfs

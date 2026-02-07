@@ -1,8 +1,8 @@
 - name: "Installing Waybar packages"
-  aur:
-    name: "{{ item }}"
-  loop:
-    - waybar
+  kewlfft.aur.aur:
+    name:
+      - waybar
+    state: present
 
 - name: Creating config directory if it doesn't exist
   ansible.builtin.file:

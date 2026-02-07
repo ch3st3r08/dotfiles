@@ -1,9 +1,23 @@
 - name: "Installing Hyprland packages"
   vars:
-    pkgs: "{{ hyprland_pkgs.values() + wayland_common_pkgs.values() }}"
-  aur:
-    name: "{{ item }}"
-  loop: "{{ (pkgs + [thunar_pkgs]) | flatten }}"
+    hyprland_pkgs:
+      main:
+        - hyprland # Wayland compositor
+        - hypridle # Idle Manager
+        - hyprlock # Lock screen
+        - hyprcursor
+        - hyprpolkitagent # Polkit agent
+        - hyprpicker # Color picker
+        - xdg-desktop-portal-hyprland
+        - qt5-wayland
+        - qt6-wayland
+      aur:
+        - grimblast-git
+       # - hyprsysteminfo-git
+    pkgs: "{{ (hyprland_pkgs.values() + wayland_common_pkgs.values()) + [thunar_pkgs] }}"
+  kewlfft.aur.aur:
+    name: "{{ pkgs | flatten }}"
+    state: present
   tags: hyprland
 
 - name: Creating config directory if it doesn't exist

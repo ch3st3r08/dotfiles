@@ -6,7 +6,7 @@
   tags: flatpak
 
 - name: "Installing Flatpak packages"
-  aur:
+  kewlfft.aur.aur:
     name: "{{ item }}"
   loop: "{{ flatpak_pkgs }}"
   tags: flatpak

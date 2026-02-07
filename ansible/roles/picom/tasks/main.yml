@@ -14,3 +14,10 @@
   ansible.builtin.command:
     cmd: stow -d {{stow_dir}} -t {{home}} --no-folding --dotfiles -S picom
   changed_when: true
+
+- name: Configuring Picom config for guest os
+  ansible.builtin.lineinfile:
+    path: "{{config_dir}}/picom/picom.conf"
+    regexp: '^backend ='
+    line: backend = "xrender"
+  when: ansible_facts["virtualization_role"] == "guest"

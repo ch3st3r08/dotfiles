@@ -27,12 +27,16 @@
       tags: always
 
   post_tasks:
-    - name: Misc packages you might want to install later
+    - name: Packages you might want to install later
       ansible.builtin.debug:
         msg:
           - "Attention: Install flatpak default packages with tag 'flatpak'"
+          - "--------------------------------------------"
           - "Misc packages you might want to install later"
           - "Packages: {{misc_pkgs}}"
+          - "--------------------------------------------"
+          - "If using Btrfs filesystem you might want to install later"
+          - "Packages: {{btrfs_pkgs}}"
           - "--------------------------------------------"
           - "It is advice to restart the system!"
       tags: always

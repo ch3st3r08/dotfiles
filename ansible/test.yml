@@ -16,18 +16,18 @@
       - "{{home}}/.local/share/icons"
     myDict:
       elem1:
-        - joder
-        - parce
+        - git
+        - stow
       elem2:
-        - concha
-        - delalora
+        - thunar
+        - fd
     myDict2:
       elem1:
-        - cuca
-        - shucaj
+        - lshw
+        - xclip
       elem2:
-        - loquito
-        - cuchardo
+        - rofi
+        - tmux
 
   tasks:
     - name: Get GPU vendor and model
@@ -65,8 +65,10 @@
           - "{{ ansible_facts.processor[1] }} es igual a {{is_intel}}"
 
     - name: Testing pacman parameters
+      vars:
+        pkgs: "{{ ((myDict.values() + myDict2.values()) + [my_list]) | flatten }}"
       community.general.pacman:
-        name: "{{my_list}}"
+        name: "{{pkgs}}"
       become: true
 
     - name: Creating necessary folders debug

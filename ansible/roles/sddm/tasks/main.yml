@@ -1,5 +1,5 @@
 - name: "Installing SDDM packages"
-  aur:
+  kewlfft.aur.aur:
     name: "{{ item }}"
   loop:
     - sddm
@@ -22,12 +22,14 @@
   when: f_stat.stat.exists
   tags: sddm
 
-- name: "Enable and SDDM systemd unit"
+- name: "Enable SDDM systemd unit"
   ansible.builtin.systemd_service:
     name: sddm.service
     enabled: true
-  tags: sddm
+  register: sddm_register
+  failed_when: "sddm_register is failed and ('find' not in sdm_register.msg)"
   become: true
+  tags: sddm
 
 - name: "Debugging SDDM config"
   ansible.builtin.debug:

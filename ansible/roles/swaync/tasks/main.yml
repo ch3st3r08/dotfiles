@@ -1,5 +1,5 @@
 - name: "Installing Swaync packages"
-  aur:
+  kewlfft.aur.aur:
     name: "{{ item }}"
   loop:
     - swaync

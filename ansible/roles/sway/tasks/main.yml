@@ -1,7 +1,16 @@
 - name: "Installing Sway packages"
-  aur:
-    name: "{{ item }}"
-  loop: "{{(sway_pkgs.values() + wayland_common_pkgs.values()) | flatten }}"
+  vars:
+    sway_pkgs:
+      - sway
+      - swayidle
+      - swaylock
+      - xdg-desktop-portal-wlr
+      - polkit-gnome
+      - grimshot
+    pkgs: "{{ (sway_pkgs.values() + wayland_common_pkgs.values()) + [thunar_pkgs] }}"
+  kewlfft.aur.aur:
+    name: "{{ pkgs | flatten }}"
+    state: present
 
 - name: Creating config directory if it doesn't exist
   ansible.builtin.file:

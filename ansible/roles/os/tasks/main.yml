@@ -1,15 +1,13 @@
----
-
 - name: OS | Installing essential packages
   community.general.pacman:
-    name: "{{item}}"
+    name: "{{os_essential}}"
     state: present
-  loop: "{{os_essential}}"
   become: true
   tags: main
 
 - name: "OS | Installing microcode for CPU"
-  when: ansible_facts["virtualization_role"] = "host"
+  tags: main
+  when: ansible_facts["virtualization_role"] == "host"
   block:
     - name: Trying to install AMD microcode
       community.general.pacman:
@@ -30,8 +28,8 @@
   block:
     - name: Installing networking packages
       community.general.pacman:
-        name: "{{item}}"
-      loop: "{{os_network}}"
+        name: "{{os_network}}"
+        state: present
       become: true
 
     - name: "Starting and enabling networkmanager service"
@@ -39,6 +37,9 @@
         name: NetworkManager.service
         enabled: true
         state: started
+      register: network_register
+      failed_when: "network_register is failed ('find' not in network_register.msg)"
+      ignore_errors: true
       become: true
 
 - name: "OS | Installing audio packages"
@@ -46,8 +47,8 @@
   block:
     - name: "Installing packages"
       community.general.pacman:
-        name: "{{item}}"
-      loop: "{{os_audio}}"
+        name: "{{os_audio}}"
+        state: present
       become: true
 
     - name: "Enable and Start Pipewire systemd user unit"
@@ -56,6 +57,9 @@
         enabled: true
         state: started
         scope: user
+      register: pipewire_register
+      failed_when: "pipewire_register is failed and ('found' not in pipewire_register.msg)"
+      ignore_errors: true
 
 - name: "OS | Setting Libcredential"
   tags: main

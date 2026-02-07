@@ -27,6 +27,9 @@
     name: mpd.service
     enabled: true
     scope: user
+  register: mpd_register
+  failed_when: "mpd_register is failed and ('found' not in mpd_register.msg)"
+  ignore_errors: true
   tags: mpd
 
 - name: Copying MPD configuration

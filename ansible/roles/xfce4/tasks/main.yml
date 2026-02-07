@@ -1,7 +1,31 @@
 - name: Installing Xfce4 related packages
   community.general.pacman:
-    name: "{{item}}"
-  with_items: "{{xfce_pkgs}}"
+    name:
+      - xorg-server
+      - xorg-xinit
+      - xorg-apps
+      - xfce4
+      - xfce4-goodies
+      - xfce4-panel-profiles
+    # for tumblerd
+      - ffmpegthumbnailer
+      - freetype2
+      - libgepub
+      - libgsf
+      - libopenraw
+    # -------------
+      - catfish
+      - gigolo
+      - mugshot
+      - wmctrl
+      - redshift
+      - geoclue
+      - xclip
+      - gst-libav
+      - conky
+      - screenkey
+      - xdg-desktop-portal-xapp
+    state: present
   become: true
 
 # some configuration

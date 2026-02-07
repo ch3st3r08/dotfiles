@@ -1,7 +1,6 @@
 - name: "Installing Thunar File Manager Standalone"
   community.general.pacman:
-    name: "{{ item }}"
-  loop: "{{ thunar_pkgs }}"
+    name: "{{ thunar_pkgs }}"
   become: true
   tags: thunar
 

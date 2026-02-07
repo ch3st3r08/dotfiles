@@ -12,21 +12,21 @@
   tags: main
 
 - name: Utils | Installing utility cmd packages
-  aur:
-    name: "{{ item }}"
-  loop: "{{common_cmd_util.values() | flatten}}"
+  kewlfft.aur.aur:
+    name: "{{ common_cmd_util.values() | flatten }}"
+    state: present
   tags: main
 
 - name: Utils | Installing utility GUI packages
-  aur:
-    name: "{{ item }}"
-  loop: "{{common_gui_util.values() | flatten}}"
+  kewlfft.aur.aur:
+    name: "{{ common_gui_util.values() | flatten }}"
+    state: present
   tags: main
 
 - name: Installing utility Font packages
-  aur:
-    name: "{{ item }}"
-  loop: "{{common_fonts.values() | flatten}}"
+  kewlfft.aur.aur:
+    name: "{{ common_fonts.values() | flatten }}"
+    state: present
   tags: main
 
 - name: Get GPU vendor and model
@@ -38,30 +38,36 @@
     executable: /bin/bash
   register: gpu_info
   changed_when: true
+  tags: main
 
 - name: Set GPU information as a fact
   ansible.builtin.set_fact:
     gpu_vendor: "{{ gpu_info.stdout }}"
+  tags: main
 
 - name: Install utilities for AMD GPU's
   community.general.pacman:
     name: "{{misc_pkgs.amdgpu}}"
     state: present
-  when: gpu_vendor = is_amdgpu
+  when: gpu_vendor == is_amdgpu
+  tags: main
 
 - name: Setting plymouth theme to arch-logo-new
   ansible.builtin.command:
     cmd: plymouth-set-default-theme -R arch-logo-new
   changed_when: true
   become: true
+  tags: main
 
 - name: Copying util config
   ansible.builtin.command:
     cmd: stow -d {{stow_dir}} -t {{home}} --no-folding --dotfiles -S util-scripts music
   register: _utils
   changed_when: _utils.rc != 0
+  tags: main
 
 - name: Moving Arch grub theme to correct path
+  tags: main
   block:
     - name: Checking existence of Grub's theme
       ansible.builtin.stat:
