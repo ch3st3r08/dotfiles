@@ -115,6 +115,7 @@ common_cmd_util:
 common_gui_util:
   main:
     - galculator
+    - qalculate-gtk
     - seahorse
     - font-manager
     - xarchiver # frontend for cli archivers
