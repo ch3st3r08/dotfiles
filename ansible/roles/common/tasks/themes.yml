@@ -52,3 +52,24 @@
         cmd: ./install.sh
         chdir: "{{home}}/Sources/{{icon_name}}/cursors"
       changed_when: true
+
+    - name: Setting plymouth theme to arch-logo-new
+      ansible.builtin.command:
+        cmd: plymouth-set-default-theme -R arch-logo-new
+      changed_when: true
+      become: true
+
+    - name: Moving Arch grub theme to correct path and installing it
+      block:
+        - name: Checking existence of Grub's theme
+          ansible.builtin.stat:
+            path: /usr/share/grub/themes/arch-linux
+          register: f_stat
+
+        - name: Moving theme to boot mount
+          ansible.builtin.copy:
+            src: /usr/share/grub/themes/arch-linux
+            dest: /boot/grub/themes/arch-linux
+            mode: '0644'
+          become: true
+          when: f_stat.stat.exists

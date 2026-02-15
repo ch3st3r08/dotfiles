@@ -30,7 +30,11 @@
     - name: Packages you might want to install later
       ansible.builtin.debug:
         msg:
-          - "Attention: Install flatpak default packages with tag 'flatpak'"
+          - "Attention:"
+          - "- Install flatpak default packages with tag 'flatpak'"
+          - "- Install QEMU role with tag 'qemu' "
+          - "- Install DEV role with tag 'dev' "
+          - "- Install THEME role with tag 'themes' "
           - "--------------------------------------------"
           - "Misc packages you might want to install later"
           - "Packages: {{misc_pkgs}}"
