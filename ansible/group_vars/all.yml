@@ -193,6 +193,10 @@ dev_pkgs:
   aur:
     - quickemu-git
 
+amdgpu_util:
+  - radeontop
+  - amdgpu_top
+
 misc_pkgs:
   main:
     - docker-desktop
@@ -201,9 +205,6 @@ misc_pkgs:
     - steam
     - android-studio
     - lynis # audit tool CVEs
-  amdgpu:
-    - radeontop
-    - amdgpu_top
   aur:
     - vesktop-bin # discord modified
 

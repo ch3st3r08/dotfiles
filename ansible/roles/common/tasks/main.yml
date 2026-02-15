@@ -47,16 +47,9 @@
 
 - name: Install utilities for AMD GPU's
   community.general.pacman:
-    name: "{{misc_pkgs.amdgpu}}"
+    name: "{{amdgpu_util}}"
     state: present
   when: gpu_vendor == is_amdgpu
-  tags: main
-
-- name: Setting plymouth theme to arch-logo-new
-  ansible.builtin.command:
-    cmd: plymouth-set-default-theme -R arch-logo-new
-  changed_when: true
-  become: true
   tags: main
 
 - name: Copying util config
@@ -65,19 +58,3 @@
   register: _utils
   changed_when: _utils.rc != 0
   tags: main
-
-- name: Moving Arch grub theme to correct path
-  tags: main
-  block:
-    - name: Checking existence of Grub's theme
-      ansible.builtin.stat:
-        path: /usr/share/grub/themes/arch-linux
-      register: f_stat
-
-    - name: Moving theme to boot mount
-      ansible.builtin.copy:
-        src: /usr/share/grub/themes/arch-linux
-        dest: /boot/grub/themes/arch-linux
-        mode: '0644'
-      become: true
-      when: f_stat.stat.exists
