@@ -2,6 +2,7 @@
   ansible.builtin.pacman:
     name: fastfetch
     state: present
+  become: true
 
 - name: Creating config directory if it doesn't exist
   ansible.builtin.file:

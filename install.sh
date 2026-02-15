@@ -84,7 +84,7 @@ if [[ -n "$LIST_DE" ]]; then
 fi
 
 echo "Installing necessary packages"
-sudo pacman -S --noconfirm --needed ansible-core xdg-user-dirs stow
+sudo pacman -S --noconfirm --needed ansible-core xdg-user-dirs git stow
 
 #Should we download bw here?
 # or should that be a different process?

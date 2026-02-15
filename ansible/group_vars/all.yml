@@ -68,6 +68,7 @@ os_essential:
   - flatpak
   - plymouth
   - zram-generator
+  - ufw
 
 os_network:
   - iwd
@@ -127,6 +128,7 @@ common_gui_util:
     - lxterminal # light terminal emulator
     - gimp # image editor
     - inkscape # svg editor
+    - gufw # ufw gui
   aur:
     - distro-grub-themes-arch
     - menulibre
