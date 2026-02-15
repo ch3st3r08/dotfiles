@@ -172,6 +172,7 @@ flatpak_pkgs:
   - io.github.flattool.Warehouse
   - com.github.tchx84.Flatseal
   - io.github.flattool.Ignition
+  - it.mijorus.gearlever
   - md.obsidian.Obsidian
   - net.ankiweb.Anki
   - org.gnome.SimpleScan
