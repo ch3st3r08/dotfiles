@@ -31,10 +31,10 @@
       ansible.builtin.debug:
         msg:
           - "Attention:"
-          - "- Install flatpak default packages with tag 'flatpak'"
-          - "- Install QEMU role with tag 'qemu' "
-          - "- Install DEV role with tag 'dev' "
+          - "- Install FLATPAK role packages with tag 'flatpak'"
           - "- Install THEME role with tag 'themes' "
+          - "- Install DEV role with tag 'dev' "
+          - "- Install QEMU role with tag 'qemu' "
           - "--------------------------------------------"
           - "Misc packages you might want to install later"
           - "Packages: {{misc_pkgs}}"

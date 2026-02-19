@@ -38,7 +38,7 @@
         enabled: true
         state: started
       register: network_register
-      failed_when: "network_register is failed ('find' not in network_register.msg)"
+      failed_when: "network_register is failed and ('find' not in network_register.msg)"
       ignore_errors: true
       become: true
 
