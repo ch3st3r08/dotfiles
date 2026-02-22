@@ -18,9 +18,23 @@
   changed_when: true
   tags: tmux
 
-- name: "Install tmux plugins"
+- name: Check if tpm is installed
+  ansible.builtin.stat:
+    path: "{{config_dir}}/tmux/plugins/tpm"
+  register: tpm
+  tags: tmux
+
+- name: Download tpm from github
+  ansible.builtin.git:
+    repo: https://github.com/ch3st3r08/tpm
+    dest: "{{config_dir}}/tmux/plugins/tpm"
+    version: master
+  when: tpm.stat.isdir is not defined
+  tags: tmux
+
+- name: Install tmux plugins
   ansible.builtin.command:
     cmd: "{{config_dir}}/tmux/plugins/tpm/bin/install_plugins"
+  register: tpm_plugins
   changed_when: true
-  ignore_errors: true
   tags: tmux
