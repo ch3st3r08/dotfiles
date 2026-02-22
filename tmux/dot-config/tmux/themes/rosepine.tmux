@@ -37,4 +37,4 @@ set -g @rose_pine_window_status_separator "  " # Changes the default icon tha
 set -g @rose_pine_status_left_append_section ' -  '
 #set -g @rose_pine_status_right_prepend_section 'with normal text'
 #set -g @rose_pine_status_right_append_section 'too'
-set -g @plugin 'rose-pine/tmux'
+set -g @plugin 'rose-pine/tmux;alias=rosepine'

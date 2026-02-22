@@ -22,4 +22,5 @@
   ansible.builtin.command:
     cmd: "{{config_dir}}/tmux/plugins/tpm/bin/install_plugins"
   changed_when: true
+  ignore_errors: true
   tags: tmux
