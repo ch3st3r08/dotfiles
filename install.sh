@@ -52,6 +52,7 @@ if [ ! -d $HOME/.dotfiles ]; then
   echo "No existe, hay que crearlos"
   git clone https://github.com/ch3st3r08/dotfiles "$HOME/.dotfiles"
   cd $HOME/.dotfiles
+  git checkout -b mydots # hardcoded because reasons
 fi
 
 if [[ -z "$TAG" ]] && [[ -z "$DE" ]]; then
